@@ -1,0 +1,156 @@
+\indexentry{arbre@{arbre}|hyperpage}{5}
+\indexentry{arbre@{arbre}!fils@{fils}|hyperpage}{6}
+\indexentry{fils@{fils}!arbre@{arbre}|hyperpage}{6}
+\indexentry{arbre@{arbre}!nb\_\discretionary {-}{}{}fils@{nb\_\discretionary {-}{}{}fils}|hyperpage}{6}
+\indexentry{nb\_\discretionary {-}{}{}fils@{nb\_\discretionary {-}{}{}fils}!arbre@{arbre}|hyperpage}{6}
+\indexentry{Carre\_\discretionary {-}{}{}clair@{Carre\_\discretionary {-}{}{}clair}|hyperpage}{6}
+\indexentry{Carre\_\discretionary {-}{}{}fonce@{Carre\_\discretionary {-}{}{}fonce}|hyperpage}{6}
+\indexentry{case\_\discretionary {-}{}{}plateau@{case\_\discretionary {-}{}{}plateau}|hyperpage}{7}
+\indexentry{case\_\discretionary {-}{}{}plateau@{case\_\discretionary {-}{}{}plateau}!couleur@{couleur}|hyperpage}{8}
+\indexentry{couleur@{couleur}!case_plateau@{case\_\discretionary {-}{}{}plateau}|hyperpage}{8}
+\indexentry{case\_\discretionary {-}{}{}plateau@{case\_\discretionary {-}{}{}plateau}!en\_\discretionary {-}{}{}surbrillance@{en\_\discretionary {-}{}{}surbrillance}|hyperpage}{8}
+\indexentry{en\_\discretionary {-}{}{}surbrillance@{en\_\discretionary {-}{}{}surbrillance}!case_plateau@{case\_\discretionary {-}{}{}plateau}|hyperpage}{8}
+\indexentry{case\_\discretionary {-}{}{}plateau@{case\_\discretionary {-}{}{}plateau}!est\_\discretionary {-}{}{}libre@{est\_\discretionary {-}{}{}libre}|hyperpage}{8}
+\indexentry{est\_\discretionary {-}{}{}libre@{est\_\discretionary {-}{}{}libre}!case_plateau@{case\_\discretionary {-}{}{}plateau}|hyperpage}{8}
+\indexentry{case\_\discretionary {-}{}{}plateau@{case\_\discretionary {-}{}{}plateau}!notation\_\discretionary {-}{}{}officielle@{notation\_\discretionary {-}{}{}officielle}|hyperpage}{8}
+\indexentry{notation\_\discretionary {-}{}{}officielle@{notation\_\discretionary {-}{}{}officielle}!case_plateau@{case\_\discretionary {-}{}{}plateau}|hyperpage}{8}
+\indexentry{coup@{coup}|hyperpage}{8}
+\indexentry{coup@{coup}!chemin@{chemin}|hyperpage}{9}
+\indexentry{chemin@{chemin}!coup@{coup}|hyperpage}{9}
+\indexentry{coup@{coup}!commentaire@{commentaire}|hyperpage}{9}
+\indexentry{commentaire@{commentaire}!coup@{coup}|hyperpage}{9}
+\indexentry{coup@{coup}!prises@{prises}|hyperpage}{10}
+\indexentry{prises@{prises}!coup@{coup}|hyperpage}{10}
+\indexentry{coup@{coup}!tc@{tc}|hyperpage}{10}
+\indexentry{tc@{tc}!coup@{coup}|hyperpage}{10}
+\indexentry{joueur@{joueur}|hyperpage}{10}
+\indexentry{joueur@{joueur}!couleur@{couleur}|hyperpage}{11}
+\indexentry{couleur@{couleur}!joueur@{joueur}|hyperpage}{11}
+\indexentry{joueur@{joueur}!est\_\discretionary {-}{}{}humain@{est\_\discretionary {-}{}{}humain}|hyperpage}{11}
+\indexentry{est\_\discretionary {-}{}{}humain@{est\_\discretionary {-}{}{}humain}!joueur@{joueur}|hyperpage}{11}
+\indexentry{pion@{pion}|hyperpage}{11}
+\indexentry{pion@{pion}!en\_\discretionary {-}{}{}surbrillance@{en\_\discretionary {-}{}{}surbrillance}|hyperpage}{11}
+\indexentry{en\_\discretionary {-}{}{}surbrillance@{en\_\discretionary {-}{}{}surbrillance}!pion@{pion}|hyperpage}{11}
+\indexentry{pion@{pion}!est\_\discretionary {-}{}{}dame@{est\_\discretionary {-}{}{}dame}|hyperpage}{11}
+\indexentry{est\_\discretionary {-}{}{}dame@{est\_\discretionary {-}{}{}dame}!pion@{pion}|hyperpage}{11}
+\indexentry{Pion\_\discretionary {-}{}{}clair@{Pion\_\discretionary {-}{}{}clair}|hyperpage}{12}
+\indexentry{Pion\_\discretionary {-}{}{}fonce@{Pion\_\discretionary {-}{}{}fonce}|hyperpage}{12}
+\indexentry{plateau@{plateau}|hyperpage}{13}
+\indexentry{plateau@{plateau}!cases@{cases}|hyperpage}{14}
+\indexentry{cases@{cases}!plateau@{plateau}|hyperpage}{14}
+\indexentry{plateau@{plateau}!historique@{historique}|hyperpage}{14}
+\indexentry{historique@{historique}!plateau@{plateau}|hyperpage}{14}
+\indexentry{plateau@{plateau}!i@{i}|hyperpage}{14}
+\indexentry{i@{i}!plateau@{plateau}|hyperpage}{14}
+\indexentry{plateau@{plateau}!tour@{tour}|hyperpage}{14}
+\indexentry{tour@{tour}!plateau@{plateau}|hyperpage}{14}
+\indexentry{arbre.h@{arbre.h}|hyperpage}{15}
+\indexentry{constantes.h@{constantes.h}|hyperpage}{16}
+\indexentry{fonction\_\discretionary {-}{}{}evaluation.h@{fonction\_\discretionary {-}{}{}evaluation.h}|hyperpage}{18}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}|hyperpage}{21}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre@{afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre}|hyperpage}{24}
+\indexentry{afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre@{afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{24}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!clique\_\discretionary {-}{}{}souris@{clique\_\discretionary {-}{}{}souris}|hyperpage}{24}
+\indexentry{clique\_\discretionary {-}{}{}souris@{clique\_\discretionary {-}{}{}souris}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{24}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur@{clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur}|hyperpage}{24}
+\indexentry{clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur@{clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{24}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click@{control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click}|hyperpage}{25}
+\indexentry{control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click@{control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{25}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!position\_\discretionary {-}{}{}souris@{position\_\discretionary {-}{}{}souris}|hyperpage}{25}
+\indexentry{position\_\discretionary {-}{}{}souris@{position\_\discretionary {-}{}{}souris}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{25}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!carre\_\discretionary {-}{}{}clair@{carre\_\discretionary {-}{}{}clair}|hyperpage}{25}
+\indexentry{carre\_\discretionary {-}{}{}clair@{carre\_\discretionary {-}{}{}clair}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{25}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!carre\_\discretionary {-}{}{}fonce@{carre\_\discretionary {-}{}{}fonce}|hyperpage}{25}
+\indexentry{carre\_\discretionary {-}{}{}fonce@{carre\_\discretionary {-}{}{}fonce}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{25}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!carre\_\discretionary {-}{}{}surbrillance@{carre\_\discretionary {-}{}{}surbrillance}|hyperpage}{26}
+\indexentry{carre\_\discretionary {-}{}{}surbrillance@{carre\_\discretionary {-}{}{}surbrillance}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{26}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!pion\_\discretionary {-}{}{}clair@{pion\_\discretionary {-}{}{}clair}|hyperpage}{26}
+\indexentry{pion\_\discretionary {-}{}{}clair@{pion\_\discretionary {-}{}{}clair}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{26}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!pion\_\discretionary {-}{}{}fonce@{pion\_\discretionary {-}{}{}fonce}|hyperpage}{26}
+\indexentry{pion\_\discretionary {-}{}{}fonce@{pion\_\discretionary {-}{}{}fonce}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{26}
+\indexentry{fonctionInterface.h@{fonctionInterface.h}!screen@{screen}|hyperpage}{26}
+\indexentry{screen@{screen}!fonctionInterface.h@{fonctionInterface.h}|hyperpage}{26}
+\indexentry{min-\/max.h@{min-\/max.h}|hyperpage}{27}
+\indexentry{min-\/max.h@{min-\/max.h}!jouerIA@{jouerIA}|hyperpage}{30}
+\indexentry{jouerIA@{jouerIA}!min-max.h@{min-\/max.h}|hyperpage}{30}
+\indexentry{moteur.h@{moteur.h}|hyperpage}{30}
+\indexentry{moteur.h@{moteur.h}!charger\_\discretionary {-}{}{}partie@{charger\_\discretionary {-}{}{}partie}|hyperpage}{33}
+\indexentry{charger\_\discretionary {-}{}{}partie@{charger\_\discretionary {-}{}{}partie}!moteur.h@{moteur.h}|hyperpage}{33}
+\indexentry{moteur.h@{moteur.h}!commencer\_\discretionary {-}{}{}tour@{commencer\_\discretionary {-}{}{}tour}|hyperpage}{33}
+\indexentry{commencer\_\discretionary {-}{}{}tour@{commencer\_\discretionary {-}{}{}tour}!moteur.h@{moteur.h}|hyperpage}{33}
+\indexentry{moteur.h@{moteur.h}!get\_\discretionary {-}{}{}plateau@{get\_\discretionary {-}{}{}plateau}|hyperpage}{34}
+\indexentry{get\_\discretionary {-}{}{}plateau@{get\_\discretionary {-}{}{}plateau}!moteur.h@{moteur.h}|hyperpage}{34}
+\indexentry{moteur.h@{moteur.h}!hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles@{hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles}|hyperpage}{34}
+\indexentry{hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles@{hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles}!moteur.h@{moteur.h}|hyperpage}{34}
+\indexentry{moteur.h@{moteur.h}!hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup@{hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup}|hyperpage}{34}
+\indexentry{hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup@{hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup}!moteur.h@{moteur.h}|hyperpage}{34}
+\indexentry{moteur.h@{moteur.h}!hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables@{hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables}|hyperpage}{34}
+\indexentry{hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables@{hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables}!moteur.h@{moteur.h}|hyperpage}{34}
+\indexentry{moteur.h@{moteur.h}!initialiser\_\discretionary {-}{}{}partie@{initialiser\_\discretionary {-}{}{}partie}|hyperpage}{35}
+\indexentry{initialiser\_\discretionary {-}{}{}partie@{initialiser\_\discretionary {-}{}{}partie}!moteur.h@{moteur.h}|hyperpage}{35}
+\indexentry{moteur.h@{moteur.h}!jouer\_\discretionary {-}{}{}coup@{jouer\_\discretionary {-}{}{}coup}|hyperpage}{35}
+\indexentry{jouer\_\discretionary {-}{}{}coup@{jouer\_\discretionary {-}{}{}coup}!moteur.h@{moteur.h}|hyperpage}{35}
+\indexentry{moteur.h@{moteur.h}!jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia@{jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia}|hyperpage}{35}
+\indexentry{jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia@{jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia}!moteur.h@{moteur.h}|hyperpage}{35}
+\indexentry{moteur.h@{moteur.h}!partie\_\discretionary {-}{}{}terminee@{partie\_\discretionary {-}{}{}terminee}|hyperpage}{35}
+\indexentry{partie\_\discretionary {-}{}{}terminee@{partie\_\discretionary {-}{}{}terminee}!moteur.h@{moteur.h}|hyperpage}{35}
+\indexentry{moteur.h@{moteur.h}!sauvegarder\_\discretionary {-}{}{}partie@{sauvegarder\_\discretionary {-}{}{}partie}|hyperpage}{36}
+\indexentry{sauvegarder\_\discretionary {-}{}{}partie@{sauvegarder\_\discretionary {-}{}{}partie}!moteur.h@{moteur.h}|hyperpage}{36}
+\indexentry{moteur.h@{moteur.h}!set\_\discretionary {-}{}{}difficulte@{set\_\discretionary {-}{}{}difficulte}|hyperpage}{36}
+\indexentry{set\_\discretionary {-}{}{}difficulte@{set\_\discretionary {-}{}{}difficulte}!moteur.h@{moteur.h}|hyperpage}{36}
+\indexentry{moteur.h@{moteur.h}!set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain@{set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain}|hyperpage}{36}
+\indexentry{set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain@{set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain}!moteur.h@{moteur.h}|hyperpage}{36}
+\indexentry{moteur.h@{moteur.h}!p\_\discretionary {-}{}{}jeu@{p\_\discretionary {-}{}{}jeu}|hyperpage}{37}
+\indexentry{p\_\discretionary {-}{}{}jeu@{p\_\discretionary {-}{}{}jeu}!moteur.h@{moteur.h}|hyperpage}{37}
+\indexentry{plateau.h@{plateau.h}|hyperpage}{37}
+\indexentry{plateau.h@{plateau.h}!type\_\discretionary {-}{}{}coup@{type\_\discretionary {-}{}{}coup}|hyperpage}{40}
+\indexentry{type\_\discretionary {-}{}{}coup@{type\_\discretionary {-}{}{}coup}!plateau.h@{plateau.h}|hyperpage}{40}
+\indexentry{x@{x}!plateau.h@{plateau.h}|hyperpage}{40}
+\indexentry{plateau.h@{plateau.h}!x@{x}|hyperpage}{40}
+\indexentry{t@{t}!plateau.h@{plateau.h}|hyperpage}{40}
+\indexentry{plateau.h@{plateau.h}!t@{t}|hyperpage}{40}
+\indexentry{plateau.h@{plateau.h}!est\_\discretionary {-}{}{}prenable@{est\_\discretionary {-}{}{}prenable}|hyperpage}{40}
+\indexentry{est\_\discretionary {-}{}{}prenable@{est\_\discretionary {-}{}{}prenable}!plateau.h@{plateau.h}|hyperpage}{40}
+\indexentry{plateau.h@{plateau.h}!get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau@{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau}|hyperpage}{41}
+\indexentry{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau@{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau}!plateau.h@{plateau.h}|hyperpage}{41}
+\indexentry{plateau.h@{plateau.h}!get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent@{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}|hyperpage}{41}
+\indexentry{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent@{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}!plateau.h@{plateau.h}|hyperpage}{41}
+\indexentry{plateau.h@{plateau.h}!nombre\_\discretionary {-}{}{}coups@{nombre\_\discretionary {-}{}{}coups}|hyperpage}{41}
+\indexentry{nombre\_\discretionary {-}{}{}coups@{nombre\_\discretionary {-}{}{}coups}!plateau.h@{plateau.h}|hyperpage}{41}
+\indexentry{plateau.h@{plateau.h}!nouveau\_\discretionary {-}{}{}plateau@{nouveau\_\discretionary {-}{}{}plateau}|hyperpage}{42}
+\indexentry{nouveau\_\discretionary {-}{}{}plateau@{nouveau\_\discretionary {-}{}{}plateau}!plateau.h@{plateau.h}|hyperpage}{42}
+\indexentry{plateau.h@{plateau.h}!plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup@{plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup}|hyperpage}{42}
+\indexentry{plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup@{plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup}!plateau.h@{plateau.h}|hyperpage}{42}
+\indexentry{plateau.h@{plateau.h}!plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup@{plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup}|hyperpage}{42}
+\indexentry{plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup@{plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup}!plateau.h@{plateau.h}|hyperpage}{42}
+\indexentry{plateau.h@{plateau.h}!plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion@{plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion}|hyperpage}{42}
+\indexentry{plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion@{plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion}!plateau.h@{plateau.h}|hyperpage}{42}
+\indexentry{plateau.h@{plateau.h}!plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie@{plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie}|hyperpage}{43}
+\indexentry{plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie@{plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie}!plateau.h@{plateau.h}|hyperpage}{43}
+\indexentry{plateau.h@{plateau.h}!plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion@{plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion}|hyperpage}{43}
+\indexentry{plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion@{plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion}!plateau.h@{plateau.h}|hyperpage}{43}
+\indexentry{plateau.h@{plateau.h}!print\_\discretionary {-}{}{}case@{print\_\discretionary {-}{}{}case}|hyperpage}{43}
+\indexentry{print\_\discretionary {-}{}{}case@{print\_\discretionary {-}{}{}case}!plateau.h@{plateau.h}|hyperpage}{43}
+\indexentry{plateau.h@{plateau.h}!print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups@{print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups}|hyperpage}{43}
+\indexentry{print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups@{print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups}!plateau.h@{plateau.h}|hyperpage}{43}
+\indexentry{plateau.h@{plateau.h}!printCoup@{printCoup}|hyperpage}{44}
+\indexentry{printCoup@{printCoup}!plateau.h@{plateau.h}|hyperpage}{44}
+\indexentry{plateau.h@{plateau.h}!set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance@{set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}|hyperpage}{44}
+\indexentry{set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance@{set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}!plateau.h@{plateau.h}|hyperpage}{44}
+\indexentry{plateau.h@{plateau.h}!set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance@{set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}|hyperpage}{44}
+\indexentry{set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance@{set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}!plateau.h@{plateau.h}|hyperpage}{44}
+\indexentry{regles.h@{regles.h}|hyperpage}{46}
+\indexentry{regles.h@{regles.h}!compare\_\discretionary {-}{}{}coups@{compare\_\discretionary {-}{}{}coups}|hyperpage}{48}
+\indexentry{compare\_\discretionary {-}{}{}coups@{compare\_\discretionary {-}{}{}coups}!regles.h@{regles.h}|hyperpage}{48}
+\indexentry{regles.h@{regles.h}!completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame@{completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame}|hyperpage}{48}
+\indexentry{completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame@{completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame}!regles.h@{regles.h}|hyperpage}{48}
+\indexentry{regles.h@{regles.h}!coupsPossibles@{coupsPossibles}|hyperpage}{48}
+\indexentry{coupsPossibles@{coupsPossibles}!regles.h@{regles.h}|hyperpage}{48}
+\indexentry{regles.h@{regles.h}!get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent@{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}|hyperpage}{49}
+\indexentry{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent@{get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}!regles.h@{regles.h}|hyperpage}{49}
+\indexentry{regles.h@{regles.h}!get\_\discretionary {-}{}{}deplacements@{get\_\discretionary {-}{}{}deplacements}|hyperpage}{49}
+\indexentry{get\_\discretionary {-}{}{}deplacements@{get\_\discretionary {-}{}{}deplacements}!regles.h@{regles.h}|hyperpage}{49}
+\indexentry{regles.h@{regles.h}!get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos@{get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos}|hyperpage}{49}
+\indexentry{get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos@{get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos}!regles.h@{regles.h}|hyperpage}{49}
+\indexentry{regles.h@{regles.h}!getCoups@{getCoups}|hyperpage}{49}
+\indexentry{getCoups@{getCoups}!regles.h@{regles.h}|hyperpage}{49}

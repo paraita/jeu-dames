@@ -1,0 +1,132 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Index des structures de donn\IeC {\'e}es}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Structures de donn\IeC {\'e}es}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Index des fichiers}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Liste des fichiers}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Documentation des structures de donn\IeC {\'e}es}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}R\IeC {\'e}f\IeC {\'e}rence de la structure arbre}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Description d\IeC {\'e}taill\IeC {\'e}e}{5}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Documentation des champs}{6}{subsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.2.1}fils}{6}{subsubsection.3.1.2.1}
+\contentsline {subsubsection}{\numberline {3.1.2.2}nb\_\discretionary {-}{}{}fils}{6}{subsubsection.3.1.2.2}
+\contentsline {section}{\numberline {3.2}R\IeC {\'e}f\IeC {\'e}rence de la structure Carre\_\discretionary {-}{}{}clair}{6}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Description d\IeC {\'e}taill\IeC {\'e}e}{6}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}R\IeC {\'e}f\IeC {\'e}rence de la structure Carre\_\discretionary {-}{}{}fonce}{6}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Description d\IeC {\'e}taill\IeC {\'e}e}{7}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}R\IeC {\'e}f\IeC {\'e}rence de la structure case\_\discretionary {-}{}{}plateau}{7}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Description d\IeC {\'e}taill\IeC {\'e}e}{7}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Documentation des champs}{8}{subsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.2.1}couleur}{8}{subsubsection.3.4.2.1}
+\contentsline {subsubsection}{\numberline {3.4.2.2}en\_\discretionary {-}{}{}surbrillance}{8}{subsubsection.3.4.2.2}
+\contentsline {subsubsection}{\numberline {3.4.2.3}est\_\discretionary {-}{}{}libre}{8}{subsubsection.3.4.2.3}
+\contentsline {subsubsection}{\numberline {3.4.2.4}notation\_\discretionary {-}{}{}officielle}{8}{subsubsection.3.4.2.4}
+\contentsline {section}{\numberline {3.5}R\IeC {\'e}f\IeC {\'e}rence de la structure coup}{8}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Description d\IeC {\'e}taill\IeC {\'e}e}{9}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Documentation des champs}{9}{subsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.2.1}chemin}{9}{subsubsection.3.5.2.1}
+\contentsline {subsubsection}{\numberline {3.5.2.2}commentaire}{10}{subsubsection.3.5.2.2}
+\contentsline {subsubsection}{\numberline {3.5.2.3}prises}{10}{subsubsection.3.5.2.3}
+\contentsline {subsubsection}{\numberline {3.5.2.4}tc}{10}{subsubsection.3.5.2.4}
+\contentsline {section}{\numberline {3.6}R\IeC {\'e}f\IeC {\'e}rence de la structure joueur}{10}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Description d\IeC {\'e}taill\IeC {\'e}e}{11}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Documentation des champs}{11}{subsection.3.6.2}
+\contentsline {subsubsection}{\numberline {3.6.2.1}couleur}{11}{subsubsection.3.6.2.1}
+\contentsline {subsubsection}{\numberline {3.6.2.2}est\_\discretionary {-}{}{}humain}{11}{subsubsection.3.6.2.2}
+\contentsline {section}{\numberline {3.7}R\IeC {\'e}f\IeC {\'e}rence de la structure pion}{11}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Description d\IeC {\'e}taill\IeC {\'e}e}{11}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Documentation des champs}{11}{subsection.3.7.2}
+\contentsline {subsubsection}{\numberline {3.7.2.1}en\_\discretionary {-}{}{}surbrillance}{11}{subsubsection.3.7.2.1}
+\contentsline {subsubsection}{\numberline {3.7.2.2}est\_\discretionary {-}{}{}dame}{12}{subsubsection.3.7.2.2}
+\contentsline {section}{\numberline {3.8}R\IeC {\'e}f\IeC {\'e}rence de la structure Pion\_\discretionary {-}{}{}clair}{12}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Description d\IeC {\'e}taill\IeC {\'e}e}{12}{subsection.3.8.1}
+\contentsline {section}{\numberline {3.9}R\IeC {\'e}f\IeC {\'e}rence de la structure Pion\_\discretionary {-}{}{}fonce}{12}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Description d\IeC {\'e}taill\IeC {\'e}e}{12}{subsection.3.9.1}
+\contentsline {section}{\numberline {3.10}R\IeC {\'e}f\IeC {\'e}rence de la structure plateau}{13}{section.3.10}
+\contentsline {subsection}{\numberline {3.10.1}Description d\IeC {\'e}taill\IeC {\'e}e}{14}{subsection.3.10.1}
+\contentsline {subsection}{\numberline {3.10.2}Documentation des champs}{14}{subsection.3.10.2}
+\contentsline {subsubsection}{\numberline {3.10.2.1}cases}{14}{subsubsection.3.10.2.1}
+\contentsline {subsubsection}{\numberline {3.10.2.2}historique}{14}{subsubsection.3.10.2.2}
+\contentsline {subsubsection}{\numberline {3.10.2.3}i}{14}{subsubsection.3.10.2.3}
+\contentsline {subsubsection}{\numberline {3.10.2.4}tour}{14}{subsubsection.3.10.2.4}
+\contentsline {chapter}{\numberline {4}Documentation des fichiers}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}R\IeC {\'e}f\IeC {\'e}rence du fichier arbre.h}{15}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Description d\IeC {\'e}taill\IeC {\'e}e}{16}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}arbre.h}{16}{section.4.2}
+\contentsline {section}{\numberline {4.3}R\IeC {\'e}f\IeC {\'e}rence du fichier constantes.h}{16}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Description d\IeC {\'e}taill\IeC {\'e}e}{17}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}constantes.h}{17}{section.4.4}
+\contentsline {section}{\numberline {4.5}R\IeC {\'e}f\IeC {\'e}rence du fichier fonction\_\discretionary {-}{}{}evaluation.h}{18}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Description d\IeC {\'e}taill\IeC {\'e}e}{20}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}fonction\_\discretionary {-}{}{}evaluation.h}{21}{section.4.6}
+\contentsline {section}{\numberline {4.7}R\IeC {\'e}f\IeC {\'e}rence du fichier fonctionInterface.h}{21}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Description d\IeC {\'e}taill\IeC {\'e}e}{24}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Documentation des fonctions}{24}{subsection.4.7.2}
+\contentsline {subsubsection}{\numberline {4.7.2.1}afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre}{24}{subsubsection.4.7.2.1}
+\contentsline {subsubsection}{\numberline {4.7.2.2}clique\_\discretionary {-}{}{}souris}{24}{subsubsection.4.7.2.2}
+\contentsline {subsubsection}{\numberline {4.7.2.3}clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur}{25}{subsubsection.4.7.2.3}
+\contentsline {subsubsection}{\numberline {4.7.2.4}control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click}{25}{subsubsection.4.7.2.4}
+\contentsline {subsubsection}{\numberline {4.7.2.5}position\_\discretionary {-}{}{}souris}{25}{subsubsection.4.7.2.5}
+\contentsline {subsection}{\numberline {4.7.3}Documentation des variables}{25}{subsection.4.7.3}
+\contentsline {subsubsection}{\numberline {4.7.3.1}carre\_\discretionary {-}{}{}clair}{25}{subsubsection.4.7.3.1}
+\contentsline {subsubsection}{\numberline {4.7.3.2}carre\_\discretionary {-}{}{}fonce}{26}{subsubsection.4.7.3.2}
+\contentsline {subsubsection}{\numberline {4.7.3.3}carre\_\discretionary {-}{}{}surbrillance}{26}{subsubsection.4.7.3.3}
+\contentsline {subsubsection}{\numberline {4.7.3.4}pion\_\discretionary {-}{}{}clair}{26}{subsubsection.4.7.3.4}
+\contentsline {subsubsection}{\numberline {4.7.3.5}pion\_\discretionary {-}{}{}fonce}{26}{subsubsection.4.7.3.5}
+\contentsline {subsubsection}{\numberline {4.7.3.6}screen}{26}{subsubsection.4.7.3.6}
+\contentsline {section}{\numberline {4.8}fonctionInterface.h}{26}{section.4.8}
+\contentsline {section}{\numberline {4.9}R\IeC {\'e}f\IeC {\'e}rence du fichier min-\/max.h}{27}{section.4.9}
+\contentsline {subsection}{\numberline {4.9.1}Description d\IeC {\'e}taill\IeC {\'e}e}{29}{subsection.4.9.1}
+\contentsline {subsection}{\numberline {4.9.2}Documentation des fonctions}{30}{subsection.4.9.2}
+\contentsline {subsubsection}{\numberline {4.9.2.1}jouerIA}{30}{subsubsection.4.9.2.1}
+\contentsline {section}{\numberline {4.10}min-\/max.h}{30}{section.4.10}
+\contentsline {section}{\numberline {4.11}R\IeC {\'e}f\IeC {\'e}rence du fichier moteur.h}{30}{section.4.11}
+\contentsline {subsection}{\numberline {4.11.1}Description d\IeC {\'e}taill\IeC {\'e}e}{33}{subsection.4.11.1}
+\contentsline {subsection}{\numberline {4.11.2}Documentation des fonctions}{33}{subsection.4.11.2}
+\contentsline {subsubsection}{\numberline {4.11.2.1}charger\_\discretionary {-}{}{}partie}{33}{subsubsection.4.11.2.1}
+\contentsline {subsubsection}{\numberline {4.11.2.2}commencer\_\discretionary {-}{}{}tour}{34}{subsubsection.4.11.2.2}
+\contentsline {subsubsection}{\numberline {4.11.2.3}get\_\discretionary {-}{}{}plateau}{34}{subsubsection.4.11.2.3}
+\contentsline {subsubsection}{\numberline {4.11.2.4}hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles}{34}{subsubsection.4.11.2.4}
+\contentsline {subsubsection}{\numberline {4.11.2.5}hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup}{34}{subsubsection.4.11.2.5}
+\contentsline {subsubsection}{\numberline {4.11.2.6}hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables}{35}{subsubsection.4.11.2.6}
+\contentsline {subsubsection}{\numberline {4.11.2.7}initialiser\_\discretionary {-}{}{}partie}{35}{subsubsection.4.11.2.7}
+\contentsline {subsubsection}{\numberline {4.11.2.8}jouer\_\discretionary {-}{}{}coup}{35}{subsubsection.4.11.2.8}
+\contentsline {subsubsection}{\numberline {4.11.2.9}jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia}{35}{subsubsection.4.11.2.9}
+\contentsline {subsubsection}{\numberline {4.11.2.10}partie\_\discretionary {-}{}{}terminee}{36}{subsubsection.4.11.2.10}
+\contentsline {subsubsection}{\numberline {4.11.2.11}sauvegarder\_\discretionary {-}{}{}partie}{36}{subsubsection.4.11.2.11}
+\contentsline {subsubsection}{\numberline {4.11.2.12}set\_\discretionary {-}{}{}difficulte}{36}{subsubsection.4.11.2.12}
+\contentsline {subsubsection}{\numberline {4.11.2.13}set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain}{36}{subsubsection.4.11.2.13}
+\contentsline {subsection}{\numberline {4.11.3}Documentation des variables}{37}{subsection.4.11.3}
+\contentsline {subsubsection}{\numberline {4.11.3.1}p\_\discretionary {-}{}{}jeu}{37}{subsubsection.4.11.3.1}
+\contentsline {section}{\numberline {4.12}moteur.h}{37}{section.4.12}
+\contentsline {section}{\numberline {4.13}R\IeC {\'e}f\IeC {\'e}rence du fichier plateau.h}{37}{section.4.13}
+\contentsline {subsection}{\numberline {4.13.1}Description d\IeC {\'e}taill\IeC {\'e}e}{40}{subsection.4.13.1}
+\contentsline {subsection}{\numberline {4.13.2}Documentation du type de l'\IeC {\'e}num\IeC {\'e}ration}{40}{subsection.4.13.2}
+\contentsline {subsubsection}{\numberline {4.13.2.1}type\_\discretionary {-}{}{}coup}{40}{subsubsection.4.13.2.1}
+\contentsline {subsection}{\numberline {4.13.3}Documentation des fonctions}{40}{subsection.4.13.3}
+\contentsline {subsubsection}{\numberline {4.13.3.1}est\_\discretionary {-}{}{}prenable}{40}{subsubsection.4.13.3.1}
+\contentsline {subsubsection}{\numberline {4.13.3.2}get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau}{41}{subsubsection.4.13.3.2}
+\contentsline {subsubsection}{\numberline {4.13.3.3}get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}{41}{subsubsection.4.13.3.3}
+\contentsline {subsubsection}{\numberline {4.13.3.4}nombre\_\discretionary {-}{}{}coups}{41}{subsubsection.4.13.3.4}
+\contentsline {subsubsection}{\numberline {4.13.3.5}nouveau\_\discretionary {-}{}{}plateau}{42}{subsubsection.4.13.3.5}
+\contentsline {subsubsection}{\numberline {4.13.3.6}plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup}{42}{subsubsection.4.13.3.6}
+\contentsline {subsubsection}{\numberline {4.13.3.7}plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup}{42}{subsubsection.4.13.3.7}
+\contentsline {subsubsection}{\numberline {4.13.3.8}plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion}{42}{subsubsection.4.13.3.8}
+\contentsline {subsubsection}{\numberline {4.13.3.9}plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie}{43}{subsubsection.4.13.3.9}
+\contentsline {subsubsection}{\numberline {4.13.3.10}plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion}{43}{subsubsection.4.13.3.10}
+\contentsline {subsubsection}{\numberline {4.13.3.11}print\_\discretionary {-}{}{}case}{43}{subsubsection.4.13.3.11}
+\contentsline {subsubsection}{\numberline {4.13.3.12}print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups}{43}{subsubsection.4.13.3.12}
+\contentsline {subsubsection}{\numberline {4.13.3.13}printCoup}{44}{subsubsection.4.13.3.13}
+\contentsline {subsubsection}{\numberline {4.13.3.14}set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}{44}{subsubsection.4.13.3.14}
+\contentsline {subsubsection}{\numberline {4.13.3.15}set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}{44}{subsubsection.4.13.3.15}
+\contentsline {section}{\numberline {4.14}plateau.h}{44}{section.4.14}
+\contentsline {section}{\numberline {4.15}R\IeC {\'e}f\IeC {\'e}rence du fichier regles.h}{46}{section.4.15}
+\contentsline {subsection}{\numberline {4.15.1}Description d\IeC {\'e}taill\IeC {\'e}e}{48}{subsection.4.15.1}
+\contentsline {subsection}{\numberline {4.15.2}Documentation des fonctions}{48}{subsection.4.15.2}
+\contentsline {subsubsection}{\numberline {4.15.2.1}compare\_\discretionary {-}{}{}coups}{48}{subsubsection.4.15.2.1}
+\contentsline {subsubsection}{\numberline {4.15.2.2}completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame}{48}{subsubsection.4.15.2.2}
+\contentsline {subsubsection}{\numberline {4.15.2.3}coupsPossibles}{48}{subsubsection.4.15.2.3}
+\contentsline {subsubsection}{\numberline {4.15.2.4}get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}{49}{subsubsection.4.15.2.4}
+\contentsline {subsubsection}{\numberline {4.15.2.5}get\_\discretionary {-}{}{}deplacements}{49}{subsubsection.4.15.2.5}
+\contentsline {subsubsection}{\numberline {4.15.2.6}get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos}{49}{subsubsection.4.15.2.6}
+\contentsline {subsubsection}{\numberline {4.15.2.7}getCoups}{50}{subsubsection.4.15.2.7}
+\contentsline {section}{\numberline {4.16}regles.h}{50}{section.4.16}

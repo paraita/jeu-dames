@@ -1,0 +1,403 @@
+\hypertarget{moteur_8h}{
+\section{Référence du fichier moteur.h}
+\label{moteur_8h}\index{moteur.h@{moteur.h}}
+}
+
+
+Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l'IA, fournit une aide au joueur.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include \char`\"{}min-\/max.h\char`\"{}}\par
+Graphe des dépendances par inclusion de moteur.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{moteur_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{moteur_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{moteur_8h_a3389f0c85c80a7a201d7f546951c22dd}{initialiser\_\-partie} ()
+\begin{DoxyCompactList}\small\item\em Initialise une nouvelle partie, par défaut une partie 2 joueurs, le joueur pourra ensuite être piloté par l'IA en changeant son type grâce à la fonction \hyperlink{moteur_8h_af4cec21f33aec035009dd524c62a13cd}{set\_\-joueur\_\-est\_\-humain}. \item\end{DoxyCompactList}\item 
+void \hyperlink{moteur_8h_af4cec21f33aec035009dd524c62a13cd}{set\_\-joueur\_\-est\_\-humain} (\hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur\_\-pion} couleur, int boolean)
+\begin{DoxyCompactList}\small\item\em Change le type humain ou IA du joueur. \item\end{DoxyCompactList}\item 
+\hyperlink{structplateau}{plateau} \hyperlink{moteur_8h_a58e7aeb8e134591ec3402655832840da}{get\_\-plateau} ()
+\begin{DoxyCompactList}\small\item\em Renvoie le plateau de la partie pour le consulter. \item\end{DoxyCompactList}\item 
+int \hyperlink{moteur_8h_a9ae4819df5eb9b6f1de826520bf30a8b}{sauvegarder\_\-partie} (char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Sauvegarde l'état courant de la partie. \item\end{DoxyCompactList}\item 
+int \hyperlink{moteur_8h_a614f6676a1441e96574b1b3f9f5aa7e3}{charger\_\-partie} (char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Charge une partie depuis le disque. \item\end{DoxyCompactList}\item 
+int \hyperlink{moteur_8h_afd3360329886ee6f8e2a71a172a4a808}{jouer\_\-coup} (int depart, int arrivee)
+\begin{DoxyCompactList}\small\item\em Joue le coup pour le joueur courant. \item\end{DoxyCompactList}\item 
+\hypertarget{moteur_8h_af7d1220f033250ed0a11d3669c04d1eb}{
+int {\bfseries jouer\_\-coup\_\-xy} (int x1, int y1, int x2, int y2)}
+\label{moteur_8h_af7d1220f033250ed0a11d3669c04d1eb}
+
+\item 
+void \hyperlink{moteur_8h_acbf0cd12ea068c0f938e62f72419cdcc}{jouer\_\-tour\_\-ia} ()
+\begin{DoxyCompactList}\small\item\em Fait jouer un tour à l'IA. \item\end{DoxyCompactList}\item 
+void \hyperlink{moteur_8h_a79cf9ff033c4ceaaf0834ad3e51dc37f}{set\_\-difficulte} (int i)
+\begin{DoxyCompactList}\small\item\em Joue sur la profondeur d'évaluation du min-\/max. \item\end{DoxyCompactList}\item 
+int \hyperlink{moteur_8h_a93014f8aa2a4cb59bdcf0ba5054e86f5}{commencer\_\-tour} ()
+\begin{DoxyCompactList}\small\item\em Débute un nouveau tour de jeu, fait jouer l'IA si c'est à elle de jouer, attend un coup humain sinon. \item\end{DoxyCompactList}\item 
+void \hyperlink{moteur_8h_a269e871cb87e7db65e8b7a22914275d0}{hint\_\-pions\_\-jouables} ()
+\begin{DoxyCompactList}\small\item\em Met en surbrillance les pions qui permettent un déplacement valide pour ce tour. \item\end{DoxyCompactList}\item 
+int \hyperlink{moteur_8h_ae85868ec466abc3d96eca06998a01a7d}{hint\_\-deplacements\_\-possibles} (int c)
+\begin{DoxyCompactList}\small\item\em Met en surbrillance les déplacements possibles partant d'une case donnée. \item\end{DoxyCompactList}\item 
+\hypertarget{moteur_8h_ab7a8dc3359ab20fc1f00616ebd4b47a5}{
+int \hyperlink{moteur_8h_ab7a8dc3359ab20fc1f00616ebd4b47a5}{hint\_\-deplacements\_\-possibles\_\-xy} (int x, int y)}
+\label{moteur_8h_ab7a8dc3359ab20fc1f00616ebd4b47a5}
+
+\begin{DoxyCompactList}\small\item\em Identique à \hyperlink{moteur_8h_ae85868ec466abc3d96eca06998a01a7d}{hint\_\-deplacements\_\-possibles(int c)} mais prends les coordonnées (x,y) de la case. \item\end{DoxyCompactList}\item 
+void \hyperlink{moteur_8h_a5bd6ce9a1afa1f06549fb5aa8a6c40f0}{hint\_\-meilleur\_\-coup} ()
+\begin{DoxyCompactList}\small\item\em Met en surbrillance le meilleur coup à jouer en utilisant l'IA. \item\end{DoxyCompactList}\item 
+int \hyperlink{moteur_8h_a2836a0f283794670b04163df9027bbc2}{partie\_\-terminee} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structplateau}{plateau} \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p\_\-jeu}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l'IA, fournit une aide au joueur. \begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{moteur_8h_source}{moteur.h}.
+
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{moteur_8h_a614f6676a1441e96574b1b3f9f5aa7e3}{
+\index{moteur.h@{moteur.h}!charger\_\-partie@{charger\_\-partie}}
+\index{charger\_\-partie@{charger\_\-partie}!moteur.h@{moteur.h}}
+\subsubsection[{charger\_\-partie}]{\setlength{\rightskip}{0pt plus 5cm}int charger\_\-partie (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a614f6676a1441e96574b1b3f9f5aa7e3}
+
+
+Charge une partie depuis le disque. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filename} & Le chemin vers le fichier à charger. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vrai si le chargement s'est bien déroulé, faux sinon. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00249}{249} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a93014f8aa2a4cb59bdcf0ba5054e86f5}{
+\index{moteur.h@{moteur.h}!commencer\_\-tour@{commencer\_\-tour}}
+\index{commencer\_\-tour@{commencer\_\-tour}!moteur.h@{moteur.h}}
+\subsubsection[{commencer\_\-tour}]{\setlength{\rightskip}{0pt plus 5cm}int commencer\_\-tour (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a93014f8aa2a4cb59bdcf0ba5054e86f5}
+
+
+Débute un nouveau tour de jeu, fait jouer l'IA si c'est à elle de jouer, attend un coup humain sinon. 
+
+\begin{DoxyReturn}{Renvoie}
+Faux si on attend q'un humain joue, vrai si l'IA à joué et qu'on doit relancer immédiatement un nouveau tour. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00107}{107} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a58e7aeb8e134591ec3402655832840da}{
+\index{moteur.h@{moteur.h}!get\_\-plateau@{get\_\-plateau}}
+\index{get\_\-plateau@{get\_\-plateau}!moteur.h@{moteur.h}}
+\subsubsection[{get\_\-plateau}]{\setlength{\rightskip}{0pt plus 5cm}{\bf plateau} get\_\-plateau (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a58e7aeb8e134591ec3402655832840da}
+
+
+Renvoie le plateau de la partie pour le consulter. 
+
+\begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00351}{351} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_ae85868ec466abc3d96eca06998a01a7d}{
+\index{moteur.h@{moteur.h}!hint\_\-deplacements\_\-possibles@{hint\_\-deplacements\_\-possibles}}
+\index{hint\_\-deplacements\_\-possibles@{hint\_\-deplacements\_\-possibles}!moteur.h@{moteur.h}}
+\subsubsection[{hint\_\-deplacements\_\-possibles}]{\setlength{\rightskip}{0pt plus 5cm}int hint\_\-deplacements\_\-possibles (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_ae85868ec466abc3d96eca06998a01a7d}
+
+
+Met en surbrillance les déplacements possibles partant d'une case donnée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & Notation officielle de la case de départ. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vrai si le pion séléctionné fait partie d'un coup authorisé. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00154}{154} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a5bd6ce9a1afa1f06549fb5aa8a6c40f0}{
+\index{moteur.h@{moteur.h}!hint\_\-meilleur\_\-coup@{hint\_\-meilleur\_\-coup}}
+\index{hint\_\-meilleur\_\-coup@{hint\_\-meilleur\_\-coup}!moteur.h@{moteur.h}}
+\subsubsection[{hint\_\-meilleur\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}void hint\_\-meilleur\_\-coup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a5bd6ce9a1afa1f06549fb5aa8a6c40f0}
+
+
+Met en surbrillance le meilleur coup à jouer en utilisant l'IA. 
+
+\begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+\hypertarget{moteur_8h_a269e871cb87e7db65e8b7a22914275d0}{
+\index{moteur.h@{moteur.h}!hint\_\-pions\_\-jouables@{hint\_\-pions\_\-jouables}}
+\index{hint\_\-pions\_\-jouables@{hint\_\-pions\_\-jouables}!moteur.h@{moteur.h}}
+\subsubsection[{hint\_\-pions\_\-jouables}]{\setlength{\rightskip}{0pt plus 5cm}void hint\_\-pions\_\-jouables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a269e871cb87e7db65e8b7a22914275d0}
+
+
+Met en surbrillance les pions qui permettent un déplacement valide pour ce tour. 
+
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00142}{142} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a3389f0c85c80a7a201d7f546951c22dd}{
+\index{moteur.h@{moteur.h}!initialiser\_\-partie@{initialiser\_\-partie}}
+\index{initialiser\_\-partie@{initialiser\_\-partie}!moteur.h@{moteur.h}}
+\subsubsection[{initialiser\_\-partie}]{\setlength{\rightskip}{0pt plus 5cm}void initialiser\_\-partie (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a3389f0c85c80a7a201d7f546951c22dd}
+
+
+Initialise une nouvelle partie, par défaut une partie 2 joueurs, le joueur pourra ensuite être piloté par l'IA en changeant son type grâce à la fonction \hyperlink{moteur_8h_af4cec21f33aec035009dd524c62a13cd}{set\_\-joueur\_\-est\_\-humain}. 
+
+void \hyperlink{moteur_8h_a3389f0c85c80a7a201d7f546951c22dd}{initialiser\_\-partie()}; \begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00325}{325} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_afd3360329886ee6f8e2a71a172a4a808}{
+\index{moteur.h@{moteur.h}!jouer\_\-coup@{jouer\_\-coup}}
+\index{jouer\_\-coup@{jouer\_\-coup}!moteur.h@{moteur.h}}
+\subsubsection[{jouer\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}int jouer\_\-coup (
+\begin{DoxyParamCaption}
+\item[{int}]{depart, }
+\item[{int}]{arrivee}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_afd3360329886ee6f8e2a71a172a4a808}
+
+
+Joue le coup pour le joueur courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em depart} & La case de départ du coup. \\
+\hline
+{\em arrivee} & La case d'arrivée du coup. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\begin{DoxyItemize}
+\item 0 si le coup est invalide. \item 1 si le coup est valide et terminé. \item 2 si le mouvement fait partie d'un coup valide, on attend que le joueur termine son coup par un nouvel appel à cette fonction \hyperlink{moteur_8h_afd3360329886ee6f8e2a71a172a4a808}{jouer\_\-coup}. \end{DoxyItemize}
+
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00025}{25} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_acbf0cd12ea068c0f938e62f72419cdcc}{
+\index{moteur.h@{moteur.h}!jouer\_\-tour\_\-ia@{jouer\_\-tour\_\-ia}}
+\index{jouer\_\-tour\_\-ia@{jouer\_\-tour\_\-ia}!moteur.h@{moteur.h}}
+\subsubsection[{jouer\_\-tour\_\-ia}]{\setlength{\rightskip}{0pt plus 5cm}void jouer\_\-tour\_\-ia (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_acbf0cd12ea068c0f938e62f72419cdcc}
+
+
+Fait jouer un tour à l'IA. 
+
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00126}{126} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a2836a0f283794670b04163df9027bbc2}{
+\index{moteur.h@{moteur.h}!partie\_\-terminee@{partie\_\-terminee}}
+\index{partie\_\-terminee@{partie\_\-terminee}!moteur.h@{moteur.h}}
+\subsubsection[{partie\_\-terminee}]{\setlength{\rightskip}{0pt plus 5cm}int partie\_\-terminee (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a2836a0f283794670b04163df9027bbc2}
+\begin{DoxyReturn}{Renvoie}
+Renvoie Faux si la partie n'est pas terminée, la couleur gagnante + 1 sinon. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00355}{355} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a9ae4819df5eb9b6f1de826520bf30a8b}{
+\index{moteur.h@{moteur.h}!sauvegarder\_\-partie@{sauvegarder\_\-partie}}
+\index{sauvegarder\_\-partie@{sauvegarder\_\-partie}!moteur.h@{moteur.h}}
+\subsubsection[{sauvegarder\_\-partie}]{\setlength{\rightskip}{0pt plus 5cm}int sauvegarder\_\-partie (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a9ae4819df5eb9b6f1de826520bf30a8b}
+
+
+Sauvegarde l'état courant de la partie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filename} & Le chemin vers le fichier de sauvegarde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vrai si la sauvegarde s'est bien effectuée, faux si un problème est survenu. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00185}{185} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_a79cf9ff033c4ceaaf0834ad3e51dc37f}{
+\index{moteur.h@{moteur.h}!set\_\-difficulte@{set\_\-difficulte}}
+\index{set\_\-difficulte@{set\_\-difficulte}!moteur.h@{moteur.h}}
+\subsubsection[{set\_\-difficulte}]{\setlength{\rightskip}{0pt plus 5cm}void set\_\-difficulte (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_a79cf9ff033c4ceaaf0834ad3e51dc37f}
+
+
+Joue sur la profondeur d'évaluation du min-\/max. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & La profondeur d'évaluation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00138}{138} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+\hypertarget{moteur_8h_af4cec21f33aec035009dd524c62a13cd}{
+\index{moteur.h@{moteur.h}!set\_\-joueur\_\-est\_\-humain@{set\_\-joueur\_\-est\_\-humain}}
+\index{set\_\-joueur\_\-est\_\-humain@{set\_\-joueur\_\-est\_\-humain}!moteur.h@{moteur.h}}
+\subsubsection[{set\_\-joueur\_\-est\_\-humain}]{\setlength{\rightskip}{0pt plus 5cm}void set\_\-joueur\_\-est\_\-humain (
+\begin{DoxyParamCaption}
+\item[{{\bf couleur\_\-pion}}]{couleur, }
+\item[{int}]{boolean}
+\end{DoxyParamCaption}
+)}}
+\label{moteur_8h_af4cec21f33aec035009dd524c62a13cd}
+
+
+Change le type humain ou IA du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em couleur} & La couleur du joueur pour lequel on doit changer le type. \\
+\hline
+{\em boolean} & Vrai si le joueur est humain, faux sinon. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{moteur_8c_source_l00335}{335} du fichier \hyperlink{moteur_8c_source}{moteur.c}.
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{
+\index{moteur.h@{moteur.h}!p\_\-jeu@{p\_\-jeu}}
+\index{p\_\-jeu@{p\_\-jeu}!moteur.h@{moteur.h}}
+\subsubsection[{p\_\-jeu}]{\setlength{\rightskip}{0pt plus 5cm}{\bf plateau} {\bf p\_\-jeu}}}
+\label{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}
+Le plateau de jeu qui sera utilisé tout au long de la partie. (Ne pas utiliser en dehors de \hyperlink{moteur_8c_source}{moteur.c}, utilisez \hyperlink{moteur_8h_a58e7aeb8e134591ec3402655832840da}{get\_\-plateau()}) 
+
+Définition à la ligne \hyperlink{moteur_8h_source_l00013}{13} du fichier \hyperlink{moteur_8h_source}{moteur.h}.
+

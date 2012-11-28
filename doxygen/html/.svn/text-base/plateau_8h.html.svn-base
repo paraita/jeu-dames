@@ -1,0 +1,740 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames: Référence du fichier plateau.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<h1>Référence du fichier plateau.h</h1>  </div>
+</div>
+<div class="contents">
+
+<p>Tout ce qui concerne le plateau de jeu (damier, pions et joueurs).  
+<a href="#_details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="plateau_8h__dep__incl.png" border="0" usemap="#plateau_8hdep" alt=""/></div>
+<map name="plateau_8hdep" id="plateau_8hdep">
+<area shape="rect" id="node3" href="regles_8h.html" title="module des regles et d&#39;enumeration des coups." alt="" coords="233,83,311,111"/><area shape="rect" id="node25" href="plateau_8c_source.html" title="plateau.c" alt="" coords="335,83,417,111"/><area shape="rect" id="node5" href="fonction__evaluation_8h.html" title="La fonction d&#39;evaluation de l&#39;algorithme MinMax. Renvoie un double compris entre &#45;1 et 1 cara..." alt="" coords="115,161,283,189"/><area shape="rect" id="node23" href="regles_8c_source.html" title="regles.c" alt="" coords="307,161,384,189"/><area shape="rect" id="node7" href="fonction__evaluation_8c_source.html" title="fonction_evaluation.c" alt="" coords="39,238,207,266"/><area shape="rect" id="node9" href="min-max_8h.html" title="Implémentation du min&#45;max." alt="" coords="231,238,321,266"/><area shape="rect" id="node11" href="moteur_8h.html" title="Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l&#39;IA, fournit une aide au joueur." alt="" coords="179,315,261,343"/><area shape="rect" id="node21" href="min-max_8c_source.html" title="min&#45;max.c" alt="" coords="285,315,376,343"/><area shape="rect" id="node13" href="fonction_interface_8h.html" title="Implémentation de fonctionnalités pour l&#39;interface." alt="" coords="72,393,227,421"/><area shape="rect" id="node19" href="moteur_8c_source.html" title="moteur.c" alt="" coords="251,393,333,421"/><area shape="rect" id="node15" href="fonction_interface_8c_source.html" title="fonctionInterface.c" alt="" coords="5,470,160,498"/><area shape="rect" id="node17" href="main_8c_source.html" title="main.c" alt="" coords="184,470,251,498"/></map>
+</div>
+</div>
+<p><a href="plateau_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpion.html">pion</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non.  <a href="structpion.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcase__plateau.html">case_plateau</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire,elle dispose d'une abscisse (x) et une ordonnée (y) sur le plateau. Une case peut être libre ou non, si elle n'est pas libre elle contient un pion.  <a href="structcase__plateau.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structjoueur.html">joueur</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Objet joueur. Un joueur est caractérisé par la couleur qu'il joue et sa nature (humain ou intelligence artificielle).  <a href="structjoueur.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcoup.html">coup</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d'arrivée, un type (déplacement ou prise) et optinellement un commentaire.  <a href="structcoup.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structplateau.html">plateau</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique des coups. Il sait quel joueur doit jouer le prochain coup.  <a href="structplateau.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a8282be6127518547fa916dd6cfef17cb">couleur_pion</a> { <b>blanc</b>, 
+<b>noir</b>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>La couleur d'un pion. </p>
+<br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eee">type_coup</a> { <a class="el" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c">x</a>, 
+<a class="el" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee">t</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Le type de coup. Le "tiret" '-' est remplacé par un 't'. </p>
+ <a href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eee">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structplateau.html">plateau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#aad79656ee484352eb698011738cbcefc">nouveau_plateau</a> (<a class="el" href="structjoueur.html">joueur</a> j1, <a class="el" href="structjoueur.html">joueur</a> j2)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de création d'un nouveau plateau.  <a href="#aad79656ee484352eb698011738cbcefc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#ac36612024e6663243c4f0605f2dd96c2">plateau_deplacer_pion</a> (int old_position, int new_position, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace un pion.  <a href="#ac36612024e6663243c4f0605f2dd96c2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a4a8fb7c96fbeb8218d5ddbf3fe642901">plateau_prendre_pion</a> (int position, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prend le pion de la case "position".  <a href="#a4a8fb7c96fbeb8218d5ddbf3fe642901"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a8e9db1b793881c55d1261e3b735a5d48">plateau_ajouter_coup</a> (<a class="el" href="structcoup.html">coup</a> c, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un coup dans l'historique du plateau.  <a href="#a8e9db1b793881c55d1261e3b735a5d48"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a6616eb0e3e305b9dd718ffb0e83231d5">plateau_appliquer_coup</a> (<a class="el" href="structcoup.html">coup</a> c, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le plateau en jouant le coup donné et passe la main au joueur suivant.  <a href="#a6616eb0e3e305b9dd718ffb0e83231d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a43fa8dd4c36ca967403900b75237a3d5">plateau_partie_finie</a> (<a class="el" href="structplateau.html">plateau</a> p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si la partie est gagnée pour un des deux joueurs.  <a href="#a43fa8dd4c36ca967403900b75237a3d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcase__plateau.html">case_plateau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a44f4edc5041fe92213f7dbdc2ac5e39e">get_case_plateau</a> (int x, int y, <a class="el" href="structplateau.html">plateau</a> p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la case à la position (x,y).  <a href="#a44f4edc5041fe92213f7dbdc2ac5e39e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a69dc99f7c855cdf8bf569f8b26ae6689">print_case</a> (<a class="el" href="structcase__plateau.html">case_plateau</a> c)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les informations sur la case (à des fins de test).  <a href="#a69dc99f7c855cdf8bf569f8b26ae6689"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a590ca6fc3ab1b4e08fa05ddaf7465115"></a><!-- doxytag: member="plateau.h::print_plateau" ref="a590ca6fc3ab1b4e08fa05ddaf7465115" args="(plateau p)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a590ca6fc3ab1b4e08fa05ddaf7465115">print_plateau</a> (<a class="el" href="structplateau.html">plateau</a> p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le plateau sur stdout. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a4066fdb86d7d54a9256fa727995f47fd">set_case_en_surbrillance</a> (int numero, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Met la case en surbrillance.  <a href="#a4066fdb86d7d54a9256fa727995f47fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a98033598d0f16369d8529f7c5ab3e3fd">set_pion_en_surbrillance</a> (int numero, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Met un pion en surbrillance.  <a href="#a98033598d0f16369d8529f7c5ab3e3fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee51bfad885420a7013c9c01a2eae048"></a><!-- doxytag: member="plateau.h::reset_surbrillance" ref="aee51bfad885420a7013c9c01a2eae048" args="(plateau *p)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#aee51bfad885420a7013c9c01a2eae048">reset_surbrillance</a> (<a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Annule la mise en surbrillance de toutes les cases et tous les pions du plateau. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a5b1f6227bf2bab71a07a531c49270b51">printCoup</a> (const <a class="el" href="structcoup.html">coup</a> c)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print les infos d'un coup  <a href="#a5b1f6227bf2bab71a07a531c49270b51"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#aff9fd9b1b3f96bbae116f3d87349a0cf">est_prenable</a> (int position, <a class="el" href="structplateau.html">plateau</a> *p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">predicat pour savoir si une position est prenable.  <a href="#aff9fd9b1b3f96bbae116f3d87349a0cf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#ade9b690d9493e82b264dcea4d08abd5a">print_liste_coups</a> (<a class="el" href="structcoup.html">coup</a> *l)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche la liste des coups dans l.  <a href="#ade9b690d9493e82b264dcea4d08abd5a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66fb3aa869ea21274bd48d004fbd6110"></a><!-- doxytag: member="plateau.h::coup_inclus" ref="a66fb3aa869ea21274bd48d004fbd6110" args="(case_plateau c, case_plateau *liste, int taille)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>coup_inclus</b> (<a class="el" href="structcase__plateau.html">case_plateau</a> c, <a class="el" href="structcase__plateau.html">case_plateau</a> *liste, int taille)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcase__plateau.html">case_plateau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a60a8f706865d0ae9087f8d65d4667655">get_case_plateau_silent</a> (int x, int y, <a class="el" href="structplateau.html">plateau</a> p)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">retourne la case si elle existe, ou la case 0 sinon  <a href="#a60a8f706865d0ae9087f8d65d4667655"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="plateau_8h.html#a8918a9186794792439622dd39ca202a0">nombre_coups</a> (<a class="el" href="structcoup.html">coup</a> *set)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">retourne le nombre de coups dans set  <a href="#a8918a9186794792439622dd39ca202a0"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Tout ce qui concerne le plateau de jeu (damier, pions et joueurs). </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="plateau_8h_source.html">plateau.h</a>.</p>
+</div><hr/><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="a9e00f85b4b6ec2d8bdfbe94ff40f0eee"></a><!-- doxytag: member="plateau.h::type_coup" ref="a9e00f85b4b6ec2d8bdfbe94ff40f0eee" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eee">type_coup</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Le type de coup. Le "tiret" '-' est remplacé par un 't'. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c"></a><!-- doxytag: member="x" ref="a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c" args="" -->x</em>&nbsp;</td><td>
+<p>Prise. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee"></a><!-- doxytag: member="t" ref="a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee" args="" -->t</em>&nbsp;</td><td>
+<p>Déplacement. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8h_source.html#l00022">22</a> du fichier <a class="el" href="plateau_8h_source.html">plateau.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="aff9fd9b1b3f96bbae116f3d87349a0cf"></a><!-- doxytag: member="plateau.h::est_prenable" ref="aff9fd9b1b3f96bbae116f3d87349a0cf" args="(int position, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int est_prenable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>predicat pour savoir si une position est prenable. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>la position du pion que l'on veut prendre. </td></tr>
+    <tr><td class="paramname">p</td><td>le plateau sur lequel on veut tester la position à prendre. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00258">258</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a44f4edc5041fe92213f7dbdc2ac5e39e"></a><!-- doxytag: member="plateau.h::get_case_plateau" ref="a44f4edc5041fe92213f7dbdc2ac5e39e" args="(int x, int y, plateau p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcase__plateau.html">case_plateau</a> get_case_plateau </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a>&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Renvoie la case à la position (x,y). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Abscisse de la case (colonne) [1-10]. </td></tr>
+    <tr><td class="paramname">y</td><td>Ordonnée de la case [1-10]. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00101">101</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a60a8f706865d0ae9087f8d65d4667655"></a><!-- doxytag: member="plateau.h::get_case_plateau_silent" ref="a60a8f706865d0ae9087f8d65d4667655" args="(int x, int y, plateau p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcase__plateau.html">case_plateau</a> get_case_plateau_silent </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a>&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>retourne la case si elle existe, ou la case 0 sinon </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>la position horizontale sur le plateau </td></tr>
+    <tr><td class="paramname">y</td><td>la position verticale sur le plateau </td></tr>
+    <tr><td class="paramname">p</td><td>le plateau courant </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Paraita Wohler</dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>la position en abscisse </td></tr>
+    <tr><td class="paramname">y</td><td>la position en ordonnée </td></tr>
+    <tr><td class="paramname">p</td><td>le plateau courant </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>la case qui est en position x y dans p </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="regles_8c_source.html#l00929">929</a> du fichier <a class="el" href="regles_8c_source.html">regles.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8918a9186794792439622dd39ca202a0"></a><!-- doxytag: member="plateau.h::nombre_coups" ref="a8918a9186794792439622dd39ca202a0" args="(coup *set)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nombre_coups </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcoup.html">coup</a> *&#160;</td>
+          <td class="paramname"><em>set</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>retourne le nombre de coups dans set </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">set</td><td>le tableau des coups. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Paraita Wohler </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00300">300</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aad79656ee484352eb698011738cbcefc"></a><!-- doxytag: member="plateau.h::nouveau_plateau" ref="aad79656ee484352eb698011738cbcefc" args="(joueur j1, joueur j2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structplateau.html">plateau</a> nouveau_plateau </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structjoueur.html">joueur</a>&#160;</td>
+          <td class="paramname"><em>j1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur.html">joueur</a>&#160;</td>
+          <td class="paramname"><em>j2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fonction de création d'un nouveau plateau. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j1</td><td>Le joueur blanc. </td></tr>
+    <tr><td class="paramname">j2</td><td>Le joueur noir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>plateau Un plateau initialisé avec les pions en position initiale et associé aux joueurs. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00011">11</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8e9db1b793881c55d1261e3b735a5d48"></a><!-- doxytag: member="plateau.h::plateau_ajouter_coup" ref="a8e9db1b793881c55d1261e3b735a5d48" args="(coup c, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plateau_ajouter_coup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcoup.html">coup</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ajoute un coup dans l'historique du plateau. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Le coup à ajouter. </td></tr>
+    <tr><td class="paramname">p</td><td>Le plateau auquel on ajoute le coup. En raison du risque improbable qu'une partie dure plus de 500 coups, l'historique au-delà est ignoré. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00093">93</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6616eb0e3e305b9dd718ffb0e83231d5"></a><!-- doxytag: member="plateau.h::plateau_appliquer_coup" ref="a6616eb0e3e305b9dd718ffb0e83231d5" args="(coup c, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plateau_appliquer_coup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcoup.html">coup</a>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Met à jour le plateau en jouant le coup donné et passe la main au joueur suivant. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Le coup à jouer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00141">141</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac36612024e6663243c4f0605f2dd96c2"></a><!-- doxytag: member="plateau.h::plateau_deplacer_pion" ref="ac36612024e6663243c4f0605f2dd96c2" args="(int old_position, int new_position, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int plateau_deplacer_pion </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>old_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>new_position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplace un pion. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">old_position</td><td>La position de départ. </td></tr>
+    <tr><td class="paramname">new_position</td><td>La position d'arrivée. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>int Vrai si le déplacement est possible, faux si un pion occupe déjà la case ou si on sort du plateau. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00070">70</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a43fa8dd4c36ca967403900b75237a3d5"></a><!-- doxytag: member="plateau.h::plateau_partie_finie" ref="a43fa8dd4c36ca967403900b75237a3d5" args="(plateau p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int plateau_partie_finie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Teste si la partie est gagnée pour un des deux joueurs. </p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>0 si la partie n'est pas finie, couleur + 1 sinon. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00175">175</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4a8fb7c96fbeb8218d5ddbf3fe642901"></a><!-- doxytag: member="plateau.h::plateau_prendre_pion" ref="a4a8fb7c96fbeb8218d5ddbf3fe642901" args="(int position, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int plateau_prendre_pion </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Prend le pion de la case "position". </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Position de la case sur laquelle se trouve le pion. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>int Vrai si la prise est effectuée, faux si la case est vide ou si on sort du plateau. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00084">84</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a69dc99f7c855cdf8bf569f8b26ae6689"></a><!-- doxytag: member="plateau.h::print_case" ref="a69dc99f7c855cdf8bf569f8b26ae6689" args="(case_plateau c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_case </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcase__plateau.html">case_plateau</a>&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Affiche les informations sur la case (à des fins de test). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>La case à afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00120">120</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ade9b690d9493e82b264dcea4d08abd5a"></a><!-- doxytag: member="plateau.h::print_liste_coups" ref="ade9b690d9493e82b264dcea4d08abd5a" args="(coup *l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_liste_coups </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcoup.html">coup</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>affiche la liste des coups dans l. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>la liste des coups que l'on veut afficher. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Paraita Wohler </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00269">269</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5b1f6227bf2bab71a07a531c49270b51"></a><!-- doxytag: member="plateau.h::printCoup" ref="a5b1f6227bf2bab71a07a531c49270b51" args="(const coup c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printCoup </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcoup.html">coup</a>&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>print les infos d'un coup </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>le coup dont on veut les informations. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Paraita Wohler </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00234">234</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4066fdb86d7d54a9256fa727995f47fd"></a><!-- doxytag: member="plateau.h::set_case_en_surbrillance" ref="a4066fdb86d7d54a9256fa727995f47fd" args="(int numero, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_case_en_surbrillance </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numero</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Met la case en surbrillance. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numero</td><td>Numéro de la case à mettre en surbrillance (selon la notation officielle). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00125">125</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a98033598d0f16369d8529f7c5ab3e3fd"></a><!-- doxytag: member="plateau.h::set_pion_en_surbrillance" ref="a98033598d0f16369d8529f7c5ab3e3fd" args="(int numero, plateau *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_pion_en_surbrillance </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numero</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structplateau.html">plateau</a> *&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Met un pion en surbrillance. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numero</td><td>Numéro de la case sur laquelle se trouve le pion à mettre en surbrillance (selon la notation officielle). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="plateau_8c_source.html#l00129">129</a> du fichier <a class="el" href="plateau_8c_source.html">plateau.c</a>.</p>
+
+</div>
+</div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:51 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

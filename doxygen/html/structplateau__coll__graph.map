@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$structjoueur.html" title="Objet joueur. Un joueur est caractérisé par la couleur qu&#39;il joue et sa nature (humain ou intelli..." alt="" coords="5,209,69,237"/>
+<area shape="rect" id="node4" href="$structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&#39;arrivée..." alt="" coords="183,209,236,237"/>
+<area shape="rect" id="node6" href="$structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire..." alt="" coords="84,99,193,127"/>
+<area shape="rect" id="node8" href="$structpion.html" title="Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non." alt="" coords="113,6,164,34"/>
+</map>

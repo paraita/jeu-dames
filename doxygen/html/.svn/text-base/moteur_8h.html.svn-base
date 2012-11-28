@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames: Référence du fichier moteur.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<h1>Référence du fichier moteur.h</h1>  </div>
+</div>
+<div class="contents">
+
+<p>Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l'IA, fournit une aide au joueur.  
+<a href="#_details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="min-max_8h_source.html">min-max.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de moteur.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="moteur_8h__incl.png" border="0" usemap="#moteur_8h" alt=""/></div>
+<map name="moteur_8h" id="moteur_8h">
+<area shape="rect" id="node7" href="min-max_8h.html" title="Implémentation du min&#45;max." alt="" coords="104,83,195,111"/><area shape="rect" id="node9" href="fonction__evaluation_8h.html" title="La fonction d&#39;evaluation de l&#39;algorithme MinMax. Renvoie un double compris entre &#45;1 et 1 cara..." alt="" coords="65,161,233,189"/><area shape="rect" id="node13" href="regles_8h.html" title="module des regles et d&#39;enumeration des coups." alt="" coords="111,238,188,266"/><area shape="rect" id="node15" href="plateau_8h.html" title="Tout ce qui concerne le plateau de jeu (damier, pions et joueurs)." alt="" coords="108,315,191,343"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="moteur_8h__dep__incl.png" border="0" usemap="#moteur_8hdep" alt=""/></div>
+<map name="moteur_8hdep" id="moteur_8hdep">
+<area shape="rect" id="node3" href="fonction_interface_8h.html" title="Implémentation de fonctionnalités pour l&#39;interface." alt="" coords="72,83,227,111"/><area shape="rect" id="node9" href="moteur_8c_source.html" title="moteur.c" alt="" coords="251,83,333,111"/><area shape="rect" id="node5" href="fonction_interface_8c_source.html" title="fonctionInterface.c" alt="" coords="5,161,160,189"/><area shape="rect" id="node7" href="main_8c_source.html" title="main.c" alt="" coords="184,161,251,189"/></map>
+</div>
+</div>
+<p><a href="moteur_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a3389f0c85c80a7a201d7f546951c22dd">initialiser_partie</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise une nouvelle partie, par défaut une partie 2 joueurs, le joueur pourra ensuite être piloté par l'IA en changeant son type grâce à la fonction <a class="el" href="moteur_8h.html#af4cec21f33aec035009dd524c62a13cd" title="Change le type humain ou IA du joueur.">set_joueur_est_humain</a>.  <a href="#a3389f0c85c80a7a201d7f546951c22dd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#af4cec21f33aec035009dd524c62a13cd">set_joueur_est_humain</a> (<a class="el" href="plateau_8h.html#a8282be6127518547fa916dd6cfef17cb">couleur_pion</a> couleur, int boolean)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change le type humain ou IA du joueur.  <a href="#af4cec21f33aec035009dd524c62a13cd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structplateau.html">plateau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a58e7aeb8e134591ec3402655832840da">get_plateau</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie le plateau de la partie pour le consulter.  <a href="#a58e7aeb8e134591ec3402655832840da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a9ae4819df5eb9b6f1de826520bf30a8b">sauvegarder_partie</a> (char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde l'état courant de la partie.  <a href="#a9ae4819df5eb9b6f1de826520bf30a8b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a614f6676a1441e96574b1b3f9f5aa7e3">charger_partie</a> (char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge une partie depuis le disque.  <a href="#a614f6676a1441e96574b1b3f9f5aa7e3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#afd3360329886ee6f8e2a71a172a4a808">jouer_coup</a> (int depart, int arrivee)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue le coup pour le joueur courant.  <a href="#afd3360329886ee6f8e2a71a172a4a808"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7d1220f033250ed0a11d3669c04d1eb"></a><!-- doxytag: member="moteur.h::jouer_coup_xy" ref="af7d1220f033250ed0a11d3669c04d1eb" args="(int x1, int y1, int x2, int y2)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><b>jouer_coup_xy</b> (int x1, int y1, int x2, int y2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#acbf0cd12ea068c0f938e62f72419cdcc">jouer_tour_ia</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fait jouer un tour à l'IA.  <a href="#acbf0cd12ea068c0f938e62f72419cdcc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a79cf9ff033c4ceaaf0834ad3e51dc37f">set_difficulte</a> (int i)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue sur la profondeur d'évaluation du min-max.  <a href="#a79cf9ff033c4ceaaf0834ad3e51dc37f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a93014f8aa2a4cb59bdcf0ba5054e86f5">commencer_tour</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Débute un nouveau tour de jeu, fait jouer l'IA si c'est à elle de jouer, attend un coup humain sinon.  <a href="#a93014f8aa2a4cb59bdcf0ba5054e86f5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a269e871cb87e7db65e8b7a22914275d0">hint_pions_jouables</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Met en surbrillance les pions qui permettent un déplacement valide pour ce tour.  <a href="#a269e871cb87e7db65e8b7a22914275d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#ae85868ec466abc3d96eca06998a01a7d">hint_deplacements_possibles</a> (int c)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Met en surbrillance les déplacements possibles partant d'une case donnée.  <a href="#ae85868ec466abc3d96eca06998a01a7d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7a8dc3359ab20fc1f00616ebd4b47a5"></a><!-- doxytag: member="moteur.h::hint_deplacements_possibles_xy" ref="ab7a8dc3359ab20fc1f00616ebd4b47a5" args="(int x, int y)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#ab7a8dc3359ab20fc1f00616ebd4b47a5">hint_deplacements_possibles_xy</a> (int x, int y)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Identique à <a class="el" href="moteur_8h.html#ae85868ec466abc3d96eca06998a01a7d" title="Met en surbrillance les déplacements possibles partant d&#39;une case donnée.">hint_deplacements_possibles(int c)</a> mais prends les coordonnées (x,y) de la case. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a5bd6ce9a1afa1f06549fb5aa8a6c40f0">hint_meilleur_coup</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Met en surbrillance le meilleur coup à jouer en utilisant l'IA.  <a href="#a5bd6ce9a1afa1f06549fb5aa8a6c40f0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a2836a0f283794670b04163df9027bbc2">partie_terminee</a> ()</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structplateau.html">plateau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moteur_8h.html#a3efa8d0f7c65daedc584dc8db048e62c">p_jeu</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l'IA, fournit une aide au joueur. </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd>
+<dd>
+Bastien Auda </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="moteur_8h_source.html">moteur.h</a>.</p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a614f6676a1441e96574b1b3f9f5aa7e3"></a><!-- doxytag: member="moteur.h::charger_partie" ref="a614f6676a1441e96574b1b3f9f5aa7e3" args="(char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int charger_partie </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charge une partie depuis le disque. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Le chemin vers le fichier à charger. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Vrai si le chargement s'est bien déroulé, faux sinon. </dd></dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00249">249</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a93014f8aa2a4cb59bdcf0ba5054e86f5"></a><!-- doxytag: member="moteur.h::commencer_tour" ref="a93014f8aa2a4cb59bdcf0ba5054e86f5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int commencer_tour </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Débute un nouveau tour de jeu, fait jouer l'IA si c'est à elle de jouer, attend un coup humain sinon. </p>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Faux si on attend q'un humain joue, vrai si l'IA à joué et qu'on doit relancer immédiatement un nouveau tour. </dd></dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00107">107</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58e7aeb8e134591ec3402655832840da"></a><!-- doxytag: member="moteur.h::get_plateau" ref="a58e7aeb8e134591ec3402655832840da" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structplateau.html">plateau</a> get_plateau </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Renvoie le plateau de la partie pour le consulter. </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00351">351</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae85868ec466abc3d96eca06998a01a7d"></a><!-- doxytag: member="moteur.h::hint_deplacements_possibles" ref="ae85868ec466abc3d96eca06998a01a7d" args="(int c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hint_deplacements_possibles </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Met en surbrillance les déplacements possibles partant d'une case donnée. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Notation officielle de la case de départ. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Vrai si le pion séléctionné fait partie d'un coup authorisé. </dd></dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00154">154</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5bd6ce9a1afa1f06549fb5aa8a6c40f0"></a><!-- doxytag: member="moteur.h::hint_meilleur_coup" ref="a5bd6ce9a1afa1f06549fb5aa8a6c40f0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hint_meilleur_coup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Met en surbrillance le meilleur coup à jouer en utilisant l'IA. </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a269e871cb87e7db65e8b7a22914275d0"></a><!-- doxytag: member="moteur.h::hint_pions_jouables" ref="a269e871cb87e7db65e8b7a22914275d0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void hint_pions_jouables </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Met en surbrillance les pions qui permettent un déplacement valide pour ce tour. </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00142">142</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3389f0c85c80a7a201d7f546951c22dd"></a><!-- doxytag: member="moteur.h::initialiser_partie" ref="a3389f0c85c80a7a201d7f546951c22dd" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initialiser_partie </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialise une nouvelle partie, par défaut une partie 2 joueurs, le joueur pourra ensuite être piloté par l'IA en changeant son type grâce à la fonction <a class="el" href="moteur_8h.html#af4cec21f33aec035009dd524c62a13cd" title="Change le type humain ou IA du joueur.">set_joueur_est_humain</a>. </p>
+<p>void <a class="el" href="moteur_8h.html#a3389f0c85c80a7a201d7f546951c22dd" title="Initialise une nouvelle partie, par défaut une partie 2 joueurs, le joueur pourra ensuite être piloté...">initialiser_partie()</a>; </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00325">325</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afd3360329886ee6f8e2a71a172a4a808"></a><!-- doxytag: member="moteur.h::jouer_coup" ref="afd3360329886ee6f8e2a71a172a4a808" args="(int depart, int arrivee)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int jouer_coup </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>depart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>arrivee</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Joue le coup pour le joueur courant. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">depart</td><td>La case de départ du coup. </td></tr>
+    <tr><td class="paramname">arrivee</td><td>La case d'arrivée du coup. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd><ul>
+<li>0 si le coup est invalide. </li>
+<li>1 si le coup est valide et terminé. </li>
+<li>2 si le mouvement fait partie d'un coup valide, on attend que le joueur termine son coup par un nouvel appel à cette fonction <a class="el" href="moteur_8h.html#afd3360329886ee6f8e2a71a172a4a808" title="Joue le coup pour le joueur courant.">jouer_coup</a>. </li>
+</ul>
+</dd></dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00025">25</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbf0cd12ea068c0f938e62f72419cdcc"></a><!-- doxytag: member="moteur.h::jouer_tour_ia" ref="acbf0cd12ea068c0f938e62f72419cdcc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jouer_tour_ia </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fait jouer un tour à l'IA. </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00126">126</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2836a0f283794670b04163df9027bbc2"></a><!-- doxytag: member="moteur.h::partie_terminee" ref="a2836a0f283794670b04163df9027bbc2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int partie_terminee </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Renvoie Faux si la partie n'est pas terminée, la couleur gagnante + 1 sinon. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00355">355</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9ae4819df5eb9b6f1de826520bf30a8b"></a><!-- doxytag: member="moteur.h::sauvegarder_partie" ref="a9ae4819df5eb9b6f1de826520bf30a8b" args="(char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarder_partie </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sauvegarde l'état courant de la partie. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Le chemin vers le fichier de sauvegarde. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Renvoie:</b></dt><dd>Vrai si la sauvegarde s'est bien effectuée, faux si un problème est survenu. </dd></dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00185">185</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a79cf9ff033c4ceaaf0834ad3e51dc37f"></a><!-- doxytag: member="moteur.h::set_difficulte" ref="a79cf9ff033c4ceaaf0834ad3e51dc37f" args="(int i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_difficulte </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Joue sur la profondeur d'évaluation du min-max. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>La profondeur d'évaluation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00138">138</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af4cec21f33aec035009dd524c62a13cd"></a><!-- doxytag: member="moteur.h::set_joueur_est_humain" ref="af4cec21f33aec035009dd524c62a13cd" args="(couleur_pion couleur, int boolean)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_joueur_est_humain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="plateau_8h.html#a8282be6127518547fa916dd6cfef17cb">couleur_pion</a>&#160;</td>
+          <td class="paramname"><em>couleur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>boolean</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Change le type humain ou IA du joueur. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">couleur</td><td>La couleur du joueur pour lequel on doit changer le type. </td></tr>
+    <tr><td class="paramname">boolean</td><td>Vrai si le joueur est humain, faux sinon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mehdi M'rah </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="moteur_8c_source.html#l00335">335</a> du fichier <a class="el" href="moteur_8c_source.html">moteur.c</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des variables</h2>
+<a class="anchor" id="a3efa8d0f7c65daedc584dc8db048e62c"></a><!-- doxytag: member="moteur.h::p_jeu" ref="a3efa8d0f7c65daedc584dc8db048e62c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structplateau.html">plateau</a> <a class="el" href="moteur_8h.html#a3efa8d0f7c65daedc584dc8db048e62c">p_jeu</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Le plateau de jeu qui sera utilisé tout au long de la partie. (Ne pas utiliser en dehors de <a class="el" href="moteur_8c_source.html">moteur.c</a>, utilisez <a class="el" href="moteur_8h.html#a58e7aeb8e134591ec3402655832840da" title="Renvoie le plateau de la partie pour le consulter.">get_plateau()</a>) </p>
+
+<p>Définition à la ligne <a class="el" href="moteur_8h_source.html#l00013">13</a> du fichier <a class="el" href="moteur_8h_source.html">moteur.h</a>.</p>
+
+</div>
+</div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:51 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

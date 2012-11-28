@@ -1,0 +1,79 @@
+\hypertarget{min-max_8h}{
+\section{Référence du fichier min-\/max.h}
+\label{min-max_8h}\index{min-\/max.h@{min-\/max.h}}
+}
+
+
+Implémentation du min-\/max.  
+
+
+{\ttfamily \#include \char`\"{}fonction\_\-evaluation.h\char`\"{}}\par
+Graphe des dépendances par inclusion de min-\/max.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{min-max_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=358pt]{min-max_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{min-max_8h_ab414b3d93e06e9151175e4084ed3295d}{
+\#define {\bfseries MINIMUM}~-\/1}
+\label{min-max_8h_ab414b3d93e06e9151175e4084ed3295d}
+
+\item 
+\hypertarget{min-max_8h_a7144aa2210e7cd9f35160cdcdaa5a648}{
+\#define {\bfseries MAXIMUM}~1}
+\label{min-max_8h_a7144aa2210e7cd9f35160cdcdaa5a648}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structcoup}{coup} \hyperlink{min-max_8h_a5ac518ee617eb3482548c57dd2c10807}{jouerIA} (const \hyperlink{structplateau}{plateau} p, int profondeur)
+\begin{DoxyCompactList}\small\item\em Renvoie le meilleur coup que peut jouer le joueur courant. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Implémentation du min-\/max. \begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{min-max_8h_source}{min-\/max.h}.
+
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{min-max_8h_a5ac518ee617eb3482548c57dd2c10807}{
+\index{min-\/max.h@{min-\/max.h}!jouerIA@{jouerIA}}
+\index{jouerIA@{jouerIA}!min-max.h@{min-\/max.h}}
+\subsubsection[{jouerIA}]{\setlength{\rightskip}{0pt plus 5cm}{\bf coup} jouerIA (
+\begin{DoxyParamCaption}
+\item[{const {\bf plateau}}]{p, }
+\item[{int}]{profondeur}
+\end{DoxyParamCaption}
+)}}
+\label{min-max_8h_a5ac518ee617eb3482548c57dd2c10807}
+
+
+Renvoie le meilleur coup que peut jouer le joueur courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em profondeur} & La profondeur à laquelle on doit utiliser la fonction d'évaluation. (profondeur $>$ 0) \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{min-max_8c_source_l00019}{19} du fichier \hyperlink{min-max_8c_source}{min-\/max.c}.
+

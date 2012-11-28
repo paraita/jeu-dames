@@ -1,0 +1,114 @@
+\hypertarget{structcoup}{
+\section{Référence de la structure coup}
+\label{structcoup}\index{coup@{coup}}
+}
+
+
+Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d'arrivée, un type (déplacement ou prise) et optinellement un commentaire.  
+
+
+
+
+{\ttfamily \#include $<$plateau.h$>$}
+
+
+
+Graphe de collaboration de coup:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{structcoup__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structcoup_a7d3cdc0f60034d9940699758db062357}{
+int {\bfseries old\_\-case}}
+\label{structcoup_a7d3cdc0f60034d9940699758db062357}
+
+\item 
+\hypertarget{structcoup_a59e06844f696ebfa6d06977d60276514}{
+int {\bfseries new\_\-case}}
+\label{structcoup_a59e06844f696ebfa6d06977d60276514}
+
+\item 
+\hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{type\_\-coup} \hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc}
+\item 
+\hypertarget{structcoup_a8c9c2c766a89b66caa7117708f247b2d}{
+int {\bfseries nombre\_\-prises}}
+\label{structcoup_a8c9c2c766a89b66caa7117708f247b2d}
+
+\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises} \mbox{[}20\mbox{]}
+\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin} \mbox{[}20\mbox{]}
+\item 
+char $\ast$ \hyperlink{structcoup_a8978a8d22b339f32c70e5cb900d4c961}{commentaire}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d'arrivée, un type (déplacement ou prise) et optinellement un commentaire. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00074}{74} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+\subsection{Documentation des champs}
+\hypertarget{structcoup_aa66b88eb8140c2f459ac92fad0796510}{
+\index{coup@{coup}!chemin@{chemin}}
+\index{chemin@{chemin}!coup@{coup}}
+\subsubsection[{chemin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} {\bf chemin}\mbox{[}20\mbox{]}}}
+\label{structcoup_aa66b88eb8140c2f459ac92fad0796510}
+Liste de cases sur lesquelles le pion s'arrête lors d'une rafle (pour repérer la fin de liste, la dernière case sera une case blanche). 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00080}{80} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structcoup_a8978a8d22b339f32c70e5cb900d4c961}{
+\index{coup@{coup}!commentaire@{commentaire}}
+\index{commentaire@{commentaire}!coup@{coup}}
+\subsubsection[{commentaire}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf commentaire}}}
+\label{structcoup_a8978a8d22b339f32c70e5cb900d4c961}
+Les commentaires sont :\par
+ \begin{DoxyItemize}
+\item ! pour indiquer un coup fort ou bien joué\par
+ \item !! pour indiquer un coup très fort\par
+ \item ? pour indiquer un coup faible ou mal joué\par
+ \item ?? pour indiquer un coup très faible ou une gaffe\par
+ \item !? pour indiquer un coup paraissant fort, mais qui en réalité se révèle faible\par
+ \item ?! pour indiquer un coup paraissant faible, mais qui en réalité se révèle fort\par
+ \item $\ast$ pour indiquer un coup forcé, tout autre mouvement entraînant une perte immédiate\par
+ \item + pour indiquer le gain de la partie\par
+ \item = pour indiquer un jeu égal\par
+ \item +1 pour indiquer le gain d’un pion\par
+ \item +n pour indiquer le gain de n pion\par
+ \item +-\/ pour indiquer un avantage aux blancs\par
+ \item -\/+ pour indiquer un avantage aux noirs \end{DoxyItemize}
+
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00082}{82} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{
+\index{coup@{coup}!prises@{prises}}
+\index{prises@{prises}!coup@{coup}}
+\subsubsection[{prises}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} {\bf prises}\mbox{[}20\mbox{]}}}
+\label{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}
+Les cases sur lesquelles les jetons ont été pris. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00079}{79} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structcoup_aa33da004dccb192cb33bc00c26c6e859}{
+\index{coup@{coup}!tc@{tc}}
+\index{tc@{tc}!coup@{coup}}
+\subsubsection[{tc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf type\_\-coup} {\bf tc}}}
+\label{structcoup_aa33da004dccb192cb33bc00c26c6e859}
+Si le coup est un déplacement ou une prise. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00077}{77} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{plateau_8h}{plateau.h}\end{DoxyCompactItemize}

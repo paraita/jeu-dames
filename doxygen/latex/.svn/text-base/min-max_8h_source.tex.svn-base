@@ -1,0 +1,13 @@
+\hypertarget{min-max_8h_source}{
+\section{min-\/max.h}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#define MINIMUM -1}
+00010 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define MAXIMUM 1}
+00011 \textcolor{preprocessor}{}
+00012 \textcolor{preprocessor}{#include "\hyperlink{fonction__evaluation_8h}{fonction_evaluation.h}"}
+00013 
+00020 \hyperlink{structcoup}{coup} jouerIA(\textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p, \textcolor{keywordtype}{int} profondeur);
+\end{DoxyCode}

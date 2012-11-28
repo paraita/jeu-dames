@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><title></title>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="search.css"/>
+<script type="text/javascript" src="search.js"></script>
+</head>
+<body class="SRPage">
+<div id="SRIndex">
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRResult" id="SR_charger_5fpartie">
+ <div class="SREntry">
+  <a id="Item0" onkeydown="return searchResults.Nav(event,0)" onkeypress="return searchResults.Nav(event,0)" onkeyup="return searchResults.Nav(event,0)" class="SRSymbol" href="../moteur_8h.html#a614f6676a1441e96574b1b3f9f5aa7e3" target="_parent">charger_partie</a>
+  <span class="SRScope">moteur.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_clique_5fsouris">
+ <div class="SREntry">
+  <a id="Item1" onkeydown="return searchResults.Nav(event,1)" onkeypress="return searchResults.Nav(event,1)" onkeyup="return searchResults.Nav(event,1)" class="SRSymbol" href="../fonction_interface_8h.html#af90df7e39dda6c350185ce94e31fb93c" target="_parent">clique_souris</a>
+  <span class="SRScope">fonctionInterface.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_clique_5fsouris_5fchoix_5fjoueur">
+ <div class="SREntry">
+  <a id="Item2" onkeydown="return searchResults.Nav(event,2)" onkeypress="return searchResults.Nav(event,2)" onkeyup="return searchResults.Nav(event,2)" class="SRSymbol" href="../fonction_interface_8h.html#af439094b4dbb8cac323aaba6130a3cfb" target="_parent">clique_souris_choix_joueur</a>
+  <span class="SRScope">fonctionInterface.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_commencer_5ftour">
+ <div class="SREntry">
+  <a id="Item3" onkeydown="return searchResults.Nav(event,3)" onkeypress="return searchResults.Nav(event,3)" onkeyup="return searchResults.Nav(event,3)" class="SRSymbol" href="../moteur_8h.html#a93014f8aa2a4cb59bdcf0ba5054e86f5" target="_parent">commencer_tour</a>
+  <span class="SRScope">moteur.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_compare_5fcoups">
+ <div class="SREntry">
+  <a id="Item4" onkeydown="return searchResults.Nav(event,4)" onkeypress="return searchResults.Nav(event,4)" onkeyup="return searchResults.Nav(event,4)" class="SRSymbol" href="../regles_8h.html#aec569c705e9ec403a06151aba2092c52" target="_parent">compare_coups</a>
+  <span class="SRScope">regles.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_completer_5fcoup_5fdame">
+ <div class="SREntry">
+  <a id="Item5" onkeydown="return searchResults.Nav(event,5)" onkeypress="return searchResults.Nav(event,5)" onkeyup="return searchResults.Nav(event,5)" class="SRSymbol" href="../regles_8h.html#a1bff1ac214ab2332d8b7e3a0b79f262c" target="_parent">completer_coup_dame</a>
+  <span class="SRScope">regles.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_control_5fpremier_5fclick">
+ <div class="SREntry">
+  <a id="Item6" onkeydown="return searchResults.Nav(event,6)" onkeypress="return searchResults.Nav(event,6)" onkeyup="return searchResults.Nav(event,6)" class="SRSymbol" href="../fonction_interface_8h.html#abcb8707f8b1169dceb38a3e3e2b3e300" target="_parent">control_premier_click</a>
+  <span class="SRScope">fonctionInterface.c</span>
+ </div>
+</div>
+<div class="SRResult" id="SR_coupspossibles">
+ <div class="SREntry">
+  <a id="Item7" onkeydown="return searchResults.Nav(event,7)" onkeypress="return searchResults.Nav(event,7)" onkeyup="return searchResults.Nav(event,7)" class="SRSymbol" href="../regles_8h.html#a96d861d76d7070b120ca385c13aad984" target="_parent">coupsPossibles</a>
+  <span class="SRScope">regles.c</span>
+ </div>
+</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+<script type="text/javascript"><!--
+document.getElementById("Loading").style.display="none";
+document.getElementById("NoMatches").style.display="none";
+var searchResults = new SearchResults("searchResults");
+searchResults.Search();
+--></script>
+</div>
+</body>
+</html>

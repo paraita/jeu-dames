@@ -1,0 +1,19 @@
+\hypertarget{arbre_8h_source}{
+\section{arbre.h}
+}
+
+\begin{DoxyCode}
+00001 
+\hypertarget{arbre_8h_source_l00013}{}\hyperlink{structarbre}{00013} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{structarbre}{arbre} \{
+00014         \textcolor{keyword}{struct }\hyperlink{structarbre}{arbre} * parent;
+00015         \textcolor{keywordtype}{int} valeur;
+00016         \textcolor{keywordtype}{int} profondeur;
+\hypertarget{arbre_8h_source_l00017}{}\hyperlink{structarbre_a67c44f020d501282adc38e3301a5f245}{00017}         \textcolor{keywordtype}{int} \hyperlink{structarbre_a67c44f020d501282adc38e3301a5f245}{nb_fils}; 
+\hypertarget{arbre_8h_source_l00018}{}\hyperlink{structarbre_a7bac08e3c2aedbde0dddf80b94eadf76}{00018}         \textcolor{keyword}{struct }\hyperlink{structarbre}{arbre} *\hyperlink{structarbre_a7bac08e3c2aedbde0dddf80b94eadf76}{fils}[80]; 
+00019 \} \hyperlink{structarbre}{arbre};
+00020 
+00021 
+00026 \textcolor{keywordtype}{int} arbre\_est\_feuille(\hyperlink{structarbre}{arbre} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{t});
+00027 
+00032 \textcolor{keywordtype}{void} print\_arbre(\hyperlink{structarbre}{arbre} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{t});
+\end{DoxyCode}

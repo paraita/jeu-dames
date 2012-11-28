@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames:  Fichier source de regles.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>regles.h</h1>  </div>
+</div>
+<div class="contents">
+<a href="regles_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00006"></a>00006 <span class="comment">/* ----------------------------------------------- */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="plateau_8h.html" title="Tout ce qui concerne le plateau de jeu (damier, pions et joueurs).">plateau.h</a>&quot;</span>
+<a name="l00009"></a>00009 
+<a name="l00017"></a>00017 <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a>* coupsPossibles(<span class="keyword">const</span> <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c, <span class="keyword">const</span> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p);
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 
+<a name="l00027"></a>00027 <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a>* getCoups(<span class="keyword">const</span> <a class="code" href="structjoueur.html" title="Objet joueur. Un joueur est caractérisé par la couleur qu&amp;#39;il joue et sa nature (humain ou intelli...">joueur</a> j, <span class="keyword">const</span> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p);
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 
+<a name="l00036"></a>00036 <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a>* getCoupsMax(<span class="keyword">const</span> <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> *cp);
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00045"></a>00045 <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a>* get_deplacements(<span class="keyword">const</span> <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c, <span class="keyword">const</span> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p);
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 
+<a name="l00054"></a>00054 <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> * completer_coup_dame(<span class="keyword">const</span> <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> c, <span class="keywordtype">int</span> mvt, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00063"></a>00063 <span class="keywordtype">int</span> get_possible_case_pos(<span class="keywordtype">int</span> c, <span class="keywordtype">int</span> diag, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p) ;
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00072"></a>00072 <span class="keywordtype">int</span> compare_coups(<a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> *liste1, <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> *liste2);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 
+<a name="l00082"></a>00082 <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> <a class="code" href="plateau_8h.html#a60a8f706865d0ae9087f8d65d4667655" title="retourne la case si elle existe, ou la case 0 sinon">get_case_plateau_silent</a>(<span class="keywordtype">int</span> <a class="code" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c">x</a>, <span class="keywordtype">int</span> y, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p);
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:51 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

@@ -1,0 +1,332 @@
+\hypertarget{plateau_8c_source}{
+\section{plateau.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * plateau.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: 20 mars 2011}
+00005 \textcolor{comment}{ *      Author: bastien}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include <stdio.h>}
+00009 \textcolor{preprocessor}{#include "\hyperlink{plateau_8h}{plateau.h}"}
+00010 
+\hypertarget{plateau_8c_source_l00011}{}\hyperlink{plateau_8h_aad79656ee484352eb698011738cbcefc}{00011} \hyperlink{structplateau}{plateau} nouveau\_plateau(\hyperlink{structjoueur}{joueur} j1, \hyperlink{structjoueur}{joueur} j2) \{
+00012         \hyperlink{structplateau}{plateau} p;
+00013         j1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = blanc;
+00014         j2.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = noir;
+00015         p.joueur1 = j1;
+00016         p.joueur2 = j2;
+00017         p.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour} = j1;
+00018         p.\hyperlink{structplateau_acb559820d9ca11295b4500f179ef6392}{i} = 0;
+00019         \textcolor{keywordtype}{int} i = 1;
+00020         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = 2;
+00021         \textcolor{keywordtype}{int} y = 1;
+00022         \textcolor{keywordflow}{while} (i <= 50) \{ \textcolor{comment}{/* on remplit le plateau ( bug ici j ai change le 20 en
+       50)*/}
+00023                 \hyperlink{structpion}{pion} \hyperlink{structpion}{pion};
+00024                 pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} = 0;
+00025                 \hyperlink{structcase__plateau}{case_plateau} c;
+00026                 c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} = i;
+00027                 c.\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} = noir;
+00028                 c.\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 0;
+00029                 c.x = \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00030                 c.y = y;
+00031                 \textcolor{keywordflow}{if} (i <= 20) \{ \textcolor{comment}{/* si on est du côté des noirs, on place les pions
+       */}
+00032                         c.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 0;
+00033                         pion.couleur = noir;
+00034                         pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 0;
+00035                         c.pion = pion;
+00036                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i > 30) \{ \textcolor{comment}{/* si on est du côté des blancs */}
+00037                         c.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 0;
+00038                         pion.couleur = blanc;
+00039                         pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 0;
+00040                         c.pion = pion;
+00041                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* si on est au centre on a des case libres */}
+00042                         c.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 1;
+00043                 \}
+00044                 p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i] = c;
+00045 
+00046                 i++;
+00047                 x = x + 2;
+00048                 \textcolor{keywordflow}{if} (i % 10 == 6) \{ \textcolor{comment}{/* on détecte les changements de ligne pour dé
+      caler x et incrémenter y */}
+00049                         \textcolor{comment}{/*printf("%i mod 10 = %i\(\backslash\)n",i,i%10);*/}
+00050                         x = 1;
+00051                         y++;
+00052                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i % 10 == 1) \{
+00053                         \textcolor{comment}{/*printf("%i mod 10 = %i\(\backslash\)n",i,i%10);*/}
+00054                         x = 2;
+00055                         y++;
+00056                 \}
+00057         \}
+00058 
+00059         \hyperlink{structcase__plateau}{case_plateau} case\_blanche;
+00060         case\_blanche.\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} = blanc;
+00061         case\_blanche.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 1;
+00062         case\_blanche.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} = 0;
+00063         case\_blanche.\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 0;
+00064         case\_blanche.x = 0;
+00065         case\_blanche.y = 0;
+00066         p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0] = case\_blanche;
+00067         \textcolor{keywordflow}{return} p;
+00068 \}
+00069 
+\hypertarget{plateau_8c_source_l00070}{}\hyperlink{plateau_8h_ac36612024e6663243c4f0605f2dd96c2}{00070} \textcolor{keywordtype}{int} plateau\_deplacer\_pion(\textcolor{keywordtype}{int} old\_position, \textcolor{keywordtype}{int} new\_position, \hyperlink{structplateau}{plateau} *p) \{
+00071         \textcolor{keywordflow}{if} (old\_position < 1 || old\_position > 50 || new\_position < 1
+00072                         || new\_position > 50 || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[old\_position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}
+00073                         || !p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[new\_position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00074                 \textcolor{keywordflow}{return} 0;
+00075         \} \textcolor{keywordflow}{else} \{
+00076                 \hyperlink{structpion}{pion} \hyperlink{structpion}{pion} = p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[old\_position].pion;
+00077                 p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[old\_position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 1;
+00078                 p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[new\_position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 0;
+00079                 p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[new\_position].pion = pion;
+00080                 \textcolor{keywordflow}{return} 1;
+00081         \}
+00082 \}
+00083 
+\hypertarget{plateau_8c_source_l00084}{}\hyperlink{plateau_8h_a4a8fb7c96fbeb8218d5ddbf3fe642901}{00084} \textcolor{keywordtype}{int} plateau\_prendre\_pion(\textcolor{keywordtype}{int} position, \hyperlink{structplateau}{plateau} *p) \{
+00085         \textcolor{keywordflow}{if} (position < 1 || position > 50 || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00086                 \textcolor{keywordflow}{return} 0;
+00087         \} \textcolor{keywordflow}{else} \{
+00088                 p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = 1;
+00089                 \textcolor{keywordflow}{return} 1;
+00090         \}
+00091 \}
+00092 
+\hypertarget{plateau_8c_source_l00093}{}\hyperlink{plateau_8h_a8e9db1b793881c55d1261e3b735a5d48}{00093} \textcolor{keywordtype}{void} plateau\_ajouter\_coup(\hyperlink{structcoup}{coup} c, \hyperlink{structplateau}{plateau} *p) \{
+00094         \textcolor{keywordtype}{int} i = p->\hyperlink{structplateau_acb559820d9ca11295b4500f179ef6392}{i};
+00095         \textcolor{keywordflow}{if} (i < 500) \{
+00096                 p->\hyperlink{structplateau_acc4d709134322b5c07f99ea2efd053ef}{historique}[i] = c;
+00097                 p->\hyperlink{structplateau_acb559820d9ca11295b4500f179ef6392}{i} = i + 1;
+00098         \}
+00099 \}
+00100 
+\hypertarget{plateau_8c_source_l00101}{}\hyperlink{plateau_8h_a44f4edc5041fe92213f7dbdc2ac5e39e}{00101} \hyperlink{structcase__plateau}{case_plateau} get\_case\_plateau(\textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, \textcolor{keywordtype}{int} y, \hyperlink{structplateau}{plateau} p) \{
+00102         \textcolor{keywordflow}{if} (x < 1 || x > 10 || y < 1 || y > 10) \{
+00103                 fprintf(stderr, \textcolor{stringliteral}{"Case hors plateau (%i,%i)\(\backslash\)n"}, x, y);
+00104                 \textcolor{keywordflow}{return} p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0];
+00105         \}
+00106         \textcolor{keywordflow}{if} ((x % 2) == (y % 2)) \{ \textcolor{comment}{/* si x et y sont tout les deux pairs (ou impai
+      rs), alors c'est une case blanche */}
+00107                 \textcolor{keywordflow}{return} p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0];
+00108         \} \textcolor{keywordflow}{else} \{
+00109                 \textcolor{keywordtype}{int} i;
+00110                 \textcolor{keywordflow}{for} (i = 1; i <= 50; i++) \{ \textcolor{comment}{/* temporairement on fait une recherc
+      he dans le tableau, en attendant un algorithme qui offre de meilleures performanc
+      es */}
+00111                         \hyperlink{structcase__plateau}{case_plateau} c = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i];
+00112                         \textcolor{keywordflow}{if} (c.x == x && c.y == y) \{
+00113                                 \textcolor{keywordflow}{return} c;
+00114                         \}
+00115                 \}
+00116                 \textcolor{keywordflow}{return} p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0];
+00117         \}
+00118 \}
+00119 
+\hypertarget{plateau_8c_source_l00120}{}\hyperlink{plateau_8h_a69dc99f7c855cdf8bf569f8b26ae6689}{00120} \textcolor{keywordtype}{void} print\_case(\hyperlink{structcase__plateau}{case_plateau} c) \{
+00121                 printf(\textcolor{stringliteral}{"Case [%i] : (%i,%i) couleur : %i, est\_libre : %i surbrill
+      ance : %i\(\backslash\)n"},
+00122                                 c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, c.x, c.y, c.\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur}, c.
+      \hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre},c.\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance});
+00123 \}
+00124 
+\hypertarget{plateau_8c_source_l00125}{}\hyperlink{plateau_8h_a4066fdb86d7d54a9256fa727995f47fd}{00125} \textcolor{keywordtype}{void} set\_case\_en\_surbrillance(\textcolor{keywordtype}{int} numero,\hyperlink{structplateau}{plateau} *p) \{
+00126         p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[numero].\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 1;
+00127 \}
+00128 
+\hypertarget{plateau_8c_source_l00129}{}\hyperlink{plateau_8h_a98033598d0f16369d8529f7c5ab3e3fd}{00129} \textcolor{keywordtype}{void} set\_pion\_en\_surbrillance(\textcolor{keywordtype}{int} numero,\hyperlink{structplateau}{plateau} *p) \{
+00130         p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[numero].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 1;
+00131 \}
+00132 
+\hypertarget{plateau_8c_source_l00133}{}\hyperlink{plateau_8h_aee51bfad885420a7013c9c01a2eae048}{00133} \textcolor{keywordtype}{void} reset\_surbrillance(\hyperlink{structplateau}{plateau} *p) \{
+00134         \textcolor{keywordtype}{int} i;
+00135         \textcolor{keywordflow}{for}(i = 0; i < 51; i++) \{
+00136                 p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 0;
+00137                 p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = 0;
+00138         \}
+00139 \}
+00140 
+\hypertarget{plateau_8c_source_l00141}{}\hyperlink{plateau_8h_a6616eb0e3e305b9dd718ffb0e83231d5}{00141} \textcolor{keywordtype}{void} plateau\_appliquer\_coup(\hyperlink{structcoup}{coup} c, \hyperlink{structplateau}{plateau} * p) \{
+00142         \hyperlink{structcase__plateau}{case_plateau} * cases = p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases};
+00143         \textcolor{keywordflow}{if}(cases[c.old\_case].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} || !cases[c.new\_case].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00144                 fprintf(stderr, \textcolor{stringliteral}{"Impossible de jouer le coup (%d,%d) : case de dé
+      part vide ou case d'arrivée déjà occupée."},c.old\_case,c.new\_case);
+00145         \} \textcolor{keywordflow}{else} \{
+00146                 plateau\_deplacer\_pion(c.old\_case,c.new\_case,p); \textcolor{comment}{/* on déplace le 
+      pion */}
+00147 
+00148                 \textcolor{keywordflow}{if}(c.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} == \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}) \{ \textcolor{comment}{/* puis, si le coup est une prise, on prend le(s)
+       pion(s) */}
+00149                         \textcolor{keywordtype}{int} i;
+00150                         \textcolor{keywordflow}{for}(i = 0; i < c.nombre\_prises; i++) \{
+00151                                 plateau\_prendre\_pion(c.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[i].
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},p);
+00152                         \}
+00153                 \}
+00154 
+00155                 \textcolor{keywordflow}{if}(p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c.new\_case].pion.couleur == blanc && c.new\_case <= 5)
+       \{ \textcolor{comment}{/* puis on teste si le mouvement crée une dame */}
+00156                         p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c.new\_case].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} = 1;
+00157                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c.new\_case].pion.couleur == noir && c.new\_cas
+      e >= 46 ) \{
+00158                         p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c.new\_case].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} = 1;
+00159                 \}
+00160 
+00161                 \textcolor{keywordflow}{if}(p->\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == p->joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur}) \{ \textcolor{comment}{/* enfin on passe la 
+      main au joueur suivant */}
+00162                         p->\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour} = p->joueur2;
+00163                 \} \textcolor{keywordflow}{else} \{
+00164                         p->\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour} = p->joueur1;
+00165                 \}
+00166                 \textcolor{comment}{// TODO printf de debug a supprimer}
+00167                 printf(\textcolor{stringliteral}{"\(\backslash\)n------------------------\(\backslash\)n"});
+00168                 printf(\textcolor{stringliteral}{"\(\backslash\)nCoup appliqué :\(\backslash\)n"});
+00169                 printCoup(c);
+00170                 printf(\textcolor{stringliteral}{"\(\backslash\)n------------------------\(\backslash\)n"});
+00171         \}
+00172 
+00173 \}
+00174 
+\hypertarget{plateau_8c_source_l00175}{}\hyperlink{plateau_8h_a43fa8dd4c36ca967403900b75237a3d5}{00175} \textcolor{keywordtype}{int} plateau\_partie\_finie(\hyperlink{structplateau}{plateau} p) \{
+00176         \textcolor{keywordtype}{int} i;
+00177         \textcolor{keywordtype}{int} trouve = 0; \textcolor{comment}{/* on le passe à vrai quand on a trouvé le premier pion, 
+      puis on vérifie que tout les autres pions sont de la même couleur */}
+00178         \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} couleur;
+00179         \textcolor{keywordflow}{for}(i = 1; i <= 50; i++ ) \{
+00180                 \textcolor{keywordflow}{if}(! p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00181                         \textcolor{keywordflow}{if}(trouve) \{
+00182                                 \textcolor{keywordflow}{if}( couleur != p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur) \{
+00183                                         \textcolor{keywordflow}{return} 0;
+00184                                 \}
+00185                         \} \textcolor{keywordflow}{else} \{
+00186                                 trouve = 1;
+00187                                 couleur = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur;
+00188                         \}
+00189                 \}
+00190         \}
+00191         \textcolor{comment}{/* si on a parcouru le tout le damier et qu'on n'a pas trouvé deux pions 
+      de couleurs différentes, alors la partie est terminée */}
+00192         \textcolor{keywordflow}{return} couleur + 1; \textcolor{comment}{/* 1 si c'est les blancs, 2 si c'est les noirs. */}
+00193 \}
+00194 
+00195 
+\hypertarget{plateau_8c_source_l00196}{}\hyperlink{plateau_8h_a590ca6fc3ab1b4e08fa05ddaf7465115}{00196} \textcolor{keywordtype}{void} print\_plateau(\hyperlink{structplateau}{plateau} p) \{
+00197         \textcolor{keywordtype}{int} i, j;
+00198         printf(\textcolor{stringliteral}{"\(\backslash\)n---------------------\(\backslash\)n"});
+00199         \textcolor{keywordflow}{for}(i = 1; i <= 10; i++) \{
+00200                 printf(\textcolor{stringliteral}{"|"});
+00201                 \textcolor{keywordflow}{for}(j = 1; j <=10 ; j++) \{
+00202                         \hyperlink{structcase__plateau}{case_plateau} c = get\_case\_plateau(j,i,p);
+00203                         \textcolor{keywordflow}{if}(c.\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} != blanc) \{
+00204                                 \textcolor{keywordflow}{if}(!c.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00205                                         \textcolor{keywordflow}{if}(c.pion.couleur == blanc) \{
+00206                                                 \textcolor{keywordflow}{if}(c.pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance})
+00207                                                         printf(\textcolor{stringliteral}{"o"});
+00208                                                 \textcolor{keywordflow}{else} printf(\textcolor{stringliteral}{"O"});
+00209                                         \} \textcolor{keywordflow}{else} \{
+00210                                                 \textcolor{keywordflow}{if}(c.pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance})
+00211                                                         printf(\textcolor{stringliteral}{"x"});
+00212                                                 \textcolor{keywordflow}{else} printf(\textcolor{stringliteral}{"X"});
+00213                                         \}
+00214                                         \textcolor{keywordflow}{if} (c.pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame})
+00215                                                 printf(\textcolor{stringliteral}{"*"});
+00216                                 \} \textcolor{keywordflow}{else} \{
+00217                                         \textcolor{keywordflow}{if} (c.\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance})
+00218                                                 printf(\textcolor{stringliteral}{"-"});
+00219                                         \textcolor{keywordflow}{else} printf(\textcolor{stringliteral}{" "});
+00220                                 \}
+00221                         \} \textcolor{keywordflow}{else} \{
+00222                                 printf(\textcolor{stringliteral}{" "});
+00223                         \}
+00224                         printf(\textcolor{stringliteral}{"|"});
+00225                 \}
+00226                 printf(\textcolor{stringliteral}{"\(\backslash\)n---------------------\(\backslash\)n"});
+00227         \}
+00228         \textcolor{keywordflow}{return};
+00229 \}
+00230 
+00231 
+00232 \textcolor{comment}{//TODO enlever les printf de debug ici}
+00233 \textcolor{comment}{/* pretty print d'un coup */}
+\hypertarget{plateau_8c_source_l00234}{}\hyperlink{plateau_8h_a5b1f6227bf2bab71a07a531c49270b51}{00234} \textcolor{keywordtype}{void} printCoup(\textcolor{keyword}{const} \hyperlink{structcoup}{coup} c) \{
+00235         \textcolor{keywordflow}{if} ((c.old\_case == 0) && (c.new\_case == 0)) \{
+00236                 \textcolor{comment}{/* on tombe normalement jamais dessus mais utile au debug */}
+00237                 printf(\textcolor{stringliteral}{"coup bidon"});
+00238         \} \textcolor{keywordflow}{else} \{
+00239                 printf(\textcolor{stringliteral}{"de [%d] vers [%d]\(\backslash\)n"}, c.old\_case, c.new\_case);
+00240                 printf(\textcolor{stringliteral}{"parcours du coup:\(\backslash\)n"});
+00241                 \textcolor{keywordtype}{int} i;
+00242                 \textcolor{keywordflow}{for} (i = 0; i < c.nombre\_prises; i++) \{
+00243                         print\_case(c.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[i]);
+00244                 \}
+00245                 printf(\textcolor{stringliteral}{"la position des pions pris:\(\backslash\)n"});
+00246                 i = 0;
+00247                 \textcolor{keywordflow}{for} (i = 0; i < c.nombre\_prises - 1; i++) \{
+00248                         print\_case(c.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[i]);
+00249                 \}
+00250                 printf(\textcolor{stringliteral}{"nombre\_prises: %d\(\backslash\)n"}, c.nombre\_prises - 1);
+00251                 printf(\textcolor{stringliteral}{"type coup: %d\(\backslash\)n"}, c.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc});
+00252         \}
+00253 \}
+00254 
+00255 
+00256 \textcolor{comment}{//TODO declarer dans regles.h}
+00257 \textcolor{comment}{/* predicat: est ce que le pion sur position est prenable ? */}
+\hypertarget{plateau_8c_source_l00258}{}\hyperlink{plateau_8h_aff9fd9b1b3f96bbae116f3d87349a0cf}{00258} \textcolor{keywordtype}{int} est\_prenable(\textcolor{keywordtype}{int} position, \hyperlink{structplateau}{plateau} *p) \{
+00259         printf(\textcolor{stringliteral}{"prenabilité de [%d]: %d\(\backslash\)n"}, position, p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[position].
+      \hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre});
+00260         \textcolor{keywordflow}{if} (position < 1 || position > 50 || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[position].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00261                 \textcolor{keywordflow}{return} 0;
+00262         \} \textcolor{keywordflow}{else} \{
+00263                 \textcolor{keywordflow}{return} 1;
+00264         \}
+00265 \}
+00266 
+00267 \textcolor{comment}{//TODO declarer dans regles.h}
+00268 \textcolor{comment}{/* affiche ce qu'il y a dans la liste de coups */}
+\hypertarget{plateau_8c_source_l00269}{}\hyperlink{plateau_8h_ade9b690d9493e82b264dcea4d08abd5a}{00269} \textcolor{keywordtype}{void} print\_liste\_coups(\hyperlink{structcoup}{coup} *l) \{
+00270         printf(\textcolor{stringliteral}{"----------------------------\(\backslash\)n"});
+00271         printf(\textcolor{stringliteral}{"etat de cp:\(\backslash\)n"});
+00272         \hyperlink{structcoup}{coup} *ptr = l;
+00273         \textcolor{keywordtype}{int} a = 1;
+00274         \textcolor{keywordflow}{while} (ptr->old\_case != 0 && ptr->new\_case != 0) \{
+00275                 printf(\textcolor{stringliteral}{"[%d]----~\(\backslash\)n"}, a);
+00276                 printCoup(*ptr);
+00277                 ptr++;
+00278                 a++;
+00279         \}
+00280         printf(\textcolor{stringliteral}{"----------------------------\(\backslash\)n"});
+00281 \}
+00282 
+00283 \textcolor{comment}{//TODO declarer dans regles.h}
+00284 \textcolor{comment}{/* predicat: est ce que cette case\_plateau est dans le tableau ? */}
+00285 \textcolor{keywordtype}{int} coup\_inclus(\hyperlink{structcase__plateau}{case_plateau} c, \hyperlink{structcase__plateau}{case_plateau} *liste, \textcolor{keywordtype}{int} taille) \{
+00286         \textcolor{keywordtype}{int} resultat = 0;
+00287         \textcolor{keywordtype}{int} i;
+00288         \textcolor{keywordflow}{for} (i = 0; i < taille - 1; ++i) \{
+00289                 \textcolor{keywordflow}{if} (liste[i].notation\_officielle == c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}) \{
+00290                         printf(\textcolor{stringliteral}{"[%d] est dans la liste !\(\backslash\)n"}, c.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle});
+00291                         resultat = 1;
+00292                         \textcolor{keywordflow}{break};
+00293                 \}
+00294         \}
+00295         \textcolor{keywordflow}{return} resultat;
+00296 \}
+00297 
+00298 
+00299 \textcolor{comment}{/*//TODO debug retourne le nombre de coups dans un tableau */}
+\hypertarget{plateau_8c_source_l00300}{}\hyperlink{plateau_8h_a8918a9186794792439622dd39ca202a0}{00300} \textcolor{keywordtype}{int} nombre\_coups(\hyperlink{structcoup}{coup} *\textcolor{keyword}{set}) \{
+00301         \textcolor{keywordtype}{int} cpt = 0;
+00302         \textcolor{keywordflow}{while} ((set->old\_case != 0) && (set->new\_case != 0)) \{
+00303                 cpt++;
+00304                 \textcolor{keyword}{set}++;
+00305         \}
+00306         \textcolor{keywordflow}{return} cpt;
+00307 \}
+\end{DoxyCode}

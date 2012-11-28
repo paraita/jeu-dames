@@ -1,0 +1,75 @@
+\hypertarget{fonction__evaluation_8c_source}{
+\section{fonction\_\-evaluation.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{fonction__evaluation_8h}{fonction_evaluation.h}"}
+00002 
+00003 \textcolor{keywordtype}{double} fct\_eval(\textcolor{keyword}{const} \hyperlink{structplateau}{plateau} *p)\{
+00004 
+00005         \textcolor{keywordtype}{int} i;
+00006         \textcolor{keywordtype}{int} val;
+00007         \textcolor{keywordtype}{double} total = 0;
+00008         \textcolor{keywordtype}{double} denominateur = 1; \textcolor{comment}{//on divisera le tout par le total des valeurs d
+      es cases pour retomber entre -1 et 1.}
+00009         
+00010         \textcolor{keywordflow}{for}(i = 1; i < 51 ; i++)\{ \textcolor{comment}{//Pour chaque case}
+00011                 \textcolor{keywordflow}{if}(!p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre})\{ \textcolor{comment}{//si elle est occupee}
+00012                         val = valeur\_case(p, &(p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i])); \textcolor{comment}{//on calcule sa val
+      eur}
+00013                         denominateur += val;
+00014                         \textcolor{keywordflow}{if}(p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur == p->\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur})\{ \textcolor{comment}{//on ajo
+      ute ou soustrait la valeur selon le joueur auquel appartient le pion.}
+00015                                 total += val;
+00016                         \}\textcolor{keywordflow}{else}\{
+00017                                 total -= val;
+00018                         \}
+00019                 \}
+00020         \}
+00021         
+00022         \textcolor{keywordflow}{return} total / denominateur;
+00023 \}
+00024 
+00025 \textcolor{keywordtype}{int} valeur\_case(\textcolor{keyword}{const} \hyperlink{structplateau}{plateau} * p, \textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} * c)\{
+00026         \textcolor{keywordflow}{if}(c->pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame}) \textcolor{keywordflow}{return} 300; \textcolor{comment}{//une dame vaut basiquement trois fois u
+      n pion.}
+00027         \textcolor{keywordtype}{int} r = rang(c);
+00028         \textcolor{keywordflow}{if}(est\_isole(p,c,r)) \textcolor{keywordflow}{return} 75 + r*r; \textcolor{comment}{//un pion isole vaut 75 de base, pl
+      us un bonus selon son rang.}
+00029         \textcolor{keywordflow}{return} 100 + r*r; \textcolor{comment}{//un pion non isole vaut 100 de base, plus un bonus sel
+      on son rang.}
+00030 \}
+00031 
+\hypertarget{fonction__evaluation_8c_source_l00032}{}\hyperlink{fonction__evaluation_8h_af8b5f84ce8e389aa6afa02c33871c69d}{00032} \textcolor{keywordtype}{int} rang(\textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} * c)\{
+00033         \textcolor{keywordtype}{int} res = (c->\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} - 1) / 5; \textcolor{comment}{//on retrouve la ligne sur la
+      quelle se trouve le pion.}
+00034         \textcolor{keywordflow}{if}(c->pion.couleur == noir) \textcolor{keywordflow}{return} res; \textcolor{comment}{//apres, son rang depend de sa co
+      uleur.}
+00035         \textcolor{keywordflow}{return} 8 - res;
+00036 \}
+00037 
+\hypertarget{fonction__evaluation_8c_source_l00038}{}\hyperlink{fonction__evaluation_8h_ad2e3a41e13c24a4f05dde2144f7a9124}{00038} \textcolor{keywordtype}{int} est\_isole(\textcolor{keyword}{const} \hyperlink{structplateau}{plateau} * p, \textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} * c, \textcolor{keywordtype}{int} rang)\{
+00039         \textcolor{keywordtype}{int} n = c->\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00040         \textcolor{keywordflow}{if}(rang == 0 || n % 10 == 5 || n % 10 == 6) \textcolor{keywordflow}{return} 0; \textcolor{comment}{//si le pion est su
+      r un bord, il n'est pas considere comme isole.}
+00041         \textcolor{keywordtype}{int} s; \textcolor{comment}{//signe}
+00042         \textcolor{keywordflow}{if}((rang % 2 == 1 && c->pion.couleur == blanc) || (rang % 2 == 0 && c->pi
+      on.couleur == noir))\{
+00043                 s = -1;
+00044         \}\textcolor{keywordflow}{else}\{
+00045                 s = 1;
+00046         \}
+00047         \textcolor{keywordflow}{if}((p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n + s * 5].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n + s * 5].\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} != c->pi
+      on.couleur)
+00048         && (p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n + s * 4].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n + s * 4].\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} != c->pi
+      on.couleur)
+00049         && (p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n - s * 5].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n - s * 5].\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} != c->pi
+      on.couleur)
+00050         && (p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n - s * 6].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} || p->\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[n - s * 6].\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} != c->pi
+      on.couleur))\{ \textcolor{comment}{//si les quatres cases adjacentes sont toutes libres ou occupees pa
+      r un pion adverse, le pion est considere comme isole.}
+00051                 \textcolor{keywordflow}{return} 1;
+00052         \}
+00053         \textcolor{keywordflow}{return} 0;
+00054 \}
+\end{DoxyCode}

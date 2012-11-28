@@ -1,0 +1,105 @@
+\hypertarget{plateau_8h_source}{
+\section{plateau.h}
+}
+
+\begin{DoxyCode}
+00001 
+\hypertarget{plateau_8h_source_l00012}{}\hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{00012} \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{
+00013         blanc,
+00014         noir
+00015 \} \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion};
+00016 
+\hypertarget{plateau_8h_source_l00022}{}\hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{00022} \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{
+\hypertarget{plateau_8h_source_l00023}{}\hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{00023}         \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, 
+\hypertarget{plateau_8h_source_l00024}{}\hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{00024}         \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{t} 
+00025 \} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{type_coup};
+00026 
+00027 
+\hypertarget{plateau_8h_source_l00033}{}\hyperlink{structpion}{00033} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+00034         \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} couleur;
+\hypertarget{plateau_8h_source_l00035}{}\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{00035}         \textcolor{keywordtype}{int} \hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame};           
+\hypertarget{plateau_8h_source_l00036}{}\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{00036}         \textcolor{keywordtype}{int} \hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance}; 
+00037 \} \hyperlink{structpion}{pion};
+00038 
+\hypertarget{plateau_8h_source_l00045}{}\hyperlink{structcase__plateau}{00045} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+\hypertarget{plateau_8h_source_l00046}{}\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{00046}         \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} \hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur}; 
+\hypertarget{plateau_8h_source_l00047}{}\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{00047}         \textcolor{keywordtype}{int} \hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre};  
+00048         \hyperlink{structpion}{pion} \hyperlink{structpion}{pion};
+00049         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00050         \textcolor{keywordtype}{int} y;
+\hypertarget{plateau_8h_source_l00051}{}\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{00051}         \textcolor{keywordtype}{int} \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}; 
+\hypertarget{plateau_8h_source_l00052}{}\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{00052}         \textcolor{keywordtype}{int} \hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance}; 
+00053 \} \hyperlink{structcase__plateau}{case_plateau};
+00054 
+00055 
+00056 
+\hypertarget{plateau_8h_source_l00062}{}\hyperlink{structjoueur}{00062} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+\hypertarget{plateau_8h_source_l00063}{}\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{00063}         \textcolor{keywordtype}{int} \hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain};         
+\hypertarget{plateau_8h_source_l00064}{}\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{00064}         \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} \hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur};   
+00065 \} \hyperlink{structjoueur}{joueur};
+00066 
+00067 
+00068 
+\hypertarget{plateau_8h_source_l00074}{}\hyperlink{structcoup}{00074} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+00075         \textcolor{keywordtype}{int} old\_case;
+00076         \textcolor{keywordtype}{int} new\_case;
+\hypertarget{plateau_8h_source_l00077}{}\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{00077}         \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{type_coup} \hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc}; 
+00078         \textcolor{keywordtype}{int} nombre\_prises;
+\hypertarget{plateau_8h_source_l00079}{}\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{00079}         \hyperlink{structcase__plateau}{case_plateau} prises[20]; 
+\hypertarget{plateau_8h_source_l00080}{}\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{00080}         \hyperlink{structcase__plateau}{case_plateau} chemin[20]; 
+00081         \textcolor{keywordtype}{char} * commentaire;
+00097 \} \hyperlink{structcoup}{coup};
+00098 
+00099 
+\hypertarget{plateau_8h_source_l00107}{}\hyperlink{structplateau}{00107} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+\hypertarget{plateau_8h_source_l00108}{}\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{00108}         \hyperlink{structcase__plateau}{case_plateau} cases[51]; 
+\hypertarget{plateau_8h_source_l00109}{}\hyperlink{structplateau_acc4d709134322b5c07f99ea2efd053ef}{00109}         \hyperlink{structcoup}{coup} historique[500];   
+\hypertarget{plateau_8h_source_l00110}{}\hyperlink{structplateau_acb559820d9ca11295b4500f179ef6392}{00110}         \textcolor{keywordtype}{int} \hyperlink{structplateau_acb559820d9ca11295b4500f179ef6392}{i}; 
+00111         \hyperlink{structjoueur}{joueur} joueur1;
+00112         \hyperlink{structjoueur}{joueur} joueur2;
+\hypertarget{plateau_8h_source_l00113}{}\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{00113}         \hyperlink{structjoueur}{joueur} \hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}; 
+00114 \} \hyperlink{structplateau}{plateau};
+00115 
+00116 \textcolor{comment}{/* ********* Fin des définitions de types, début des définitions de fonctions ***
+      **********************/}
+00117 
+00126 \hyperlink{structplateau}{plateau} nouveau\_plateau(\hyperlink{structjoueur}{joueur} j1, \hyperlink{structjoueur}{joueur} j2);
+00127 
+00128 
+00137 \textcolor{keywordtype}{int} plateau\_deplacer\_pion(\textcolor{keywordtype}{int} old\_position,\textcolor{keywordtype}{int} new\_position,\hyperlink{structplateau}{plateau} *p);
+00138 
+00146 \textcolor{keywordtype}{int} plateau\_prendre\_pion(\textcolor{keywordtype}{int} position,\hyperlink{structplateau}{plateau} *p);
+00147 
+00156 \textcolor{keywordtype}{void} plateau\_ajouter\_coup(\hyperlink{structcoup}{coup} c,\hyperlink{structplateau}{plateau} *p);
+00157 
+00163 \textcolor{keywordtype}{void} plateau\_appliquer\_coup(\hyperlink{structcoup}{coup} c, \hyperlink{structplateau}{plateau} * p);
+00164 
+00170 \textcolor{keywordtype}{int} plateau\_partie\_finie(\hyperlink{structplateau}{plateau} p);
+00171 
+00179 \hyperlink{structcase__plateau}{case_plateau} get\_case\_plateau(\textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, \textcolor{keywordtype}{int} y,\hyperlink{structplateau}{plateau} p);
+00180 
+00187 \textcolor{keywordtype}{void} print\_case(\hyperlink{structcase__plateau}{case_plateau} c);
+00188 
+00193 \textcolor{keywordtype}{void} print\_plateau(\hyperlink{structplateau}{plateau} p);
+00194 
+00201 \textcolor{keywordtype}{void} set\_case\_en\_surbrillance(\textcolor{keywordtype}{int} numero,\hyperlink{structplateau}{plateau} *p);
+00202 
+00209 \textcolor{keywordtype}{void} set\_pion\_en\_surbrillance(\textcolor{keywordtype}{int} numero,\hyperlink{structplateau}{plateau} *p);
+00210 
+00215 \textcolor{keywordtype}{void} reset\_surbrillance(\hyperlink{structplateau}{plateau} *p);
+00216 
+00217 
+00225 \textcolor{keywordtype}{void} printCoup(\textcolor{keyword}{const} \hyperlink{structcoup}{coup} c);
+00226 
+00234 \textcolor{keywordtype}{int} est\_prenable(\textcolor{keywordtype}{int} position, \hyperlink{structplateau}{plateau} *p);
+00235 
+00236 
+00244 \textcolor{keywordtype}{void} print\_liste\_coups(\hyperlink{structcoup}{coup} *l);
+00245 
+00246 
+00255 \textcolor{keywordtype}{int} coup\_inclus(\hyperlink{structcase__plateau}{case_plateau} c, \hyperlink{structcase__plateau}{case_plateau} *liste, \textcolor{keywordtype}{int} taille);
+00256 
+00266 \hyperlink{structcase__plateau}{case_plateau} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(\textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, \textcolor{keywordtype}{int} y, \hyperlink{structplateau}{plateau} p);
+00267 
+00275 \textcolor{keywordtype}{int} nombre\_coups(\hyperlink{structcoup}{coup} *\textcolor{keyword}{set});
+\end{DoxyCode}

@@ -1,0 +1,94 @@
+\hypertarget{structplateau}{
+\section{Référence de la structure plateau}
+\label{structplateau}\index{plateau@{plateau}}
+}
+
+
+Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique des coups. Il sait quel joueur doit jouer le prochain coup.  
+
+
+
+
+{\ttfamily \#include $<$plateau.h$>$}
+
+
+
+Graphe de collaboration de plateau:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{structplateau__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases} \mbox{[}51\mbox{]}
+\item 
+\hyperlink{structcoup}{coup} \hyperlink{structplateau_acc4d709134322b5c07f99ea2efd053ef}{historique} \mbox{[}500\mbox{]}
+\item 
+int \hyperlink{structplateau_acb559820d9ca11295b4500f179ef6392}{i}
+\item 
+\hypertarget{structplateau_a82980352d73c284ef3e383cd6d264684}{
+\hyperlink{structjoueur}{joueur} {\bfseries joueur1}}
+\label{structplateau_a82980352d73c284ef3e383cd6d264684}
+
+\item 
+\hypertarget{structplateau_ae69884370ccd25538fe0885e68dc6c76}{
+\hyperlink{structjoueur}{joueur} {\bfseries joueur2}}
+\label{structplateau_ae69884370ccd25538fe0885e68dc6c76}
+
+\item 
+\hyperlink{structjoueur}{joueur} \hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique des coups. Il sait quel joueur doit jouer le prochain coup. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00107}{107} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+\subsection{Documentation des champs}
+\hypertarget{structplateau_a6afaa60f594542e0d742b0c6d3223392}{
+\index{plateau@{plateau}!cases@{cases}}
+\index{cases@{cases}!plateau@{plateau}}
+\subsubsection[{cases}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} {\bf cases}\mbox{[}51\mbox{]}}}
+\label{structplateau_a6afaa60f594542e0d742b0c6d3223392}
+Un plateau est composé de 50 cases, numérotées de 01 à 50. (la case 0 stocke la case blanche). 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00108}{108} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structplateau_acc4d709134322b5c07f99ea2efd053ef}{
+\index{plateau@{plateau}!historique@{historique}}
+\index{historique@{historique}!plateau@{plateau}}
+\subsubsection[{historique}]{\setlength{\rightskip}{0pt plus 5cm}{\bf coup} {\bf historique}\mbox{[}500\mbox{]}}}
+\label{structplateau_acc4d709134322b5c07f99ea2efd053ef}
+On peut enregistrer jusqu'à 500 coups. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00109}{109} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structplateau_acb559820d9ca11295b4500f179ef6392}{
+\index{plateau@{plateau}!i@{i}}
+\index{i@{i}!plateau@{plateau}}
+\subsubsection[{i}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf i}}}
+\label{structplateau_acb559820d9ca11295b4500f179ef6392}
+Non utilisé : l'indice du prochain coup à entrer. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00110}{110} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{
+\index{plateau@{plateau}!tour@{tour}}
+\index{tour@{tour}!plateau@{plateau}}
+\subsubsection[{tour}]{\setlength{\rightskip}{0pt plus 5cm}{\bf joueur} {\bf tour}}}
+\label{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}
+Le joueur qui doit jouer le prochain coup. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00113}{113} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{plateau_8h}{plateau.h}\end{DoxyCompactItemize}

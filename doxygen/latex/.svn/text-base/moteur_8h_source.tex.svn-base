@@ -1,0 +1,43 @@
+\hypertarget{moteur_8h_source}{
+\section{moteur.h}
+}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{preprocessor}{#include <stdio.h>}
+00009 \textcolor{preprocessor}{#include <stdlib.h>}
+00010 \textcolor{preprocessor}{#include "\hyperlink{min-max_8h}{min-max.h}"}
+00011 
+\hypertarget{moteur_8h_source_l00013}{}\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{00013} \hyperlink{structplateau}{plateau} \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu};
+00014 
+00020 \textcolor{keywordtype}{void} initialiser\_partie();
+00021 
+00029 \textcolor{keywordtype}{void} set\_joueur\_est\_humain(\hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} couleur, \textcolor{keywordtype}{int} \textcolor{keywordtype}{boolean});
+00030 
+00031 
+00037 \hyperlink{structplateau}{plateau} get\_plateau();
+00038 
+00046 \textcolor{keywordtype}{int} sauvegarder\_partie(\textcolor{keywordtype}{char} * filename);
+00047 
+00055 \textcolor{keywordtype}{int} charger\_partie(\textcolor{keywordtype}{char} * filename);
+00056 
+00067 \textcolor{keywordtype}{int} jouer\_coup(\textcolor{keywordtype}{int} depart, \textcolor{keywordtype}{int} arrivee);
+00068 
+00073 \textcolor{keywordtype}{int} jouer\_coup\_xy(\textcolor{keywordtype}{int} x1, \textcolor{keywordtype}{int} y1, \textcolor{keywordtype}{int} x2, \textcolor{keywordtype}{int} y2);
+00074 
+00080 \textcolor{keywordtype}{void} jouer\_tour\_ia();
+00081 
+00088 \textcolor{keywordtype}{void} set\_difficulte(\textcolor{keywordtype}{int} i);
+00089 
+00096 \textcolor{keywordtype}{int} commencer\_tour();
+00097 
+00103 \textcolor{keywordtype}{void} hint\_pions\_jouables();
+00104 
+00112 \textcolor{keywordtype}{int} hint\_deplacements\_possibles(\textcolor{keywordtype}{int} c);
+00113 
+00118 \textcolor{keywordtype}{int} hint\_deplacements\_possibles\_xy(\textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x},\textcolor{keywordtype}{int} y);
+00119 
+00125 \textcolor{keywordtype}{void} \hyperlink{moteur_8h_a5bd6ce9a1afa1f06549fb5aa8a6c40f0}{hint_meilleur_coup}();
+00126 
+00131 \textcolor{keywordtype}{int} partie\_terminee();
+\end{DoxyCode}

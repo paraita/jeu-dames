@@ -1,0 +1,671 @@
+\hypertarget{fonction_interface_8c_source}{
+\section{fonctionInterface.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * fonctionInerface.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: Mar 22, 2011}
+00005 \textcolor{comment}{ *      Author: Mehdi}
+00006 \textcolor{comment}{ */}
+00007 \textcolor{preprocessor}{#include <stdio.h>}
+00008 \textcolor{preprocessor}{#include <stdlib.h>}
+00009 \textcolor{preprocessor}{#include <string.h>}
+00010 \textcolor{preprocessor}{#include <math.h>}
+00011 \textcolor{preprocessor}{#include "\hyperlink{fonction_interface_8h}{fonctionInterface.h}"}
+00012 
+00013 
+00014 
+00015 
+\hypertarget{fonction_interface_8c_source_l00016}{}\hyperlink{fonction_interface_8h_a242025f62105b1932bde128f77ec1ba8}{00016} \textcolor{keywordtype}{void} rafraichir\_plateau()\{
+00017         \textcolor{keywordtype}{int} i;
+00018 
+00019 
+00020         \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.surface = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/marbre\_noir.bmp"});
+00021         \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.surface = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/marbre.bmp"});
+00022         \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.surface = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/marbre\_noir\_selectionne.
+      bmp"});
+00023 
+00024 
+00025         \textcolor{keywordflow}{for}(i=1; i <=50; i++)\{
+00026 
+00027                 \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} == 0)\{
+00028                         \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * TAILLEC
+      ARRE;
+00029                         \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * TAILLEC
+      ARRE;
+00030                         SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.surface, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &
+      \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.position);
+00031                         \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * TAILLECA
+      RRE;
+00032                         \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * TAILLECA
+      RRE;
+00033 
+00034                         \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * TAILLEC
+      ARRE;
+00035                         \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * TAILLEC
+      ARRE;
+00036                         SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.surface, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &
+      \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce}.position);
+00037                         \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * TAILLECA
+      RRE;
+00038                         \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * TAILLECA
+      RRE;
+00039                 \}
+00040                 \textcolor{keywordflow}{else}\{
+00041                         \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * 
+      TAILLECARRE;
+00042                         \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * 
+      TAILLECARRE;
+00043                         SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.surface, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},
+       &\hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.position);
+00044                         \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * TAILLECA
+      RRE;
+00045                         \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * TAILLECA
+      RRE;
+00046 
+00047                         \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * 
+      TAILLECARRE;
+00048                         \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * 
+      TAILLECARRE;
+00049                         SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.surface, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},
+       &\hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance}.position);
+00050                         \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position.x = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x - 1) * TAILLECA
+      RRE;
+00051                         \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position.y = (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y - 1) * TAILLECA
+      RRE;
+00052                 \}
+00053 
+00054                 \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} == 0)\{ \textcolor{comment}{//SI la case n'est pas libre}
+00055                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur == blanc)\{ \textcolor{comment}{// SI le pion e
+      st blanc}
+00056                                 \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} == 0)\{ \textcolor{comment}{// SI ce n
+      'est pas une dame}
+00057                                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} ==
+       0)\{ \textcolor{comment}{// SI il n'est pas selectionne}
+00058                                                 \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_clair.bmp"});
+00059                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface->format, 241, 241, 241));
+00060                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position);
+00061                                         \}
+00062                                         \textcolor{keywordflow}{else}\{
+00063                                                 \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_clair\_selectionne.bmp"});
+00064                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface->format, 241, 241, 241));
+00065                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position);
+00066                                         \}
+00067                                 \}
+00068                                 \textcolor{keywordflow}{else}\{ \textcolor{comment}{// SI c'est une dame}
+00069                                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} ==
+       0)\{ \textcolor{comment}{// SI il n'est pas selectionne}
+00070                                                 \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_clair\_dame.bmp"});
+00071                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface->format, 241, 241, 241));
+00072                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position);
+00073                                         \}
+00074                                         \textcolor{keywordflow}{else}\{
+00075                                                 \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_clair\_dame\_selectionne.bmp"});
+00076                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surface->format, 241, 241, 241));
+00077                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair}.position);
+00078                                         \}
+00079                                 \}
+00080                         \}
+00081 
+00082 
+00083                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur == noir)\{
+00084                                 \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} == 0)\{
+00085                                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} ==
+       0)\{
+00086                                                 \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_fonce.bmp"});
+00087                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface->format, 241, 241, 241));
+00088                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position);
+00089                                         \}
+00090                                         \textcolor{keywordflow}{else}\{
+00091                                                 \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_fonce\_selectionne.bmp"});
+00092                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface->format, 241, 241, 241));
+00093                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position);
+00094                                         \}
+00095                                 \}
+00096 
+00097                                 \textcolor{keywordflow}{else}\{
+00098                                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} ==
+       0)\{
+00099                                                 \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_fonce\_dame.bmp"});
+00100                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface->format, 241, 241, 241));
+00101                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position);
+00102                                         \}
+00103                                         \textcolor{keywordflow}{else}\{
+00104                                                 \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface = SDL\_LoadBMP(
+      \textcolor{stringliteral}{"Images/pion\_fonce\_dame\_selectionne.bmp"});
+00105                                                 SDL\_SetColorKey(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, SDL\_SRCCOLORKEY, SDL\_MapRGB(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surface->format, 241, 241, 241));
+00106                                                 SDL\_BlitSurface(\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.surfac
+      e, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce}.position);
+00107                                         \}
+00108                                 \}
+00109                         \}
+00110 
+00111                 \} \textcolor{comment}{//Fin non libre}
+00112 
+00113 
+00114         \}
+00115 \}
+00116 
+00117 
+\hypertarget{fonction_interface_8c_source_l00118}{}\hyperlink{fonction_interface_8h_afea6e76f6f28549c9c1f44636d93cb82}{00118} \textcolor{keywordtype}{void} afficher\_ecran\_depart\_neutre(\textcolor{keywordtype}{int} choix)\{
+00119         SDL\_Surface *ecran\_depart;
+00120         SDL\_Rect position\_ecran;
+00121         position\_ecran.x = 0;
+00122         position\_ecran.y = 0;
+00123         \textcolor{keywordflow}{switch}(choix)\{
+00124                 \textcolor{keywordflow}{case} 1:
+00125 
+00126                         ecran\_depart = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/demarrage\_Commencer.bm
+      p"});
+00127                         SDL\_BlitSurface(ecran\_depart,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran)
+      ;
+00128                         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00129                         \textcolor{keywordflow}{break};
+00130                 \textcolor{keywordflow}{case} 2:
+00131 
+00132                         ecran\_depart = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/demarrage\_Charger.bmp"
+      });
+00133                         SDL\_BlitSurface(ecran\_depart,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran)
+      ;
+00134                         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00135                         \textcolor{keywordflow}{break};
+00136                 \textcolor{keywordflow}{case} 3:
+00137 
+00138                         ecran\_depart = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/demarrage\_Quitter.bmp"
+      });
+00139                         SDL\_BlitSurface(ecran\_depart,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran)
+      ;
+00140                         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00141                         \textcolor{keywordflow}{break};
+00142                 \textcolor{keywordflow}{default}:
+00143 
+00144                         ecran\_depart = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/demarrage\_neutre.bmp"})
+      ;
+00145                         SDL\_BlitSurface(ecran\_depart,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran)
+      ;
+00146                         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00147                         \textcolor{keywordflow}{break};
+00148         \}
+00149 
+00150 
+00151 
+00152 \}
+00153 
+\hypertarget{fonction_interface_8c_source_l00154}{}\hyperlink{fonction_interface_8h_a57441c18ac94ad4618d8ecd732b8ec2b}{00154} \textcolor{keywordtype}{void} afficher\_ecran\_choix\_joueur()\{
+00155         SDL\_Surface *ecran\_joueur;
+00156         SDL\_Rect position\_ecran\_joueur;
+00157         position\_ecran\_joueur.x = 0;
+00158         position\_ecran\_joueur.y = 0;
+00159         \textcolor{keywordtype}{int} choix;
+00160         choix = tableauChoix[0] + tableauChoix[1] + tableauChoix[2] + tableauChoi
+      x[3];
+00161         \textcolor{keywordflow}{switch}(choix)\{
+00162         \textcolor{keywordflow}{case} 1:
+00163                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre\_1.bmp"});
+      
+00164                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00165                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00166                 \textcolor{keywordflow}{break};
+00167 
+00168         \textcolor{keywordflow}{case} 2:
+00169                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre\_2.bmp"});
+      
+00170                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00171                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00172                 \textcolor{keywordflow}{break};
+00173 
+00174         \textcolor{keywordflow}{case} 4:
+00175                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre\_1\_1.bmp"
+      });
+00176                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00177                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00178                 \textcolor{keywordflow}{break};
+00179 
+00180         \textcolor{keywordflow}{case} 5:
+00181                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre\_2\_1.bmp"
+      });
+00182                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00183                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00184                 \textcolor{keywordflow}{break};
+00185 
+00186         \textcolor{keywordflow}{case} 6:
+00187                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre\_1\_2.bmp"
+      });
+00188                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00189                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00190                 \textcolor{keywordflow}{break};
+00191 
+00192         \textcolor{keywordflow}{case} 7:
+00193                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre\_2\_2.bmp"
+      });
+00194                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00195                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00196                 \textcolor{keywordflow}{break};
+00197 
+00198         \textcolor{keywordflow}{default} :
+00199                 ecran\_joueur = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/menu\_selection\_neutre.bmp"});
+00200                 SDL\_BlitSurface(ecran\_joueur,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran\_joueur);
+      
+00201                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00202                 \textcolor{keywordflow}{break};
+00203         \}
+00204 \}
+00205 
+00206 \textcolor{keywordtype}{void} afficher\_ecran\_pause(\textcolor{keywordtype}{int} choix)\{
+00207 
+00208         SDL\_Surface *ecran\_pause;
+00209         SDL\_Rect position\_ecran;
+00210         position\_ecran.x = 0;
+00211         position\_ecran.y = 0;
+00212         \textcolor{keywordflow}{switch}(choix)\{
+00213 
+00214         \textcolor{keywordflow}{case} 1:
+00215                 ecran\_pause = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/pause\_sauvegarder.bmp"});
+00216                 SDL\_BlitSurface(ecran\_pause,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran);
+00217                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00218                 \textcolor{keywordflow}{break};
+00219 
+00220         \textcolor{keywordflow}{case} 2:
+00221                 ecran\_pause = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/pause\_retour.bmp"});
+00222                 SDL\_BlitSurface(ecran\_pause,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran);
+00223                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00224                 \textcolor{keywordflow}{break};
+00225 
+00226         \textcolor{keywordflow}{case} 3:
+00227                 ecran\_pause = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/pause\_quitter.bmp"});
+00228                 SDL\_BlitSurface(ecran\_pause,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran);
+00229                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00230                 \textcolor{keywordflow}{break};
+00231 
+00232         \textcolor{keywordflow}{default}:
+00233                 ecran\_pause = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/pause\_neutre.bmp"});
+00234                 SDL\_BlitSurface(ecran\_pause,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran);
+00235                 SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00236                 \textcolor{keywordflow}{break};
+00237         \}
+00238 
+00239 \}
+\hypertarget{fonction_interface_8c_source_l00240}{}\hyperlink{fonction_interface_8h_acc462fb032b8caf056324a003ae36497}{00240} \textcolor{keywordtype}{void} afficher\_ecran\_blancs\_gagnent()\{
+00241         SDL\_Surface *ecran\_blancs\_gagnent;
+00242         SDL\_Rect position\_ecran;
+00243         position\_ecran.x = 0;
+00244         position\_ecran.y = 0;
+00245 
+00246         ecran\_blancs\_gagnent = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/blancs\_gagnent.bmp"});
+00247         SDL\_BlitSurface(ecran\_blancs\_gagnent,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran);
+00248         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00249 \}
+00250 
+\hypertarget{fonction_interface_8c_source_l00251}{}\hyperlink{fonction_interface_8h_a4eaec2179ee4e6fc89c1c06b74e94cb4}{00251} \textcolor{keywordtype}{void} afficher\_ecran\_noirs\_gagnent()\{
+00252         SDL\_Surface *ecran\_noirs\_gagnent;
+00253         SDL\_Rect position\_ecran;
+00254         position\_ecran.x = 0;
+00255         position\_ecran.y = 0;
+00256 
+00257         ecran\_noirs\_gagnent = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/noirs\_gagnent.bmp"});
+00258         SDL\_BlitSurface(ecran\_noirs\_gagnent,NULL,\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen},&position\_ecran);
+00259         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00260 \}
+00261 
+00262 
+\hypertarget{fonction_interface_8c_source_l00263}{}\hyperlink{fonction_interface_8h_af90df7e39dda6c350185ce94e31fb93c}{00263} \textcolor{keywordtype}{int}* clique\_souris(SDL\_Event evenement)\{
+00264         \textcolor{keywordtype}{int}* tableau = calloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}), 4); \textcolor{comment}{// A changer}
+00265         \textcolor{keywordtype}{int} xt,yt;
+00266         SDL\_Rect positionSouris;
+00267         positionSouris.x = evenement.button.x;
+00268         positionSouris.y = evenement.button.y;
+00269         xt = positionSouris.x / 80 + 1;
+00270         yt = positionSouris.y / 80 + 1;
+00271 
+00272         tableau[0] = xt;
+00273         tableau[1] = yt;
+00274         tableau[2] = positionSouris.x; \textcolor{comment}{// A virer}
+00275         tableau[3] = positionSouris.y;
+00276         \textcolor{keywordflow}{return} tableau;
+00277 \}
+00278 
+\hypertarget{fonction_interface_8c_source_l00279}{}\hyperlink{fonction_interface_8h_a22f816def98b98aae351ce6087c763ef}{00279} \textcolor{keywordtype}{int} position\_souris(SDL\_Event evenement)\{
+00280         evenement.motion.x;
+00281         evenement.motion.y;
+00282 
+00283         \textcolor{keywordflow}{if}(evenement.motion.x > 142 && evenement.motion.x < 670 && evenement.moti
+      on.y > 347 && evenement.motion.y < 380 )\{
+00284                 \textcolor{keywordflow}{return} 1;
+00285         \}
+00286         \textcolor{keywordflow}{else}\{
+00287                 \textcolor{keywordflow}{if}(evenement.motion.x > 173 && evenement.motion.x < 640 && evenem
+      ent.motion.y > 449 && evenement.motion.y < 480 )\{
+00288                         \textcolor{keywordflow}{return} 2;
+00289                 \}
+00290                 \textcolor{keywordflow}{else}\{
+00291                         \textcolor{keywordflow}{if}(evenement.motion.x > 310 && evenement.motion.x < 500 &
+      & evenement.motion.y > 548 && evenement.motion.y < 580 )\{
+00292                                 \textcolor{keywordflow}{return} 3;
+00293                         \}
+00294                         \textcolor{keywordflow}{else}\{
+00295                                 \textcolor{keywordflow}{return} 0;
+00296                         \}
+00297                 \}
+00298         \}
+00299 \}
+00300 
+\hypertarget{fonction_interface_8c_source_l00301}{}\hyperlink{fonction_interface_8h_af439094b4dbb8cac323aaba6130a3cfb}{00301} \textcolor{keywordtype}{int} clique\_souris\_choix\_joueur(SDL\_Event evenement)\{
+00302         evenement.button.x;
+00303         evenement.button.y;
+00304         \textcolor{keywordtype}{int} choix = 0;
+00305         choix = tableauChoix[0] + tableauChoix[1] + tableauChoix[2] + tableauChoi
+      x[3];
+00306         \textcolor{keywordflow}{if}(evenement.button.x > 340 && evenement.button.x < 410 && evenement.butt
+      on.y > 340 && evenement.button.y < 410)\{
+00307                 tableauChoix[1] = 0;
+00308                 tableauChoix[0] = 1;
+00309                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = 1;
+00310 
+00311 
+00312         \}\textcolor{comment}{//Fin if case 1}
+00313         \textcolor{keywordflow}{else}\{
+00314 
+00315                 \textcolor{keywordflow}{if}(evenement.button.x > 510 && evenement.button.x < 610 && evenem
+      ent.button.y > 350 && evenement.button.y < 410)\{
+00316                         tableauChoix[0] = 0;
+00317                         tableauChoix[1] = 2;
+00318                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = 0;
+00319 
+00320                 \}\textcolor{comment}{//Fin if case 2}
+00321                 \textcolor{keywordflow}{else}\{
+00322                         \textcolor{keywordflow}{if}(evenement.button.x > 340 && evenement.button.x < 410 &
+      & evenement.button.y > 460 && evenement.button.y < 530)\{
+00323                                 tableauChoix[3] = 0;
+00324                                 tableauChoix[2] = 3;
+00325                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = 1;
+00326 
+00327                                 \}\textcolor{comment}{//Fin if case 3}
+00328                                 \textcolor{keywordflow}{else}\{
+00329                                         \textcolor{keywordflow}{if}(evenement.button.x > 510 && evenement.
+      button.x < 610 && evenement.button.y > 480 && evenement.button.y < 540)\{
+00330                                                 tableauChoix[2] = 0;
+00331                                                 tableauChoix[3] = 5;
+00332                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = 0;
+00333 
+00334                                         \}\textcolor{comment}{//Fin if case 4}
+00335 
+00336                                 \}
+00337 
+00338                 \}
+00339         \}
+00340         \textcolor{keywordflow}{if}(evenement.button.x > 50 && evenement.button.x < 250 && evenement.butto
+      n.y > 630 && evenement.button.y < 670)\{
+00341                 \textcolor{keywordflow}{return} 1;
+00342         \}\textcolor{comment}{//Click Precedent}
+00343 
+00344         \textcolor{keywordflow}{if}(choix >= 4 && choix <= 7)\{ \textcolor{comment}{//Controle qu'on a bien fait 2 choix}
+00345 
+00346                 \textcolor{keywordflow}{if}(evenement.button.x > 610 && evenement.button.x < 770 && evenem
+      ent.button.y > 630 && evenement.button.y < 670)\{
+00347                         \textcolor{keywordflow}{return} 0;
+00348                 \}\textcolor{comment}{//Click suivant}
+00349 
+00350         \}
+00351 
+00352 
+00353 \}
+00354 
+00355 
+00356 \textcolor{keywordtype}{int} clique\_souris\_menu(SDL\_Event evenement)\{
+00357         evenement.button.x;
+00358         evenement.button.y;
+00359 
+00360         \textcolor{keywordflow}{if}(evenement.button.x > 142 && evenement.button.x < 670 && evenement.butt
+      on.y > 347 && evenement.button.y < 380 )\{
+00361                 \textcolor{keywordflow}{return} 1;
+00362         \}
+00363         \textcolor{keywordflow}{else}\{
+00364                 \textcolor{keywordflow}{if}(evenement.button.x > 173 && evenement.button.x < 640 && evenem
+      ent.button.y > 449 && evenement.button.y < 480 )\{
+00365                         \textcolor{keywordflow}{return} 2;
+00366                 \}
+00367                 \textcolor{keywordflow}{else}\{
+00368                         \textcolor{keywordflow}{if}(evenement.button.x > 310 && evenement.button.x < 500 &
+      & evenement.button.y > 548 && evenement.button.y < 580 )\{
+00369                                 \textcolor{keywordflow}{return} 3;
+00370                         \}
+00371                         \textcolor{keywordflow}{else}\{
+00372                                 \textcolor{keywordflow}{return} 0;
+00373                         \}
+00374                 \}
+00375         \}
+00376 \}
+00377 
+00378 \textcolor{keywordtype}{int} position\_souris\_pause(SDL\_Event evenement)\{
+00379         evenement.motion.x;
+00380         evenement.motion.y;
+00381 
+00382         \textcolor{keywordflow}{if}(evenement.motion.x > 251 && evenement.motion.x < 540 && evenement.moti
+      on.y > 321 && evenement.motion.y < 356 )\{
+00383                 \textcolor{keywordflow}{return} 1;
+00384         \}
+00385         \textcolor{keywordflow}{else}\{
+00386                 \textcolor{keywordflow}{if}(evenement.motion.x > 180 && evenement.motion.x < 624 && evenem
+      ent.motion.y > 397 && evenement.motion.y < 429 )\{
+00387                         \textcolor{keywordflow}{return} 2;
+00388                 \}
+00389                 \textcolor{keywordflow}{else}\{
+00390                         \textcolor{keywordflow}{if}(evenement.motion.x > 305 && evenement.motion.x < 494 &
+      & evenement.motion.y > 479 && evenement.motion.y < 510 )\{
+00391                                 \textcolor{keywordflow}{return} 3;
+00392                         \}
+00393                         \textcolor{keywordflow}{else}\{
+00394                                 \textcolor{keywordflow}{return} 0;
+00395                         \}
+00396                 \}
+00397         \}
+00398 \}
+00399 
+00400 \textcolor{keywordtype}{int} clique\_souris\_pause(SDL\_Event evenement)\{
+00401         evenement.button.x;
+00402         evenement.button.y;
+00403 
+00404         \textcolor{keywordflow}{if}(evenement.button.x > 251 && evenement.button.x < 540 && evenement.butt
+      on.y > 321 && evenement.button.y < 356 )\{
+00405                 \textcolor{keywordflow}{return} 1;
+00406         \}
+00407         \textcolor{keywordflow}{else}\{
+00408                 \textcolor{keywordflow}{if}(evenement.button.x > 180 && evenement.button.x < 624 && evenem
+      ent.button.y > 397 && evenement.button.y < 429 )\{
+00409                         \textcolor{keywordflow}{return} 2;
+00410                 \}
+00411                 \textcolor{keywordflow}{else}\{
+00412                         \textcolor{keywordflow}{if}(evenement.button.x > 305 && evenement.button.x < 494 &
+      & evenement.button.y > 479 && evenement.button.y < 510 )\{
+00413                                 \textcolor{keywordflow}{return} 3;
+00414                         \}
+00415                         \textcolor{keywordflow}{else}\{
+00416                                 \textcolor{keywordflow}{return} 0;
+00417                         \}
+00418                 \}
+00419         \}
+00420 \}
+\hypertarget{fonction_interface_8c_source_l00421}{}\hyperlink{fonction_interface_8h_a757ae0e029a9f8857391b1fb5939d54a}{00421} \textcolor{keywordtype}{void} initialisation\_cases\_blanches()\{
+00422         \textcolor{keywordtype}{int} i,j;
+00423         \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.surface = SDL\_LoadBMP(\textcolor{stringliteral}{"Images/marbre.bmp"});
+00424         \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.x = 0;
+00425         \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.y = 0;
+00426 
+00427         \textcolor{keywordflow}{for}(i = 0; i<=4; i++)\{
+00428                 \textcolor{keywordflow}{for}(j=0;j<=4;j++)\{
+00429                         SDL\_BlitSurface(\hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.surface, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &
+      \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position);
+00430                         \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.x += 2 * TAILLECARRE;
+00431 
+00432                 \}
+00433                 \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.y += TAILLECARRE;
+00434                 \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.x = TAILLECARRE;
+00435 
+00436                 \textcolor{keywordflow}{for}(j=0;j<=4;j++)\{
+00437                         SDL\_BlitSurface(\hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.surface, NULL, \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, &
+      \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position);
+00438                         \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.x += 2 * TAILLECARRE;
+00439 
+00440                 \}
+00441                 \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.y += TAILLECARRE;
+00442                 \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair}.position.x = 0;
+00443 
+00444         \}
+00445 
+00446 \}
+00447 
+00448 \textcolor{keywordtype}{void} control\_manger\_pion(\hyperlink{structcase__plateau}{case_plateau} oldPosition, \hyperlink{structcase__plateau}{case_plateau} newPosition)\{
+00449         \textcolor{keywordtype}{int} diffX, diffY;
+00450         \hyperlink{structcase__plateau}{case_plateau} caseSurvole;
+00451         diffX = oldPosition.x - newPosition.x;
+00452         diffY = oldPosition.y - newPosition.y;
+00453 
+00454         \textcolor{keywordflow}{switch}(diffX)\{
+00455                 \textcolor{keywordflow}{case} 2: \textcolor{comment}{//On va a gauche}
+00456                         \textcolor{keywordflow}{switch}(diffY)\{
+00457                         \textcolor{keywordflow}{case} 2: \textcolor{comment}{//On va en haut a gauche}
+00458                                 caseSurvole = get\_case\_plateau( newPosition.x + 1
+      , newPosition.y + 1, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00459                                 printf(\textcolor{stringliteral}{"Case survole :"});
+00460                                 print\_case(caseSurvole);
+00461                                 plateau\_prendre\_pion(caseSurvole.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00462                                 \textcolor{keywordflow}{break};
+00463                         \textcolor{keywordflow}{case} -2: \textcolor{comment}{//On va en bas a gauche}
+00464                                 caseSurvole = get\_case\_plateau( newPosition.x + 1
+      , newPosition.y - 1, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00465                                 printf(\textcolor{stringliteral}{"Case survole :"});
+00466                                 print\_case(caseSurvole);
+00467                                 plateau\_prendre\_pion(caseSurvole.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00468                                 \textcolor{keywordflow}{break};
+00469                         \textcolor{keywordflow}{default}: \textcolor{comment}{//default}
+00470                                 printf(\textcolor{stringliteral}{"mouvement interdit \(\backslash\)n"});
+00471                                 \textcolor{keywordflow}{break};
+00472                         \}
+00473                         \textcolor{keywordflow}{break};
+00474 
+00475                 \textcolor{keywordflow}{case} -2: \textcolor{comment}{//On va a droite}
+00476                         \textcolor{keywordflow}{switch}(diffY)\{
+00477                         \textcolor{keywordflow}{case} 2: \textcolor{comment}{//On va en haut a droite}
+00478                                 caseSurvole = get\_case\_plateau( newPosition.x - 1
+      , newPosition.y + 1, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00479                                 printf(\textcolor{stringliteral}{"Case survole :"});
+00480                                 print\_case(caseSurvole);
+00481                                 plateau\_prendre\_pion(caseSurvole.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00482                                 \textcolor{keywordflow}{break};
+00483                         \textcolor{keywordflow}{case} -2: \textcolor{comment}{//On va en bas a droite}
+00484                                 caseSurvole = get\_case\_plateau( newPosition.x - 1
+      , newPosition.y - 1, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00485                                 printf(\textcolor{stringliteral}{"Case survole :"});
+00486                                 print\_case(caseSurvole);
+00487                                 plateau\_prendre\_pion(caseSurvole.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00488                                 \textcolor{keywordflow}{break};
+00489                         \textcolor{keywordflow}{default}:
+00490                                 printf(\textcolor{stringliteral}{"mouvement interdit \(\backslash\)n"});
+00491                                 \textcolor{keywordflow}{break};
+00492                         \}
+00493                         \textcolor{keywordflow}{break};
+00494 
+00495                 \textcolor{keywordflow}{default}:
+00496                         printf(\textcolor{stringliteral}{"mouvement interdit \(\backslash\)n"});
+00497                         \textcolor{keywordflow}{break};
+00498                 \}
+00499 
+00500 
+00501 \}
+00502 
+00503 \hyperlink{structcase__plateau}{case_plateau} control\_surbrillance(\textcolor{keywordtype}{int} *tab)\{
+00504         \hyperlink{structcase__plateau}{case_plateau} c;
+00505         c = get\_case\_plateau(tab[0], tab[1], \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00506         \textcolor{keywordflow}{if}(c.pion.couleur == \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur})\{
+00507                 set\_pion\_en\_surbrillance(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00508         \}
+00509         \textcolor{keywordflow}{else}\{
+00510 
+00511         \}
+00512         \textcolor{keywordflow}{return} c;
+00513 \}
+00514 
+\hypertarget{fonction_interface_8c_source_l00515}{}\hyperlink{fonction_interface_8h_abcb8707f8b1169dceb38a3e3e2b3e300}{00515} \hyperlink{structcase__plateau}{case_plateau} control\_premier\_click(SDL\_Event event, \textcolor{keywordtype}{int} *tab, \hyperlink{structplateau}{plateau} *p, 
+      \hyperlink{structcase__plateau}{case_plateau} *oldCase)\{
+00516         \hyperlink{structcase__plateau}{case_plateau} caseSelectionne;
+00517         \hyperlink{structjoueur}{joueur} joueurEnCours;
+00518         joueurEnCours = p->\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour};
+00519         caseSelectionne = get\_case\_plateau(tab[0], tab[1],*p);
+00520 
+00521 
+00522         \textcolor{keywordflow}{if}(caseSelectionne.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} == 0)\{ \textcolor{comment}{//Si elle n'est pas libre}
+00523                 \textcolor{keywordflow}{if}(caseSelectionne.pion.couleur == joueurEnCours.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur})\{ \textcolor{comment}{//Si c
+      ouleurPion correspond au joueur en cours}
+00524                         *oldCase = caseSelectionne;
+00525                         \textcolor{comment}{//caseSelectionne = control\_surbrillance(tab, p);}
+00526                         printf(\textcolor{stringliteral}{"premier click reussi : tab[0] = %d tab[1] = %d \(\backslash\)n
+      "}, tab[0], tab[1]);
+00527                 \}\textcolor{comment}{//FinSi couleurPion correspond au joueur en cours}
+00528         \}\textcolor{comment}{//FinSi elle n'est pas libre}
+00529         \textcolor{keywordflow}{return} caseSelectionne;
+00530 \}
+00531 
+00532 \hyperlink{structcase__plateau}{case_plateau} control\_deuxieme\_click(SDL\_Event event, \textcolor{keywordtype}{int} *tab, \hyperlink{structplateau}{plateau} *p, 
+      \hyperlink{structcase__plateau}{case_plateau} *newCase, \hyperlink{structcase__plateau}{case_plateau} *oldCase)\{
+00533         \hyperlink{structcase__plateau}{case_plateau} caseSelectionne;
+00534         \hyperlink{structcase__plateau}{case_plateau} caseCoup;
+00535 
+00536 
+00537         caseSelectionne = get\_case\_plateau(tab[0], tab[1], *p);
+00538 
+00539         \textcolor{keywordflow}{if}(caseSelectionne.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre})\{ \textcolor{comment}{//Si la case est libre}
+00540                 \textcolor{comment}{//Si la case selectionne correspond a une des cases du tableau de
+      s coups possibles}
+00541                 *newCase = caseSelectionne;
+00542                 plateau\_deplacer\_pion(oldCase->\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},newCase->
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, p);
+00543                 printf(\textcolor{stringliteral}{"deuxieme click reussi \(\backslash\)n"});
+00544 
+00545 
+00546 
+00547         \} \textcolor{comment}{//FinSi la case est libre}
+00548 
+00549         \textcolor{keywordflow}{return} caseSelectionne;
+00550 \}
+00551 
+00552 \textcolor{keywordtype}{void} initialisation\_tableau\_choix()\{
+00553         tableauChoix[0] = 0;
+00554         tableauChoix[1] = 0;
+00555         tableauChoix[2] = 0;
+00556         tableauChoix[3] = 0;
+00557 \}
+\end{DoxyCode}

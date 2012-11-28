@@ -1,0 +1,33 @@
+\hypertarget{regles_8h_source}{
+\section{regles.h}
+}
+
+\begin{DoxyCode}
+00001 
+00006 \textcolor{comment}{/* ----------------------------------------------- */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{plateau_8h}{plateau.h}"}
+00009 
+00017 \hyperlink{structcoup}{coup}* coupsPossibles(\textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} c, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p);
+00018 
+00019 
+00027 \hyperlink{structcoup}{coup}* getCoups(\textcolor{keyword}{const} \hyperlink{structjoueur}{joueur} j, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p);
+00028 
+00029 
+00036 \hyperlink{structcoup}{coup}* getCoupsMax(\textcolor{keyword}{const} \hyperlink{structcoup}{coup} *cp);
+00037 
+00038 
+00045 \hyperlink{structcoup}{coup}* get\_deplacements(\textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} c, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p);
+00046 
+00047 
+00054 \hyperlink{structcoup}{coup} * completer\_coup\_dame(\textcolor{keyword}{const} \hyperlink{structcoup}{coup} c, \textcolor{keywordtype}{int} mvt, \hyperlink{structplateau}{plateau} p);
+00055 
+00056 
+00063 \textcolor{keywordtype}{int} get\_possible\_case\_pos(\textcolor{keywordtype}{int} c, \textcolor{keywordtype}{int} diag, \hyperlink{structplateau}{plateau} p) ;
+00064 
+00065 
+00072 \textcolor{keywordtype}{int} compare\_coups(\hyperlink{structcoup}{coup} *liste1, \hyperlink{structcoup}{coup} *liste2);
+00073 
+00074 
+00082 \hyperlink{structcase__plateau}{case_plateau} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(\textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, \textcolor{keywordtype}{int} y, \hyperlink{structplateau}{plateau} p);
+\end{DoxyCode}

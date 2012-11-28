@@ -1,0 +1,53 @@
+\hypertarget{structjoueur}{
+\section{Référence de la structure joueur}
+\label{structjoueur}\index{joueur@{joueur}}
+}
+
+
+Objet joueur. Un joueur est caractérisé par la couleur qu'il joue et sa nature (humain ou intelligence artificielle).  
+
+
+
+
+{\ttfamily \#include $<$plateau.h$>$}
+
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est\_\-humain}
+\item 
+\hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur\_\-pion} \hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Objet joueur. Un joueur est caractérisé par la couleur qu'il joue et sa nature (humain ou intelligence artificielle). 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00062}{62} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+\subsection{Documentation des champs}
+\hypertarget{structjoueur_a057f95a41503a890f27c651969ffac8d}{
+\index{joueur@{joueur}!couleur@{couleur}}
+\index{couleur@{couleur}!joueur@{joueur}}
+\subsubsection[{couleur}]{\setlength{\rightskip}{0pt plus 5cm}{\bf couleur\_\-pion} {\bf couleur}}}
+\label{structjoueur_a057f95a41503a890f27c651969ffac8d}
+La couleur avec laquelle joue ce joueur. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00064}{64} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+\hypertarget{structjoueur_a9419778626112832ee0e59df49145a39}{
+\index{joueur@{joueur}!est\_\-humain@{est\_\-humain}}
+\index{est\_\-humain@{est\_\-humain}!joueur@{joueur}}
+\subsubsection[{est\_\-humain}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf est\_\-humain}}}
+\label{structjoueur_a9419778626112832ee0e59df49145a39}
+Détermine si le joueur est une IA ou un joueur réel. 
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00063}{63} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{plateau_8h}{plateau.h}\end{DoxyCompactItemize}

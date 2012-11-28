@@ -1,0 +1,61 @@
+\hypertarget{fonction_interface_8h_source}{
+\section{fonctionInterface.h}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#include "\hyperlink{constantes_8h}{constantes.h}"}
+00010 \textcolor{preprocessor}{#include "\hyperlink{moteur_8h}{moteur.h}"}
+00011 
+00012 \textcolor{preprocessor}{#ifndef FONCTIONINTERFACE\_H\_}
+00013 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define FONCTIONINTERFACE\_H\_}
+00014 \textcolor{preprocessor}{}
+\hypertarget{fonction_interface_8h_source_l00016}{}\hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{00016} \hyperlink{struct_carre__fonce}{Carre_fonce} \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre_fonce};
+00017 
+\hypertarget{fonction_interface_8h_source_l00019}{}\hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{00019} \hyperlink{struct_carre__clair}{Carre_clair} \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre_clair};
+00020 
+\hypertarget{fonction_interface_8h_source_l00022}{}\hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{00022} \hyperlink{struct_carre__clair}{Carre_clair} \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre_surbrillance};
+00023 
+\hypertarget{fonction_interface_8h_source_l00025}{}\hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{00025} \hyperlink{struct_pion__clair}{Pion_clair} \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion_clair};
+00026 
+\hypertarget{fonction_interface_8h_source_l00028}{}\hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{00028} \hyperlink{struct_pion__fonce}{Pion_fonce} \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion_fonce};
+00029 
+\hypertarget{fonction_interface_8h_source_l00031}{}\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{00031} SDL\_Surface *\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen};
+00032 
+00033 \textcolor{keywordtype}{int} tableauChoix[4];
+00038 \textcolor{keywordtype}{void} rafraichir\_plateau();
+00039 
+00045 \textcolor{keywordtype}{void} afficher\_ecran\_depart\_neutre(\textcolor{keywordtype}{int} choix);
+00046 
+00052 \textcolor{keywordtype}{void} afficher\_ecran\_pause(\textcolor{keywordtype}{int} choix);
+00053 
+00058 \textcolor{keywordtype}{void} afficher\_ecran\_choix\_joueur();
+00059 
+00064 \textcolor{keywordtype}{void} afficher\_ecran\_noirs\_gagnent();
+00065 
+00070 \textcolor{keywordtype}{void} afficher\_ecran\_blancs\_gagnent();
+00071 
+00077 \textcolor{keywordtype}{int} clique\_souris\_choix\_joueur(SDL\_Event evenement);
+00078 
+00084 \textcolor{keywordtype}{int}* clique\_souris(SDL\_Event evenement);
+00085 
+00090 \textcolor{keywordtype}{void} initialisation\_cases\_blanches();
+00091 
+00097 \textcolor{keywordtype}{int} position\_souris(SDL\_Event evenement);
+00103 \textcolor{keywordtype}{int} position\_souris\_pause(SDL\_Event evenement);
+00109 \textcolor{keywordtype}{int} clique\_souris\_menu(SDL\_Event evenement);
+00115 \textcolor{keywordtype}{int} clique\_souris\_pause(SDL\_Event evenement);
+00116 
+00117 
+00118 \textcolor{keywordtype}{void} control\_manger\_pion(\hyperlink{structcase__plateau}{case_plateau} oldPosition, \hyperlink{structcase__plateau}{case_plateau} newPosition);
+00119 
+00128 \hyperlink{structcase__plateau}{case_plateau} control\_surbrillance(\textcolor{keywordtype}{int} *tab);
+00129 
+00138 \hyperlink{structcase__plateau}{case_plateau} control\_premier\_click(SDL\_Event event, \textcolor{keywordtype}{int} *tab, \hyperlink{structplateau}{plateau} *p, 
+      \hyperlink{structcase__plateau}{case_plateau} *oldCase);
+00139 
+00150 \hyperlink{structcase__plateau}{case_plateau} control\_deuxieme\_click(SDL\_Event event, \textcolor{keywordtype}{int} *tab, \hyperlink{structplateau}{plateau} *p, 
+      \hyperlink{structcase__plateau}{case_plateau} *newCase, \hyperlink{structcase__plateau}{case_plateau} *oldCase);
+00151 
+00152 \textcolor{preprocessor}{#endif }\textcolor{comment}{/* FONCTIONINTERFACE\_H\_ */}
+\end{DoxyCode}

@@ -1,0 +1,520 @@
+\hypertarget{plateau_8h}{
+\section{Référence du fichier plateau.h}
+\label{plateau_8h}\index{plateau.h@{plateau.h}}
+}
+
+
+Tout ce qui concerne le plateau de jeu (damier, pions et joueurs).  
+
+
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=389pt]{plateau_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpion}{pion}
+\begin{DoxyCompactList}\small\item\em Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non. \item\end{DoxyCompactList}\item 
+struct \hyperlink{structcase__plateau}{case\_\-plateau}
+\begin{DoxyCompactList}\small\item\em Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire,elle dispose d'une abscisse (x) et une ordonnée (y) sur le plateau. Une case peut être libre ou non, si elle n'est pas libre elle contient un pion. \item\end{DoxyCompactList}\item 
+struct \hyperlink{structjoueur}{joueur}
+\begin{DoxyCompactList}\small\item\em Objet joueur. Un joueur est caractérisé par la couleur qu'il joue et sa nature (humain ou intelligence artificielle). \item\end{DoxyCompactList}\item 
+struct \hyperlink{structcoup}{coup}
+\begin{DoxyCompactList}\small\item\em Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d'arrivée, un type (déplacement ou prise) et optinellement un commentaire. \item\end{DoxyCompactList}\item 
+struct \hyperlink{structplateau}{plateau}
+\begin{DoxyCompactList}\small\item\em Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique des coups. Il sait quel joueur doit jouer le prochain coup. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur\_\-pion} \{ {\bfseries blanc}, 
+{\bfseries noir}
+ \}
+\begin{DoxyCompactList}\small\item\em La couleur d'un pion. \item\end{DoxyCompactList}\item 
+enum \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{type\_\-coup} \{ \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, 
+\hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{t}
+ \}
+\begin{DoxyCompactList}\small\item\em Le type de coup. Le \char`\"{}tiret\char`\"{} '-\/' est remplacé par un 't'. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structplateau}{plateau} \hyperlink{plateau_8h_aad79656ee484352eb698011738cbcefc}{nouveau\_\-plateau} (\hyperlink{structjoueur}{joueur} j1, \hyperlink{structjoueur}{joueur} j2)
+\begin{DoxyCompactList}\small\item\em Fonction de création d'un nouveau plateau. \item\end{DoxyCompactList}\item 
+int \hyperlink{plateau_8h_ac36612024e6663243c4f0605f2dd96c2}{plateau\_\-deplacer\_\-pion} (int old\_\-position, int new\_\-position, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Déplace un pion. \item\end{DoxyCompactList}\item 
+int \hyperlink{plateau_8h_a4a8fb7c96fbeb8218d5ddbf3fe642901}{plateau\_\-prendre\_\-pion} (int position, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Prend le pion de la case \char`\"{}position\char`\"{}. \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a8e9db1b793881c55d1261e3b735a5d48}{plateau\_\-ajouter\_\-coup} (\hyperlink{structcoup}{coup} c, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Ajoute un coup dans l'historique du plateau. \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a6616eb0e3e305b9dd718ffb0e83231d5}{plateau\_\-appliquer\_\-coup} (\hyperlink{structcoup}{coup} c, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Met à jour le plateau en jouant le coup donné et passe la main au joueur suivant. \item\end{DoxyCompactList}\item 
+int \hyperlink{plateau_8h_a43fa8dd4c36ca967403900b75237a3d5}{plateau\_\-partie\_\-finie} (\hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em Teste si la partie est gagnée pour un des deux joueurs. \item\end{DoxyCompactList}\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{plateau_8h_a44f4edc5041fe92213f7dbdc2ac5e39e}{get\_\-case\_\-plateau} (int x, int y, \hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em Renvoie la case à la position (x,y). \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a69dc99f7c855cdf8bf569f8b26ae6689}{print\_\-case} (\hyperlink{structcase__plateau}{case\_\-plateau} c)
+\begin{DoxyCompactList}\small\item\em Affiche les informations sur la case (à des fins de test). \item\end{DoxyCompactList}\item 
+\hypertarget{plateau_8h_a590ca6fc3ab1b4e08fa05ddaf7465115}{
+void \hyperlink{plateau_8h_a590ca6fc3ab1b4e08fa05ddaf7465115}{print\_\-plateau} (\hyperlink{structplateau}{plateau} p)}
+\label{plateau_8h_a590ca6fc3ab1b4e08fa05ddaf7465115}
+
+\begin{DoxyCompactList}\small\item\em Affiche le plateau sur stdout. \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a4066fdb86d7d54a9256fa727995f47fd}{set\_\-case\_\-en\_\-surbrillance} (int numero, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Met la case en surbrillance. \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a98033598d0f16369d8529f7c5ab3e3fd}{set\_\-pion\_\-en\_\-surbrillance} (int numero, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Met un pion en surbrillance. \item\end{DoxyCompactList}\item 
+\hypertarget{plateau_8h_aee51bfad885420a7013c9c01a2eae048}{
+void \hyperlink{plateau_8h_aee51bfad885420a7013c9c01a2eae048}{reset\_\-surbrillance} (\hyperlink{structplateau}{plateau} $\ast$p)}
+\label{plateau_8h_aee51bfad885420a7013c9c01a2eae048}
+
+\begin{DoxyCompactList}\small\item\em Annule la mise en surbrillance de toutes les cases et tous les pions du plateau. \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_a5b1f6227bf2bab71a07a531c49270b51}{printCoup} (const \hyperlink{structcoup}{coup} c)
+\begin{DoxyCompactList}\small\item\em print les infos d'un coup \item\end{DoxyCompactList}\item 
+int \hyperlink{plateau_8h_aff9fd9b1b3f96bbae116f3d87349a0cf}{est\_\-prenable} (int position, \hyperlink{structplateau}{plateau} $\ast$p)
+\begin{DoxyCompactList}\small\item\em predicat pour savoir si une position est prenable. \item\end{DoxyCompactList}\item 
+void \hyperlink{plateau_8h_ade9b690d9493e82b264dcea4d08abd5a}{print\_\-liste\_\-coups} (\hyperlink{structcoup}{coup} $\ast$l)
+\begin{DoxyCompactList}\small\item\em affiche la liste des coups dans l. \item\end{DoxyCompactList}\item 
+\hypertarget{plateau_8h_a66fb3aa869ea21274bd48d004fbd6110}{
+int {\bfseries coup\_\-inclus} (\hyperlink{structcase__plateau}{case\_\-plateau} c, \hyperlink{structcase__plateau}{case\_\-plateau} $\ast$liste, int taille)}
+\label{plateau_8h_a66fb3aa869ea21274bd48d004fbd6110}
+
+\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get\_\-case\_\-plateau\_\-silent} (int x, int y, \hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em retourne la case si elle existe, ou la case 0 sinon \item\end{DoxyCompactList}\item 
+int \hyperlink{plateau_8h_a8918a9186794792439622dd39ca202a0}{nombre\_\-coups} (\hyperlink{structcoup}{coup} $\ast$set)
+\begin{DoxyCompactList}\small\item\em retourne le nombre de coups dans set \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Tout ce qui concerne le plateau de jeu (damier, pions et joueurs). \begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+\subsection{Documentation du type de l'énumération}
+\hypertarget{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{
+\index{plateau.h@{plateau.h}!type\_\-coup@{type\_\-coup}}
+\index{type\_\-coup@{type\_\-coup}!plateau.h@{plateau.h}}
+\subsubsection[{type\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf type\_\-coup}}}
+\label{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}
+
+
+Le type de coup. Le \char`\"{}tiret\char`\"{} '-\/' est remplacé par un 't'. 
+
+\begin{Desc}
+\item[Valeurs énumérées: ]\par
+\begin{description}
+\index{x@{x}!plateau.h@{plateau.h}}\index{plateau.h@{plateau.h}!x@{x}}\item[{\em 
+\hypertarget{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{
+x}
+\label{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}
+}]Prise. \index{t@{t}!plateau.h@{plateau.h}}\index{plateau.h@{plateau.h}!t@{t}}\item[{\em 
+\hypertarget{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{
+t}
+\label{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}
+}]Déplacement. \end{description}
+\end{Desc}
+
+
+
+Définition à la ligne \hyperlink{plateau_8h_source_l00022}{22} du fichier \hyperlink{plateau_8h_source}{plateau.h}.
+
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{plateau_8h_aff9fd9b1b3f96bbae116f3d87349a0cf}{
+\index{plateau.h@{plateau.h}!est\_\-prenable@{est\_\-prenable}}
+\index{est\_\-prenable@{est\_\-prenable}!plateau.h@{plateau.h}}
+\subsubsection[{est\_\-prenable}]{\setlength{\rightskip}{0pt plus 5cm}int est\_\-prenable (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_aff9fd9b1b3f96bbae116f3d87349a0cf}
+
+
+predicat pour savoir si une position est prenable. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & la position du pion que l'on veut prendre. \\
+\hline
+{\em p} & le plateau sur lequel on veut tester la position à prendre. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00258}{258} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a44f4edc5041fe92213f7dbdc2ac5e39e}{
+\index{plateau.h@{plateau.h}!get\_\-case\_\-plateau@{get\_\-case\_\-plateau}}
+\index{get\_\-case\_\-plateau@{get\_\-case\_\-plateau}!plateau.h@{plateau.h}}
+\subsubsection[{get\_\-case\_\-plateau}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} get\_\-case\_\-plateau (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a44f4edc5041fe92213f7dbdc2ac5e39e}
+
+
+Renvoie la case à la position (x,y). 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & Abscisse de la case (colonne) \mbox{[}1-\/10\mbox{]}. \\
+\hline
+{\em y} & Ordonnée de la case \mbox{[}1-\/10\mbox{]}. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00101}{101} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{
+\index{plateau.h@{plateau.h}!get\_\-case\_\-plateau\_\-silent@{get\_\-case\_\-plateau\_\-silent}}
+\index{get\_\-case\_\-plateau\_\-silent@{get\_\-case\_\-plateau\_\-silent}!plateau.h@{plateau.h}}
+\subsubsection[{get\_\-case\_\-plateau\_\-silent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} get\_\-case\_\-plateau\_\-silent (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}
+
+
+retourne la case si elle existe, ou la case 0 sinon 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & la position horizontale sur le plateau \\
+\hline
+{\em y} & la position verticale sur le plateau \\
+\hline
+{\em p} & le plateau courant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Paraita Wohler
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & la position en abscisse \\
+\hline
+{\em y} & la position en ordonnée \\
+\hline
+{\em p} & le plateau courant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la case qui est en position x y dans p 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00929}{929} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{plateau_8h_a8918a9186794792439622dd39ca202a0}{
+\index{plateau.h@{plateau.h}!nombre\_\-coups@{nombre\_\-coups}}
+\index{nombre\_\-coups@{nombre\_\-coups}!plateau.h@{plateau.h}}
+\subsubsection[{nombre\_\-coups}]{\setlength{\rightskip}{0pt plus 5cm}int nombre\_\-coups (
+\begin{DoxyParamCaption}
+\item[{{\bf coup} $\ast$}]{set}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a8918a9186794792439622dd39ca202a0}
+
+
+retourne le nombre de coups dans set 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em set} & le tableau des coups. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Paraita Wohler 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00300}{300} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_aad79656ee484352eb698011738cbcefc}{
+\index{plateau.h@{plateau.h}!nouveau\_\-plateau@{nouveau\_\-plateau}}
+\index{nouveau\_\-plateau@{nouveau\_\-plateau}!plateau.h@{plateau.h}}
+\subsubsection[{nouveau\_\-plateau}]{\setlength{\rightskip}{0pt plus 5cm}{\bf plateau} nouveau\_\-plateau (
+\begin{DoxyParamCaption}
+\item[{{\bf joueur}}]{j1, }
+\item[{{\bf joueur}}]{j2}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_aad79656ee484352eb698011738cbcefc}
+
+
+Fonction de création d'un nouveau plateau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j1} & Le joueur blanc. \\
+\hline
+{\em j2} & Le joueur noir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+plateau Un plateau initialisé avec les pions en position initiale et associé aux joueurs. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00011}{11} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a8e9db1b793881c55d1261e3b735a5d48}{
+\index{plateau.h@{plateau.h}!plateau\_\-ajouter\_\-coup@{plateau\_\-ajouter\_\-coup}}
+\index{plateau\_\-ajouter\_\-coup@{plateau\_\-ajouter\_\-coup}!plateau.h@{plateau.h}}
+\subsubsection[{plateau\_\-ajouter\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}void plateau\_\-ajouter\_\-coup (
+\begin{DoxyParamCaption}
+\item[{{\bf coup}}]{c, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a8e9db1b793881c55d1261e3b735a5d48}
+
+
+Ajoute un coup dans l'historique du plateau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & Le coup à ajouter. \\
+\hline
+{\em p} & Le plateau auquel on ajoute le coup. En raison du risque improbable qu'une partie dure plus de 500 coups, l'historique au-\/delà est ignoré. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00093}{93} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a6616eb0e3e305b9dd718ffb0e83231d5}{
+\index{plateau.h@{plateau.h}!plateau\_\-appliquer\_\-coup@{plateau\_\-appliquer\_\-coup}}
+\index{plateau\_\-appliquer\_\-coup@{plateau\_\-appliquer\_\-coup}!plateau.h@{plateau.h}}
+\subsubsection[{plateau\_\-appliquer\_\-coup}]{\setlength{\rightskip}{0pt plus 5cm}void plateau\_\-appliquer\_\-coup (
+\begin{DoxyParamCaption}
+\item[{{\bf coup}}]{c, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a6616eb0e3e305b9dd718ffb0e83231d5}
+
+
+Met à jour le plateau en jouant le coup donné et passe la main au joueur suivant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & Le coup à jouer. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00141}{141} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_ac36612024e6663243c4f0605f2dd96c2}{
+\index{plateau.h@{plateau.h}!plateau\_\-deplacer\_\-pion@{plateau\_\-deplacer\_\-pion}}
+\index{plateau\_\-deplacer\_\-pion@{plateau\_\-deplacer\_\-pion}!plateau.h@{plateau.h}}
+\subsubsection[{plateau\_\-deplacer\_\-pion}]{\setlength{\rightskip}{0pt plus 5cm}int plateau\_\-deplacer\_\-pion (
+\begin{DoxyParamCaption}
+\item[{int}]{old\_\-position, }
+\item[{int}]{new\_\-position, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_ac36612024e6663243c4f0605f2dd96c2}
+
+
+Déplace un pion. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em old\_\-position} & La position de départ. \\
+\hline
+{\em new\_\-position} & La position d'arrivée. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int Vrai si le déplacement est possible, faux si un pion occupe déjà la case ou si on sort du plateau. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00070}{70} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a43fa8dd4c36ca967403900b75237a3d5}{
+\index{plateau.h@{plateau.h}!plateau\_\-partie\_\-finie@{plateau\_\-partie\_\-finie}}
+\index{plateau\_\-partie\_\-finie@{plateau\_\-partie\_\-finie}!plateau.h@{plateau.h}}
+\subsubsection[{plateau\_\-partie\_\-finie}]{\setlength{\rightskip}{0pt plus 5cm}int plateau\_\-partie\_\-finie (
+\begin{DoxyParamCaption}
+\item[{{\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a43fa8dd4c36ca967403900b75237a3d5}
+
+
+Teste si la partie est gagnée pour un des deux joueurs. 
+
+\begin{DoxyReturn}{Renvoie}
+0 si la partie n'est pas finie, couleur + 1 sinon. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00175}{175} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a4a8fb7c96fbeb8218d5ddbf3fe642901}{
+\index{plateau.h@{plateau.h}!plateau\_\-prendre\_\-pion@{plateau\_\-prendre\_\-pion}}
+\index{plateau\_\-prendre\_\-pion@{plateau\_\-prendre\_\-pion}!plateau.h@{plateau.h}}
+\subsubsection[{plateau\_\-prendre\_\-pion}]{\setlength{\rightskip}{0pt plus 5cm}int plateau\_\-prendre\_\-pion (
+\begin{DoxyParamCaption}
+\item[{int}]{position, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a4a8fb7c96fbeb8218d5ddbf3fe642901}
+
+
+Prend le pion de la case \char`\"{}position\char`\"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & Position de la case sur laquelle se trouve le pion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int Vrai si la prise est effectuée, faux si la case est vide ou si on sort du plateau. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00084}{84} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a69dc99f7c855cdf8bf569f8b26ae6689}{
+\index{plateau.h@{plateau.h}!print\_\-case@{print\_\-case}}
+\index{print\_\-case@{print\_\-case}!plateau.h@{plateau.h}}
+\subsubsection[{print\_\-case}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-case (
+\begin{DoxyParamCaption}
+\item[{{\bf case\_\-plateau}}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a69dc99f7c855cdf8bf569f8b26ae6689}
+
+
+Affiche les informations sur la case (à des fins de test). 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & La case à afficher. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00120}{120} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_ade9b690d9493e82b264dcea4d08abd5a}{
+\index{plateau.h@{plateau.h}!print\_\-liste\_\-coups@{print\_\-liste\_\-coups}}
+\index{print\_\-liste\_\-coups@{print\_\-liste\_\-coups}!plateau.h@{plateau.h}}
+\subsubsection[{print\_\-liste\_\-coups}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-liste\_\-coups (
+\begin{DoxyParamCaption}
+\item[{{\bf coup} $\ast$}]{l}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_ade9b690d9493e82b264dcea4d08abd5a}
+
+
+affiche la liste des coups dans l. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & la liste des coups que l'on veut afficher. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Paraita Wohler 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00269}{269} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a5b1f6227bf2bab71a07a531c49270b51}{
+\index{plateau.h@{plateau.h}!printCoup@{printCoup}}
+\index{printCoup@{printCoup}!plateau.h@{plateau.h}}
+\subsubsection[{printCoup}]{\setlength{\rightskip}{0pt plus 5cm}void printCoup (
+\begin{DoxyParamCaption}
+\item[{const {\bf coup}}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a5b1f6227bf2bab71a07a531c49270b51}
+
+
+print les infos d'un coup 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & le coup dont on veut les informations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Paraita Wohler 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00234}{234} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a4066fdb86d7d54a9256fa727995f47fd}{
+\index{plateau.h@{plateau.h}!set\_\-case\_\-en\_\-surbrillance@{set\_\-case\_\-en\_\-surbrillance}}
+\index{set\_\-case\_\-en\_\-surbrillance@{set\_\-case\_\-en\_\-surbrillance}!plateau.h@{plateau.h}}
+\subsubsection[{set\_\-case\_\-en\_\-surbrillance}]{\setlength{\rightskip}{0pt plus 5cm}void set\_\-case\_\-en\_\-surbrillance (
+\begin{DoxyParamCaption}
+\item[{int}]{numero, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a4066fdb86d7d54a9256fa727995f47fd}
+
+
+Met la case en surbrillance. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em numero} & Numéro de la case à mettre en surbrillance (selon la notation officielle). \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00125}{125} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+
+\hypertarget{plateau_8h_a98033598d0f16369d8529f7c5ab3e3fd}{
+\index{plateau.h@{plateau.h}!set\_\-pion\_\-en\_\-surbrillance@{set\_\-pion\_\-en\_\-surbrillance}}
+\index{set\_\-pion\_\-en\_\-surbrillance@{set\_\-pion\_\-en\_\-surbrillance}!plateau.h@{plateau.h}}
+\subsubsection[{set\_\-pion\_\-en\_\-surbrillance}]{\setlength{\rightskip}{0pt plus 5cm}void set\_\-pion\_\-en\_\-surbrillance (
+\begin{DoxyParamCaption}
+\item[{int}]{numero, }
+\item[{{\bf plateau} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{plateau_8h_a98033598d0f16369d8529f7c5ab3e3fd}
+
+
+Met un pion en surbrillance. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em numero} & Numéro de la case sur laquelle se trouve le pion à mettre en surbrillance (selon la notation officielle). \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{plateau_8c_source_l00129}{129} du fichier \hyperlink{plateau_8c_source}{plateau.c}.
+

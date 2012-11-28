@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames:  Fichier source de fonction_evaluation.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>fonction_evaluation.c</h1>  </div>
+</div>
+<div class="contents">
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="fonction__evaluation_8h.html" title="La fonction d&amp;#39;evaluation de l&amp;#39;algorithme MinMax. Renvoie un double compris entre -1 et 1 cara...">fonction_evaluation.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 <span class="keywordtype">double</span> fct_eval(<span class="keyword">const</span> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p){
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005         <span class="keywordtype">int</span> i;
+<a name="l00006"></a>00006         <span class="keywordtype">int</span> val;
+<a name="l00007"></a>00007         <span class="keywordtype">double</span> total = 0;
+<a name="l00008"></a>00008         <span class="keywordtype">double</span> denominateur = 1; <span class="comment">//on divisera le tout par le total des valeurs des cases pour retomber entre -1 et 1.</span>
+<a name="l00009"></a>00009         
+<a name="l00010"></a>00010         <span class="keywordflow">for</span>(i = 1; i &lt; 51 ; i++){ <span class="comment">//Pour chaque case</span>
+<a name="l00011"></a>00011                 <span class="keywordflow">if</span>(!p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>){ <span class="comment">//si elle est occupee</span>
+<a name="l00012"></a>00012                         val = valeur_case(p, &amp;(p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i])); <span class="comment">//on calcule sa valeur</span>
+<a name="l00013"></a>00013                         denominateur += val;
+<a name="l00014"></a>00014                         <span class="keywordflow">if</span>(p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].pion.couleur == p-&gt;<a class="code" href="structplateau.html#ab38c06b0c7e61b9eeb63b04c5e5bc652">tour</a>.<a class="code" href="structjoueur.html#a057f95a41503a890f27c651969ffac8d">couleur</a>){ <span class="comment">//on ajoute ou soustrait la valeur selon le joueur auquel appartient le pion.</span>
+<a name="l00015"></a>00015                                 total += val;
+<a name="l00016"></a>00016                         }<span class="keywordflow">else</span>{
+<a name="l00017"></a>00017                                 total -= val;
+<a name="l00018"></a>00018                         }
+<a name="l00019"></a>00019                 }
+<a name="l00020"></a>00020         }
+<a name="l00021"></a>00021         
+<a name="l00022"></a>00022         <span class="keywordflow">return</span> total / denominateur;
+<a name="l00023"></a>00023 }
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="keywordtype">int</span> valeur_case(<span class="keyword">const</span> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> * p, <span class="keyword">const</span> <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> * c){
+<a name="l00026"></a>00026         <span class="keywordflow">if</span>(c-&gt;pion.<a class="code" href="structpion.html#a13d497ed763d6eba18df86caf4c85861">est_dame</a>) <span class="keywordflow">return</span> 300; <span class="comment">//une dame vaut basiquement trois fois un pion.</span>
+<a name="l00027"></a>00027         <span class="keywordtype">int</span> r = rang(c);
+<a name="l00028"></a>00028         <span class="keywordflow">if</span>(est_isole(p,c,r)) <span class="keywordflow">return</span> 75 + r*r; <span class="comment">//un pion isole vaut 75 de base, plus un bonus selon son rang.</span>
+<a name="l00029"></a>00029         <span class="keywordflow">return</span> 100 + r*r; <span class="comment">//un pion non isole vaut 100 de base, plus un bonus selon son rang.</span>
+<a name="l00030"></a>00030 }
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="fonction__evaluation_8h.html#af8b5f84ce8e389aa6afa02c33871c69d">00032</a> <span class="keywordtype">int</span> rang(<span class="keyword">const</span> <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> * c){
+<a name="l00033"></a>00033         <span class="keywordtype">int</span> res = (c-&gt;<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a> - 1) / 5; <span class="comment">//on retrouve la ligne sur laquelle se trouve le pion.</span>
+<a name="l00034"></a>00034         <span class="keywordflow">if</span>(c-&gt;pion.couleur == noir) <span class="keywordflow">return</span> res; <span class="comment">//apres, son rang depend de sa couleur.</span>
+<a name="l00035"></a>00035         <span class="keywordflow">return</span> 8 - res;
+<a name="l00036"></a>00036 }
+<a name="l00037"></a>00037 
+<a name="l00038"></a><a class="code" href="fonction__evaluation_8h.html#ad2e3a41e13c24a4f05dde2144f7a9124">00038</a> <span class="keywordtype">int</span> est_isole(<span class="keyword">const</span> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> * p, <span class="keyword">const</span> <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> * c, <span class="keywordtype">int</span> rang){
+<a name="l00039"></a>00039         <span class="keywordtype">int</span> n = c-&gt;<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a>;
+<a name="l00040"></a>00040         <span class="keywordflow">if</span>(rang == 0 || n % 10 == 5 || n % 10 == 6) <span class="keywordflow">return</span> 0; <span class="comment">//si le pion est sur un bord, il n&#39;est pas considere comme isole.</span>
+<a name="l00041"></a>00041         <span class="keywordtype">int</span> s; <span class="comment">//signe</span>
+<a name="l00042"></a>00042         <span class="keywordflow">if</span>((rang % 2 == 1 &amp;&amp; c-&gt;pion.couleur == blanc) || (rang % 2 == 0 &amp;&amp; c-&gt;pion.couleur == noir)){
+<a name="l00043"></a>00043                 s = -1;
+<a name="l00044"></a>00044         }<span class="keywordflow">else</span>{
+<a name="l00045"></a>00045                 s = 1;
+<a name="l00046"></a>00046         }
+<a name="l00047"></a>00047         <span class="keywordflow">if</span>((p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n + s * 5].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n + s * 5].<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> != c-&gt;pion.couleur)
+<a name="l00048"></a>00048         &amp;&amp; (p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n + s * 4].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n + s * 4].<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> != c-&gt;pion.couleur)
+<a name="l00049"></a>00049         &amp;&amp; (p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n - s * 5].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n - s * 5].<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> != c-&gt;pion.couleur)
+<a name="l00050"></a>00050         &amp;&amp; (p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n - s * 6].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[n - s * 6].<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> != c-&gt;pion.couleur)){ <span class="comment">//si les quatres cases adjacentes sont toutes libres ou occupees par un pion adverse, le pion est considere comme isole.</span>
+<a name="l00051"></a>00051                 <span class="keywordflow">return</span> 1;
+<a name="l00052"></a>00052         }
+<a name="l00053"></a>00053         <span class="keywordflow">return</span> 0;
+<a name="l00054"></a>00054 }
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:50 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

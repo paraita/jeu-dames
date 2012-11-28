@@ -1,0 +1,53 @@
+\hypertarget{arbre_8h}{
+\section{Référence du fichier arbre.h}
+\label{arbre_8h}\index{arbre.h@{arbre.h}}
+}
+
+
+Implémantation des arbres.  
+
+
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=132pt]{arbre_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structarbre}{arbre}
+\begin{DoxyCompactList}\small\item\em Un arbre à une valeur (la racine) et un certain nombre de fils. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Définition de type}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{arbre_8h_adc50a5473fc43e43d9591a8ff5e3fa5c}{
+typedef struct \hyperlink{structarbre}{arbre} {\bfseries arbre}}
+\label{arbre_8h_adc50a5473fc43e43d9591a8ff5e3fa5c}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{arbre_8h_aa76e6b4b8f176cc99eb68cd16ed968a6}{
+int \hyperlink{arbre_8h_aa76e6b4b8f176cc99eb68cd16ed968a6}{arbre\_\-est\_\-feuille} (\hyperlink{structarbre}{arbre} t)}
+\label{arbre_8h_aa76e6b4b8f176cc99eb68cd16ed968a6}
+
+\begin{DoxyCompactList}\small\item\em Renvoie vrai si l'arbre est une feuille. \item\end{DoxyCompactList}\item 
+\hypertarget{arbre_8h_a3ee0f190b2bd5e4f94d53c3ad6730c52}{
+void \hyperlink{arbre_8h_a3ee0f190b2bd5e4f94d53c3ad6730c52}{print\_\-arbre} (\hyperlink{structarbre}{arbre} t)}
+\label{arbre_8h_a3ee0f190b2bd5e4f94d53c3ad6730c52}
+
+\begin{DoxyCompactList}\small\item\em Affiche l'arbre en parcours préfixe \char`\"{}à la Scheme\char`\"{}, c.à.d. de la forme (racine fils1 fils2 ...). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Implémantation des arbres. \begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{arbre_8h_source}{arbre.h}.
+

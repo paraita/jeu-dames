@@ -1,0 +1,251 @@
+\hypertarget{regles_8h}{
+\section{Référence du fichier regles.h}
+\label{regles_8h}\index{regles.h@{regles.h}}
+}
+
+
+module des regles et d'enumeration des coups.  
+
+
+{\ttfamily \#include \char`\"{}plateau.h\char`\"{}}\par
+Graphe des dépendances par inclusion de regles.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{regles_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=364pt]{regles_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structcoup}{coup} $\ast$ \hyperlink{regles_8h_a96d861d76d7070b120ca385c13aad984}{coupsPossibles} (const \hyperlink{structcase__plateau}{case\_\-plateau} c, const \hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em retourne le tableau des coups possible pour un coup donné. \item\end{DoxyCompactList}\item 
+\hyperlink{structcoup}{coup} $\ast$ \hyperlink{regles_8h_a7c5456f7077282f58fc370d432ecdf73}{getCoups} (const \hyperlink{structjoueur}{joueur} j, const \hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em retourne le tableau des coups possible pour le joueur donné. \item\end{DoxyCompactList}\item 
+\hypertarget{regles_8h_a53ba636d2c102abd9c91db81bae620f4}{
+\hyperlink{structcoup}{coup} $\ast$ {\bfseries getCoupsMax} (const \hyperlink{structcoup}{coup} $\ast$cp)}
+\label{regles_8h_a53ba636d2c102abd9c91db81bae620f4}
+
+\item 
+\hyperlink{structcoup}{coup} $\ast$ \hyperlink{regles_8h_a8cad1d75ddb058fd96ae940dd593080e}{get\_\-deplacements} (const \hyperlink{structcase__plateau}{case\_\-plateau} c, const \hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em retourne les deplacements possibles du pion de la case donné \item\end{DoxyCompactList}\item 
+\hyperlink{structcoup}{coup} $\ast$ \hyperlink{regles_8h_a1bff1ac214ab2332d8b7e3a0b79f262c}{completer\_\-coup\_\-dame} (const \hyperlink{structcoup}{coup} c, int mvt, \hyperlink{structplateau}{plateau} p)
+\item 
+int \hyperlink{regles_8h_a69e7dc6de03ec30120b2a49ef6bb2f51}{get\_\-possible\_\-case\_\-pos} (int c, int diag, \hyperlink{structplateau}{plateau} p)
+\item 
+int \hyperlink{regles_8h_aec569c705e9ec403a06151aba2092c52}{compare\_\-coups} (\hyperlink{structcoup}{coup} $\ast$liste1, \hyperlink{structcoup}{coup} $\ast$liste2)
+\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{regles_8h_a60a8f706865d0ae9087f8d65d4667655}{get\_\-case\_\-plateau\_\-silent} (int x, int y, \hyperlink{structplateau}{plateau} p)
+\begin{DoxyCompactList}\small\item\em retourne la case si elle existe, ou la case 0 sinon \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+module des regles et d'enumeration des coups. \begin{DoxyAuthor}{Auteur}
+Paraita Wohler 
+\end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{regles_8h_source}{regles.h}.
+
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{regles_8h_aec569c705e9ec403a06151aba2092c52}{
+\index{regles.h@{regles.h}!compare\_\-coups@{compare\_\-coups}}
+\index{compare\_\-coups@{compare\_\-coups}!regles.h@{regles.h}}
+\subsubsection[{compare\_\-coups}]{\setlength{\rightskip}{0pt plus 5cm}int compare\_\-coups (
+\begin{DoxyParamCaption}
+\item[{{\bf coup} $\ast$}]{liste1, }
+\item[{{\bf coup} $\ast$}]{liste2}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_aec569c705e9ec403a06151aba2092c52}
+
+\begin{DoxyParams}{Paramètres}
+{\em liste1} & la premiere liste des coups \\
+\hline
+{\em liste2} & la seconde liste des coups \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si liste 1 == liste2, sinon 1 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00913}{913} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{regles_8h_a1bff1ac214ab2332d8b7e3a0b79f262c}{
+\index{regles.h@{regles.h}!completer\_\-coup\_\-dame@{completer\_\-coup\_\-dame}}
+\index{completer\_\-coup\_\-dame@{completer\_\-coup\_\-dame}!regles.h@{regles.h}}
+\subsubsection[{completer\_\-coup\_\-dame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf coup}$\ast$ completer\_\-coup\_\-dame (
+\begin{DoxyParamCaption}
+\item[{const {\bf coup}}]{c, }
+\item[{int}]{mvt, }
+\item[{{\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_a1bff1ac214ab2332d8b7e3a0b79f262c}
+
+\begin{DoxyParams}{Paramètres}
+{\em mvt} & La diagonale du mouvement du coup précedent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La liste des coups possibles commençant par le coup c. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Bastien Auda 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00320}{320} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{regles_8h_a96d861d76d7070b120ca385c13aad984}{
+\index{regles.h@{regles.h}!coupsPossibles@{coupsPossibles}}
+\index{coupsPossibles@{coupsPossibles}!regles.h@{regles.h}}
+\subsubsection[{coupsPossibles}]{\setlength{\rightskip}{0pt plus 5cm}{\bf coup}$\ast$ coupsPossibles (
+\begin{DoxyParamCaption}
+\item[{const {\bf case\_\-plateau}}]{c, }
+\item[{const {\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_a96d861d76d7070b120ca385c13aad984}
+
+
+retourne le tableau des coups possible pour un coup donné. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & La case qui contient le pion de la recherche. \\
+\hline
+{\em p} & la plateau courant. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00024}{24} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{regles_8h_a60a8f706865d0ae9087f8d65d4667655}{
+\index{regles.h@{regles.h}!get\_\-case\_\-plateau\_\-silent@{get\_\-case\_\-plateau\_\-silent}}
+\index{get\_\-case\_\-plateau\_\-silent@{get\_\-case\_\-plateau\_\-silent}!regles.h@{regles.h}}
+\subsubsection[{get\_\-case\_\-plateau\_\-silent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} get\_\-case\_\-plateau\_\-silent (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{{\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_a60a8f706865d0ae9087f8d65d4667655}
+
+
+retourne la case si elle existe, ou la case 0 sinon 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & la position horizontale sur le plateau \\
+\hline
+{\em y} & la position verticale sur le plateau \\
+\hline
+{\em p} & le plateau courant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Auteur}
+Paraita Wohler
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & la position en abscisse \\
+\hline
+{\em y} & la position en ordonnée \\
+\hline
+{\em p} & le plateau courant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la case qui est en position x y dans p 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00929}{929} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{regles_8h_a8cad1d75ddb058fd96ae940dd593080e}{
+\index{regles.h@{regles.h}!get\_\-deplacements@{get\_\-deplacements}}
+\index{get\_\-deplacements@{get\_\-deplacements}!regles.h@{regles.h}}
+\subsubsection[{get\_\-deplacements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf coup}$\ast$ get\_\-deplacements (
+\begin{DoxyParamCaption}
+\item[{const {\bf case\_\-plateau}}]{c, }
+\item[{const {\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_a8cad1d75ddb058fd96ae940dd593080e}
+
+
+retourne les deplacements possibles du pion de la case donné 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & la case ou est situé le pion dont on va chercher les déplacements possibles. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00859}{859} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{regles_8h_a69e7dc6de03ec30120b2a49ef6bb2f51}{
+\index{regles.h@{regles.h}!get\_\-possible\_\-case\_\-pos@{get\_\-possible\_\-case\_\-pos}}
+\index{get\_\-possible\_\-case\_\-pos@{get\_\-possible\_\-case\_\-pos}!regles.h@{regles.h}}
+\subsubsection[{get\_\-possible\_\-case\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-possible\_\-case\_\-pos (
+\begin{DoxyParamCaption}
+\item[{int}]{c, }
+\item[{int}]{diag, }
+\item[{{\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_a69e7dc6de03ec30120b2a49ef6bb2f51}
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & Notation officielle de la case de départ. \\
+\hline
+{\em diag} & Diagonale dans laquelle on recherche. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 si pas de cpions à prendre, la case sur laquelle se trouve le pion à prendre sinon. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00249}{249} du fichier \hyperlink{regles_8c_source}{regles.c}.
+
+\hypertarget{regles_8h_a7c5456f7077282f58fc370d432ecdf73}{
+\index{regles.h@{regles.h}!getCoups@{getCoups}}
+\index{getCoups@{getCoups}!regles.h@{regles.h}}
+\subsubsection[{getCoups}]{\setlength{\rightskip}{0pt plus 5cm}{\bf coup}$\ast$ getCoups (
+\begin{DoxyParamCaption}
+\item[{const {\bf joueur}}]{j, }
+\item[{const {\bf plateau}}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{regles_8h_a7c5456f7077282f58fc370d432ecdf73}
+
+
+retourne le tableau des coups possible pour le joueur donné. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em j} & le joueur dont on chercher tout les coups \\
+\hline
+{\em p} & la plateau courant. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{regles_8c_source_l00777}{777} du fichier \hyperlink{regles_8c_source}{regles.c}.
+

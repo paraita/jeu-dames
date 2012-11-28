@@ -1,0 +1,293 @@
+\begin{theindex}
+
+  \item {afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre}
+    \subitem {fonctionInterface.h}, \hyperpage{24}
+  \item {arbre}, \hyperpage{5}
+    \subitem {fils}, \hyperpage{6}
+    \subitem {nb\_\discretionary {-}{}{}fils}, \hyperpage{6}
+  \item {arbre.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {Carre\_\discretionary {-}{}{}clair}, \hyperpage{6}
+  \item {carre\_\discretionary {-}{}{}clair}
+    \subitem {fonctionInterface.h}, \hyperpage{25}
+  \item {Carre\_\discretionary {-}{}{}fonce}, \hyperpage{6}
+  \item {carre\_\discretionary {-}{}{}fonce}
+    \subitem {fonctionInterface.h}, \hyperpage{25}
+  \item {carre\_\discretionary {-}{}{}surbrillance}
+    \subitem {fonctionInterface.h}, \hyperpage{26}
+  \item {case\_\discretionary {-}{}{}plateau}, \hyperpage{7}
+    \subitem {couleur}, \hyperpage{8}
+    \subitem {en\_\discretionary {-}{}{}surbrillance}, \hyperpage{8}
+    \subitem {est\_\discretionary {-}{}{}libre}, \hyperpage{8}
+    \subitem {notation\_\discretionary {-}{}{}officielle}, 
+		\hyperpage{8}
+  \item {cases}
+    \subitem {plateau}, \hyperpage{14}
+  \item {charger\_\discretionary {-}{}{}partie}
+    \subitem {moteur.h}, \hyperpage{33}
+  \item {chemin}
+    \subitem {coup}, \hyperpage{9}
+  \item {clique\_\discretionary {-}{}{}souris}
+    \subitem {fonctionInterface.h}, \hyperpage{24}
+  \item {clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur}
+    \subitem {fonctionInterface.h}, \hyperpage{24}
+  \item {commencer\_\discretionary {-}{}{}tour}
+    \subitem {moteur.h}, \hyperpage{33}
+  \item {commentaire}
+    \subitem {coup}, \hyperpage{9}
+  \item {compare\_\discretionary {-}{}{}coups}
+    \subitem {regles.h}, \hyperpage{48}
+  \item {completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame}
+    \subitem {regles.h}, \hyperpage{48}
+  \item {constantes.h}, \hyperpage{16}
+  \item {control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click}
+    \subitem {fonctionInterface.h}, \hyperpage{25}
+  \item {couleur}
+    \subitem {case\_\discretionary {-}{}{}plateau}, \hyperpage{8}
+    \subitem {joueur}, \hyperpage{11}
+  \item {coup}, \hyperpage{8}
+    \subitem {chemin}, \hyperpage{9}
+    \subitem {commentaire}, \hyperpage{9}
+    \subitem {prises}, \hyperpage{10}
+    \subitem {tc}, \hyperpage{10}
+  \item {coupsPossibles}
+    \subitem {regles.h}, \hyperpage{48}
+
+  \indexspace
+
+  \item {en\_\discretionary {-}{}{}surbrillance}
+    \subitem {case\_\discretionary {-}{}{}plateau}, \hyperpage{8}
+    \subitem {pion}, \hyperpage{11}
+  \item {est\_\discretionary {-}{}{}dame}
+    \subitem {pion}, \hyperpage{11}
+  \item {est\_\discretionary {-}{}{}humain}
+    \subitem {joueur}, \hyperpage{11}
+  \item {est\_\discretionary {-}{}{}libre}
+    \subitem {case\_\discretionary {-}{}{}plateau}, \hyperpage{8}
+  \item {est\_\discretionary {-}{}{}prenable}
+    \subitem {plateau.h}, \hyperpage{40}
+
+  \indexspace
+
+  \item {fils}
+    \subitem {arbre}, \hyperpage{6}
+  \item {fonction\_\discretionary {-}{}{}evaluation.h}, \hyperpage{18}
+  \item {fonctionInterface.h}, \hyperpage{21}
+    \subitem {afficher\_\discretionary {-}{}{}ecran\_\discretionary {-}{}{}depart\_\discretionary {-}{}{}neutre}, 
+		\hyperpage{24}
+    \subitem {carre\_\discretionary {-}{}{}clair}, \hyperpage{25}
+    \subitem {carre\_\discretionary {-}{}{}fonce}, \hyperpage{25}
+    \subitem {carre\_\discretionary {-}{}{}surbrillance}, 
+		\hyperpage{26}
+    \subitem {clique\_\discretionary {-}{}{}souris}, \hyperpage{24}
+    \subitem {clique\_\discretionary {-}{}{}souris\_\discretionary {-}{}{}choix\_\discretionary {-}{}{}joueur}, 
+		\hyperpage{24}
+    \subitem {control\_\discretionary {-}{}{}premier\_\discretionary {-}{}{}click}, 
+		\hyperpage{25}
+    \subitem {pion\_\discretionary {-}{}{}clair}, \hyperpage{26}
+    \subitem {pion\_\discretionary {-}{}{}fonce}, \hyperpage{26}
+    \subitem {position\_\discretionary {-}{}{}souris}, \hyperpage{25}
+    \subitem {screen}, \hyperpage{26}
+
+  \indexspace
+
+  \item {get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau}
+    \subitem {plateau.h}, \hyperpage{41}
+  \item {get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}
+    \subitem {plateau.h}, \hyperpage{41}
+    \subitem {regles.h}, \hyperpage{49}
+  \item {get\_\discretionary {-}{}{}deplacements}
+    \subitem {regles.h}, \hyperpage{49}
+  \item {get\_\discretionary {-}{}{}plateau}
+    \subitem {moteur.h}, \hyperpage{34}
+  \item {get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos}
+    \subitem {regles.h}, \hyperpage{49}
+  \item {getCoups}
+    \subitem {regles.h}, \hyperpage{49}
+
+  \indexspace
+
+  \item {hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles}
+    \subitem {moteur.h}, \hyperpage{34}
+  \item {hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup}
+    \subitem {moteur.h}, \hyperpage{34}
+  \item {hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables}
+    \subitem {moteur.h}, \hyperpage{34}
+  \item {historique}
+    \subitem {plateau}, \hyperpage{14}
+
+  \indexspace
+
+  \item {i}
+    \subitem {plateau}, \hyperpage{14}
+  \item {initialiser\_\discretionary {-}{}{}partie}
+    \subitem {moteur.h}, \hyperpage{35}
+
+  \indexspace
+
+  \item {jouer\_\discretionary {-}{}{}coup}
+    \subitem {moteur.h}, \hyperpage{35}
+  \item {jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia}
+    \subitem {moteur.h}, \hyperpage{35}
+  \item {jouerIA}
+    \subitem {min-\/max.h}, \hyperpage{30}
+  \item {joueur}, \hyperpage{10}
+    \subitem {couleur}, \hyperpage{11}
+    \subitem {est\_\discretionary {-}{}{}humain}, \hyperpage{11}
+
+  \indexspace
+
+  \item {min-\/max.h}, \hyperpage{27}
+    \subitem {jouerIA}, \hyperpage{30}
+  \item {moteur.h}, \hyperpage{30}
+    \subitem {charger\_\discretionary {-}{}{}partie}, \hyperpage{33}
+    \subitem {commencer\_\discretionary {-}{}{}tour}, \hyperpage{33}
+    \subitem {get\_\discretionary {-}{}{}plateau}, \hyperpage{34}
+    \subitem {hint\_\discretionary {-}{}{}deplacements\_\discretionary {-}{}{}possibles}, 
+		\hyperpage{34}
+    \subitem {hint\_\discretionary {-}{}{}meilleur\_\discretionary {-}{}{}coup}, 
+		\hyperpage{34}
+    \subitem {hint\_\discretionary {-}{}{}pions\_\discretionary {-}{}{}jouables}, 
+		\hyperpage{34}
+    \subitem {initialiser\_\discretionary {-}{}{}partie}, 
+		\hyperpage{35}
+    \subitem {jouer\_\discretionary {-}{}{}coup}, \hyperpage{35}
+    \subitem {jouer\_\discretionary {-}{}{}tour\_\discretionary {-}{}{}ia}, 
+		\hyperpage{35}
+    \subitem {p\_\discretionary {-}{}{}jeu}, \hyperpage{37}
+    \subitem {partie\_\discretionary {-}{}{}terminee}, \hyperpage{35}
+    \subitem {sauvegarder\_\discretionary {-}{}{}partie}, 
+		\hyperpage{36}
+    \subitem {set\_\discretionary {-}{}{}difficulte}, \hyperpage{36}
+    \subitem {set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain}, 
+		\hyperpage{36}
+
+  \indexspace
+
+  \item {nb\_\discretionary {-}{}{}fils}
+    \subitem {arbre}, \hyperpage{6}
+  \item {nombre\_\discretionary {-}{}{}coups}
+    \subitem {plateau.h}, \hyperpage{41}
+  \item {notation\_\discretionary {-}{}{}officielle}
+    \subitem {case\_\discretionary {-}{}{}plateau}, \hyperpage{8}
+  \item {nouveau\_\discretionary {-}{}{}plateau}
+    \subitem {plateau.h}, \hyperpage{42}
+
+  \indexspace
+
+  \item {p\_\discretionary {-}{}{}jeu}
+    \subitem {moteur.h}, \hyperpage{37}
+  \item {partie\_\discretionary {-}{}{}terminee}
+    \subitem {moteur.h}, \hyperpage{35}
+  \item {pion}, \hyperpage{11}
+    \subitem {en\_\discretionary {-}{}{}surbrillance}, \hyperpage{11}
+    \subitem {est\_\discretionary {-}{}{}dame}, \hyperpage{11}
+  \item {Pion\_\discretionary {-}{}{}clair}, \hyperpage{12}
+  \item {pion\_\discretionary {-}{}{}clair}
+    \subitem {fonctionInterface.h}, \hyperpage{26}
+  \item {Pion\_\discretionary {-}{}{}fonce}, \hyperpage{12}
+  \item {pion\_\discretionary {-}{}{}fonce}
+    \subitem {fonctionInterface.h}, \hyperpage{26}
+  \item {plateau}, \hyperpage{13}
+    \subitem {cases}, \hyperpage{14}
+    \subitem {historique}, \hyperpage{14}
+    \subitem {i}, \hyperpage{14}
+    \subitem {tour}, \hyperpage{14}
+  \item {plateau.h}, \hyperpage{37}
+    \subitem {est\_\discretionary {-}{}{}prenable}, \hyperpage{40}
+    \subitem {get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau}, 
+		\hyperpage{41}
+    \subitem {get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}, 
+		\hyperpage{41}
+    \subitem {nombre\_\discretionary {-}{}{}coups}, \hyperpage{41}
+    \subitem {nouveau\_\discretionary {-}{}{}plateau}, \hyperpage{42}
+    \subitem {plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup}, 
+		\hyperpage{42}
+    \subitem {plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup}, 
+		\hyperpage{42}
+    \subitem {plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion}, 
+		\hyperpage{42}
+    \subitem {plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie}, 
+		\hyperpage{43}
+    \subitem {plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion}, 
+		\hyperpage{43}
+    \subitem {print\_\discretionary {-}{}{}case}, \hyperpage{43}
+    \subitem {print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups}, 
+		\hyperpage{43}
+    \subitem {printCoup}, \hyperpage{44}
+    \subitem {set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}, 
+		\hyperpage{44}
+    \subitem {set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}, 
+		\hyperpage{44}
+    \subitem {t}, \hyperpage{40}
+    \subitem {type\_\discretionary {-}{}{}coup}, \hyperpage{40}
+    \subitem {x}, \hyperpage{40}
+  \item {plateau\_\discretionary {-}{}{}ajouter\_\discretionary {-}{}{}coup}
+    \subitem {plateau.h}, \hyperpage{42}
+  \item {plateau\_\discretionary {-}{}{}appliquer\_\discretionary {-}{}{}coup}
+    \subitem {plateau.h}, \hyperpage{42}
+  \item {plateau\_\discretionary {-}{}{}deplacer\_\discretionary {-}{}{}pion}
+    \subitem {plateau.h}, \hyperpage{42}
+  \item {plateau\_\discretionary {-}{}{}partie\_\discretionary {-}{}{}finie}
+    \subitem {plateau.h}, \hyperpage{43}
+  \item {plateau\_\discretionary {-}{}{}prendre\_\discretionary {-}{}{}pion}
+    \subitem {plateau.h}, \hyperpage{43}
+  \item {position\_\discretionary {-}{}{}souris}
+    \subitem {fonctionInterface.h}, \hyperpage{25}
+  \item {print\_\discretionary {-}{}{}case}
+    \subitem {plateau.h}, \hyperpage{43}
+  \item {print\_\discretionary {-}{}{}liste\_\discretionary {-}{}{}coups}
+    \subitem {plateau.h}, \hyperpage{43}
+  \item {printCoup}
+    \subitem {plateau.h}, \hyperpage{44}
+  \item {prises}
+    \subitem {coup}, \hyperpage{10}
+
+  \indexspace
+
+  \item {regles.h}, \hyperpage{46}
+    \subitem {compare\_\discretionary {-}{}{}coups}, \hyperpage{48}
+    \subitem {completer\_\discretionary {-}{}{}coup\_\discretionary {-}{}{}dame}, 
+		\hyperpage{48}
+    \subitem {coupsPossibles}, \hyperpage{48}
+    \subitem {get\_\discretionary {-}{}{}case\_\discretionary {-}{}{}plateau\_\discretionary {-}{}{}silent}, 
+		\hyperpage{49}
+    \subitem {get\_\discretionary {-}{}{}deplacements}, \hyperpage{49}
+    \subitem {get\_\discretionary {-}{}{}possible\_\discretionary {-}{}{}case\_\discretionary {-}{}{}pos}, 
+		\hyperpage{49}
+    \subitem {getCoups}, \hyperpage{49}
+
+  \indexspace
+
+  \item {sauvegarder\_\discretionary {-}{}{}partie}
+    \subitem {moteur.h}, \hyperpage{36}
+  \item {screen}
+    \subitem {fonctionInterface.h}, \hyperpage{26}
+  \item {set\_\discretionary {-}{}{}case\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}
+    \subitem {plateau.h}, \hyperpage{44}
+  \item {set\_\discretionary {-}{}{}difficulte}
+    \subitem {moteur.h}, \hyperpage{36}
+  \item {set\_\discretionary {-}{}{}joueur\_\discretionary {-}{}{}est\_\discretionary {-}{}{}humain}
+    \subitem {moteur.h}, \hyperpage{36}
+  \item {set\_\discretionary {-}{}{}pion\_\discretionary {-}{}{}en\_\discretionary {-}{}{}surbrillance}
+    \subitem {plateau.h}, \hyperpage{44}
+
+  \indexspace
+
+  \item {t}
+    \subitem {plateau.h}, \hyperpage{40}
+  \item {tc}
+    \subitem {coup}, \hyperpage{10}
+  \item {tour}
+    \subitem {plateau}, \hyperpage{14}
+  \item {type\_\discretionary {-}{}{}coup}
+    \subitem {plateau.h}, \hyperpage{40}
+
+  \indexspace
+
+  \item {x}
+    \subitem {plateau.h}, \hyperpage{40}
+
+\end{theindex}

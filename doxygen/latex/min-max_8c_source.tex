@@ -1,0 +1,115 @@
+\hypertarget{min-max_8c_source}{
+\section{min-\/max.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * min-max.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: 14 avr. 2011}
+00005 \textcolor{comment}{ *      Author: bastien}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#define maximum(a,b) (a>=b?a:b)}
+00009 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define minimum(a,b) (a<=b?a:b)}
+00010 \textcolor{preprocessor}{}
+00011 \textcolor{preprocessor}{#include <stdlib.h>}
+00012 \textcolor{preprocessor}{#include <time.h>}
+00013 
+00014 \textcolor{preprocessor}{#include "\hyperlink{min-max_8h}{min-max.h}"}
+00015 
+00016 \textcolor{keywordtype}{double} max(\hyperlink{structplateau}{plateau} p, \textcolor{keywordtype}{int} profondeur, \textcolor{keywordtype}{double} alpha, \textcolor{keywordtype}{double} beta);
+00017 \textcolor{keywordtype}{double} min(\hyperlink{structplateau}{plateau} p, \textcolor{keywordtype}{int} profondeur, \textcolor{keywordtype}{double} alpha, \textcolor{keywordtype}{double} beta);
+00018 
+\hypertarget{min-max_8c_source_l00019}{}\hyperlink{min-max_8h_a5ac518ee617eb3482548c57dd2c10807}{00019} \hyperlink{structcoup}{coup} jouerIA(\textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p, \textcolor{keywordtype}{int} profondeur) \{
+00020         srand(time(NULL));
+00021         \textcolor{keywordtype}{double} alpha = MINIMUM;
+00022         \textcolor{keywordtype}{double} beta = MAXIMUM;
+00023         \hyperlink{structcoup}{coup} res;
+00024         \hyperlink{structcoup}{coup} * coups\_possibles = getCoupsMax(getCoups(p.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour},p));
+00025 
+00026         \textcolor{keywordtype}{int} i = 0;
+00027         \hyperlink{structcoup}{coup} c;
+00028         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_possibles);
+00029 
+00030         res = coups\_possibles[rand() % nbCoups];
+00031 
+00032         \textcolor{comment}{/*if(nbCoups == 1) \{}
+00033 \textcolor{comment}{                return coups\_possibles[0];}
+00034 \textcolor{comment}{        \}}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{        while ( i < nbCoups) \{ // On parcours la liste des coups possibles}
+00037 \textcolor{comment}{                c = coups\_possibles[i];}
+00038 \textcolor{comment}{                plateau new\_p = p;}
+00039 \textcolor{comment}{                plateau\_appliquer\_coup(c,&new\_p);}
+00040 \textcolor{comment}{                double tmp = min(new\_p, profondeur - 1,alpha,beta);}
+00041 \textcolor{comment}{                if (tmp > alpha) \{ // si le coup est meilleur que le précedent, o
+      n le garde}
+00042 \textcolor{comment}{                        alpha = tmp;}
+00043 \textcolor{comment}{                        res = c;}
+00044 \textcolor{comment}{                \}}
+00045 \textcolor{comment}{                i++;}
+00046 \textcolor{comment}{        \}*/}
+00047         \textcolor{keywordflow}{return} res;
+00048 \}
+00049 
+00050 \textcolor{keywordtype}{double} max(\hyperlink{structplateau}{plateau} p, \textcolor{keywordtype}{int} profondeur, \textcolor{keywordtype}{double} alpha, \textcolor{keywordtype}{double} beta) \{
+00051 
+00052         \textcolor{keywordflow}{if} (plateau\_partie\_finie(p) || profondeur == 0) \{ \textcolor{comment}{/* si on arrive à la pr
+      ofondeur max ou que la partie est gangée/perdue, on renvoie l'évaluation */}
+00053                 \textcolor{comment}{/* TODO utiliser fonction d'évaluation */}
+00054                 \textcolor{keywordflow}{return} 0;\textcolor{comment}{//((rand() % 200) - 100.0) / 100.0;}
+00055         \} \textcolor{keywordflow}{else} \{
+00056                 \hyperlink{structcoup}{coup} * coups\_possibles = getCoupsMax(getCoups(p.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour},p));
+00057 
+00058                 \textcolor{keywordtype}{int} i = 0;
+00059                 \hyperlink{structcoup}{coup} c;
+00060                 \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_possibles);
+00061                 \textcolor{keywordflow}{while} (i < nbCoups) \{ \textcolor{comment}{/* On parcours la liste des coups possibles
+       */}
+00062                         c = coups\_possibles[i];
+00063                         \hyperlink{structplateau}{plateau} new\_p = p;
+00064                         plateau\_appliquer\_coup(c,&new\_p);
+00065                         alpha = maximum(alpha,min(new\_p, profondeur - 1,alpha,bet
+      a));
+00066 
+00067                         \textcolor{keywordflow}{if} (beta <= alpha) \{ \textcolor{comment}{/* si le coup est meilleur que le pr
+      écedent, on le garde */}
+00068                                 \textcolor{keywordflow}{return} alpha;
+00069                         \}
+00070                         i++;
+00071                 \}
+00072                 \textcolor{keywordflow}{return} alpha;
+00073         \}
+00074 
+00075 \}
+00076 
+00077 \textcolor{keywordtype}{double} min(\hyperlink{structplateau}{plateau} p, \textcolor{keywordtype}{int} profondeur, \textcolor{keywordtype}{double} alpha, \textcolor{keywordtype}{double} beta) \{
+00078         \textcolor{keywordflow}{if} (plateau\_partie\_finie(p) || profondeur == 0) \{ \textcolor{comment}{/* si on arrive à la pr
+      ofondeur max, on renvoie l'évaluation */}
+00079                 \textcolor{comment}{/* TODO utiliser fonction d'évaluation */}
+00080                 \textcolor{keywordflow}{return} 0;\textcolor{comment}{//((rand() % 200) - 100.0) / 100.0;}
+00081         \} \textcolor{keywordflow}{else} \{
+00082                 \hyperlink{structcoup}{coup} * coups\_possibles = getCoupsMax(getCoups(p.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour},p));
+00083 
+00084                 \textcolor{keywordtype}{int} i = 0;
+00085                 \hyperlink{structcoup}{coup} c;
+00086                 \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_possibles);
+00087                 \textcolor{keywordflow}{while} ( i < nbCoups ) \{ \textcolor{comment}{/* On parcours la liste des coups possibl
+      es */}
+00088                         printf(\textcolor{stringliteral}{"evaluation min du coup : %i\(\backslash\)n"},i);
+00089                         c  = coups\_possibles[i];
+00090                         \hyperlink{structplateau}{plateau} new\_p = p;
+00091                         plateau\_appliquer\_coup(c,&new\_p);
+00092                         beta = minimum(beta, max(new\_p, profondeur - 1,alpha,beta
+      ));
+00093                         \textcolor{keywordflow}{if} (alpha >= beta) \{ \textcolor{comment}{/* coupure beta */}
+00094                                 \textcolor{keywordflow}{return} beta;
+00095                         \}
+00096                         i++;
+00097                 \}
+00098                 \textcolor{keywordflow}{return} beta;
+00099         \}
+00100 
+00101 \}
+\end{DoxyCode}

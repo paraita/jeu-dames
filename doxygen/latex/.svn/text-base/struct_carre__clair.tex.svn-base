@@ -1,0 +1,43 @@
+\hypertarget{struct_carre__clair}{
+\section{Référence de la structure Carre\_\-clair}
+\label{struct_carre__clair}\index{Carre\_\-clair@{Carre\_\-clair}}
+}
+
+
+{\ttfamily \#include $<$constantes.h$>$}
+
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_carre__clair_a173f25d2fd7c653d77ca8174ba4f636d}{
+int {\bfseries est\_\-libre}}
+\label{struct_carre__clair_a173f25d2fd7c653d77ca8174ba4f636d}
+
+\item 
+\hypertarget{struct_carre__clair_ae7469189d260b9609e5e1c4d1b0b7ed4}{
+int {\bfseries numero\_\-case}}
+\label{struct_carre__clair_ae7469189d260b9609e5e1c4d1b0b7ed4}
+
+\item 
+\hypertarget{struct_carre__clair_ac06cf6a292dc0e70e28b394fa481aef2}{
+SDL\_\-Rect {\bfseries position}}
+\label{struct_carre__clair_ac06cf6a292dc0e70e28b394fa481aef2}
+
+\item 
+\hypertarget{struct_carre__clair_a2f5cac12e913bcfcff660305bf88dd3b}{
+SDL\_\-Surface $\ast$ {\bfseries surface}}
+\label{struct_carre__clair_a2f5cac12e913bcfcff660305bf88dd3b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure definissant un carre clair 
+
+Définition à la ligne \hyperlink{constantes_8h_source_l00037}{37} du fichier \hyperlink{constantes_8h_source}{constantes.h}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{constantes_8h}{constantes.h}\end{DoxyCompactItemize}

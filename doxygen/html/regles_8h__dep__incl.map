@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$fonction__evaluation_8h.html" title="La fonction d&#39;evaluation de l&#39;algorithme MinMax. Renvoie un double compris entre &#45;1 et 1 cara..." alt="" coords="115,83,283,111"/>
+<area shape="rect" id="node21" href="$regles_8c_source.html" title="regles.c" alt="" coords="307,83,384,111"/>
+<area shape="rect" id="node5" href="$fonction__evaluation_8c_source.html" title="fonction_evaluation.c" alt="" coords="39,161,207,189"/>
+<area shape="rect" id="node7" href="$min-max_8h.html" title="Implémentation du min&#45;max." alt="" coords="231,161,321,189"/>
+<area shape="rect" id="node9" href="$moteur_8h.html" title="Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l&#39;IA, fournit une aide au joueur." alt="" coords="179,238,261,266"/>
+<area shape="rect" id="node19" href="$min-max_8c_source.html" title="min&#45;max.c" alt="" coords="285,238,376,266"/>
+<area shape="rect" id="node11" href="$fonction_interface_8h.html" title="Implémentation de fonctionnalités pour l&#39;interface." alt="" coords="72,315,227,343"/>
+<area shape="rect" id="node17" href="$moteur_8c_source.html" title="moteur.c" alt="" coords="251,315,333,343"/>
+<area shape="rect" id="node13" href="$fonction_interface_8c_source.html" title="fonctionInterface.c" alt="" coords="5,393,160,421"/>
+<area shape="rect" id="node15" href="$main_8c_source.html" title="main.c" alt="" coords="184,393,251,421"/>
+</map>

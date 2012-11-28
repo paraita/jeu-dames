@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames:  Fichier source de fonctionInterface.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>fonctionInterface.h</h1>  </div>
+</div>
+<div class="contents">
+<a href="fonction_interface_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="constantes_8h.html" title="Constantes utiles pour l&amp;#39;interface.">constantes.h</a>&quot;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="moteur_8h.html" title="Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l&amp;#39;IA, fournit une aide au joueur.">moteur.h</a>&quot;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="preprocessor">#ifndef FONCTIONINTERFACE_H_</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#define FONCTIONINTERFACE_H_</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span>
+<a name="l00016"></a><a class="code" href="fonction_interface_8h.html#a7e67ffd6431a872b2e0eed3293230b78">00016</a> <a class="code" href="struct_carre__fonce.html">Carre_fonce</a> <a class="code" href="fonction_interface_8h.html#a7e67ffd6431a872b2e0eed3293230b78">carre_fonce</a>;
+<a name="l00017"></a>00017 
+<a name="l00019"></a><a class="code" href="fonction_interface_8h.html#aa6a56f4dc2396c5f9de42147f569c367">00019</a> <a class="code" href="struct_carre__clair.html">Carre_clair</a> <a class="code" href="fonction_interface_8h.html#aa6a56f4dc2396c5f9de42147f569c367">carre_clair</a>;
+<a name="l00020"></a>00020 
+<a name="l00022"></a><a class="code" href="fonction_interface_8h.html#a28e2678f1d8d143ee4b21a11acfad35d">00022</a> <a class="code" href="struct_carre__clair.html">Carre_clair</a> <a class="code" href="fonction_interface_8h.html#a28e2678f1d8d143ee4b21a11acfad35d">carre_surbrillance</a>;
+<a name="l00023"></a>00023 
+<a name="l00025"></a><a class="code" href="fonction_interface_8h.html#ae7267ac64141d082948941a1b51d4df6">00025</a> <a class="code" href="struct_pion__clair.html">Pion_clair</a> <a class="code" href="fonction_interface_8h.html#ae7267ac64141d082948941a1b51d4df6">pion_clair</a>;
+<a name="l00026"></a>00026 
+<a name="l00028"></a><a class="code" href="fonction_interface_8h.html#a91d0d5668d6c4d2c6cd5bbeab0f9ca15">00028</a> <a class="code" href="struct_pion__fonce.html">Pion_fonce</a> <a class="code" href="fonction_interface_8h.html#a91d0d5668d6c4d2c6cd5bbeab0f9ca15">pion_fonce</a>;
+<a name="l00029"></a>00029 
+<a name="l00031"></a><a class="code" href="fonction_interface_8h.html#a78fa3957d73de49cb81d047857504218">00031</a> SDL_Surface *<a class="code" href="fonction_interface_8h.html#a78fa3957d73de49cb81d047857504218">screen</a>;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="keywordtype">int</span> tableauChoix[4];
+<a name="l00038"></a>00038 <span class="keywordtype">void</span> rafraichir_plateau();
+<a name="l00039"></a>00039 
+<a name="l00045"></a>00045 <span class="keywordtype">void</span> afficher_ecran_depart_neutre(<span class="keywordtype">int</span> choix);
+<a name="l00046"></a>00046 
+<a name="l00052"></a>00052 <span class="keywordtype">void</span> afficher_ecran_pause(<span class="keywordtype">int</span> choix);
+<a name="l00053"></a>00053 
+<a name="l00058"></a>00058 <span class="keywordtype">void</span> afficher_ecran_choix_joueur();
+<a name="l00059"></a>00059 
+<a name="l00064"></a>00064 <span class="keywordtype">void</span> afficher_ecran_noirs_gagnent();
+<a name="l00065"></a>00065 
+<a name="l00070"></a>00070 <span class="keywordtype">void</span> afficher_ecran_blancs_gagnent();
+<a name="l00071"></a>00071 
+<a name="l00077"></a>00077 <span class="keywordtype">int</span> clique_souris_choix_joueur(SDL_Event evenement);
+<a name="l00078"></a>00078 
+<a name="l00084"></a>00084 <span class="keywordtype">int</span>* clique_souris(SDL_Event evenement);
+<a name="l00085"></a>00085 
+<a name="l00090"></a>00090 <span class="keywordtype">void</span> initialisation_cases_blanches();
+<a name="l00091"></a>00091 
+<a name="l00097"></a>00097 <span class="keywordtype">int</span> position_souris(SDL_Event evenement);
+<a name="l00103"></a>00103 <span class="keywordtype">int</span> position_souris_pause(SDL_Event evenement);
+<a name="l00109"></a>00109 <span class="keywordtype">int</span> clique_souris_menu(SDL_Event evenement);
+<a name="l00115"></a>00115 <span class="keywordtype">int</span> clique_souris_pause(SDL_Event evenement);
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="keywordtype">void</span> control_manger_pion(<a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> oldPosition, <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> newPosition);
+<a name="l00119"></a>00119 
+<a name="l00128"></a>00128 <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> control_surbrillance(<span class="keywordtype">int</span> *tab);
+<a name="l00129"></a>00129 
+<a name="l00138"></a>00138 <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> control_premier_click(SDL_Event event, <span class="keywordtype">int</span> *tab, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p, <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> *oldCase);
+<a name="l00139"></a>00139 
+<a name="l00150"></a>00150 <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> control_deuxieme_click(SDL_Event event, <span class="keywordtype">int</span> *tab, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p, <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> *newCase, <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> *oldCase);
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152 <span class="preprocessor">#endif </span><span class="comment">/* FONCTIONINTERFACE_H_ */</span>
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:50 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

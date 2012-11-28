@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames:  Fichier source de plateau.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>plateau.c</h1>  </div>
+</div>
+<div class="contents">
+<div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment"> * plateau.c</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> *  Created on: 20 mars 2011</span>
+<a name="l00005"></a>00005 <span class="comment"> *      Author: bastien</span>
+<a name="l00006"></a>00006 <span class="comment"> */</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="plateau_8h.html" title="Tout ce qui concerne le plateau de jeu (damier, pions et joueurs).">plateau.h</a>&quot;</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a><a class="code" href="plateau_8h.html#aad79656ee484352eb698011738cbcefc">00011</a> <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> nouveau_plateau(<a class="code" href="structjoueur.html" title="Objet joueur. Un joueur est caractérisé par la couleur qu&amp;#39;il joue et sa nature (humain ou intelli...">joueur</a> j1, <a class="code" href="structjoueur.html" title="Objet joueur. Un joueur est caractérisé par la couleur qu&amp;#39;il joue et sa nature (humain ou intelli...">joueur</a> j2) {
+<a name="l00012"></a>00012         <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p;
+<a name="l00013"></a>00013         j1.<a class="code" href="structjoueur.html#a057f95a41503a890f27c651969ffac8d">couleur</a> = blanc;
+<a name="l00014"></a>00014         j2.<a class="code" href="structjoueur.html#a057f95a41503a890f27c651969ffac8d">couleur</a> = noir;
+<a name="l00015"></a>00015         p.joueur1 = j1;
+<a name="l00016"></a>00016         p.joueur2 = j2;
+<a name="l00017"></a>00017         p.<a class="code" href="structplateau.html#ab38c06b0c7e61b9eeb63b04c5e5bc652">tour</a> = j1;
+<a name="l00018"></a>00018         p.<a class="code" href="structplateau.html#acb559820d9ca11295b4500f179ef6392">i</a> = 0;
+<a name="l00019"></a>00019         <span class="keywordtype">int</span> i = 1;
+<a name="l00020"></a>00020         <span class="keywordtype">int</span> <a class="code" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c">x</a> = 2;
+<a name="l00021"></a>00021         <span class="keywordtype">int</span> y = 1;
+<a name="l00022"></a>00022         <span class="keywordflow">while</span> (i &lt;= 50) { <span class="comment">/* on remplit le plateau ( bug ici j ai change le 20 en 50)*/</span>
+<a name="l00023"></a>00023                 <a class="code" href="structpion.html" title="Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non.">pion</a> <a class="code" href="structpion.html" title="Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non.">pion</a>;
+<a name="l00024"></a>00024                 pion.<a class="code" href="structpion.html#a13d497ed763d6eba18df86caf4c85861">est_dame</a> = 0;
+<a name="l00025"></a>00025                 <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c;
+<a name="l00026"></a>00026                 c.<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a> = i;
+<a name="l00027"></a>00027                 c.<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> = noir;
+<a name="l00028"></a>00028                 c.<a class="code" href="structcase__plateau.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 0;
+<a name="l00029"></a>00029                 c.x = <a class="code" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c">x</a>;
+<a name="l00030"></a>00030                 c.y = y;
+<a name="l00031"></a>00031                 <span class="keywordflow">if</span> (i &lt;= 20) { <span class="comment">/* si on est du côté des noirs, on place les pions */</span>
+<a name="l00032"></a>00032                         c.<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 0;
+<a name="l00033"></a>00033                         pion.couleur = noir;
+<a name="l00034"></a>00034                         pion.<a class="code" href="structpion.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 0;
+<a name="l00035"></a>00035                         c.pion = pion;
+<a name="l00036"></a>00036                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i &gt; 30) { <span class="comment">/* si on est du côté des blancs */</span>
+<a name="l00037"></a>00037                         c.<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 0;
+<a name="l00038"></a>00038                         pion.couleur = blanc;
+<a name="l00039"></a>00039                         pion.<a class="code" href="structpion.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 0;
+<a name="l00040"></a>00040                         c.pion = pion;
+<a name="l00041"></a>00041                 } <span class="keywordflow">else</span> { <span class="comment">/* si on est au centre on a des case libres */</span>
+<a name="l00042"></a>00042                         c.<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 1;
+<a name="l00043"></a>00043                 }
+<a name="l00044"></a>00044                 p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i] = c;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046                 i++;
+<a name="l00047"></a>00047                 x = x + 2;
+<a name="l00048"></a>00048                 <span class="keywordflow">if</span> (i % 10 == 6) { <span class="comment">/* on détecte les changements de ligne pour décaler x et incrémenter y */</span>
+<a name="l00049"></a>00049                         <span class="comment">/*printf(&quot;%i mod 10 = %i\n&quot;,i,i%10);*/</span>
+<a name="l00050"></a>00050                         x = 1;
+<a name="l00051"></a>00051                         y++;
+<a name="l00052"></a>00052                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i % 10 == 1) {
+<a name="l00053"></a>00053                         <span class="comment">/*printf(&quot;%i mod 10 = %i\n&quot;,i,i%10);*/</span>
+<a name="l00054"></a>00054                         x = 2;
+<a name="l00055"></a>00055                         y++;
+<a name="l00056"></a>00056                 }
+<a name="l00057"></a>00057         }
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059         <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> case_blanche;
+<a name="l00060"></a>00060         case_blanche.<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> = blanc;
+<a name="l00061"></a>00061         case_blanche.<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 1;
+<a name="l00062"></a>00062         case_blanche.<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a> = 0;
+<a name="l00063"></a>00063         case_blanche.<a class="code" href="structcase__plateau.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 0;
+<a name="l00064"></a>00064         case_blanche.x = 0;
+<a name="l00065"></a>00065         case_blanche.y = 0;
+<a name="l00066"></a>00066         p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[0] = case_blanche;
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> p;
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="plateau_8h.html#ac36612024e6663243c4f0605f2dd96c2">00070</a> <span class="keywordtype">int</span> plateau_deplacer_pion(<span class="keywordtype">int</span> old_position, <span class="keywordtype">int</span> new_position, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00071"></a>00071         <span class="keywordflow">if</span> (old_position &lt; 1 || old_position &gt; 50 || new_position &lt; 1
+<a name="l00072"></a>00072                         || new_position &gt; 50 || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[old_position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>
+<a name="l00073"></a>00073                         || !p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[new_position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>) {
+<a name="l00074"></a>00074                 <span class="keywordflow">return</span> 0;
+<a name="l00075"></a>00075         } <span class="keywordflow">else</span> {
+<a name="l00076"></a>00076                 <a class="code" href="structpion.html" title="Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non.">pion</a> <a class="code" href="structpion.html" title="Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non.">pion</a> = p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[old_position].pion;
+<a name="l00077"></a>00077                 p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[old_position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 1;
+<a name="l00078"></a>00078                 p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[new_position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 0;
+<a name="l00079"></a>00079                 p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[new_position].pion = pion;
+<a name="l00080"></a>00080                 <span class="keywordflow">return</span> 1;
+<a name="l00081"></a>00081         }
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="plateau_8h.html#a4a8fb7c96fbeb8218d5ddbf3fe642901">00084</a> <span class="keywordtype">int</span> plateau_prendre_pion(<span class="keywordtype">int</span> position, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00085"></a>00085         <span class="keywordflow">if</span> (position &lt; 1 || position &gt; 50 || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>) {
+<a name="l00086"></a>00086                 <span class="keywordflow">return</span> 0;
+<a name="l00087"></a>00087         } <span class="keywordflow">else</span> {
+<a name="l00088"></a>00088                 p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> = 1;
+<a name="l00089"></a>00089                 <span class="keywordflow">return</span> 1;
+<a name="l00090"></a>00090         }
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 
+<a name="l00093"></a><a class="code" href="plateau_8h.html#a8e9db1b793881c55d1261e3b735a5d48">00093</a> <span class="keywordtype">void</span> plateau_ajouter_coup(<a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> c, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00094"></a>00094         <span class="keywordtype">int</span> i = p-&gt;<a class="code" href="structplateau.html#acb559820d9ca11295b4500f179ef6392">i</a>;
+<a name="l00095"></a>00095         <span class="keywordflow">if</span> (i &lt; 500) {
+<a name="l00096"></a>00096                 p-&gt;<a class="code" href="structplateau.html#acc4d709134322b5c07f99ea2efd053ef">historique</a>[i] = c;
+<a name="l00097"></a>00097                 p-&gt;<a class="code" href="structplateau.html#acb559820d9ca11295b4500f179ef6392">i</a> = i + 1;
+<a name="l00098"></a>00098         }
+<a name="l00099"></a>00099 }
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="plateau_8h.html#a44f4edc5041fe92213f7dbdc2ac5e39e">00101</a> <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> get_case_plateau(<span class="keywordtype">int</span> <a class="code" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c">x</a>, <span class="keywordtype">int</span> y, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p) {
+<a name="l00102"></a>00102         <span class="keywordflow">if</span> (x &lt; 1 || x &gt; 10 || y &lt; 1 || y &gt; 10) {
+<a name="l00103"></a>00103                 fprintf(stderr, <span class="stringliteral">&quot;Case hors plateau (%i,%i)\n&quot;</span>, x, y);
+<a name="l00104"></a>00104                 <span class="keywordflow">return</span> p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[0];
+<a name="l00105"></a>00105         }
+<a name="l00106"></a>00106         <span class="keywordflow">if</span> ((x % 2) == (y % 2)) { <span class="comment">/* si x et y sont tout les deux pairs (ou impairs), alors c&#39;est une case blanche */</span>
+<a name="l00107"></a>00107                 <span class="keywordflow">return</span> p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[0];
+<a name="l00108"></a>00108         } <span class="keywordflow">else</span> {
+<a name="l00109"></a>00109                 <span class="keywordtype">int</span> i;
+<a name="l00110"></a>00110                 <span class="keywordflow">for</span> (i = 1; i &lt;= 50; i++) { <span class="comment">/* temporairement on fait une recherche dans le tableau, en attendant un algorithme qui offre de meilleures performances */</span>
+<a name="l00111"></a>00111                         <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c = p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i];
+<a name="l00112"></a>00112                         <span class="keywordflow">if</span> (c.x == x &amp;&amp; c.y == y) {
+<a name="l00113"></a>00113                                 <span class="keywordflow">return</span> c;
+<a name="l00114"></a>00114                         }
+<a name="l00115"></a>00115                 }
+<a name="l00116"></a>00116                 <span class="keywordflow">return</span> p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[0];
+<a name="l00117"></a>00117         }
+<a name="l00118"></a>00118 }
+<a name="l00119"></a>00119 
+<a name="l00120"></a><a class="code" href="plateau_8h.html#a69dc99f7c855cdf8bf569f8b26ae6689">00120</a> <span class="keywordtype">void</span> print_case(<a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c) {
+<a name="l00121"></a>00121                 printf(<span class="stringliteral">&quot;Case [%i] : (%i,%i) couleur : %i, est_libre : %i surbrillance : %i\n&quot;</span>,
+<a name="l00122"></a>00122                                 c.<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a>, c.x, c.y, c.<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a>, c.<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>,c.<a class="code" href="structcase__plateau.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a>);
+<a name="l00123"></a>00123 }
+<a name="l00124"></a>00124 
+<a name="l00125"></a><a class="code" href="plateau_8h.html#a4066fdb86d7d54a9256fa727995f47fd">00125</a> <span class="keywordtype">void</span> set_case_en_surbrillance(<span class="keywordtype">int</span> numero,<a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00126"></a>00126         p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[numero].<a class="code" href="structcase__plateau.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 1;
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a><a class="code" href="plateau_8h.html#a98033598d0f16369d8529f7c5ab3e3fd">00129</a> <span class="keywordtype">void</span> set_pion_en_surbrillance(<span class="keywordtype">int</span> numero,<a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00130"></a>00130         p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[numero].pion.<a class="code" href="structpion.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 1;
+<a name="l00131"></a>00131 }
+<a name="l00132"></a>00132 
+<a name="l00133"></a><a class="code" href="plateau_8h.html#aee51bfad885420a7013c9c01a2eae048">00133</a> <span class="keywordtype">void</span> reset_surbrillance(<a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00134"></a>00134         <span class="keywordtype">int</span> i;
+<a name="l00135"></a>00135         <span class="keywordflow">for</span>(i = 0; i &lt; 51; i++) {
+<a name="l00136"></a>00136                 p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].<a class="code" href="structcase__plateau.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 0;
+<a name="l00137"></a>00137                 p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].pion.<a class="code" href="structpion.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a> = 0;
+<a name="l00138"></a>00138         }
+<a name="l00139"></a>00139 }
+<a name="l00140"></a>00140 
+<a name="l00141"></a><a class="code" href="plateau_8h.html#a6616eb0e3e305b9dd718ffb0e83231d5">00141</a> <span class="keywordtype">void</span> plateau_appliquer_coup(<a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> c, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> * p) {
+<a name="l00142"></a>00142         <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> * cases = p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>;
+<a name="l00143"></a>00143         <span class="keywordflow">if</span>(cases[c.old_case].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a> || !cases[c.new_case].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>) {
+<a name="l00144"></a>00144                 fprintf(stderr, <span class="stringliteral">&quot;Impossible de jouer le coup (%d,%d) : case de départ vide ou case d&#39;arrivée déjà occupée.&quot;</span>,c.old_case,c.new_case);
+<a name="l00145"></a>00145         } <span class="keywordflow">else</span> {
+<a name="l00146"></a>00146                 plateau_deplacer_pion(c.old_case,c.new_case,p); <span class="comment">/* on déplace le pion */</span>
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148                 <span class="keywordflow">if</span>(c.<a class="code" href="structcoup.html#aa33da004dccb192cb33bc00c26c6e859">tc</a> == <a class="code" href="plateau_8h.html#a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c">x</a>) { <span class="comment">/* puis, si le coup est une prise, on prend le(s) pion(s) */</span>
+<a name="l00149"></a>00149                         <span class="keywordtype">int</span> i;
+<a name="l00150"></a>00150                         <span class="keywordflow">for</span>(i = 0; i &lt; c.nombre_prises; i++) {
+<a name="l00151"></a>00151                                 plateau_prendre_pion(c.<a class="code" href="structcoup.html#ae19b3a66d3f4e66b8f69a38e4005f44a">prises</a>[i].<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a>,p);
+<a name="l00152"></a>00152                         }
+<a name="l00153"></a>00153                 }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155                 <span class="keywordflow">if</span>(p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[c.new_case].pion.couleur == blanc &amp;&amp; c.new_case &lt;= 5) { <span class="comment">/* puis on teste si le mouvement crée une dame */</span>
+<a name="l00156"></a>00156                         p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[c.new_case].pion.<a class="code" href="structpion.html#a13d497ed763d6eba18df86caf4c85861">est_dame</a> = 1;
+<a name="l00157"></a>00157                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[c.new_case].pion.couleur == noir &amp;&amp; c.new_case &gt;= 46 ) {
+<a name="l00158"></a>00158                         p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[c.new_case].pion.<a class="code" href="structpion.html#a13d497ed763d6eba18df86caf4c85861">est_dame</a> = 1;
+<a name="l00159"></a>00159                 }
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161                 <span class="keywordflow">if</span>(p-&gt;<a class="code" href="structplateau.html#ab38c06b0c7e61b9eeb63b04c5e5bc652">tour</a>.<a class="code" href="structjoueur.html#a057f95a41503a890f27c651969ffac8d">couleur</a> == p-&gt;joueur1.<a class="code" href="structjoueur.html#a057f95a41503a890f27c651969ffac8d">couleur</a>) { <span class="comment">/* enfin on passe la main au joueur suivant */</span>
+<a name="l00162"></a>00162                         p-&gt;<a class="code" href="structplateau.html#ab38c06b0c7e61b9eeb63b04c5e5bc652">tour</a> = p-&gt;joueur2;
+<a name="l00163"></a>00163                 } <span class="keywordflow">else</span> {
+<a name="l00164"></a>00164                         p-&gt;<a class="code" href="structplateau.html#ab38c06b0c7e61b9eeb63b04c5e5bc652">tour</a> = p-&gt;joueur1;
+<a name="l00165"></a>00165                 }
+<a name="l00166"></a>00166                 <span class="comment">// TODO printf de debug a supprimer</span>
+<a name="l00167"></a>00167                 printf(<span class="stringliteral">&quot;\n------------------------\n&quot;</span>);
+<a name="l00168"></a>00168                 printf(<span class="stringliteral">&quot;\nCoup appliqué :\n&quot;</span>);
+<a name="l00169"></a>00169                 printCoup(c);
+<a name="l00170"></a>00170                 printf(<span class="stringliteral">&quot;\n------------------------\n&quot;</span>);
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 }
+<a name="l00174"></a>00174 
+<a name="l00175"></a><a class="code" href="plateau_8h.html#a43fa8dd4c36ca967403900b75237a3d5">00175</a> <span class="keywordtype">int</span> plateau_partie_finie(<a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p) {
+<a name="l00176"></a>00176         <span class="keywordtype">int</span> i;
+<a name="l00177"></a>00177         <span class="keywordtype">int</span> trouve = 0; <span class="comment">/* on le passe à vrai quand on a trouvé le premier pion, puis on vérifie que tout les autres pions sont de la même couleur */</span>
+<a name="l00178"></a>00178         <a class="code" href="plateau_8h.html#a8282be6127518547fa916dd6cfef17cb" title="La couleur d&amp;#39;un pion.">couleur_pion</a> couleur;
+<a name="l00179"></a>00179         <span class="keywordflow">for</span>(i = 1; i &lt;= 50; i++ ) {
+<a name="l00180"></a>00180                 <span class="keywordflow">if</span>(! p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>) {
+<a name="l00181"></a>00181                         <span class="keywordflow">if</span>(trouve) {
+<a name="l00182"></a>00182                                 <span class="keywordflow">if</span>( couleur != p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].pion.couleur) {
+<a name="l00183"></a>00183                                         <span class="keywordflow">return</span> 0;
+<a name="l00184"></a>00184                                 }
+<a name="l00185"></a>00185                         } <span class="keywordflow">else</span> {
+<a name="l00186"></a>00186                                 trouve = 1;
+<a name="l00187"></a>00187                                 couleur = p.<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[i].pion.couleur;
+<a name="l00188"></a>00188                         }
+<a name="l00189"></a>00189                 }
+<a name="l00190"></a>00190         }
+<a name="l00191"></a>00191         <span class="comment">/* si on a parcouru le tout le damier et qu&#39;on n&#39;a pas trouvé deux pions de couleurs différentes, alors la partie est terminée */</span>
+<a name="l00192"></a>00192         <span class="keywordflow">return</span> couleur + 1; <span class="comment">/* 1 si c&#39;est les blancs, 2 si c&#39;est les noirs. */</span>
+<a name="l00193"></a>00193 }
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195 
+<a name="l00196"></a><a class="code" href="plateau_8h.html#a590ca6fc3ab1b4e08fa05ddaf7465115">00196</a> <span class="keywordtype">void</span> print_plateau(<a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> p) {
+<a name="l00197"></a>00197         <span class="keywordtype">int</span> i, j;
+<a name="l00198"></a>00198         printf(<span class="stringliteral">&quot;\n---------------------\n&quot;</span>);
+<a name="l00199"></a>00199         <span class="keywordflow">for</span>(i = 1; i &lt;= 10; i++) {
+<a name="l00200"></a>00200                 printf(<span class="stringliteral">&quot;|&quot;</span>);
+<a name="l00201"></a>00201                 <span class="keywordflow">for</span>(j = 1; j &lt;=10 ; j++) {
+<a name="l00202"></a>00202                         <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c = get_case_plateau(j,i,p);
+<a name="l00203"></a>00203                         <span class="keywordflow">if</span>(c.<a class="code" href="structcase__plateau.html#a057f95a41503a890f27c651969ffac8d">couleur</a> != blanc) {
+<a name="l00204"></a>00204                                 <span class="keywordflow">if</span>(!c.<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>) {
+<a name="l00205"></a>00205                                         <span class="keywordflow">if</span>(c.pion.couleur == blanc) {
+<a name="l00206"></a>00206                                                 <span class="keywordflow">if</span>(c.pion.<a class="code" href="structpion.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a>)
+<a name="l00207"></a>00207                                                         printf(<span class="stringliteral">&quot;o&quot;</span>);
+<a name="l00208"></a>00208                                                 <span class="keywordflow">else</span> printf(<span class="stringliteral">&quot;O&quot;</span>);
+<a name="l00209"></a>00209                                         } <span class="keywordflow">else</span> {
+<a name="l00210"></a>00210                                                 <span class="keywordflow">if</span>(c.pion.<a class="code" href="structpion.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a>)
+<a name="l00211"></a>00211                                                         printf(<span class="stringliteral">&quot;x&quot;</span>);
+<a name="l00212"></a>00212                                                 <span class="keywordflow">else</span> printf(<span class="stringliteral">&quot;X&quot;</span>);
+<a name="l00213"></a>00213                                         }
+<a name="l00214"></a>00214                                         <span class="keywordflow">if</span> (c.pion.<a class="code" href="structpion.html#a13d497ed763d6eba18df86caf4c85861">est_dame</a>)
+<a name="l00215"></a>00215                                                 printf(<span class="stringliteral">&quot;*&quot;</span>);
+<a name="l00216"></a>00216                                 } <span class="keywordflow">else</span> {
+<a name="l00217"></a>00217                                         <span class="keywordflow">if</span> (c.<a class="code" href="structcase__plateau.html#ae49bb71ca6836b02fd9efa3c1fa64405">en_surbrillance</a>)
+<a name="l00218"></a>00218                                                 printf(<span class="stringliteral">&quot;-&quot;</span>);
+<a name="l00219"></a>00219                                         <span class="keywordflow">else</span> printf(<span class="stringliteral">&quot; &quot;</span>);
+<a name="l00220"></a>00220                                 }
+<a name="l00221"></a>00221                         } <span class="keywordflow">else</span> {
+<a name="l00222"></a>00222                                 printf(<span class="stringliteral">&quot; &quot;</span>);
+<a name="l00223"></a>00223                         }
+<a name="l00224"></a>00224                         printf(<span class="stringliteral">&quot;|&quot;</span>);
+<a name="l00225"></a>00225                 }
+<a name="l00226"></a>00226                 printf(<span class="stringliteral">&quot;\n---------------------\n&quot;</span>);
+<a name="l00227"></a>00227         }
+<a name="l00228"></a>00228         <span class="keywordflow">return</span>;
+<a name="l00229"></a>00229 }
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232 <span class="comment">//TODO enlever les printf de debug ici</span>
+<a name="l00233"></a>00233 <span class="comment">/* pretty print d&#39;un coup */</span>
+<a name="l00234"></a><a class="code" href="plateau_8h.html#a5b1f6227bf2bab71a07a531c49270b51">00234</a> <span class="keywordtype">void</span> printCoup(<span class="keyword">const</span> <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> c) {
+<a name="l00235"></a>00235         <span class="keywordflow">if</span> ((c.old_case == 0) &amp;&amp; (c.new_case == 0)) {
+<a name="l00236"></a>00236                 <span class="comment">/* on tombe normalement jamais dessus mais utile au debug */</span>
+<a name="l00237"></a>00237                 printf(<span class="stringliteral">&quot;coup bidon&quot;</span>);
+<a name="l00238"></a>00238         } <span class="keywordflow">else</span> {
+<a name="l00239"></a>00239                 printf(<span class="stringliteral">&quot;de [%d] vers [%d]\n&quot;</span>, c.old_case, c.new_case);
+<a name="l00240"></a>00240                 printf(<span class="stringliteral">&quot;parcours du coup:\n&quot;</span>);
+<a name="l00241"></a>00241                 <span class="keywordtype">int</span> i;
+<a name="l00242"></a>00242                 <span class="keywordflow">for</span> (i = 0; i &lt; c.nombre_prises; i++) {
+<a name="l00243"></a>00243                         print_case(c.<a class="code" href="structcoup.html#aa66b88eb8140c2f459ac92fad0796510">chemin</a>[i]);
+<a name="l00244"></a>00244                 }
+<a name="l00245"></a>00245                 printf(<span class="stringliteral">&quot;la position des pions pris:\n&quot;</span>);
+<a name="l00246"></a>00246                 i = 0;
+<a name="l00247"></a>00247                 <span class="keywordflow">for</span> (i = 0; i &lt; c.nombre_prises - 1; i++) {
+<a name="l00248"></a>00248                         print_case(c.<a class="code" href="structcoup.html#ae19b3a66d3f4e66b8f69a38e4005f44a">prises</a>[i]);
+<a name="l00249"></a>00249                 }
+<a name="l00250"></a>00250                 printf(<span class="stringliteral">&quot;nombre_prises: %d\n&quot;</span>, c.nombre_prises - 1);
+<a name="l00251"></a>00251                 printf(<span class="stringliteral">&quot;type coup: %d\n&quot;</span>, c.<a class="code" href="structcoup.html#aa33da004dccb192cb33bc00c26c6e859">tc</a>);
+<a name="l00252"></a>00252         }
+<a name="l00253"></a>00253 }
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256 <span class="comment">//TODO declarer dans regles.h</span>
+<a name="l00257"></a>00257 <span class="comment">/* predicat: est ce que le pion sur position est prenable ? */</span>
+<a name="l00258"></a><a class="code" href="plateau_8h.html#aff9fd9b1b3f96bbae116f3d87349a0cf">00258</a> <span class="keywordtype">int</span> est_prenable(<span class="keywordtype">int</span> position, <a class="code" href="structplateau.html" title="Objet plateau. Le plateau est composé de 50 cases, numérotées de 1 à 50. Il comporte un historique de...">plateau</a> *p) {
+<a name="l00259"></a>00259         printf(<span class="stringliteral">&quot;prenabilité de [%d]: %d\n&quot;</span>, position, p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>);
+<a name="l00260"></a>00260         <span class="keywordflow">if</span> (position &lt; 1 || position &gt; 50 || p-&gt;<a class="code" href="structplateau.html#a6afaa60f594542e0d742b0c6d3223392">cases</a>[position].<a class="code" href="structcase__plateau.html#a173f25d2fd7c653d77ca8174ba4f636d">est_libre</a>) {
+<a name="l00261"></a>00261                 <span class="keywordflow">return</span> 0;
+<a name="l00262"></a>00262         } <span class="keywordflow">else</span> {
+<a name="l00263"></a>00263                 <span class="keywordflow">return</span> 1;
+<a name="l00264"></a>00264         }
+<a name="l00265"></a>00265 }
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267 <span class="comment">//TODO declarer dans regles.h</span>
+<a name="l00268"></a>00268 <span class="comment">/* affiche ce qu&#39;il y a dans la liste de coups */</span>
+<a name="l00269"></a><a class="code" href="plateau_8h.html#ade9b690d9493e82b264dcea4d08abd5a">00269</a> <span class="keywordtype">void</span> print_liste_coups(<a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> *l) {
+<a name="l00270"></a>00270         printf(<span class="stringliteral">&quot;----------------------------\n&quot;</span>);
+<a name="l00271"></a>00271         printf(<span class="stringliteral">&quot;etat de cp:\n&quot;</span>);
+<a name="l00272"></a>00272         <a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> *ptr = l;
+<a name="l00273"></a>00273         <span class="keywordtype">int</span> a = 1;
+<a name="l00274"></a>00274         <span class="keywordflow">while</span> (ptr-&gt;old_case != 0 &amp;&amp; ptr-&gt;new_case != 0) {
+<a name="l00275"></a>00275                 printf(<span class="stringliteral">&quot;[%d]----~\n&quot;</span>, a);
+<a name="l00276"></a>00276                 printCoup(*ptr);
+<a name="l00277"></a>00277                 ptr++;
+<a name="l00278"></a>00278                 a++;
+<a name="l00279"></a>00279         }
+<a name="l00280"></a>00280         printf(<span class="stringliteral">&quot;----------------------------\n&quot;</span>);
+<a name="l00281"></a>00281 }
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283 <span class="comment">//TODO declarer dans regles.h</span>
+<a name="l00284"></a>00284 <span class="comment">/* predicat: est ce que cette case_plateau est dans le tableau ? */</span>
+<a name="l00285"></a>00285 <span class="keywordtype">int</span> coup_inclus(<a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> c, <a class="code" href="structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire...">case_plateau</a> *liste, <span class="keywordtype">int</span> taille) {
+<a name="l00286"></a>00286         <span class="keywordtype">int</span> resultat = 0;
+<a name="l00287"></a>00287         <span class="keywordtype">int</span> i;
+<a name="l00288"></a>00288         <span class="keywordflow">for</span> (i = 0; i &lt; taille - 1; ++i) {
+<a name="l00289"></a>00289                 <span class="keywordflow">if</span> (liste[i].notation_officielle == c.<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a>) {
+<a name="l00290"></a>00290                         printf(<span class="stringliteral">&quot;[%d] est dans la liste !\n&quot;</span>, c.<a class="code" href="structcase__plateau.html#ad510581b324604a9cf685cbb769a421a">notation_officielle</a>);
+<a name="l00291"></a>00291                         resultat = 1;
+<a name="l00292"></a>00292                         <span class="keywordflow">break</span>;
+<a name="l00293"></a>00293                 }
+<a name="l00294"></a>00294         }
+<a name="l00295"></a>00295         <span class="keywordflow">return</span> resultat;
+<a name="l00296"></a>00296 }
+<a name="l00297"></a>00297 
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299 <span class="comment">/*//TODO debug retourne le nombre de coups dans un tableau */</span>
+<a name="l00300"></a><a class="code" href="plateau_8h.html#a8918a9186794792439622dd39ca202a0">00300</a> <span class="keywordtype">int</span> nombre_coups(<a class="code" href="structcoup.html" title="Objet coup. Un coup est défini par un numéro de case de départ, un numéro de case d&amp;#39;arrivée...">coup</a> *<span class="keyword">set</span>) {
+<a name="l00301"></a>00301         <span class="keywordtype">int</span> cpt = 0;
+<a name="l00302"></a>00302         <span class="keywordflow">while</span> ((set-&gt;old_case != 0) &amp;&amp; (set-&gt;new_case != 0)) {
+<a name="l00303"></a>00303                 cpt++;
+<a name="l00304"></a>00304                 <span class="keyword">set</span>++;
+<a name="l00305"></a>00305         }
+<a name="l00306"></a>00306         <span class="keywordflow">return</span> cpt;
+<a name="l00307"></a>00307 }
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:50 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

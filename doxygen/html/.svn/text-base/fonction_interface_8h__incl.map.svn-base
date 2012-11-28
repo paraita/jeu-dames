@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$constantes_8h.html" title="Constantes utiles pour l&#39;interface." alt="" coords="5,83,115,111"/>
+<area shape="rect" id="node5" href="$moteur_8h.html" title="Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l&#39;IA, fournit une aide au joueur." alt="" coords="139,83,221,111"/>
+<area shape="rect" id="node11" href="$min-max_8h.html" title="Implémentation du min&#45;max." alt="" coords="135,161,225,189"/>
+<area shape="rect" id="node13" href="$fonction__evaluation_8h.html" title="La fonction d&#39;evaluation de l&#39;algorithme MinMax. Renvoie un double compris entre &#45;1 et 1 cara..." alt="" coords="96,238,264,266"/>
+<area shape="rect" id="node17" href="$regles_8h.html" title="module des regles et d&#39;enumeration des coups." alt="" coords="141,315,219,343"/>
+<area shape="rect" id="node19" href="$plateau_8h.html" title="Tout ce qui concerne le plateau de jeu (damier, pions et joueurs)." alt="" coords="139,393,221,421"/>
+</map>

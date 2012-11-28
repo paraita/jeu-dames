@@ -1,0 +1,53 @@
+\hypertarget{constantes_8h_source}{
+\section{constantes.h}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#if defined(linux) || defined(\_\_linux) || defined(\_\_linux\_\_)}
+00010 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <SDL/SDL.h>}
+00011 \textcolor{preprocessor}{#endif}
+00012 \textcolor{preprocessor}{}\textcolor{preprocessor}{#if defined(\_\_APPLE\_\_)}
+00013 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <SDL/SDL.h>}
+00014 \textcolor{preprocessor}{#endif}
+00015 \textcolor{preprocessor}{}\textcolor{preprocessor}{#if defined(WIN32) || defined(\_WIN32) || defined(WIN64) || defined(\_WIN64)}
+00016 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <SDL\(\backslash\)SDL.h>}
+00017 \textcolor{preprocessor}{#endif}
+00018 \textcolor{preprocessor}{}
+00019 
+00020 \textcolor{preprocessor}{#ifndef CONSTANTES\_H\_}
+00021 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define CONSTANTES\_H\_}
+00022 \textcolor{preprocessor}{}
+00023 
+00024 \textcolor{preprocessor}{#define LARGEUR 800}
+00025 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define LONGUEUR 800}
+00026 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define TAILLECARRE 80}
+00027 \textcolor{preprocessor}{}
+\hypertarget{constantes_8h_source_l00029}{}\hyperlink{struct_carre__fonce}{00029} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+00030         \textcolor{keywordtype}{int} est\_libre;
+00031         \textcolor{keywordtype}{int} numero\_case;
+00032         SDL\_Rect position;
+00033         SDL\_Surface *surface;
+00034 \} \hyperlink{struct_carre__fonce}{Carre_fonce};
+00035 
+\hypertarget{constantes_8h_source_l00037}{}\hyperlink{struct_carre__clair}{00037} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{
+00038         \textcolor{keywordtype}{int} est\_libre;
+00039         \textcolor{keywordtype}{int} numero\_case;
+00040         SDL\_Rect position;
+00041         SDL\_Surface *surface;
+00042 \} \hyperlink{struct_carre__clair}{Carre_clair};
+00043 
+\hypertarget{constantes_8h_source_l00045}{}\hyperlink{struct_pion__clair}{00045} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+00046         \textcolor{keywordtype}{int} est\_dame;
+00047         SDL\_Surface *surface;
+00048         SDL\_Rect position;
+00049 \} \hyperlink{struct_pion__clair}{Pion_clair};
+00050 
+\hypertarget{constantes_8h_source_l00052}{}\hyperlink{struct_pion__fonce}{00052} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+00053         \textcolor{keywordtype}{int} est\_dame;
+00054         SDL\_Surface *surface;
+00055         SDL\_Rect position;
+00056 \} \hyperlink{struct_pion__fonce}{Pion_fonce};
+00057 
+00058 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

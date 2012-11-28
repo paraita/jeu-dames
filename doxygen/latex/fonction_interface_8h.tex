@@ -1,0 +1,316 @@
+\hypertarget{fonction_interface_8h}{
+\section{Référence du fichier fonctionInterface.h}
+\label{fonction_interface_8h}\index{fonctionInterface.h@{fonctionInterface.h}}
+}
+
+
+Implémentation de fonctionnalités pour l'interface.  
+
+
+{\ttfamily \#include \char`\"{}constantes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}moteur.h\char`\"{}}\par
+Graphe des dépendances par inclusion de fonctionInterface.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{fonction_interface_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{fonction_interface_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fonction_interface_8h_a242025f62105b1932bde128f77ec1ba8}{
+void \hyperlink{fonction_interface_8h_a242025f62105b1932bde128f77ec1ba8}{rafraichir\_\-plateau} ()}
+\label{fonction_interface_8h_a242025f62105b1932bde128f77ec1ba8}
+
+\begin{DoxyCompactList}\small\item\em Rafraichit le plateau aprés une action. \item\end{DoxyCompactList}\item 
+void \hyperlink{fonction_interface_8h_afea6e76f6f28549c9c1f44636d93cb82}{afficher\_\-ecran\_\-depart\_\-neutre} (int choix)
+\begin{DoxyCompactList}\small\item\em Affiche le menu de depart. \item\end{DoxyCompactList}\item 
+\hypertarget{fonction_interface_8h_a1cbeb954df481f599bb888cda252b37c}{
+void {\bfseries afficher\_\-ecran\_\-pause} (int choix)}
+\label{fonction_interface_8h_a1cbeb954df481f599bb888cda252b37c}
+
+\item 
+\hypertarget{fonction_interface_8h_a57441c18ac94ad4618d8ecd732b8ec2b}{
+void \hyperlink{fonction_interface_8h_a57441c18ac94ad4618d8ecd732b8ec2b}{afficher\_\-ecran\_\-choix\_\-joueur} ()}
+\label{fonction_interface_8h_a57441c18ac94ad4618d8ecd732b8ec2b}
+
+\begin{DoxyCompactList}\small\item\em Affiche le menu de choix IA/Joueur. \item\end{DoxyCompactList}\item 
+\hypertarget{fonction_interface_8h_a4eaec2179ee4e6fc89c1c06b74e94cb4}{
+void \hyperlink{fonction_interface_8h_a4eaec2179ee4e6fc89c1c06b74e94cb4}{afficher\_\-ecran\_\-noirs\_\-gagnent} ()}
+\label{fonction_interface_8h_a4eaec2179ee4e6fc89c1c06b74e94cb4}
+
+\begin{DoxyCompactList}\small\item\em Affiche l'ecran de fin de partie, les noirs gagnent. \item\end{DoxyCompactList}\item 
+\hypertarget{fonction_interface_8h_acc462fb032b8caf056324a003ae36497}{
+void \hyperlink{fonction_interface_8h_acc462fb032b8caf056324a003ae36497}{afficher\_\-ecran\_\-blancs\_\-gagnent} ()}
+\label{fonction_interface_8h_acc462fb032b8caf056324a003ae36497}
+
+\begin{DoxyCompactList}\small\item\em Affiche l'ecran de fin de partie, les blancs gagnent. \item\end{DoxyCompactList}\item 
+int \hyperlink{fonction_interface_8h_af439094b4dbb8cac323aaba6130a3cfb}{clique\_\-souris\_\-choix\_\-joueur} (SDL\_\-Event evenement)
+\begin{DoxyCompactList}\small\item\em Retourne la position de la souris après un clique dans le menu choix IA/Joueur. \item\end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{fonction_interface_8h_af90df7e39dda6c350185ce94e31fb93c}{clique\_\-souris} (SDL\_\-Event evenement)
+\begin{DoxyCompactList}\small\item\em Retourne la position de la souris après un clique. \item\end{DoxyCompactList}\item 
+\hypertarget{fonction_interface_8h_a757ae0e029a9f8857391b1fb5939d54a}{
+void \hyperlink{fonction_interface_8h_a757ae0e029a9f8857391b1fb5939d54a}{initialisation\_\-cases\_\-blanches} ()}
+\label{fonction_interface_8h_a757ae0e029a9f8857391b1fb5939d54a}
+
+\begin{DoxyCompactList}\small\item\em Initialise les cases blanches. \item\end{DoxyCompactList}\item 
+int \hyperlink{fonction_interface_8h_a22f816def98b98aae351ce6087c763ef}{position\_\-souris} (SDL\_\-Event evenement)
+\begin{DoxyCompactList}\small\item\em Calcule la position de la souris a chaque mouvement. \item\end{DoxyCompactList}\item 
+\hypertarget{fonction_interface_8h_a76c5afeb8abd24f73406af4dbeaa3b73}{
+int {\bfseries position\_\-souris\_\-pause} (SDL\_\-Event evenement)}
+\label{fonction_interface_8h_a76c5afeb8abd24f73406af4dbeaa3b73}
+
+\item 
+\hypertarget{fonction_interface_8h_a00d8cde866b4a76fff71b46e24e5ea4f}{
+int {\bfseries clique\_\-souris\_\-menu} (SDL\_\-Event evenement)}
+\label{fonction_interface_8h_a00d8cde866b4a76fff71b46e24e5ea4f}
+
+\item 
+\hypertarget{fonction_interface_8h_a5f8c294b42841b329969d4fc823c9d07}{
+int {\bfseries clique\_\-souris\_\-pause} (SDL\_\-Event evenement)}
+\label{fonction_interface_8h_a5f8c294b42841b329969d4fc823c9d07}
+
+\item 
+\hypertarget{fonction_interface_8h_a1207c39d2959b1cf52223c10bee518a7}{
+void {\bfseries control\_\-manger\_\-pion} (\hyperlink{structcase__plateau}{case\_\-plateau} oldPosition, \hyperlink{structcase__plateau}{case\_\-plateau} newPosition)}
+\label{fonction_interface_8h_a1207c39d2959b1cf52223c10bee518a7}
+
+\item 
+\hypertarget{fonction_interface_8h_a2d99a85898da4d9f5578a1ec59fc0db1}{
+\hyperlink{structcase__plateau}{case\_\-plateau} {\bfseries control\_\-surbrillance} (int $\ast$tab)}
+\label{fonction_interface_8h_a2d99a85898da4d9f5578a1ec59fc0db1}
+
+\item 
+\hyperlink{structcase__plateau}{case\_\-plateau} \hyperlink{fonction_interface_8h_abcb8707f8b1169dceb38a3e3e2b3e300}{control\_\-premier\_\-click} (SDL\_\-Event event, int $\ast$tab, \hyperlink{structplateau}{plateau} $\ast$p, \hyperlink{structcase__plateau}{case\_\-plateau} $\ast$oldCase)
+\begin{DoxyCompactList}\small\item\em Gere le premier click qui s'occupe uniquement de la selection du pion a jouer. \item\end{DoxyCompactList}\item 
+\hypertarget{fonction_interface_8h_acb796f12694cf5cfa8b3ecddfdf3619b}{
+\hyperlink{structcase__plateau}{case\_\-plateau} {\bfseries control\_\-deuxieme\_\-click} (SDL\_\-Event event, int $\ast$tab, \hyperlink{structplateau}{plateau} $\ast$p, \hyperlink{structcase__plateau}{case\_\-plateau} $\ast$newCase, \hyperlink{structcase__plateau}{case\_\-plateau} $\ast$oldCase)}
+\label{fonction_interface_8h_acb796f12694cf5cfa8b3ecddfdf3619b}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_carre__fonce}{Carre\_\-fonce} \hyperlink{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{carre\_\-fonce}
+\item 
+\hyperlink{struct_carre__clair}{Carre\_\-clair} \hyperlink{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{carre\_\-clair}
+\item 
+\hyperlink{struct_carre__clair}{Carre\_\-clair} \hyperlink{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{carre\_\-surbrillance}
+\item 
+\hyperlink{struct_pion__clair}{Pion\_\-clair} \hyperlink{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{pion\_\-clair}
+\item 
+\hyperlink{struct_pion__fonce}{Pion\_\-fonce} \hyperlink{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{pion\_\-fonce}
+\item 
+SDL\_\-Surface $\ast$ \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}
+\item 
+\hypertarget{fonction_interface_8h_a7352e9ae5b20378e23568a8a6ddcf0e2}{
+int {\bfseries tableauChoix} \mbox{[}4\mbox{]}}
+\label{fonction_interface_8h_a7352e9ae5b20378e23568a8a6ddcf0e2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Implémentation de fonctionnalités pour l'interface. \begin{DoxyAuthor}{Auteur}
+Mrah Mehdi 
+\end{DoxyAuthor}
+
+
+Définition dans le fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{fonction_interface_8h_afea6e76f6f28549c9c1f44636d93cb82}{
+\index{fonctionInterface.h@{fonctionInterface.h}!afficher\_\-ecran\_\-depart\_\-neutre@{afficher\_\-ecran\_\-depart\_\-neutre}}
+\index{afficher\_\-ecran\_\-depart\_\-neutre@{afficher\_\-ecran\_\-depart\_\-neutre}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{afficher\_\-ecran\_\-depart\_\-neutre}]{\setlength{\rightskip}{0pt plus 5cm}void afficher\_\-ecran\_\-depart\_\-neutre (
+\begin{DoxyParamCaption}
+\item[{int}]{choix}
+\end{DoxyParamCaption}
+)}}
+\label{fonction_interface_8h_afea6e76f6f28549c9c1f44636d93cb82}
+
+
+Affiche le menu de depart. 
+
+Affiche le menu pause.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em choix} & Represente le choix dans le menu depart.\\
+\hline
+{\em choix} & Represente le choix dans le menu pause. \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{fonction_interface_8c_source_l00118}{118} du fichier \hyperlink{fonction_interface_8c_source}{fonctionInterface.c}.
+
+\hypertarget{fonction_interface_8h_af90df7e39dda6c350185ce94e31fb93c}{
+\index{fonctionInterface.h@{fonctionInterface.h}!clique\_\-souris@{clique\_\-souris}}
+\index{clique\_\-souris@{clique\_\-souris}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{clique\_\-souris}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ clique\_\-souris (
+\begin{DoxyParamCaption}
+\item[{SDL\_\-Event}]{evenement}
+\end{DoxyParamCaption}
+)}}
+\label{fonction_interface_8h_af90df7e39dda6c350185ce94e31fb93c}
+
+
+Retourne la position de la souris après un clique. 
+
+\begin{DoxyReturn}{Renvoie}
+int$\ast$ Un tableau contenant la position x et y du clique 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{fonction_interface_8c_source_l00263}{263} du fichier \hyperlink{fonction_interface_8c_source}{fonctionInterface.c}.
+
+\hypertarget{fonction_interface_8h_af439094b4dbb8cac323aaba6130a3cfb}{
+\index{fonctionInterface.h@{fonctionInterface.h}!clique\_\-souris\_\-choix\_\-joueur@{clique\_\-souris\_\-choix\_\-joueur}}
+\index{clique\_\-souris\_\-choix\_\-joueur@{clique\_\-souris\_\-choix\_\-joueur}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{clique\_\-souris\_\-choix\_\-joueur}]{\setlength{\rightskip}{0pt plus 5cm}int clique\_\-souris\_\-choix\_\-joueur (
+\begin{DoxyParamCaption}
+\item[{SDL\_\-Event}]{evenement}
+\end{DoxyParamCaption}
+)}}
+\label{fonction_interface_8h_af439094b4dbb8cac323aaba6130a3cfb}
+
+
+Retourne la position de la souris après un clique dans le menu choix IA/Joueur. 
+
+\begin{DoxyReturn}{Renvoie}
+int Un entier representant le choix du joueur. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{fonction_interface_8c_source_l00301}{301} du fichier \hyperlink{fonction_interface_8c_source}{fonctionInterface.c}.
+
+\hypertarget{fonction_interface_8h_abcb8707f8b1169dceb38a3e3e2b3e300}{
+\index{fonctionInterface.h@{fonctionInterface.h}!control\_\-premier\_\-click@{control\_\-premier\_\-click}}
+\index{control\_\-premier\_\-click@{control\_\-premier\_\-click}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{control\_\-premier\_\-click}]{\setlength{\rightskip}{0pt plus 5cm}{\bf case\_\-plateau} control\_\-premier\_\-click (
+\begin{DoxyParamCaption}
+\item[{SDL\_\-Event}]{event, }
+\item[{int $\ast$}]{tab, }
+\item[{{\bf plateau} $\ast$}]{p, }
+\item[{{\bf case\_\-plateau} $\ast$}]{oldCase}
+\end{DoxyParamCaption}
+)}}
+\label{fonction_interface_8h_abcb8707f8b1169dceb38a3e3e2b3e300}
+
+
+Gere le premier click qui s'occupe uniquement de la selection du pion a jouer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab} & Tableau contenant les coordonnees du click \\
+\hline
+{\em oldCase} & la case de depart \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\hyperlink{structcase__plateau}{case\_\-plateau} La case contenant le pion selectionne 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Auteur}
+Mehdi M'rah 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \hyperlink{fonction_interface_8c_source_l00515}{515} du fichier \hyperlink{fonction_interface_8c_source}{fonctionInterface.c}.
+
+\hypertarget{fonction_interface_8h_a22f816def98b98aae351ce6087c763ef}{
+\index{fonctionInterface.h@{fonctionInterface.h}!position\_\-souris@{position\_\-souris}}
+\index{position\_\-souris@{position\_\-souris}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{position\_\-souris}]{\setlength{\rightskip}{0pt plus 5cm}int position\_\-souris (
+\begin{DoxyParamCaption}
+\item[{SDL\_\-Event}]{evenement}
+\end{DoxyParamCaption}
+)}}
+\label{fonction_interface_8h_a22f816def98b98aae351ce6087c763ef}
+
+
+Calcule la position de la souris a chaque mouvement. 
+
+Calcule la position de la souris a chaque clique dans le menu principal.
+
+\begin{DoxyReturn}{Renvoie}
+int Un entier representant une position dans le menu.
+
+int Un entier representant une position dans le menu pause.
+
+int Un entier representant un choix dans le menu principal.
+
+int Un entier representant un choix dans le menu pause. 
+\end{DoxyReturn}
+
+
+Définition à la ligne \hyperlink{fonction_interface_8c_source_l00279}{279} du fichier \hyperlink{fonction_interface_8c_source}{fonctionInterface.c}.
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}{
+\index{fonctionInterface.h@{fonctionInterface.h}!carre\_\-clair@{carre\_\-clair}}
+\index{carre\_\-clair@{carre\_\-clair}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{carre\_\-clair}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Carre\_\-clair} {\bf carre\_\-clair}}}
+\label{fonction_interface_8h_aa6a56f4dc2396c5f9de42147f569c367}
+Surface : marbre blanc 
+
+Définition à la ligne \hyperlink{fonction_interface_8h_source_l00019}{19} du fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+
+\hypertarget{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}{
+\index{fonctionInterface.h@{fonctionInterface.h}!carre\_\-fonce@{carre\_\-fonce}}
+\index{carre\_\-fonce@{carre\_\-fonce}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{carre\_\-fonce}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Carre\_\-fonce} {\bf carre\_\-fonce}}}
+\label{fonction_interface_8h_a7e67ffd6431a872b2e0eed3293230b78}
+Surface : marbre noir 
+
+Définition à la ligne \hyperlink{fonction_interface_8h_source_l00016}{16} du fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+
+\hypertarget{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}{
+\index{fonctionInterface.h@{fonctionInterface.h}!carre\_\-surbrillance@{carre\_\-surbrillance}}
+\index{carre\_\-surbrillance@{carre\_\-surbrillance}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{carre\_\-surbrillance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Carre\_\-clair} {\bf carre\_\-surbrillance}}}
+\label{fonction_interface_8h_a28e2678f1d8d143ee4b21a11acfad35d}
+Surface : marbre noir en surbrillance 
+
+Définition à la ligne \hyperlink{fonction_interface_8h_source_l00022}{22} du fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+
+\hypertarget{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}{
+\index{fonctionInterface.h@{fonctionInterface.h}!pion\_\-clair@{pion\_\-clair}}
+\index{pion\_\-clair@{pion\_\-clair}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{pion\_\-clair}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion\_\-clair} {\bf pion\_\-clair}}}
+\label{fonction_interface_8h_ae7267ac64141d082948941a1b51d4df6}
+Pion : blanc 
+
+Définition à la ligne \hyperlink{fonction_interface_8h_source_l00025}{25} du fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+
+\hypertarget{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}{
+\index{fonctionInterface.h@{fonctionInterface.h}!pion\_\-fonce@{pion\_\-fonce}}
+\index{pion\_\-fonce@{pion\_\-fonce}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{pion\_\-fonce}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pion\_\-fonce} {\bf pion\_\-fonce}}}
+\label{fonction_interface_8h_a91d0d5668d6c4d2c6cd5bbeab0f9ca15}
+Pion : noir 
+
+Définition à la ligne \hyperlink{fonction_interface_8h_source_l00028}{28} du fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+
+\hypertarget{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{
+\index{fonctionInterface.h@{fonctionInterface.h}!screen@{screen}}
+\index{screen@{screen}!fonctionInterface.h@{fonctionInterface.h}}
+\subsubsection[{screen}]{\setlength{\rightskip}{0pt plus 5cm}SDL\_\-Surface$\ast$ {\bf screen}}}
+\label{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}
+Surface principal 
+
+Définition à la ligne \hyperlink{fonction_interface_8h_source_l00031}{31} du fichier \hyperlink{fonction_interface_8h_source}{fonctionInterface.h}.
+

@@ -1,0 +1,681 @@
+\hypertarget{main_8c_source}{
+\section{main.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * testInterface2.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: Apr 10, 2011}
+00005 \textcolor{comment}{ *      Author: Mehdi}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include <stdio.h>}
+00009 \textcolor{preprocessor}{#include <stdlib.h>}
+00010 \textcolor{preprocessor}{#include <string.h>}
+00011 \textcolor{preprocessor}{#include <math.h>}
+00012 
+00013 \textcolor{preprocessor}{#include "\hyperlink{fonction_interface_8h}{fonctionInterface.h}"}
+00014 
+00015 \textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) \{
+00016         \textcolor{keywordtype}{int} quitterJeu, fenetreActive, menuPrincipal, fenetreJeu, menuPause,
+00017                         menuSelectionJoueur, pos, click, posPause, nbclick, diffX
+      , diffY,
+00018                         jouer\_coup, joueur2, clickSelectPlayer;
+00019         SDL\_Event event;
+00020 
+00021         \textcolor{comment}{//plateau *p = malloc(sizeof(plateau));}
+00022         \textcolor{comment}{//plateau p = p\_jeu;}
+00023         \textcolor{keywordtype}{char} * fic\_sauvegarde = \textcolor{stringliteral}{"save.txt"};
+00024         \textcolor{keywordtype}{int}* tab = calloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}), 2);
+00025         \textcolor{keywordtype}{int}* tab2 = calloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}), 2);
+00026         \textcolor{keywordtype}{int} tableau[2];
+00027         \textcolor{keywordtype}{int} tableau2[2];
+00028         \textcolor{keywordtype}{int} tour\_ia = 0;
+00029         \hyperlink{structjoueur}{joueur} j1;
+00030         \hyperlink{structjoueur}{joueur} j2;
+00031         \hyperlink{structcase__plateau}{case_plateau} c, oldPosition, newPosition, caseSurvole, case\_depart,
+00032                         case\_intermediaire;
+00033         \hyperlink{structcase__plateau}{case_plateau} *oldCase = malloc(\textcolor{keyword}{sizeof}(\hyperlink{structcase__plateau}{case_plateau}));
+00034         \hyperlink{structcase__plateau}{case_plateau} *newCase = malloc(\textcolor{keyword}{sizeof}(\hyperlink{structcase__plateau}{case_plateau}));
+00035         \textcolor{keywordtype}{int}* finTour = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));
+00036         \textcolor{keywordtype}{int}* tourJoueur = malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));
+00037 
+00038         *finTour = 0;
+00039         *tourJoueur = 0;
+00040         clickSelectPlayer = 0;
+00041         nbclick = 0;
+00042         joueur2 = 0;
+00043         quitterJeu = 1;
+00044         menuPrincipal = 1;
+00045         fenetreJeu = 1;
+00046         menuPause = 1;
+00047         menuSelectionJoueur = 1;
+00048         fenetreActive = 0;
+00049         \textcolor{comment}{//p\_jeu = nouveau\_plateau(j1,j2);}
+00050         \textcolor{keywordtype}{int} tour\_en\_cours = 0;
+00051 
+00052         SDL\_Init(SDL\_INIT\_VIDEO);
+00053         SDL\_WM\_SetIcon(SDL\_LoadBMP(\textcolor{stringliteral}{"Images/icon.bmp"}), NULL);
+00054         \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen} = SDL\_SetVideoMode(LARGEUR, LONGUEUR, 32,
+00055                         SDL\_SWSURFACE | SDL\_DOUBLEBUF);
+00056         SDL\_FillRect(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}, NULL, SDL\_MapRGB(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen}->format, 255, 0, 0));
+00057 
+00058         printf(\textcolor{stringliteral}{"0) J'entre dans la boucle \(\backslash\)n"});
+00059         \textcolor{keywordflow}{while} (quitterJeu) \{
+00060 
+00061                 \textcolor{keywordflow}{switch} (fenetreActive) \{
+00062 
+00063                 \textcolor{keywordflow}{case} 0: \textcolor{comment}{//Fenetre Menu principal}
+00064                         afficher\_ecran\_depart\_neutre(pos);
+00065                         \textcolor{keywordflow}{while} (menuPrincipal) \{
+00066 
+00067                                 \textcolor{keywordflow}{while} (SDL\_PollEvent(&event)) \{
+00068                                         \textcolor{keywordflow}{switch} (event.type) \{
+00069                                         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+00070                                                 \textcolor{keywordflow}{switch} (event.key.keysym.sym) \{
+00071                                                 \textcolor{keywordflow}{case} SDLK\_a:
+00072                                                         afficher\_ecran\_depart\_neu
+      tre(0);
+00073                                                         \textcolor{keywordflow}{break};
+00074                                                 \textcolor{keywordflow}{case} SDLK\_b:
+00075 
+00076                                                         menuPrincipal = 0;
+00077                                                         fenetreActive = 1;
+00078                                                         \textcolor{keywordflow}{break};
+00079                                                 \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+00080                                                         menuPrincipal = 0;
+00081                                                         fenetreActive = 9;
+00082                                                         \textcolor{keywordflow}{break};
+00083                                                 \textcolor{keywordflow}{default}:
+00084                                                         quitterJeu = 1;
+00085                                                         \textcolor{keywordflow}{break};
+00086                                                 \}\textcolor{comment}{//Fin switch touche choisi}
+00087 
+00088                                         \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:
+00089                                                 pos = position\_souris(event);
+00090                                                 afficher\_ecran\_depart\_neutre(pos)
+      ;
+00091                                                 \textcolor{keywordflow}{break};
+00092                                                 \textcolor{comment}{//Fin du cas : la souris bouge}
+00093                                         \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONUP:
+00094                                                 \textcolor{keywordflow}{switch} (event.button.button) \{
+00095                                                 \textcolor{keywordflow}{case} SDL\_BUTTON\_LEFT:
+00096                                                         click = clique\_souris\_men
+      u(event);
+00097                                                         \textcolor{keywordflow}{switch} (click) \{
+00098                                                         \textcolor{keywordflow}{case} 1:
+00099                                                                 \textcolor{comment}{// Clique sur com
+      mencer partie}
+00100                                                                 initialiser\_parti
+      e();
+00101                                                                 menuPrincipal = 0
+      ;
+00102                                                                 menuSelectionJoue
+      ur = 1;
+00103                                                                 fenetreActive = 3
+      ;
+00104                                                                 \textcolor{keywordflow}{break};
+00105                                                         \textcolor{keywordflow}{case} 2:
+00106                                                                 \textcolor{comment}{// Clique sur cha
+      rger partie}
+00107                                                                 initialiser\_parti
+      e();
+00108                                                                 charger\_partie(fi
+      c\_sauvegarde);
+00109                                                                 menuPrincipal = 0
+      ;
+00110                                                                 fenetreActive = 1
+      ;
+00111                                                                 \textcolor{keywordflow}{break};
+00112                                                         \textcolor{keywordflow}{case} 3:
+00113                                                                 \textcolor{comment}{// Clique sur qui
+      tter}
+00114                                                                 menuPrincipal = 0
+      ;
+00115                                                                 fenetreActive = 9
+      ;
+00116                                                                 \textcolor{keywordflow}{break};
+00117                                                         \textcolor{keywordflow}{default}:
+00118                                                                 \textcolor{keywordflow}{break};
+00119                                                         \}\textcolor{comment}{//Fin switch click}
+00120                                                         \textcolor{keywordflow}{break};
+00121                                                 \textcolor{keywordflow}{default}:
+00122                                                         \textcolor{keywordflow}{break};
+00123                                                 \}\textcolor{comment}{//Fin choix bouton de souris UP}
+00124                                                 \textcolor{keywordflow}{break};
+00125                                         \}\textcolor{comment}{//Fin switch event.type}
+00126 
+00127                                 \}\textcolor{comment}{//Fin while PollEvent}
+00128 
+00129                         \}
+00130                         \textcolor{keywordflow}{break};
+00131 
+00132                 \textcolor{keywordflow}{case} 1: \textcolor{comment}{//Fenetre Jeu}
+00133                         initialisation\_cases\_blanches();
+00134                         rafraichir\_plateau();
+00135                         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00136 
+00137                         \textcolor{keywordflow}{while} (fenetreJeu) \{
+00138 
+00139                                 \textcolor{keywordflow}{while} (SDL\_PollEvent(&event) && !partie\_terminee(
+      )) \{
+00140 
+00141                                         \textcolor{keywordflow}{switch} (event.type) \{
+00142                                         \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONUP:
+00143                                                 \textcolor{keywordflow}{switch} (event.button.button) \{
+00144                                                 \textcolor{keywordflow}{case} SDL\_BUTTON\_LEFT:
+00145 
+00146                                                         \textcolor{comment}{// ASTUCE : Appuyer sur l
+      a touche H affiche les pions jouables}
+00147                                                         \textcolor{comment}{// Mais ce n est pas nece
+      ssaire si on sait quoi jouer on peut le jouer directement.}
+00148 
+00149                                                         \textcolor{keywordflow}{if} (!joueur2) \{ \textcolor{comment}{// Tour J
+      oueur 1}
+00150 
+00151                                                                 nbclick = nbclick
+       % 2; \textcolor{comment}{// Quel click ?}
+00152 
+00153                                                                 \textcolor{keywordflow}{if} (nbclick == 0)
+       \{ \textcolor{comment}{//Premier click}
+00154 
+00155                                                                         \textcolor{keywordflow}{if} (!tour
+      \_en\_cours) \{
+00156                                                                                 t
+      our\_ia = commencer\_tour();
+00157                                                                                 t
+      our\_en\_cours = 1;
+00158                                                                         \}
+00159 
+00160                                                                         \textcolor{keywordflow}{if} (!tour
+      \_ia) \{
+00161                                                                                 t
+      ab = clique\_souris(event); \textcolor{comment}{// Recupère les coordonnees du premier click}
+00162 
+00163 
+00164                                                                                 r
+      afraichir\_plateau();
+00165                                                                                 S
+      DL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00166 
+00167                                                                                 c
+      ase\_depart = get\_case\_plateau(tab[0],
+00168                                                                                                 t
+      ab[1], \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00169 
+00170                                                                                 \textcolor{keywordtype}{i
+      nt} click\_ok =
+00171                                                                                                 h
+      int\_deplacements\_possibles\_xy(
+00172                                                                                                                 t
+      ab[0], tab[1]); \textcolor{comment}{// Une fois le pion selectionne, cela affiche les deplacements po
+      ssibles}
+00173 
+00174                                                                                 p
+      rintf(\textcolor{stringliteral}{"Premier click reussi \(\backslash\)n"});
+00175 
+00176                                                                                 \textcolor{keywordflow}{i
+      f} (click\_ok) \{
+00177                                                                                         n
+      bclick += 1; \textcolor{comment}{// On autorise l'acces au deuxieme click}
+00178                                                                                         c
+      ontrol\_surbrillance(tab);
+00179                                                                                 \}
+      
+00180                                                                         \} \textcolor{keywordflow}{else} \{ 
+      \textcolor{comment}{// si c'est l'ia qui a joué}
+00181                                                                                 j
+      oueur2 = 1;
+00182                                                                                 t
+      our\_en\_cours = 0;
+00183                                                                                 t
+      our\_ia = 0;
+00184                                                                         \}
+00185 
+00186                                                                         rafraichi
+      r\_plateau();
+00187                                                                         SDL\_Flip(
+      \hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00188                                                                 \}
+00189 
+00190                                                                 \textcolor{keywordflow}{else} \{
+00191                                                                         \textcolor{keywordflow}{if} (nbcli
+      ck == 1) \{ \textcolor{comment}{//Deuxieme click}
+00192 
+00193                                                                                 t
+      ab = clique\_souris(event); \textcolor{comment}{// Recupère les coordonnees du deuxieme click}
+00194 
+00195                                                                                 c
+      ase\_intermediaire = get\_case\_plateau(
+00196                                                                                                 t
+      ab[0], tab[1], \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00197 
+00198                                                                                 j
+      ouer\_coup = jouer\_coup\_xy(
+00199                                                                                                 c
+      ase\_depart.x, case\_depart.y,
+00200                                                                                                 c
+      ase\_intermediaire.x,
+00201                                                                                                 c
+      ase\_intermediaire.y); \textcolor{comment}{//On joue le coup}
+00202 
+00203 
+00204                                                                                 r
+      afraichir\_plateau();
+00205                                                                                 S
+      DL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00206 
+00207                                                                                 \textcolor{keywordflow}{s
+      witch} (jouer\_coup) \{
+00208                                                                                 \textcolor{keywordflow}{c
+      ase} 0:
+00209                                                                                         j
+      oueur2 = 0;
+00210                                                                                         p
+      rintf(
+00211                                                                                                         \textcolor{stringliteral}{"
+      ###########################\(\backslash\)nOn garde la main (joueur 1)\(\backslash\)n#######################
+      ####\(\backslash\)n"});
+00212                                                                                         \textcolor{keywordflow}{b
+      reak};
+00213                                                                                 \textcolor{keywordflow}{c
+      ase} 1:
+00214                                                                                         j
+      oueur2 = 1;
+00215                                                                                         p
+      rintf(
+00216                                                                                                         \textcolor{stringliteral}{"
+      ###########################\(\backslash\)nOn passe au joueur 2 \(\backslash\)n###########################\(\backslash\)n
+      "});
+00217                                                                                         t
+      our\_en\_cours = 0;
+00218                                                                                         \textcolor{keywordflow}{b
+      reak};
+00219                                                                                 \textcolor{keywordflow}{c
+      ase} 2:
+00220                                                                                         j
+      oueur2 = 0;
+00221                                                                                         p
+      rintf(
+00222                                                                                                         \textcolor{stringliteral}{"
+      ###########################\(\backslash\)nOn garde la main (joueur 1)\(\backslash\)n#######################
+      ####\(\backslash\)n"});
+00223                                                                                         \textcolor{keywordflow}{b
+      reak};
+00224                                                                                 \}
+      
+00225                                                                                 \textcolor{keywordflow}{i
+      f} (!partie\_terminee()) \{
+00226                                                                                         p
+      rintf(\textcolor{stringliteral}{"Deuxieme click reussi \(\backslash\)n"});
+00227                                                                                         n
+      bclick += 1;
+00228                                                                                 \}
+       \textcolor{keywordflow}{else} \{
+00229                                                                                         f
+      enetreJeu = 0;
+00230                                                                                         f
+      enetreActive = 4;
+00231                                                                                 \}
+      
+00232                                                                         \}
+00233                                                                 \}
+00234 
+00235                                                         \}
+00236 
+00237                                                         \textcolor{keywordflow}{else} \{
+00238                                                                 \textcolor{keywordflow}{if} (joueur2) \{ \textcolor{comment}{//
+       Tour Joueur 2}
+00239 
+00240                                                                         nbclick =
+       nbclick % 2;
+00241 
+00242                                                                         \textcolor{keywordflow}{if} (nbcli
+      ck == 0) \{ \textcolor{comment}{//Premier click}
+00243                                                                                 \textcolor{keywordflow}{i
+      f} (!tour\_en\_cours) \{
+00244                                                                                         t
+      our\_ia = commencer\_tour();
+00245                                                                                         t
+      our\_en\_cours = 1;
+00246                                                                                 \}
+      
+00247 
+00248                                                                                 \textcolor{keywordflow}{i
+      f} (!tour\_ia) \{
+00249                                                                                         t
+      ab = clique\_souris(event); \textcolor{comment}{// Recupère les coordonnees du premier click}
+00250 
+00251 
+00252                                                                                         r
+      afraichir\_plateau();
+00253                                                                                         S
+      DL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00254 
+00255                                                                                         c
+      ase\_depart = get\_case\_plateau(
+00256                                                                                                         t
+      ab[0], tab[1], \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00257 
+00258                                                                                         \textcolor{keywordtype}{i
+      nt}
+00259                                                                                                         c
+      lick\_ok =
+00260                                                                                                                         h
+      int\_deplacements\_possibles\_xy(
+00261                                                                                                                                         t
+      ab[0],
+00262                                                                                                                                         t
+      ab[1]);
+00263 
+00264                                                                                         p
+      rintf(\textcolor{stringliteral}{"Premier click reussi \(\backslash\)n"});
+00265 
+00266                                                                                         \textcolor{keywordflow}{i
+      f} (click\_ok) \{
+00267                                                                                                 n
+      bclick += 1;
+00268                                                                                                 c
+      ontrol\_surbrillance(tab);
+00269                                                                                         \}
+      
+00270                                                                                 \}
+       \textcolor{keywordflow}{else} \{
+00271                                                                                         j
+      oueur2 = 0;
+00272                                                                                         t
+      our\_en\_cours = 0;
+00273                                                                                         t
+      our\_ia = 0;
+00274                                                                                 \}
+      
+00275                                                                                 r
+      afraichir\_plateau();
+00276                                                                                 S
+      DL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00277                                                                         \}
+00278 
+00279                                                                         \textcolor{keywordflow}{else} \{
+00280                                                                                 \textcolor{keywordflow}{i
+      f} (nbclick == 1) \{ \textcolor{comment}{//Deuxieme click}
+00281                                                                                         t
+      ab = clique\_souris(event);
+00282 
+00283                                                                                         c
+      ase\_intermediaire
+00284                                                                                                         =
+       get\_case\_plateau(tab[0],
+00285                                                                                                                         t
+      ab[1], \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00286 
+00287                                                                                         j
+      ouer\_coup = jouer\_coup\_xy(
+00288                                                                                                         c
+      ase\_depart.x,
+00289                                                                                                         c
+      ase\_depart.y,
+00290                                                                                                         c
+      ase\_intermediaire.x,
+00291                                                                                                         c
+      ase\_intermediaire.y);
+00292 
+00293                                                                                         r
+      afraichir\_plateau();
+00294                                                                                         S
+      DL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00295 
+00296                                                                                         \textcolor{keywordflow}{s
+      witch} (jouer\_coup) \{
+00297                                                                                         \textcolor{keywordflow}{c
+      ase} 0:
+00298                                                                                                 j
+      oueur2 = 1;
+00299                                                                                                 p
+      rintf(
+00300                                                                                                                 \textcolor{stringliteral}{"
+      ###########################\(\backslash\)nOn garde la main (joueur 2)\(\backslash\)n#######################
+      ####\(\backslash\)n"});
+00301                                                                                                 \textcolor{keywordflow}{b
+      reak};
+00302                                                                                         \textcolor{keywordflow}{c
+      ase} 1:
+00303                                                                                                 j
+      oueur2 = 0;
+00304                                                                                                 p
+      rintf(
+00305                                                                                                                 \textcolor{stringliteral}{"
+      ###########################\(\backslash\)nOn passe au joueur 1 \(\backslash\)n###########################\(\backslash\)n
+      "});
+00306                                                                                                 t
+      our\_en\_cours = 0;
+00307                                                                                                 \textcolor{keywordflow}{b
+      reak};
+00308                                                                                         \textcolor{keywordflow}{c
+      ase} 2:
+00309                                                                                                 j
+      oueur2 = 1;
+00310                                                                                                 p
+      rintf(
+00311                                                                                                                 \textcolor{stringliteral}{"
+      ###########################\(\backslash\)nOn garde la main (joueur 2)\(\backslash\)n#######################
+      ####\(\backslash\)n"});
+00312                                                                                                 \textcolor{keywordflow}{b
+      reak};
+00313                                                                                         \}
+      
+00314 
+00315                                                                                         \textcolor{keywordflow}{i
+      f} (!partie\_terminee()) \{
+00316                                                                                                 p
+      rintf(
+00317                                                                                                                 \textcolor{stringliteral}{"
+      Deuxieme click reussi \(\backslash\)n"});
+00318                                                                                                 n
+      bclick += 1;
+00319                                                                                         \}
+       \textcolor{keywordflow}{else} \{
+00320                                                                                                 f
+      enetreJeu = 0;
+00321                                                                                                 f
+      enetreActive = 4;
+00322                                                                                         \}
+      
+00323                                                                                 \}
+      
+00324                                                                         \}
+00325 
+00326                                                                 \}
+00327                                                         \}
+00328 
+00329                                                 \}
+00330                                                 \textcolor{keywordflow}{break};
+00331                                         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+00332                                                 \textcolor{keywordflow}{switch} (event.key.keysym.sym) \{
+00333                                                 \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+00334                                                         menuPause = 1;
+00335                                                         fenetreActive = 2;
+00336                                                         fenetreJeu = 0;
+00337 
+00338                                                         \textcolor{keywordflow}{break};
+00339                                                 \textcolor{keywordflow}{case} SDLK\_e:
+00340                                                         fenetreActive = 9;
+00341                                                         fenetreJeu = 0;
+00342 
+00343                                                         \textcolor{keywordflow}{break};
+00344                                                 \textcolor{keywordflow}{case} SDLK\_h:
+00345                                                         hint\_pions\_jouables();
+00346                                                         rafraichir\_plateau();
+00347                                                         SDL\_Flip(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00348                                                         \textcolor{keywordflow}{break};
+00349                                                 \textcolor{keywordflow}{default}:
+00350                                                         quitterJeu = 1;
+00351                                                         \textcolor{keywordflow}{break};
+00352                                                 \}\textcolor{comment}{//Fin choix de la touche}
+00353                                         \}\textcolor{comment}{//Fin switch.type}
+00354                                 \}\textcolor{comment}{//Fin PollEvent}
+00355 
+00356                         \}
+00357                         \textcolor{keywordflow}{break};
+00358 
+00359                 \textcolor{keywordflow}{case} 2: \textcolor{comment}{//Fentre Menu Pause}
+00360                         afficher\_ecran\_pause(posPause);
+00361                         \textcolor{keywordflow}{while} (menuPause) \{
+00362 
+00363                                 \textcolor{keywordflow}{while} (SDL\_PollEvent(&event)) \{
+00364                                         \textcolor{keywordflow}{switch} (event.type) \{
+00365                                         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+00366                                                 \textcolor{keywordflow}{switch} (event.key.keysym.sym) \{
+00367                                                 \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+00368                                                         menuPause = 0;
+00369                                                         fenetreActive = 9;
+00370                                                         \textcolor{keywordflow}{break};
+00371                                                 \textcolor{keywordflow}{default}:
+00372                                                         \textcolor{keywordflow}{break};
+00373 
+00374                                                 \}\textcolor{comment}{//Fin switch Keydown}
+00375                                         \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:
+00376                                                 posPause = position\_souris\_pause(
+      event);
+00377                                                 afficher\_ecran\_pause(posPause);
+00378                                         \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONUP:
+00379                                                 \textcolor{keywordflow}{switch} (event.button.button) \{
+00380                                                 \textcolor{keywordflow}{case} SDL\_BUTTON\_LEFT:
+00381                                                         click = clique\_souris\_pau
+      se(event);
+00382                                                         printf(\textcolor{stringliteral}{"click souris = %d
+       \(\backslash\)n"}, click);
+00383                                                         \textcolor{keywordflow}{switch} (click) \{
+00384                                                         \textcolor{keywordflow}{case} 1:
+00385                                                                 sauvegarder\_parti
+      e(fic\_sauvegarde);
+00386                                                                 menuPause = 0;
+00387                                                                 fenetreActive = 9
+      ;
+00388                                                                 \textcolor{keywordflow}{break};
+00389                                                         \textcolor{keywordflow}{case} 2:
+00390                                                                 fenetreJeu = 1;
+00391                                                                 menuPause = 0;
+00392                                                                 fenetreActive = 1
+      ;
+00393 
+00394                                                                 \textcolor{keywordflow}{break};
+00395                                                         \textcolor{keywordflow}{case} 3:
+00396                                                                 menuPause = 0;
+00397                                                                 fenetreActive = 9
+      ;
+00398                                                                 \textcolor{keywordflow}{break};
+00399                                                         \textcolor{keywordflow}{default}:
+00400                                                                 \textcolor{keywordflow}{break};
+00401                                                         \}\textcolor{comment}{//Fin switch click}
+00402 
+00403                                                         \textcolor{keywordflow}{break};
+00404                                                 \}\textcolor{comment}{// Fin switch choix click}
+00405                                         \textcolor{keywordflow}{default}:
+00406                                                 \textcolor{keywordflow}{break};
+00407                                         \}\textcolor{comment}{//Fin switch event.type}
+00408 
+00409                                 \}
+00410                         \}
+00411                         \textcolor{keywordflow}{break};
+00412 
+00413                 \textcolor{keywordflow}{case} 3: \textcolor{comment}{// Choix joueur}
+00414                         afficher\_ecran\_choix\_joueur();
+00415                         \textcolor{keywordflow}{while} (menuSelectionJoueur) \{
+00416 
+00417                                 \textcolor{keywordflow}{while} (SDL\_PollEvent(&event)) \{
+00418 
+00419                                         \textcolor{keywordflow}{switch} (event.type) \{
+00420                                         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+00421                                                 \textcolor{keywordflow}{switch} (event.key.keysym.sym) \{
+00422                                                 \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+00423                                                         menuSelectionJoueur = 0;
+00424                                                         menuPrincipal = 1;
+00425                                                         fenetreActive = 0;
+00426                                                         \textcolor{keywordflow}{break};
+00427 
+00428                                                 \textcolor{keywordflow}{default}:
+00429                                                         \textcolor{keywordflow}{break};
+00430 
+00431                                                 \}\textcolor{comment}{//Fin switch Keydown}
+00432 
+00433 
+00434                                         \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONUP:
+00435                                                 \textcolor{keywordflow}{switch} (event.button.button) \{
+00436                                                 \textcolor{keywordflow}{case} SDL\_BUTTON\_LEFT:
+00437                                                         clickSelectPlayer = cliqu
+      e\_souris\_choix\_joueur(
+00438                                                                         event);
+00439                                                         afficher\_ecran\_choix\_joue
+      ur();
+00440 
+00441                                                         \textcolor{keywordflow}{switch} (clickSelectPlayer
+      ) \{
+00442                                                         \textcolor{keywordflow}{case} 0: \textcolor{comment}{//CLique Suivant}
+00443                                                                 menuSelectionJoue
+      ur = 0;
+00444                                                                 fenetreActive = 1
+      ;
+00445                                                                 \textcolor{keywordflow}{break};
+00446                                                         \textcolor{keywordflow}{case} 1: \textcolor{comment}{//Clique Preceden
+      t}
+00447                                                                 menuSelectionJoue
+      ur = 0;
+00448                                                                 menuPrincipal = 1
+      ;
+00449                                                                 fenetreActive = 0
+      ;
+00450                                                                 \textcolor{keywordflow}{break};
+00451                                                         \textcolor{keywordflow}{default}:
+00452                                                                 \textcolor{keywordflow}{break};
+00453                                                         \}
+00454                                                         \textcolor{keywordflow}{break};
+00455                                                 \}\textcolor{comment}{// Fin switch choix click}
+00456                                         \textcolor{keywordflow}{default}:
+00457                                                 \textcolor{keywordflow}{break};
+00458                                         \}\textcolor{comment}{//Fin switch event.type}
+00459 
+00460                                 \}
+00461                         \}
+00462                         \textcolor{keywordflow}{break};
+00463 
+00464                 \textcolor{keywordflow}{case} 4: \textcolor{comment}{// Fin de partie}
+00465                         \textcolor{keywordflow}{if} (partie\_terminee() == 1) \{
+00466                                 afficher\_ecran\_blancs\_gagnent();
+00467                         \} \textcolor{keywordflow}{else} \{
+00468                                 afficher\_ecran\_noirs\_gagnent();
+00469                         \}
+00470                         \textcolor{keywordflow}{while} (SDL\_PollEvent(&event)) \{
+00471 
+00472                                 \textcolor{keywordflow}{switch} (event.type) \{
+00473                                 \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+00474                                         \textcolor{keywordflow}{switch} (event.key.keysym.sym) \{
+00475                                         \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+00476                                                 fenetreActive = 9;
+00477                                                 \textcolor{keywordflow}{break};
+00478 
+00479                                         \textcolor{keywordflow}{default}:
+00480                                                 \textcolor{keywordflow}{break};
+00481 
+00482                                         \}\textcolor{comment}{//Fin switch Keydown}
+00483                                 \}
+00484                         \}
+00485                         \textcolor{keywordflow}{break};
+00486 
+00487                 \textcolor{keywordflow}{default}:
+00488                         printf(\textcolor{stringliteral}{"10) Je sors de la \(\backslash\)n"});
+00489                         quitterJeu = 0;
+00490                         \textcolor{keywordflow}{break};
+00491                 \}
+00492         \}
+00493 
+00494         printf(\textcolor{stringliteral}{"11) Fin du test \(\backslash\)n"});
+00495 
+00496         free(tab);
+00497         free(tab2);
+00498         SDL\_FreeSurface(\hyperlink{fonction_interface_8h_a78fa3957d73de49cb81d047857504218}{screen});
+00499         SDL\_Quit();
+00500 
+00501         \textcolor{keywordflow}{return} 0;
+00502 \}
+\end{DoxyCode}

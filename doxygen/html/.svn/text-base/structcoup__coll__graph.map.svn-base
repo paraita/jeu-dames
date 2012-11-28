@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$structcase__plateau.html" title="Objet case du plateau de jeu. Une case est définie par une couleur et, si elle est noire..." alt="" coords="5,99,115,127"/>
+<area shape="rect" id="node4" href="$structpion.html" title="Objet pion. Un pion est déterminé par une couleur et si il est une dame ou non." alt="" coords="35,6,85,34"/>
+</map>

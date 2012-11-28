@@ -1,0 +1,157 @@
+/**
+ * 	\file plateau.h
+ * 	\brief Tout ce qui concerne le plateau de jeu (incluant pions et joueurs).
+ *	\author bastien
+ */
+
+/**
+ * 	\enum couleur_pion
+ * 	\brief La couleur d'un pion.
+ */
+typedef enum {
+	blanc, noir
+} couleur_pion;
+
+/**
+ * 	\enum type_coup
+ * 	\brief Le type de coup.
+ * 	Le "tiret" '-' est remplacé par un 't'.
+ */
+typedef enum {
+	x, t
+/* le 't' pour "tiret" remplace '-' */
+} type_coup;
+
+/**
+ * 	\struct pion
+ * 	\brief Objet pion.
+ * 	Un pion est déterminé par une couleur et si il est une dame ou non.
+ */
+typedef struct {
+	couleur_pion couleur;
+	int est_dame; /* détermine si on a un pion normal ou une dame */
+} pion;
+
+/**
+ * 	\struct case_plateau
+ * 	\brief Objet case du plateau de jeu.
+ * 	Une case est définie par une couleur et, si elle est noire,elle dispose d'une abscisse (x) et une ordonnée (y) sur le plateau.
+ * 	Une case peut être libre ou non, si elle n'est pas libre elle contient un pion.
+ */
+typedef struct {
+	couleur_pion couleur;
+	int est_libre;
+	pion pion;
+	int x;
+	int y;
+	int notation_officielle; /* le numéro de la case selon la notation officielle */
+} case_plateau;
+
+/**
+ * 	\struct joueur
+ * 	\brief Objet joueur.
+ * 	Un joueur est caractérisé par la couleur qu'il joue et sa nature (humain ou intelligence artificielle).
+ */
+typedef struct {
+	int est_humain; /* détermine si le joueur est une IA ou un joueur réel */
+	couleur_pion couleur; /* la couleur avec laquelle joue ce joueur */
+} joueur;
+
+/**
+ * 	\struct coup
+ * 	\brief Objet coup.
+ *	Un coup est défini par un numéro de case de départ, un numéro de case d'arrivée, un type (déplacement ou prise) et optinellement un commentaire
+ */
+typedef struct {
+	int old_case;
+	int new_case;
+	type_coup tc; /* si le coup est un déplacement ou une prise */
+	char * commentaire;
+/* les commentaires sont :
+ ! pour indiquer un coup fort ou bien joué
+ !! pour indiquer un coup très fort
+ ? pour indiquer un coup faible ou mal joué
+ ?? pour indiquer un coup très faible ou une gaffe
+ !? pour indiquer un coup paraissant fort, mais qui en réalité se révèle faible
+ ?! pour indiquer un coup paraissant faible, mais qui en réalité se révèle fort
+ * pour indiquer un coup forcé, tout autre mouvement entraînant une perte immédiate
+ + pour indiquer le gain de la partie
+ = pour indiquer un jeu égal
+ +1 pour indiquer le gain d’un pion
+ +n pour indiquer le gain de n pion
+ +- pour indiquer un avantage aux blancs
+ -+ pour indiquer un avantage aux noirs
+ */
+} coup;
+
+/**
+ * 	\struct plateau
+ * 	\brief Objet plateau.
+ *	Le plateau est composé de 50 cases, numérotées de 1 à 50.
+ *	Il comporte un historique des coups.
+ *	Il sait quel joueur doit jouer le prochain coup.
+ */
+typedef struct {
+<<<<<<< .mine
+	case_plateau cases[51]; /* un plateau est composé de 50 cases, numérotées de 01 à 50. (la case 0 reste inutilisée) */
+	coup historique[500]; /* on peut enregistrer jusqu'à 500 coups. */
+=======
+	case_plateau cases[51];	/* un plateau est composé de 50 cases, numérotées de 01 à 50. (la case 0 stocke la case blanche) */
+	coup historique[500];	/* on peut enregistrer jusqu'à 500 coups. */
+>>>>>>> .r15
+	int i; /* l'indice du prochain coup à entrer */
+	joueur joueur1;
+	joueur joueur2;
+	joueur tour;
+} plateau;
+
+/* ********* Fin des définitions de types, début des définitions de fonctions *************************/
+
+/**
+ * \fn plateau nouveau_plateau(joueur j1, joueur j2)
+ * \brief Fonction de création d'un nouveau plateau.
+ *
+ * \param j1 le joueur blanc
+ * \param j2 le joueur noir
+ * \return plateau Un plateau initialisé avec les pions en position initiale et associé aux joueurs.
+ */
+plateau nouveau_plateau(joueur j1, joueur j2); /* renvoie un plateau initialisé avec la position de départ des pions */
+
+/**
+ * \fn int plateau_deplacer_pion(int old_position,int new_position,plateau *p)
+ * \brief Déplace un pion.
+ *
+ * \param old_position la position de départ
+ * \param new_position la position d'arrivée
+ * \return int Vrai si le déplacement est possible, faux si un pion occupe déjà la case ou si on sort du plateau.
+ */
+int plateau_deplacer_pion(int old_position, int new_position, plateau *p);
+
+/**
+ * \fn int plateau_prendre_pion(int position,plateau *p)
+ * \brief Prend le pion de la case "position".
+ *
+ * \param position la position du pion
+ * \return int Vrai si la prise est effectuée, faux si la case est vide ou si on sort du plateau.
+ */
+int plateau_prendre_pion(int position, plateau *p);
+
+/**
+ * \fn void plateau_ajouter_coup(coup c,plateau *p)
+ * \brief Ajoute un coup dans l'historique du plateau.
+ *
+ * \param c Le coup à ajouter.
+ * \param p Le plateau auquel on ajoute le coup.
+ * En raison du risque improbable qu'une partie dure plus de 500 coups, l'historique au-delà est ignoré.
+ */
+void plateau_ajouter_coup(coup c, plateau *p);
+
+
+/**
+ * \fn case_plateau get_case_plateau(int x, int y,plateau p);
+ * \brief Renvoie la case à la position (x,y).
+ *
+ * \param x Abscisse de la case (colonne) [1-10].
+ * \param y Ordonnée de la case [1-10]
+ */
+case_plateau get_case_plateau(int x, int y,plateau p);

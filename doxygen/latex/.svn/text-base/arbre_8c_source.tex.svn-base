@@ -1,0 +1,36 @@
+\hypertarget{arbre_8c_source}{
+\section{arbre.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * arbre.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: 9 avr. 2011}
+00005 \textcolor{comment}{ *      Author: bastien}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include <stdio.h>};
+00009 
+00010 \textcolor{preprocessor}{#include "\hyperlink{arbre_8h}{arbre.h}"};
+00011 
+00012 
+\hypertarget{arbre_8c_source_l00013}{}\hyperlink{arbre_8h_aa76e6b4b8f176cc99eb68cd16ed968a6}{00013} \textcolor{keywordtype}{int} arbre\_est\_feuille(\hyperlink{structarbre}{arbre} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{t}) \{
+00014         \textcolor{keywordflow}{return} t.\hyperlink{structarbre_a67c44f020d501282adc38e3301a5f245}{nb_fils} == 0;
+00015 \}
+00016 
+00017 
+\hypertarget{arbre_8c_source_l00018}{}\hyperlink{arbre_8h_a3ee0f190b2bd5e4f94d53c3ad6730c52}{00018} \textcolor{keywordtype}{void} print\_arbre(\hyperlink{structarbre}{arbre} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeea0247320c476fffeaa81ffa7836e08dee}{t}) \{
+00019         \textcolor{keywordflow}{if}(arbre\_est\_feuille(t)) \{
+00020                 printf(\textcolor{stringliteral}{" %i"},t.valeur);
+00021                 \textcolor{keywordflow}{return};
+00022         \} \textcolor{keywordflow}{else} \{
+00023                 printf(\textcolor{stringliteral}{" (%i"}, t.valeur);
+00024                 \textcolor{keywordtype}{int} i;
+00025                 \textcolor{keywordflow}{for}(i = 0; i < t.\hyperlink{structarbre_a67c44f020d501282adc38e3301a5f245}{nb_fils}; i++) \{
+00026                         print\_arbre(*(t.\hyperlink{structarbre_a7bac08e3c2aedbde0dddf80b94eadf76}{fils}[i]));
+00027                 \}
+00028                 printf(\textcolor{stringliteral}{")"});
+00029         \}
+00030 \}
+\end{DoxyCode}

@@ -1,0 +1,91 @@
+\documentclass[a4paper]{book}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large Jeu de dames \\[1ex]\large Version Finale }\\
+\vspace*{1cm}
+{\large Généré par Doxygen 1.7.3}\\
+\vspace*{0.5cm}
+{\small Mon May 9 2011 00:36:50}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+\chapter{Index des structures de données}
+\input{annotated}
+\chapter{Index des fichiers}
+\input{files}
+\chapter{Documentation des structures de données}
+\input{structarbre}
+\input{struct_carre__clair}
+\input{struct_carre__fonce}
+\input{structcase__plateau}
+\input{structcoup}
+\input{structjoueur}
+\input{structpion}
+\input{struct_pion__clair}
+\input{struct_pion__fonce}
+\input{structplateau}
+\chapter{Documentation des fichiers}
+\input{arbre_8h}
+\input{arbre_8h_source}
+\input{constantes_8h}
+\input{constantes_8h_source}
+\input{fonction__evaluation_8h}
+\input{fonction__evaluation_8h_source}
+\input{fonction_interface_8h}
+\input{fonction_interface_8h_source}
+\input{min-max_8h}
+\input{min-max_8h_source}
+\input{moteur_8h}
+\input{moteur_8h_source}
+\input{plateau_8h}
+\input{plateau_8h_source}
+\input{regles_8h}
+\input{regles_8h_source}
+\printindex
+\end{document}

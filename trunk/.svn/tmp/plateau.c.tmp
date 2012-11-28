@@ -1,0 +1,124 @@
+/*
+ * plateau.c
+ *
+ *  Created on: 20 mars 2011
+ *      Author: bastien
+ */
+
+#include "plateau.h"
+
+plateau nouveau_plateau(joueur j1, joueur j2) {
+	plateau p;
+	j1.couleur = blanc;
+	j2.couleur = noir;
+	p.joueur1 = j1;
+	p.joueur2 = j2;
+	p.tour = j1;
+	p.i = 0;
+	int i;
+<<<<<<< .mine
+	for (i = 1; i <= 20; i++) {
+=======
+	int x = 2;
+	int y = 1;
+	for (i = 1; i <= 20; i++) { /* on remplit le plateau */
+>>>>>>> .r15
+		pion pion;
+		pion.est_dame = 0;
+		case_plateau c;
+<<<<<<< .mine
+		c.est_libre = 0;
+		c.pion = pion;
+		p.cases[i] = c;
+	}
+	for (i = 21; i <= 30; i++) {
+		case_plateau c;
+		c.est_libre = 1;
+		p.cases[i] = c;
+	}
+	for (i = 31; i <= 50; i++) {
+		pion pion;
+		pion.couleur = blanc;
+		pion.est_dame = 0;
+		case_plateau c;
+		c.est_libre = 0;
+		c.pion = pion;
+		p.cases[i] = c;
+	}
+=======
+		c.couleur = noir;
+		c.x = x;
+		c.y = y;
+		if (i <= 20) { /* si on est du côté des noirs, on place les pions */
+			c.est_libre = 0;
+			pion.couleur = noir;
+			c.pion = pion;
+		} else if (i > 30) { /* si on est du côté des blancs */
+			c.est_libre = 0;
+			pion.couleur = blanc;
+			c.pion = pion;
+		} else { /* si on est au centre on a des case libres */
+			c.est_libre = 1;
+		}
+>>>>>>> .r15
+		p.cases[i] = c;
+
+		x = x + 2;
+		if (i % 10 == 6) { /* on détecte les changements de ligne pour décaler x et incrémenter y */
+			x = 1;
+			y++;
+		} else if (i % 10 == 1) {
+			x = 2;
+			y++;
+		}
+	}
+
+	case_plateau case_blanche;
+	case_blanche.couleur = blanc;
+	case_blanche.est_libre = 1;
+	case_blanche.x = 0;
+	case_blanche.y = 0;
+	p.cases[0] = case_blanche;
+	return p;
+}
+
+int plateau_deplacer_pion(int old_position, int new_position, plateau *p) {
+	if (old_position < 1 || old_position > 50 || new_position < 1
+			|| new_position > 50 || p->cases[old_position].est_libre
+			|| !p->cases[new_position].est_libre) {
+		return 0;
+	} else {
+		pion pion = p->cases[old_position].pion;
+		p->cases[old_position].est_libre = 1;
+		p->cases[new_position].est_libre = 0;
+		p->cases[new_position].pion = pion;
+		return 1;
+	}
+}
+
+int plateau_prendre_pion(int position, plateau *p) {
+	if (position < 1 || position > 50 || p->cases[position].est_libre) {
+		return 0;
+	} else {
+		p->cases[position].est_libre = 1;
+		return 1;
+	}
+}
+
+void plateau_ajouter_coup(coup c, plateau *p) {
+	int i = p->i;
+	if (i < 500) {
+		p->historique[i] = c;
+		p->i = i + 1;
+	}
+}
+
+case_plateau get_case_plateau(int x, int y, plateau p) {
+	if ((x % 2) == (y % 2)) { /* si x et y sont tout les deux pairs (ou impairs), alors c'est une case blanche */
+		return p.cases[0];
+	} else {
+		int case_number = (y - 1) * 5;
+		case_number += x / 2;
+		return p.cases[case_number];
+	}
+}

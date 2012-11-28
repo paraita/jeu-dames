@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Jeu de dames: Référence du fichier arbre.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de dames&#160;<span id="projectnumber">Version Finale</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#typedef-members">Définition de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<h1>Référence du fichier arbre.h</h1>  </div>
+</div>
+<div class="contents">
+
+<p>Implémantation des arbres.  
+<a href="#_details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="arbre_8h__dep__incl.png" border="0" usemap="#arbre_8hdep" alt=""/></div>
+<map name="arbre_8hdep" id="arbre_8hdep">
+<area shape="rect" id="node3" href="arbre_8c_source.html" title="arbre.c" alt="" coords="5,83,75,111"/></map>
+</div>
+</div>
+<p><a href="arbre_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarbre.html">arbre</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Un arbre à une valeur (la racine) et un certain nombre de fils.  <a href="structarbre.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définition de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc50a5473fc43e43d9591a8ff5e3fa5c"></a><!-- doxytag: member="arbre.h::arbre" ref="adc50a5473fc43e43d9591a8ff5e3fa5c" args="" -->
+typedef struct <a class="el" href="structarbre.html">arbre</a>&#160;</td><td class="memItemRight" valign="bottom"><b>arbre</b></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa76e6b4b8f176cc99eb68cd16ed968a6"></a><!-- doxytag: member="arbre.h::arbre_est_feuille" ref="aa76e6b4b8f176cc99eb68cd16ed968a6" args="(arbre t)" -->
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre_8h.html#aa76e6b4b8f176cc99eb68cd16ed968a6">arbre_est_feuille</a> (<a class="el" href="structarbre.html">arbre</a> t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie vrai si l'arbre est une feuille. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ee0f190b2bd5e4f94d53c3ad6730c52"></a><!-- doxytag: member="arbre.h::print_arbre" ref="a3ee0f190b2bd5e4f94d53c3ad6730c52" args="(arbre t)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arbre_8h.html#a3ee0f190b2bd5e4f94d53c3ad6730c52">print_arbre</a> (<a class="el" href="structarbre.html">arbre</a> t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'arbre en parcours préfixe "à la Scheme", c.à.d. de la forme (racine fils1 fils2 ...). <br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p>Implémantation des arbres. </p>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Bastien Auda </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="arbre_8h_source.html">arbre.h</a>.</p>
+</div></div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Mon May 9 2011 00:36:51 pour Jeu de dames par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
+</body>
+</html>

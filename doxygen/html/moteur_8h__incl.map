@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node7" href="$min-max_8h.html" title="Implémentation du min&#45;max." alt="" coords="104,83,195,111"/>
+<area shape="rect" id="node9" href="$fonction__evaluation_8h.html" title="La fonction d&#39;evaluation de l&#39;algorithme MinMax. Renvoie un double compris entre &#45;1 et 1 cara..." alt="" coords="65,161,233,189"/>
+<area shape="rect" id="node13" href="$regles_8h.html" title="module des regles et d&#39;enumeration des coups." alt="" coords="111,238,188,266"/>
+<area shape="rect" id="node15" href="$plateau_8h.html" title="Tout ce qui concerne le plateau de jeu (damier, pions et joueurs)." alt="" coords="108,315,191,343"/>
+</map>

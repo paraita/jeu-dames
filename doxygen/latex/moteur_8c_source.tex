@@ -1,0 +1,412 @@
+\hypertarget{moteur_8c_source}{
+\section{moteur.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * moteur.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: 25 avr. 2011}
+00005 \textcolor{comment}{ *      Author: bastien}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{moteur_8h}{moteur.h}"}
+00009 
+00011 \textcolor{keywordtype}{int} coup\_en\_cours = 0;
+00012 
+00014 \hyperlink{structcoup}{coup} * coups\_possibles;
+00015 
+00017 \textcolor{keywordtype}{int} difficulte = 4;
+00018 
+00020 \textcolor{keywordtype}{int} case\_depart;
+00021 
+00023 \textcolor{keywordtype}{int} case\_intermediaire;
+00024 
+\hypertarget{moteur_8c_source_l00025}{}\hyperlink{moteur_8h_afd3360329886ee6f8e2a71a172a4a808}{00025} \textcolor{keywordtype}{int} jouer\_coup(\textcolor{keywordtype}{int} depart, \textcolor{keywordtype}{int} arrivee) \{
+00026         reset\_surbrillance(&\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00027         \textcolor{keywordflow}{if} (coup\_en\_cours) \{ \textcolor{comment}{/* si un mouvement n'a pas été transfomé en coup com
+      plet */}
+00028                 \textcolor{keywordflow}{if} (depart == case\_intermediaire) \{ \textcolor{comment}{/* on vérifie qu'on déplace t
+      oujours le même pion */}
+00029                         \textcolor{keywordtype}{int} i = 0;
+00030                         \hyperlink{structcoup}{coup} c;
+00031                         \textcolor{keywordflow}{while} ((c = coups\_possibles[i]).old\_case != 0) \{ \textcolor{comment}{/* on re
+      cherche à nouveau les coups qui correspondent à la case de départ */}
+00032                                 \textcolor{keywordflow}{if} (c.old\_case == case\_depart) \{
+00033                                         \textcolor{keywordflow}{if} (c.new\_case == arrivee) \{
+00034                                                 plateau\_deplacer\_pion(depart, cas
+      e\_depart, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}); \textcolor{comment}{/* on remet le pion à sa position initiale pour appeler platea
+      u\_appliquer\_coup() */}
+00035                                                 plateau\_appliquer\_coup(c, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu})
+      ;
+00036                                                 coup\_en\_cours = 0;
+00037                                                 \textcolor{keywordflow}{return} 1;
+00038                                         \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* sinon on recherche si le dépl
+      acement fait partie d'un coup valide */}
+00039                                                 \textcolor{keywordtype}{int} j = 0;
+00040                                                 \hyperlink{structcase__plateau}{case_plateau} case\_path;
+00041                                                 \textcolor{keywordtype}{int} nb\_prises = c.nombre\_prises;
+00042                                                 \textcolor{keywordflow}{while} (j < nb\_prises) \{
+00043                                                         case\_path = c.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[j];
+00044                                                         \textcolor{keywordflow}{if} (case\_path.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == arrivee) \{ \textcolor{comment}{/* si c'est le cas, on stocke la case de départ
+       et on quitte en attendant la suite du coup */}
+00045                                                                 coup\_en\_cours = 1
+      ;
+00046                                                                 case\_intermediair
+      e = arrivee;
+00047                                                                 plateau\_deplacer\_
+      pion(depart, arrivee, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00048                                                                 \textcolor{keywordflow}{return} 2;
+00049                                                         \}
+00050                                                         j++;
+00051                                                 \}
+00052                                         \}
+00053                                 \}
+00054                                 i++;
+00055                         \}
+00056                 \}
+00057                 \textcolor{comment}{/* si on n'a pas fait de return avant ce point, alors le coup est
+       invalide, on remet le plateau dans sa position initiale */}
+00058                 coup\_en\_cours = 0;
+00059                 case\_depart = 0;
+00060                 case\_intermediaire = 0;
+00061                 plateau\_deplacer\_pion(depart, case\_depart, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00062                 \textcolor{keywordflow}{return} 0;
+00063         \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* si on commence un nouveau tour */}
+00064                 \textcolor{keywordtype}{int} i = 0;
+00065                 \hyperlink{structcoup}{coup} c;
+00066                 \textcolor{keywordtype}{int} nb\_coups = nombre\_coups(coups\_possibles);
+00067                 \textcolor{keywordflow}{while} (i < nb\_coups) \{ \textcolor{comment}{/* puis on le parcours à la recherche de l
+      a case cliquée */}
+00068                         c = coups\_possibles[i];
+00069                         \textcolor{keywordflow}{if} (c.old\_case == depart) \{ \textcolor{comment}{/* si on la trouve on teste s
+      i c'est un coup complet */}
+00070                                 \textcolor{keywordflow}{if} (c.new\_case == arrivee) \{
+00071                                         plateau\_appliquer\_coup(c, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}); \textcolor{comment}{/* si 
+      c'est le cas on met le plateau à jour */}
+00072                                         \textcolor{keywordflow}{return} 1;
+00073                                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* sinon on cherche si le déplacement fa
+      it partie d'un coup valide */}
+00074                                         \textcolor{keywordtype}{int} j = 0;
+00075                                         \hyperlink{structcase__plateau}{case_plateau} case\_path;
+00076                                         \textcolor{keywordtype}{int} nb\_prises = c.nombre\_prises;
+00077                                         \textcolor{keywordflow}{while} (j < nb\_prises) \{
+00078                                                 case\_path = c.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[j];
+00079                                                 \textcolor{keywordflow}{if} (case\_path.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == arrivee) \{ \textcolor{comment}{/* si c'est le cas, on stocke la case de départ
+       et on quitte en attendant la suite du coup */}
+00080                                                         case\_depart = depart;
+00081                                                         coup\_en\_cours = 1;
+00082                                                         case\_intermediaire = arri
+      vee;
+00083                                                         plateau\_deplacer\_pion(dep
+      art, arrivee, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00084                                                         \textcolor{keywordflow}{return} 2;
+00085                                                 \}
+00086                                                 j++;
+00087                                         \}
+00088                                 \}
+00089                         \}
+00090                         i++;
+00091                 \}
+00092                 \textcolor{keywordflow}{return} 0; \textcolor{comment}{/* si on n'a pas touvé de case de départ ou de chemin c
+      orrespondant, alors le coup n'est pas valide */}
+00093         \}
+00094 \}
+00095 
+00096 \textcolor{keywordtype}{int} jouer\_coup\_xy(\textcolor{keywordtype}{int} x1, \textcolor{keywordtype}{int} y1, \textcolor{keywordtype}{int} x2, \textcolor{keywordtype}{int} y2) \{
+00097         \hyperlink{structcase__plateau}{case_plateau} c1 = get\_case\_plateau(x1, y1, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00098         \hyperlink{structcase__plateau}{case_plateau} c2 = get\_case\_plateau(x2, y2, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00099         \textcolor{keywordflow}{return} jouer\_coup(c1.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, c2.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle});
+00100 \}
+00101 
+\hypertarget{moteur_8c_source_l00102}{}\hyperlink{moteur_8h_ab7a8dc3359ab20fc1f00616ebd4b47a5}{00102} \textcolor{keywordtype}{int} hint\_deplacements\_possibles\_xy(\textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, \textcolor{keywordtype}{int} y) \{
+00103         \hyperlink{structcase__plateau}{case_plateau} c = get\_case\_plateau(x, y, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00104         \textcolor{keywordflow}{return} hint\_deplacements\_possibles(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle});
+00105 \}
+00106 
+\hypertarget{moteur_8c_source_l00107}{}\hyperlink{moteur_8h_a93014f8aa2a4cb59bdcf0ba5054e86f5}{00107} \textcolor{keywordtype}{int} commencer\_tour() \{
+00108         \textcolor{keywordflow}{if} (!coup\_en\_cours) \{
+00109                 coups\_possibles = getCoupsMax(getCoups(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu})); \textcolor{comment}{/* on
+       met à jour le tableau des coups possibles */}
+00110                 \textcolor{keywordflow}{if} (nombre\_coups(coups\_possibles) == 0) \{ \textcolor{comment}{// si on ne peut pas jo
+      uer, on passe la main.}
+00111                         \textcolor{keywordflow}{if}(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur})
+00112                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour} = \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2;
+00113                         \textcolor{keywordflow}{else}
+00114                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour} = \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1;
+00115                         \textcolor{keywordflow}{return} 1;
+00116                 \}
+00117         \}
+00118         \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain}) \{
+00119                 \textcolor{keywordflow}{return} 0;
+00120         \} \textcolor{keywordflow}{else} \{
+00121                 jouer\_tour\_ia();
+00122                 \textcolor{keywordflow}{return} 1;
+00123         \}
+00124 \}
+00125 
+\hypertarget{moteur_8c_source_l00126}{}\hyperlink{moteur_8h_acbf0cd12ea068c0f938e62f72419cdcc}{00126} \textcolor{keywordtype}{void} jouer\_tour\_ia() \{
+00127         reset\_surbrillance(&\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00128         \hyperlink{structcoup}{coup} c = jouerIA(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}, difficulte);
+00129         plateau\_appliquer\_coup(c, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00130         set\_case\_en\_surbrillance(c.old\_case,&\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00131         \textcolor{keywordtype}{int} i;
+00132         \textcolor{keywordflow}{for}(i = 0; i < c.nombre\_prises; i++) \{
+00133                 set\_case\_en\_surbrillance(c.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[i].\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},&\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+      
+00134         \}
+00135         set\_pion\_en\_surbrillance(c.new\_case, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00136 \}
+00137 
+\hypertarget{moteur_8c_source_l00138}{}\hyperlink{moteur_8h_a79cf9ff033c4ceaaf0834ad3e51dc37f}{00138} \textcolor{keywordtype}{void} set\_difficulte(\textcolor{keywordtype}{int} i) \{
+00139         difficulte = i;
+00140 \}
+00141 
+\hypertarget{moteur_8c_source_l00142}{}\hyperlink{moteur_8h_a269e871cb87e7db65e8b7a22914275d0}{00142} \textcolor{keywordtype}{void} hint\_pions\_jouables() \{
+00143         reset\_surbrillance(&\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00144         \textcolor{keywordflow}{if}(!coup\_en\_cours) \{
+00145                 coups\_possibles = getCoupsMax(getCoups(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour},\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}));
+00146         \}
+00147         \textcolor{keywordtype}{int} i = 0;
+00148         \textcolor{keywordtype}{int} n = nombre\_coups(coups\_possibles);
+00149         \textcolor{keywordflow}{for} (i = 0; i < n; i++) \{ \textcolor{comment}{/* On parcours toutes les cases de départ possi
+      bles et on les met en surbrillance */}
+00150                 set\_pion\_en\_surbrillance(coups\_possibles[i].old\_case, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00151         \}
+00152 \}
+00153 
+\hypertarget{moteur_8c_source_l00154}{}\hyperlink{moteur_8h_ae85868ec466abc3d96eca06998a01a7d}{00154} \textcolor{keywordtype}{int} hint\_deplacements\_possibles(\textcolor{keywordtype}{int} c) \{
+00155         reset\_surbrillance(&\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00156         \textcolor{keywordtype}{int} res = 0;
+00157         \textcolor{keywordtype}{int} i = 0;
+00158         \textcolor{keywordtype}{int} n = nombre\_coups(coups\_possibles);
+00159         \textcolor{keywordtype}{int} current\_case = c;
+00160         \textcolor{keywordflow}{if} (coup\_en\_cours) \{
+00161                 c = case\_depart;
+00162         \}
+00163         \textcolor{keywordtype}{int} current\_case\_found = 0;
+00164         \textcolor{keywordflow}{for} (i = 0; i < n; i++) \{ \textcolor{comment}{/* On parcours tous les coups */}
+00165                 \hyperlink{structcoup}{coup} cp = coups\_possibles[i];
+00166                 \textcolor{keywordflow}{if} (cp.old\_case == c) \{ \textcolor{comment}{/* si la case de départ d'un coup corresp
+      ond à celle qu'on cherche */}
+00167                         \hyperlink{structcase__plateau}{case_plateau} * cases = cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin};
+00168                         \textcolor{keywordtype}{int} nb\_cases = cp.nombre\_prises;
+00169                         \textcolor{keywordtype}{int} j = 0;
+00170                         \textcolor{keywordflow}{while} (j < nb\_cases) \{ \textcolor{comment}{/* on met en surbrillance toutes l
+      es cases par lesquelles passe le coup */}
+00171                                 \textcolor{keywordtype}{int} case\_surbrillance = cases[j].
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00172                                 \textcolor{keywordflow}{if} (current\_case\_found)
+00173                                         set\_case\_en\_surbrillance(case\_surbrillanc
+      e, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00174                                 \textcolor{keywordflow}{if} (case\_surbrillance == current\_case)
+00175                                         current\_case\_found = 1;
+00176                                 j++;
+00177                         \}
+00178                         set\_case\_en\_surbrillance(cp.new\_case, &\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00179                         res = 1;
+00180                 \}
+00181         \}
+00182         \textcolor{keywordflow}{return} res;
+00183 \}
+00184 
+\hypertarget{moteur_8c_source_l00185}{}\hyperlink{moteur_8h_a9ae4819df5eb9b6f1de826520bf30a8b}{00185} \textcolor{keywordtype}{int} sauvegarder\_partie(\textcolor{keywordtype}{char} * filename) \{
+00186         \textcolor{keywordtype}{int} i;
+00187         FILE* fichier;
+00188 
+00189         fichier = fopen(filename, \textcolor{stringliteral}{"w"});
+00190 
+00191         \textcolor{keywordflow}{if} (fichier) \{
+00192 
+00193                 \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == blanc) \{
+00194                         fprintf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t 1\(\backslash\)n"}, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain});
+00195                 \} \textcolor{keywordflow}{else} \{
+00196                         \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == noir) \{
+00197                                 fprintf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t 0\(\backslash\)n"}, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.
+      \hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain});
+00198                         \}
+00199                 \}
+00200 
+00201                 \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == blanc) \{
+00202                         fprintf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t 1\(\backslash\)n"}, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain});
+00203                 \} \textcolor{keywordflow}{else} \{
+00204                         \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == noir) \{
+00205                                 fprintf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t 0\(\backslash\)n"}, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.
+      \hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain});
+00206                         \}
+00207                 \}
+00208                 \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} == \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur}) \{
+00209                         fprintf(fichier, \textcolor{stringliteral}{"1\(\backslash\)n"});
+00210                 \} \textcolor{keywordflow}{else} \{
+00211                         fprintf(fichier, \textcolor{stringliteral}{"2\(\backslash\)n"});
+00212                 \}
+00213                 \textcolor{keywordflow}{for} (i = 1; i <= 50; i++) \{
+00214                         \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur == blanc) \{ \textcolor{comment}{//Couleur = 1
+       si blanc}
+00215                                 fprintf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t 0\(\backslash\)t %d
+      \(\backslash\)t %d\(\backslash\)t 1\(\backslash\)n"},
+00216                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},
+00217                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance}, 
+      \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x,
+00218                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].
+      \hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre},
+00219                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.
+      \hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance},
+00220                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame},
+00221                                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame});
+00222                         \} \textcolor{keywordflow}{else} \{
+00223                                 \textcolor{keywordflow}{if} (\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur == noir) \{ \textcolor{comment}{//Coul
+      eur = 0 si noir}
+00224                                         fprintf(fichier,
+00225                                                         \textcolor{stringliteral}{"%d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t
+       0\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t 0\(\backslash\)n"},
+00226                                                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},
+00227                                                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].
+      \hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance}, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x,
+00228                                                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y, \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.
+      \hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre},
+00229                                                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.
+      \hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance},
+00230                                                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.
+      \hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame},
+00231                                                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.
+      \hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame});
+00232 
+00233                                 \}
+00234                         \}
+00235                 \}
+00236                 \textcolor{comment}{//fprintf(fichier,"LoL %d", p.cases[40].couleur);}
+00237                 fclose(fichier);
+00238                 printf(\textcolor{stringliteral}{"Sauvegarde reussi \(\backslash\)n"});
+00239                 \textcolor{keywordflow}{return} 1;
+00240         \}
+00241 
+00242         \textcolor{keywordflow}{else} \{
+00243                 printf(\textcolor{stringliteral}{"Erreur lors de l'ouverture de fichier \(\backslash\)n"});
+00244                 \textcolor{keywordflow}{return} 0;
+00245         \}
+00246 
+00247 \}
+00248 
+\hypertarget{moteur_8c_source_l00249}{}\hyperlink{moteur_8h_a614f6676a1441e96574b1b3f9f5aa7e3}{00249} \textcolor{keywordtype}{int} charger\_partie(\textcolor{keywordtype}{char} * filename) \{
+00250 
+00251         \hyperlink{structjoueur}{joueur} j1;
+00252         \hyperlink{structjoueur}{joueur} j2;
+00253 
+00254         \textcolor{keywordtype}{int} couleurJ1, couleurJ2, estHumainJ1, estHumainJ2, tourCouleur,
+00255                         notationOff, surbrillance, \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x}, y, estLibre, couleurCase,
+00256                         pionSurbrillance, estDame, pionCouleur, i;
+00257         FILE* fichier;
+00258         fichier = fopen(filename, \textcolor{stringliteral}{"r"});
+00259 
+00260         \textcolor{keywordflow}{if} (fichier) \{
+00261                 \textcolor{comment}{//Recuperation donnees joueur 1}
+00262                 fscanf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t %d\(\backslash\)n"}, &estHumainJ1, &couleurJ1);
+00263                 \textcolor{keywordflow}{if} (couleurJ1 == 1) \{
+00264                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = blanc;
+00265                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = estHumainJ1;
+00266                 \} \textcolor{keywordflow}{else} \{
+00267                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = noir;
+00268                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = estHumainJ1;
+00269                 \}
+00270 
+00271                 \textcolor{comment}{//Recuperation donnees joueur 2}
+00272                 fscanf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t %d\(\backslash\)n"}, &estHumainJ2, &couleurJ2);
+00273                 \textcolor{keywordflow}{if} (couleurJ2 == 1) \{
+00274                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = blanc;
+00275                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = estHumainJ2;
+00276                 \} \textcolor{keywordflow}{else} \{
+00277                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = noir;
+00278                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = estHumainJ2;
+00279                 \}
+00280 
+00281                 \textcolor{comment}{//Recuperation donnees tour}
+00282                 fscanf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)n"}, &tourCouleur);
+00283                 \textcolor{keywordflow}{if} (tourCouleur == 1) \{
+00284                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur};
+00285                 \} \textcolor{keywordflow}{else} \{
+00286                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_ab38c06b0c7e61b9eeb63b04c5e5bc652}{tour}.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur} = \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur};
+00287                 \}
+00288 
+00289                 \textcolor{comment}{//Recuperation donnees cases}
+00290                 \textcolor{keywordflow}{for} (i = 1; i <= 50; i++) \{
+00291                         fscanf(fichier, \textcolor{stringliteral}{"%d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t %d\(\backslash\)t 
+      %d\(\backslash\)n"},
+00292                                         &notationOff, &surbrillance, &x, &y, &est
+      Libre,
+00293                                         &couleurCase, &pionSurbrillance, &estDame
+      , &pionCouleur);
+00294                         \textcolor{keywordflow}{if} (pionCouleur == 1) \{
+00295                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} = notationOff;
+      
+00296                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = surbrillance;
+00297                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x = \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00298                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y = y;
+00299                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = estLibre;
+00300                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} = noir;
+00301                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = pionSurbril
+      lance;
+00302                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} = estDame;
+00303                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur = blanc;
+00304                         \} \textcolor{keywordflow}{else} \{
+00305                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} = notationOff;
+      
+00306                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = surbrillance;
+00307                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].x = \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00308                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].y = y;
+00309                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} = estLibre;
+00310                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].\hyperlink{structcase__plateau_a057f95a41503a890f27c651969ffac8d}{couleur} = noir;
+00311                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_ae49bb71ca6836b02fd9efa3c1fa64405}{en_surbrillance} = pionSurbril
+      lance;
+00312                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame} = estDame;
+00313                                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i].pion.couleur = noir;
+00314                         \}
+00315                 \}
+00316                 printf(\textcolor{stringliteral}{"Chargement termine avec succes \(\backslash\)n"});
+00317                 \textcolor{keywordflow}{return} 1;
+00318         \} \textcolor{keywordflow}{else} \{
+00319                 printf(\textcolor{stringliteral}{"Erreur lors de l'ouverture du fichier \(\backslash\)n"});
+00320                 \textcolor{keywordflow}{return} 0;
+00321         \}
+00322 
+00323 \}
+00324 
+\hypertarget{moteur_8c_source_l00325}{}\hyperlink{moteur_8h_a3389f0c85c80a7a201d7f546951c22dd}{00325} \textcolor{keywordtype}{void} initialiser\_partie() \{
+00326         \hyperlink{structjoueur}{joueur} joueur1;
+00327         \hyperlink{structjoueur}{joueur} joueur2;
+00328 
+00329         joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = 1;
+00330         joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = 1;
+00331 
+00332         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu} = nouveau\_plateau(joueur1, joueur2);
+00333 \}
+00334 
+\hypertarget{moteur_8c_source_l00335}{}\hyperlink{moteur_8h_af4cec21f33aec035009dd524c62a13cd}{00335} \textcolor{keywordtype}{void} set\_joueur\_est\_humain(\hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} couleur, \textcolor{keywordtype}{int} \textcolor{keywordtype}{boolean}) \{
+00336         \textcolor{keywordflow}{if} (couleur == blanc) \{
+00337                 \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur1.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = boolean;
+00338         \} \textcolor{keywordflow}{else} \{
+00339                 \textcolor{keywordflow}{if} (couleur == noir) \{
+00340                         \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu}.joueur2.\hyperlink{structjoueur_a9419778626112832ee0e59df49145a39}{est_humain} = boolean;
+00341 
+00342                 \} \textcolor{keywordflow}{else} \{
+00343                         printf(
+00344                                         \textcolor{stringliteral}{"Erreur : set\_joueur\_est\_humain(couleur\_p
+      ion couleur, int boolean) : mauvaise couleur"});
+00345                         exit(1);
+00346                 \}
+00347         \}
+00348 
+00349 \}
+00350 
+\hypertarget{moteur_8c_source_l00351}{}\hyperlink{moteur_8h_a58e7aeb8e134591ec3402655832840da}{00351} \hyperlink{structplateau}{plateau} get\_plateau() \{
+00352         \textcolor{keywordflow}{return} \hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu};
+00353 \}
+00354 
+\hypertarget{moteur_8c_source_l00355}{}\hyperlink{moteur_8h_a2836a0f283794670b04163df9027bbc2}{00355} \textcolor{keywordtype}{int} partie\_terminee() \{
+00356         \textcolor{keywordflow}{return} plateau\_partie\_finie(\hyperlink{moteur_8h_a3efa8d0f7c65daedc584dc8db048e62c}{p_jeu});
+00357 \}
+\end{DoxyCode}

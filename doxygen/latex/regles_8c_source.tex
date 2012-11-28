@@ -1,0 +1,1210 @@
+\hypertarget{regles_8c_source}{
+\section{regles.c}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{ * regles.c}
+00003 \textcolor{comment}{ *}
+00004 \textcolor{comment}{ *  Created on: 14 avr. 2011}
+00005 \textcolor{comment}{ *      Author: paraita}
+00006 \textcolor{comment}{ */}
+00007 \textcolor{preprocessor}{#include <stdio.h>}
+00008 \textcolor{preprocessor}{#include <stdlib.h>}
+00009 \textcolor{preprocessor}{#include <stddef.h>} \textcolor{comment}{/* pour NULL */}
+00010 \textcolor{preprocessor}{#include <string.h>} \textcolor{comment}{/* pour memcpy */}
+00011 \textcolor{preprocessor}{#include "\hyperlink{regles_8h}{regles.h}"}
+00012 
+00013 \textcolor{preprocessor}{#define NBCOUPS 2000}
+00014 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define NBDEPLACEMENTS 2}
+00015 \textcolor{preprocessor}{}
+00016 \textcolor{comment}{/*}
+00017 \textcolor{comment}{ * POSITION 1: x-1,y-1}
+00018 \textcolor{comment}{ * POSITION 2: x+1,y-1}
+00019 \textcolor{comment}{ * POSITION 3: x-1,y+1}
+00020 \textcolor{comment}{ * POSITION 4: x+1,y+1}
+00021 \textcolor{comment}{ */}
+00022 
+00023 \textcolor{comment}{/* retourne les coups possibles pour un pion */}
+\hypertarget{regles_8c_source_l00024}{}\hyperlink{regles_8h_a96d861d76d7070b120ca385c13aad984}{00024} \hyperlink{structcoup}{coup}* coupsPossibles(\textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} c, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p) \{
+00025 
+00026         \hyperlink{structcoup}{coup} *cp = calloc(NBCOUPS, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00027         \hyperlink{structplateau}{plateau} p\_futur = p;
+00028         \textcolor{keywordtype}{int} cnt\_coup = 0;
+00029         \hyperlink{structcase__plateau}{case_plateau} case\_courant = c;
+00030         \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} adversaire = (c.pion.couleur == blanc) ? noir : blanc;
+00031 
+00032         \textcolor{comment}{/* conditions de départ */}
+00033         \hyperlink{structcoup}{coup} coup\_courant;
+00034         coup\_courant.old\_case = case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00035         coup\_courant.nombre\_prises = 0;
+00036         coup\_courant.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00037         coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_courant.nombre\_prises++] = case\_courant;
+00038 
+00039         \textcolor{comment}{/* pour signaler qu'on est dans une rafle */}
+00040         \textcolor{keywordtype}{int} nouvelle\_rafle = 0;
+00041         \textcolor{keywordtype}{int} fini = 0;
+00042         \textcolor{keywordtype}{int} derniere\_position = 0;
+00043 
+00044         \textcolor{comment}{/* quand on est sur la case de départ on marque l'element qu'on va visite
+      r}
+00045 \textcolor{comment}{         * ainsi on ne reparcours pas une deuxieme fois quand on revient durant l
+      e backtrack}
+00046 \textcolor{comment}{         */}
+00047         \hyperlink{structcase__plateau}{case_plateau} to\_avoid\_depart[5];
+00048         \textcolor{keywordtype}{int} cnt\_avoid\_depart = 0;
+00049 
+00050         \textcolor{comment}{/*}
+00051 \textcolor{comment}{         * quand on est sur une case pendant une prise, on marque les pions alent
+      ours qu'on a visité}
+00052 \textcolor{comment}{         * au cas ou il y a plusieurs choix possibles}
+00053 \textcolor{comment}{         */}
+00054         \hyperlink{structcase__plateau}{case_plateau} to\_avoid\_parcours[5];
+00055         \textcolor{keywordtype}{int} cnt\_avoid\_parcours = 0;
+00056 
+00057         \textcolor{comment}{/* ----------------------------------------------------------------------
+      -----}
+00058 \textcolor{comment}{         * stratégie:}
+00059 \textcolor{comment}{         *}
+00060 \textcolor{comment}{         *                     |       |}
+00061 \textcolor{comment}{         *         1   |       |   2                            On teste d'abord 
+      les cases}
+00062 \textcolor{comment}{         *              \_\_\_\_\_\_\_|\_\_\_\_\_\_\_|\_\_\_\_\_\_\_                         dans l'or
+      dre indiqué toujours}
+00063 \textcolor{comment}{         *                     | case  |                                        p
+      ar rapport à la case courante}
+00064 \textcolor{comment}{         *             |courant|}
+00065 \textcolor{comment}{         *              \_\_\_\_\_\_\_|\_\_\_\_\_\_\_|\_\_\_\_\_\_\_}
+00066 \textcolor{comment}{         *                     |       |}
+00067 \textcolor{comment}{         *                 3   |       |   4}
+00068 \textcolor{comment}{         *             |       |}
+00069 \textcolor{comment}{         *}
+00070 \textcolor{comment}{         *}
+00071 \textcolor{comment}{         *}
+00072 \textcolor{comment}{         * ----------------------------------------------------------------------
+      -----}
+00073 \textcolor{comment}{         */}
+00074 
+00075         \textcolor{comment}{/* aTester est la case qu'on veut prendre s'il y a un pion du joueur adve
+      rse dessus */}
+00076         \hyperlink{structcase__plateau}{case_plateau} aTester = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x-1,case\_cour
+      ant.y-1,p\_futur);
+00077 
+00078 
+00079         \textcolor{keywordflow}{while}(!fini) \{
+00080 
+00081                 \textcolor{comment}{/* POSITION 1 */}
+00082                 \textcolor{keywordflow}{if}((aTester.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} == 0)
+00083                                 && (aTester.pion.couleur == adversaire)
+00084                                 && (est\_prenable(aTester.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},&p\_f
+      utur) == 1)
+00085                                 && ((\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x-1, aTester
+      .y-1, p\_futur).\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre})
+00086                                                 || coup\_inclus(
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x-1, aTester.y-1, p\_futur),coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin},co
+      up\_courant.nombre\_prises))
+00087                                 && (!coup\_inclus(aTester, coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}, co
+      up\_courant.nombre\_prises))
+00088                                 && (\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x-1, aTester.
+      y-1, p\_futur).\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0)
+00089                                 && (aTester.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != derniere\_posit
+      ion)
+00090                                 && (!coup\_inclus(aTester, to\_avoid\_parcours, cnt\_
+      avoid\_parcours))) \{
+00091                         \textcolor{keywordflow}{if}((case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == coup\_courant.old\_
+      case)
+00092                                         && (coup\_courant.nombre\_prises <= 1)
+00093                                         && (coup\_inclus(aTester, to\_avoid\_depart,
+       cnt\_avoid\_depart))) \{
+00094                                 \textcolor{keywordflow}{break};
+00095                         \}
+00096                         \textcolor{keywordflow}{else} \{
+00097                                 nouvelle\_rafle = 1;
+00098                                 derniere\_position = 0;
+00099                                 \textcolor{comment}{/* si je suis sur la case de départ, j'ajoute aTe
+      ster a la liste des cases a eviter */}
+00100                                 \textcolor{keywordflow}{if} ((case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == coup\_cou
+      rant.old\_case)
+00101                                                 && (coup\_courant.nombre\_prises <=
+       1)) \{
+00102                                         to\_avoid\_depart[cnt\_avoid\_depart++] = aTe
+      ster;
+00103                                 \}
+00104                                 \textcolor{comment}{/* nouvelle\_position est la case ou on atteri apr
+      es avoir mangé aTester */}
+00105                                 case\_courant = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x-
+      1, aTester.y-1, p\_futur);
+00106                                 coup\_courant.new\_case = case\_courant.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00107                                 coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[coup\_courant.nombre\_prises - 
+      1] = aTester;
+00108                                 coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_courant.nombre\_prises++]
+       = case\_courant;
+00109 
+00110                                 \textcolor{comment}{/* on va reessayer le test sur la POSITION 1 de a
+      Tester */}
+00111                                 aTester = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x-
+      1,case\_courant.y-1, p\_futur);
+00112                         \}
+00113                 \}
+00114                 \textcolor{keywordflow}{else} \{
+00115                         aTester = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x+1,case\_c
+      ourant.y-1,p\_futur);
+00116                         \textcolor{comment}{/* POSITION 2 */}
+00117                         \textcolor{keywordflow}{if}((aTester.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} == 0)
+00118                                         && (aTester.pion.couleur == adversaire)
+00119                                         && (est\_prenable(aTester.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},&p\_futur) == 1)
+00120                                         && ((\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1,
+       aTester.y-1, p\_futur).\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre})
+00121                                                         || coup\_inclus(
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1, aTester.y-1, p\_futur), coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}, 
+      coup\_courant.nombre\_prises))
+00122                                         && (!coup\_inclus(aTester, coup\_courant.
+      \hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}, coup\_courant.nombre\_prises))
+00123                                         && (\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1, 
+      aTester.y-1, p\_futur).\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0)
+00124                                         && (aTester.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != dernie
+      re\_position)
+00125                                         && (!coup\_inclus(aTester, to\_avoid\_parcou
+      rs, cnt\_avoid\_parcours))) \{
+00126                                 \textcolor{keywordflow}{if}((case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == coup\_cour
+      ant.old\_case)
+00127                                                 && (coup\_courant.nombre\_prises <=
+       1)
+00128                                                 && (coup\_inclus(aTester, to\_avoid
+      \_depart, cnt\_avoid\_depart))) \{
+00129                                         \textcolor{keywordflow}{break};
+00130                                 \}
+00131                                 \textcolor{keywordflow}{else} \{
+00132                                         nouvelle\_rafle = 1;
+00133                                         derniere\_position = 0;
+00134                                         \textcolor{comment}{/* si je suis sur la case de départ, j'aj
+      oute aTester a la liste des cases a eviter */}
+00135                                         \textcolor{keywordflow}{if} ((case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == 
+      coup\_courant.old\_case)
+00136                                                 && (coup\_courant.nombre\_prises <=
+       1))\{
+00137                                                 to\_avoid\_depart[cnt\_avoid\_depart+
+      +] = aTester;
+00138                                         \}
+00139                                         case\_courant = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aT
+      ester.x+1, aTester.y-1, p\_futur);
+00140                                         coup\_courant.new\_case = case\_courant.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00141                                         coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[coup\_courant.nombre\_p
+      rises - 1] = aTester;
+00142                                         coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_courant.nombre\_p
+      rises++] = case\_courant;
+00143 
+00144                                         aTester = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_co
+      urant.x-1,case\_courant.y-1, p\_futur);
+00145                                 \}
+00146                         \}
+00147                         \textcolor{keywordflow}{else} \{
+00148                                 aTester = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x-
+      1,case\_courant.y+1,p\_futur);
+00149                                 \textcolor{comment}{/* POSITION 3 */}
+00150                                 \textcolor{keywordflow}{if}((aTester.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} == 0)
+00151                                                 && (aTester.pion.couleur == adver
+      saire)
+00152                                                 && (est\_prenable(aTester.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},&p\_futur) == 1)
+00153                                                 && ((\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTes
+      ter.x-1, aTester.y+1, p\_futur).\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre})
+00154                                                                 || coup\_inclus(
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x-1, aTester.y+1, p\_futur),coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin},co
+      up\_courant.nombre\_prises))
+00155                                                 && (!coup\_inclus(aTester, coup\_co
+      urant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}, coup\_courant.nombre\_prises))
+00156                                                 && (\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTest
+      er.x-1, aTester.y+1, p\_futur).\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0)
+00157                                                 && (aTester.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} !
+      = derniere\_position)
+00158                                                 && (!coup\_inclus(aTester, to\_avoi
+      d\_parcours, cnt\_avoid\_parcours))) \{
+00159                                         \textcolor{keywordflow}{if}((case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == c
+      oup\_courant.old\_case)
+00160                                                         && (coup\_courant.nombre\_p
+      rises <= 1)
+00161                                                         && (coup\_inclus(aTester, 
+      to\_avoid\_depart, cnt\_avoid\_depart))) \{
+00162                                                 \textcolor{keywordflow}{break};
+00163                                         \}
+00164                                         \textcolor{keywordflow}{else} \{
+00165                                                 nouvelle\_rafle = 1;
+00166                                                 derniere\_position = 0;
+00167                                                 \textcolor{comment}{/* si je suis sur la case de dépa
+      rt, j'ajoute aTester a la liste des cases a eviter */}
+00168                                                 \textcolor{keywordflow}{if} ((case\_courant.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == coup\_courant.old\_case)
+00169                                                         && (coup\_courant.nombre\_p
+      rises <= 1))\{
+00170                                                         to\_avoid\_depart[cnt\_avoid
+      \_depart++] = aTester;
+00171                                                 \}
+00172                                                 case\_courant = 
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x-1, aTester.y+1, p\_futur);
+00173                                                 coup\_courant.new\_case = case\_cour
+      ant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00174                                                 coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[coup\_courant.
+      nombre\_prises - 1] = aTester;
+00175                                                 coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_courant.
+      nombre\_prises++] = case\_courant;
+00176 
+00177                                                 aTester = 
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x-1,case\_courant.y-1, p\_futur);
+00178                                         \}
+00179                                 \}
+00180                                 \textcolor{keywordflow}{else} \{
+00181                                         aTester = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_co
+      urant.x+1,case\_courant.y+1,p\_futur);
+00182                                         \textcolor{comment}{/* POSITION 4 */}
+00183                                         \textcolor{keywordflow}{if}((aTester.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre} == 0)
+00184                                                         && (aTester.pion.couleur 
+      == adversaire)
+00185                                                         && (est\_prenable(aTester.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},&p\_futur) == 1)
+00186                                                         && ((
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1, aTester.y+1, p\_futur).\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre})
+00187                                                                         || coup\_i
+      nclus(\hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1, aTester.y+1, p\_futur),coup\_courant.
+      \hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin},coup\_courant.nombre\_prises))
+00188                                                         && (!coup\_inclus(aTester,
+       coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}, coup\_courant.nombre\_prises))
+00189                                                         && (
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1, aTester.y+1, p\_futur).\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} !=
+       0)
+00190                                                         && (aTester.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != derniere\_position)
+00191                                                         && (!coup\_inclus(aTester,
+       to\_avoid\_parcours, cnt\_avoid\_parcours))) \{
+00192                                                 \textcolor{keywordflow}{if}((case\_courant.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == coup\_courant.old\_case)
+00193                                                                 && (coup\_courant.
+      nombre\_prises <= 1)
+00194                                                                 && (coup\_inclus(a
+      Tester, to\_avoid\_depart, cnt\_avoid\_depart))) \{
+00195                                                         \textcolor{keywordflow}{break};
+00196                                                 \}
+00197                                                 \textcolor{keywordflow}{else} \{
+00198                                                         nouvelle\_rafle = 1;
+00199                                                         derniere\_position = 0;
+00200                                                         \textcolor{comment}{/* si je suis sur la case
+       de départ, j'ajoute aTester a la liste des cases a eviter */}
+00201                                                         \textcolor{keywordflow}{if} ((case\_courant.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == coup\_courant.old\_case)
+00202                                                                 && (coup\_courant.
+      nombre\_prises <= 1))\{
+00203                                                                 to\_avoid\_depart[c
+      nt\_avoid\_depart++] = aTester;
+00204                                                         \}
+00205                                                         case\_courant = 
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(aTester.x+1, aTester.y+1, p\_futur);
+00206                                                         coup\_courant.new\_case = c
+      ase\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00207                                                         coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[coup\_
+      courant.nombre\_prises - 1] = aTester;
+00208                                                         coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_
+      courant.nombre\_prises++] = case\_courant;
+00209 
+00210                                                         aTester = 
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x-1,case\_courant.y-1, p\_futur);
+00211                                                 \}
+00212                                         \}
+00213                                         \textcolor{keywordflow}{else} \{  \textcolor{comment}{/* j'enregistre le coup et je bac
+      ktrack  si possible, sinon je retourne le tableau de coups */}
+00214 
+00215                                                 derniere\_position = coup\_courant.
+      \hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[coup\_courant.nombre\_prises - 2].\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00216                                                 \textcolor{comment}{/* si on a rien au bout d'une raf
+      le et si on est pas dans la case 0, on l'ajoute a cp */}
+00217                                                 \textcolor{keywordflow}{if}(nouvelle\_rafle && coup\_courant
+      .old\_case != 0 && coup\_courant.new\_case != 0) \{
+00218                                                         cp[cnt\_coup++] = coup\_cou
+      rant;
+00219                                                         nouvelle\_rafle = 0;
+00220                                                 \}
+00221                                                 \textcolor{keywordflow}{if}(coup\_courant.nombre\_prises <= 
+      1) \{ \textcolor{comment}{/* si y'a plus de prises en fait */}
+00222                                                         fini = 1;
+00223                                                 \}
+00224                                                 \textcolor{comment}{/* et on backtracke */}
+00225 
+00226                                                 to\_avoid\_parcours[cnt\_avoid\_parco
+      urs++] = coup\_courant.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[coup\_courant.nombre\_prises - 2];
+00227                                                 coup\_courant.nombre\_prises--;
+00228                                                 case\_courant = coup\_courant.
+      \hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_courant.nombre\_prises - 1];
+00229                                                 aTester = 
+      \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(case\_courant.x-1,case\_courant.y-1, p\_futur);
+00230                                         \}
+00231                                 \}
+00232                         \}
+00233                 \}
+00234         \}
+00235         \textcolor{comment}{/* on ajoute aussi les deplacements possibles */}
+00236         \hyperlink{structcoup}{coup} *deplacements = get\_deplacements(c, p);
+00237         \textcolor{keywordflow}{while}((deplacements->old\_case != 0) && (deplacements->new\_case != 0)) \{
+00238                 cp[cnt\_coup++] = *deplacements;
+00239                 deplacements++;
+00240         \}
+00241         \textcolor{comment}{/* pour marquer la fin de tableau */}
+00242         \hyperlink{structcoup}{coup} bidon;
+00243         bidon.old\_case = 0;
+00244         bidon.new\_case = 0;
+00245         cp[cnt\_coup++] = bidon;
+00246         \textcolor{keywordflow}{return} cp;
+00247 \}
+00248 
+\hypertarget{regles_8c_source_l00249}{}\hyperlink{regles_8h_a69e7dc6de03ec30120b2a49ef6bb2f51}{00249} \textcolor{keywordtype}{int} get\_possible\_case\_pos(\textcolor{keywordtype}{int} c, \textcolor{keywordtype}{int} diag, \hyperlink{structplateau}{plateau} p) \{
+00250         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c].x;
+00251         \textcolor{keywordtype}{int} y = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c].y;
+00252         \textcolor{keywordflow}{switch} (diag) \{
+00253         \textcolor{keywordflow}{case} 1:
+00254                 \textcolor{keywordflow}{while} (x > 0 && y > 0) \{
+00255                         x--;
+00256                         y--;
+00257                         \hyperlink{structcase__plateau}{case_plateau} aPrendre = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p);
+      
+00258                         \textcolor{keywordflow}{if} (!aPrendre.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{ \textcolor{comment}{/* si on trouve une case non l
+      ibre */}
+00259                                 \textcolor{keywordflow}{if} (aPrendre.pion.couleur != p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c].pion.coul
+      eur) \{ \textcolor{comment}{/* soit elle à un pion adversaire */}
+00260                                         \textcolor{keywordflow}{return} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p).
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00261                                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* soit un pion de la même couleur */}
+00262                                         \textcolor{keywordflow}{return} 0;
+00263                                 \}
+00264                         \}
+00265                 \}
+00266                 \textcolor{keywordflow}{return} 0;
+00267                 \textcolor{keywordflow}{break};
+00268         \textcolor{keywordflow}{case} 2:
+00269                 \textcolor{keywordflow}{while} (x <= 10 && y > 0) \{
+00270                         x++;
+00271                         y--;
+00272                         \hyperlink{structcase__plateau}{case_plateau} aPrendre = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p);
+      
+00273                         \textcolor{keywordflow}{if} (!aPrendre.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{ \textcolor{comment}{/* si on trouve une case non l
+      ibre */}
+00274                                 \textcolor{keywordflow}{if} (aPrendre.pion.couleur != p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c].pion.coul
+      eur) \{ \textcolor{comment}{/* soit elle à un pion adversaire */}
+00275                                         \textcolor{keywordflow}{return} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p).
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00276                                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* soit un pion de la même couleur */}
+00277                                         \textcolor{keywordflow}{return} 0;
+00278                                 \}
+00279                         \}
+00280                 \}
+00281                 \textcolor{keywordflow}{return} 0;
+00282                 \textcolor{keywordflow}{break};
+00283         \textcolor{keywordflow}{case} 3:
+00284                 \textcolor{keywordflow}{while} (x > 0 && y <= 10) \{
+00285                         x--;
+00286                         y++;
+00287                         \hyperlink{structcase__plateau}{case_plateau} aPrendre = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p);
+      
+00288                         \textcolor{keywordflow}{if} (!aPrendre.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{ \textcolor{comment}{/* si on trouve une case non l
+      ibre */}
+00289                                 \textcolor{keywordflow}{if} (aPrendre.pion.couleur != p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c].pion.coul
+      eur) \{ \textcolor{comment}{/* soit elle à un pion adversaire */}
+00290                                         \textcolor{keywordflow}{return} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p).
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00291                                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* soit un pion de la même couleur */}
+00292                                         \textcolor{keywordflow}{return} 0;
+00293                                 \}
+00294                         \}
+00295                 \}
+00296                 \textcolor{keywordflow}{return} 0;
+00297                 \textcolor{keywordflow}{break};
+00298         \textcolor{keywordflow}{case} 4:
+00299                 \textcolor{keywordflow}{while} (x <= 10 && y <= 10) \{
+00300                         x++;
+00301                         y++;
+00302                         \hyperlink{structcase__plateau}{case_plateau} aPrendre = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p);
+      
+00303                         \textcolor{keywordflow}{if} (!aPrendre.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{ \textcolor{comment}{/* si on trouve une case non l
+      ibre */}
+00304                                 \textcolor{keywordflow}{if} (aPrendre.pion.couleur != p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[c].pion.coul
+      eur) \{ \textcolor{comment}{/* soit elle à un pion adversaire */}
+00305                                         \textcolor{keywordflow}{return} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p).
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00306                                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* soit un pion de la même couleur */}
+00307                                         \textcolor{keywordflow}{return} 0;
+00308                                 \}
+00309                         \}
+00310                 \}
+00311                 \textcolor{keywordflow}{return} 0;
+00312                 \textcolor{keywordflow}{break};
+00313         \textcolor{keywordflow}{default}:
+00314                 \textcolor{keywordflow}{return} 0;
+00315                 \textcolor{keywordflow}{break};
+00316         \}
+00317 \}
+00318 
+00319 
+\hypertarget{regles_8c_source_l00320}{}\hyperlink{regles_8h_a1bff1ac214ab2332d8b7e3a0b79f262c}{00320} \hyperlink{structcoup}{coup} * completer\_coup\_dame(\textcolor{keyword}{const} \hyperlink{structcoup}{coup} c, \textcolor{keywordtype}{int} mvt, \hyperlink{structplateau}{plateau} p) \{
+00321         \hyperlink{structcoup}{coup} * res = calloc(100, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00322         \textcolor{keywordtype}{int} cpt\_res = 0;
+00323         \hyperlink{structplateau}{plateau} p\_futur;
+00324         \textcolor{keywordflow}{if} (mvt == 1 || mvt == 4) \{ \textcolor{comment}{// si on est dur la diagonale 1-4}
+00325                 \textcolor{keywordtype}{int} diag2 = get\_possible\_case\_pos(c.new\_case, 2, p); \textcolor{comment}{// on cherch
+      e sur les diagonales perpendiculaires}
+00326                 \textcolor{keywordtype}{int} diag3 = get\_possible\_case\_pos(c.new\_case, 3, p);
+00327                 \textcolor{keywordflow}{if} (diag2) \{ \textcolor{comment}{// si on peut prendre un pion sur la diagonale 2}
+00328                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[diag2];
+00329                         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = cPrise.x + 1;
+00330                         \textcolor{keywordtype}{int} y = cPrise.y - 1;
+00331                         \textcolor{keywordflow}{while} (x <= 10 && y > 0 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, 
+      p).est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière la
+       prise */}
+00332                                 \hyperlink{structcoup}{coup} cp = c;
+00333                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[cp.nombre\_prises] = cPrise;
+00334                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00335                                 cp.nombre\_prises++;
+00336                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[cp.nombre\_prises] = new\_case;
+00337                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00338                                 res[cpt\_res++] = cp;
+00339 
+00340                                 \textcolor{keywordflow}{if} (get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 1, p) \textcolor{comment}{/* si il n'y a pas d'aures prises sur la diagonale, on
+       ajoute le coup */}
+00341                                 || get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 4, p)) \{
+00342 
+00343                                         p\_futur = p;
+00344                                         plateau\_prendre\_pion(cPrise.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00345                                         plateau\_deplacer\_pion(c.new\_case,
+00346                                                         new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00347                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00348                                                         completer\_coup\_dame(cp, 2
+      , p\_futur);
+00349                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00350                                         \textcolor{keywordtype}{int} i;
+00351                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00352                                                 res[cpt\_res++] = coups\_completes[
+      i];
+00353                                         \}
+00354                                 \}
+00355                                 x++;
+00356                                 y--;
+00357                         \}
+00358                 \}
+00359                 \textcolor{keywordflow}{if} (diag3) \{ \textcolor{comment}{// si on peut prendre un pion sur la diagonale 3}
+00360                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[diag3];
+00361                         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = cPrise.x - 1;
+00362                         \textcolor{keywordtype}{int} y = cPrise.y + 1;
+00363                         \textcolor{keywordflow}{while} (x > 0 && y <= 10 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, 
+      p).est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière la
+       prise */}
+00364                                 \hyperlink{structcoup}{coup} cp = c;
+00365                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[cp.nombre\_prises] = cPrise;
+00366                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00367                                 cp.nombre\_prises++;
+00368                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[cp.nombre\_prises] = new\_case;
+00369                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00370                                 res[cpt\_res++] = cp;
+00371                                 \textcolor{keywordflow}{if} (!(get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 1, p) \textcolor{comment}{/* si il n'y a pas d'aures prises sur la diagonale, on
+       ajoute le coup */}
+00372                                 || get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 4, p))) \{
+00373 
+00374                                         p\_futur = p;
+00375                                         plateau\_prendre\_pion(cPrise.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00376                                         plateau\_deplacer\_pion(c.new\_case,
+00377                                                         new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00378                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00379                                                         completer\_coup\_dame(cp, 3
+      , p\_futur);
+00380                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00381                                         \textcolor{keywordtype}{int} i;
+00382                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00383                                                 res[cpt\_res++] = coups\_completes[
+      i];
+00384                                         \}
+00385                                 \}
+00386                                 x--;
+00387                                 y++;
+00388                         \}
+00389                 \}
+00390         \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{// sinon on est sur la diagonale 2-3}
+00391                 \textcolor{keywordtype}{int} diag1 = get\_possible\_case\_pos(c.new\_case, 1, p); \textcolor{comment}{// on cherch
+      e sur les diagonales perpendiculaires}
+00392                 \textcolor{keywordtype}{int} diag4 = get\_possible\_case\_pos(c.new\_case, 4, p);
+00393                 \textcolor{keywordflow}{if} (diag1) \{ \textcolor{comment}{// si on peut prendre un pion sur la diagonale 1}
+00394                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[diag1];
+00395                         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = cPrise.x - 1;
+00396                         \textcolor{keywordtype}{int} y = cPrise.y - 1;
+00397                         \textcolor{keywordflow}{while} (x > 0 && y > 0 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p)
+      .est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière la p
+      rise */}
+00398                                 \hyperlink{structcoup}{coup} cp = c;
+00399                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[cp.nombre\_prises] = cPrise;
+00400                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00401                                 cp.nombre\_prises++;
+00402                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[cp.nombre\_prises] = new\_case;
+00403                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00404                                 res[cpt\_res++] = cp;
+00405                                 \textcolor{keywordflow}{if} (!(get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 2, p) \textcolor{comment}{/* si il n'y a pas d'aures prises sur la diagonale, on
+       ajoute le coup */}
+00406                                 || get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 3, p))) \{
+00407                                         p\_futur = p;
+00408                                         plateau\_prendre\_pion(cPrise.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00409                                         plateau\_deplacer\_pion(c.new\_case,
+00410                                                         new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00411                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00412                                                         completer\_coup\_dame(cp, 1
+      , p\_futur);
+00413                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00414                                         \textcolor{keywordtype}{int} i;
+00415                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00416                                                 res[cpt\_res++] = coups\_completes[
+      i];
+00417                                         \}
+00418                                 \}
+00419                                 x--;
+00420                                 y--;
+00421                         \}
+00422                 \}
+00423                 \textcolor{keywordflow}{if} (diag4) \{ \textcolor{comment}{// si on peut prendre un pion sur la diagonale 3}
+00424                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[diag4];
+00425                         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = cPrise.x + 1;
+00426                         \textcolor{keywordtype}{int} y = cPrise.y + 1;
+00427                         \textcolor{keywordflow}{while} (x <= 10 && y <= 10 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y
+      , p).est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière 
+      la prise */}
+00428                                 \hyperlink{structcoup}{coup} cp = c;
+00429                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[cp.nombre\_prises] = cPrise;
+00430                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00431                                 cp.nombre\_prises++;
+00432                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[cp.nombre\_prises] = new\_case;
+00433                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00434                                 res[cpt\_res++] = cp;
+00435                                 \textcolor{keywordflow}{if} (!(get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 2, p) \textcolor{comment}{/* si il n'y a pas d'aures prises sur la diagonale, on
+       ajoute le coup */}
+00436                                 || get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 3, p))) \{
+00437                                         p\_futur = p;
+00438                                         plateau\_prendre\_pion(cPrise.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00439                                         plateau\_deplacer\_pion(c.new\_case,
+00440                                                         new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_futur);
+00441                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00442                                                         completer\_coup\_dame(cp, 4
+      , p\_futur);
+00443                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00444                                         \textcolor{keywordtype}{int} i;
+00445                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00446                                                 res[cpt\_res++] = coups\_completes[
+      i];
+00447                                         \}
+00448                                 \}
+00449                                 x++;
+00450                                 y++;
+00451                         \}
+00452                 \}
+00453         \}
+00454 
+00455         \hyperlink{structcoup}{coup} bidon;
+00456         bidon.old\_case = 0;
+00457         bidon.new\_case = 0;
+00458         res[cpt\_res++] = bidon;
+00459 
+00460         \textcolor{keywordflow}{return} res;
+00461 \}
+00462 
+00467 \hyperlink{structcoup}{coup}* coupsPossiblesDames(\textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} c, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p) \{
+00468 
+00469         \hyperlink{structcoup}{coup} * cps = calloc(NBCOUPS, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00470         \hyperlink{structplateau}{plateau} p\_futur = p;
+00471         \textcolor{keywordtype}{int} cnt\_coup = 0;
+00472         \hyperlink{structcase__plateau}{case_plateau} case\_courant = c;
+00473         \hyperlink{plateau_8h_a8282be6127518547fa916dd6cfef17cb}{couleur_pion} adversaire = (c.pion.couleur == blanc) ? noir : blanc;
+00474         \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eee}{type_coup} prise = \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00475 
+00476         \textcolor{comment}{/* conditions de départ */}
+00477         \hyperlink{structcoup}{coup} coup\_courant;
+00478         coup\_courant.old\_case = case\_courant.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00479         coup\_courant.nombre\_prises = 0;
+00480         coup\_courant.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x};
+00481         coup\_courant.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[coup\_courant.nombre\_prises++] = case\_courant;
+00482 
+00483         \textcolor{comment}{/* pour signaler qu'on est dans une rafle */}
+00484         \textcolor{keywordtype}{int} nouvelle\_rafle = 0;
+00485         \textcolor{keywordtype}{int} derniere\_recherche\_faite = 0; \textcolor{comment}{/* lorsqu'on revient sur la case de dép
+      art, on fait une derniere recherche */}
+00486         \textcolor{keywordtype}{int} fini = 0;
+00487         \textcolor{keywordtype}{int} derniere\_position = 0;
+00488 
+00489         \textcolor{comment}{/* quand on est sur la case de départ on marque l'element qu'on va visite
+      r}
+00490 \textcolor{comment}{         * ainsi on ne reparcours pas une deuxieme fois quand on revient durant l
+      e backtrack}
+00491 \textcolor{comment}{         */}
+00492         \hyperlink{structcase__plateau}{case_plateau} to\_avoid[5];
+00493         \textcolor{keywordtype}{int} cnt\_avoid = 0;
+00494 
+00495         \textcolor{comment}{/* ----------------------------------------------------------------------
+      -----}
+00496 \textcolor{comment}{         * stratégie:}
+00497 \textcolor{comment}{         *}
+00498 \textcolor{comment}{         *                     |       |}
+00499 \textcolor{comment}{         *         1   |       |   2                            On teste d'abord 
+      les diagonales}
+00500 \textcolor{comment}{         *              \_\_\_\_\_\_\_|\_\_\_\_\_\_\_|\_\_\_\_\_\_\_                         dans l'or
+      dre indiqué toujours}
+00501 \textcolor{comment}{         *                     | case  |                                        p
+      ar rapport à la case courante}
+00502 \textcolor{comment}{         *             |courant|}
+00503 \textcolor{comment}{         *              \_\_\_\_\_\_\_|\_\_\_\_\_\_\_|\_\_\_\_\_\_\_}
+00504 \textcolor{comment}{         *                     |       |}
+00505 \textcolor{comment}{         *                 3   |       |   4}
+00506 \textcolor{comment}{         *             |       |}
+00507 \textcolor{comment}{         *}
+00508 \textcolor{comment}{         *}
+00509 \textcolor{comment}{         *}
+00510 \textcolor{comment}{         * ----------------------------------------------------------------------
+      -----}
+00511 \textcolor{comment}{         */}
+00512 
+00513         \textcolor{keywordflow}{while} (!fini) \{
+00514                 \textcolor{comment}{/* ---------------------- Diagonale 1 ---------------------------
+      -- */}
+00515                 \textcolor{keywordtype}{int} case\_prise = get\_possible\_case\_pos(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 1, 
+      p);
+00516                 \hyperlink{structcase__plateau}{case_plateau} case\_derriere = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(
+00517                                 p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].x - 1, p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].y 
+      - 1, p);
+00518                 \textcolor{keywordflow}{if} (!case\_prise || !case\_derriere.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}
+00519                                 || case\_derriere.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == 0) \{ \textcolor{comment}{/* s
+      i la diagonale est vide, ou qu'on ne peut pas prendre le pion */}
+00520                         \textcolor{keywordtype}{int} \hyperlink{plateau_8h_a9e00f85b4b6ec2d8bdfbe94ff40f0eeeacab1e15e82c5976bfb476ddfe145263c}{x} = c.x - 1;
+00521                         \textcolor{keywordtype}{int} y = c.y - 1;
+00522                         \textcolor{keywordflow}{while} (x > 0 && y > 0 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p)
+      .est\_libre) \{ \textcolor{comment}{/* on parcours la diagonale jusqu'au bout ou jusqu'a rencontrer un 
+      autre pion. */}
+00523                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00524                                 \textcolor{keywordflow}{if} (new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) \{
+00525                                         \hyperlink{structcoup}{coup} cp;
+00526                                         cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00527                                         cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00528                                         cp.nombre\_prises = 0;
+00529                                         cp.new\_case = new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00530                                         cps[cnt\_coup++] = cp; \textcolor{comment}{/* on ajoute tous l
+      es coups à la liste */}
+00531                                 \}
+00532                                 x--;
+00533                                 y--;
+00534                         \}
+00535 
+00536                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* sinon, il y a un pion à prendre sur la diagonale */}
+00537                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise];
+00538                         \textcolor{keywordtype}{int} x = cPrise.x - 1;
+00539                         \textcolor{keywordtype}{int} y = cPrise.y - 1;
+00540                         \textcolor{keywordflow}{while} (x > 0 && y > 0 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, p)
+      .est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière la p
+      rise */}
+00541                                 \hyperlink{structcoup}{coup} cp;
+00542                                 cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = prise;
+00543                                 cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00544                                 cp.nombre\_prises = 1;
+00545                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[0] = cPrise;
+00546                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00547                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[0] = c;
+00548                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[1] = new\_case;
+00549                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00550 
+00551                                 p\_futur = p;
+00552                                 plateau\_prendre\_pion(cPrise.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 
+      &p\_futur);
+00553                                 plateau\_deplacer\_pion(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},
+00554                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_
+      futur);
+00555 
+00556                                 cps[cnt\_coup++] = cp;
+00557 
+00558                                 \textcolor{keywordflow}{if} (get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 2,
+00559                                                 p\_futur) || get\_possible\_case\_pos
+      (
+00560                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 3, 
+      p\_futur)) \{ \textcolor{comment}{/* si il y a une prise possible sur la diagonale, on l'ajoute à la li
+      ste */}
+00561                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00562                                                         completer\_coup\_dame(cp, 1
+      , p\_futur);
+00563 
+00564                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00565                                         \textcolor{keywordtype}{int} i;
+00566                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00567                                                 cps[cnt\_coup++] = coups\_completes
+      [i];
+00568                                         \}
+00569                                         free(coups\_completes);
+00570                                 \}
+00571                                 x--;
+00572                                 y--;
+00573                         \}
+00574                 \}
+00575 
+00576                 \textcolor{comment}{/* ---------------------- Diagonale 2 ---------------------------
+      -- */}
+00577 
+00578                 case\_prise = get\_possible\_case\_pos(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 2, p);
+00579                 case\_derriere = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].x + 1
+      ,
+00580                                 p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].y - 1, p);
+00581                 \textcolor{keywordflow}{if} (!case\_prise || !case\_derriere.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}
+00582                                 || case\_derriere.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == 0) \{ \textcolor{comment}{/* s
+      i la diagonale est vide */}
+00583                         \textcolor{keywordtype}{int} x = c.x + 1;
+00584                         \textcolor{keywordtype}{int} y = c.y - 1;
+00585                         \textcolor{keywordflow}{while} (x <= 10 && y > 0 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, 
+      p).est\_libre) \{ \textcolor{comment}{/* on parcours la diagonale jusqu'au bout ou jusqu'a rencontrer u
+      n autre pion. */}
+00586                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00587                                 \textcolor{keywordflow}{if} (new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) \{
+00588                                         \hyperlink{structcoup}{coup} cp;
+00589                                         cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00590                                         cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00591                                         cp.nombre\_prises = 0;
+00592                                         cp.new\_case = new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00593                                         cps[cnt\_coup++] = cp; \textcolor{comment}{/* on ajoute tous l
+      es coups à la liste */}
+00594                                 \}
+00595                                 x++;
+00596                                 y--;
+00597                         \}
+00598 
+00599                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* sinon, il y a un pion à prendre sur la diagonale */}
+00600                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise];
+00601                         \textcolor{keywordtype}{int} x = cPrise.x + 1;
+00602                         \textcolor{keywordtype}{int} y = cPrise.y - 1;
+00603                         \textcolor{keywordflow}{while} (x <= 10 && y > 0 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, 
+      p).est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière la
+       prise */}
+00604                                 \hyperlink{structcoup}{coup} cp;
+00605                                 cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = prise;
+00606                                 cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00607                                 cp.nombre\_prises = 1;
+00608                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[0] = cPrise;
+00609                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00610                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[0] = c;
+00611                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[1] = new\_case;
+00612                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00613 
+00614                                 p\_futur = p;
+00615                                 plateau\_prendre\_pion(cPrise.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 
+      &p\_futur);
+00616                                 plateau\_deplacer\_pion(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},
+00617                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_
+      futur);
+00618                                 cps[cnt\_coup++] = cp;
+00619 
+00620                                 \textcolor{keywordflow}{if} (get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 1,
+00621                                                 p\_futur) || get\_possible\_case\_pos
+      (
+00622                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 4, 
+      p\_futur)) \{
+00623 
+00624                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00625                                                         completer\_coup\_dame(cp, 2
+      , p\_futur);
+00626 
+00627                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00628                                         \textcolor{keywordtype}{int} i;
+00629                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00630                                                 cps[cnt\_coup++] = coups\_completes
+      [i];
+00631                                         \}
+00632                                         free(coups\_completes);
+00633                                 \}
+00634                                 x++;
+00635                                 y--;
+00636                         \}
+00637                 \}
+00638 
+00639                 \textcolor{comment}{/* ---------------------- Diagonale 3 ---------------------------
+      -- */}
+00640 
+00641                 case\_prise = get\_possible\_case\_pos(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 3, p);
+00642                 case\_derriere = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].x - 1
+      ,
+00643                                 p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].y + 1, p);
+00644                 \textcolor{keywordflow}{if} (!case\_prise || !case\_derriere.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}
+00645                                 || case\_derriere.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == 0) \{ \textcolor{comment}{/* s
+      i la diagonale est vide */}
+00646                         \textcolor{keywordtype}{int} x = c.x - 1;
+00647                         \textcolor{keywordtype}{int} y = c.y + 1;
+00648                         \textcolor{keywordflow}{while} (x > 0 && y <= 10 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, 
+      p).est\_libre) \{ \textcolor{comment}{/* on parcours la diagonale jusqu'au bout ou jusqu'a rencontrer u
+      n autre pion. */}
+00649                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00650                                 \textcolor{keywordflow}{if} (new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) \{
+00651                                         \hyperlink{structcoup}{coup} cp;
+00652                                         cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00653                                         cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00654                                         cp.nombre\_prises = 0;
+00655                                         cp.new\_case = new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00656                                         cps[cnt\_coup++] = cp; \textcolor{comment}{/* on ajoute tous l
+      es coups à la liste */}
+00657                                 \}
+00658                                 x--;
+00659                                 y++;
+00660                         \}
+00661 
+00662                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* sinon, il y a un pion à prendre sur la diagonale */}
+00663                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise];
+00664                         \textcolor{keywordtype}{int} x = cPrise.x - 1;
+00665                         \textcolor{keywordtype}{int} y = cPrise.y + 1;
+00666                         \textcolor{keywordflow}{while} (x > 0 && y <= 10 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y, 
+      p).est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière la
+       prise */}
+00667                                 \hyperlink{structcoup}{coup} cp;
+00668                                 cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = prise;
+00669                                 cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00670                                 cp.nombre\_prises = 1;
+00671                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[0] = cPrise;
+00672                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00673                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[0] = c;
+00674                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[1] = new\_case;
+00675                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00676 
+00677                                 p\_futur = p;
+00678                                 plateau\_prendre\_pion(cPrise.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 
+      &p\_futur);
+00679                                 plateau\_deplacer\_pion(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},
+00680                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_
+      futur);
+00681                                 cps[cnt\_coup++] = cp;
+00682 
+00683                                 \textcolor{keywordflow}{if} (get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 1,
+00684                                                 p\_futur) || get\_possible\_case\_pos
+      (
+00685                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 4, 
+      p\_futur)) \{
+00686                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00687                                                         completer\_coup\_dame(cp, 3
+      , p\_futur);
+00688 
+00689                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00690                                         \textcolor{keywordtype}{int} i;
+00691                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00692                                                 cps[cnt\_coup++] = coups\_completes
+      [i];
+00693                                         \}
+00694                                         free(coups\_completes);
+00695                                 \}
+00696                                 x--;
+00697                                 y++;
+00698                         \}
+00699                 \}
+00700 
+00701                 \textcolor{comment}{/* ---------------------- Diagonale 4 ---------------------------
+      -- */}
+00702 
+00703                 case\_prise = get\_possible\_case\_pos(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 4, p);
+00704                 case\_derriere = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].x + 1
+      ,
+00705                                 p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise].y + 1, p);
+00706                 \textcolor{keywordflow}{if} (!case\_prise || !case\_derriere.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}
+00707                                 || case\_derriere.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} == 0) \{ \textcolor{comment}{/* s
+      i la diagonale est vide */}
+00708                         \textcolor{keywordtype}{int} x = c.x + 1;
+00709                         \textcolor{keywordtype}{int} y = c.y + 1;
+00710                         \textcolor{keywordflow}{while} (x <= 10 && y <= 10 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y
+      , p).est\_libre) \{ \textcolor{comment}{/* on parcours la diagonale jusqu'au bout ou jusqu'a rencontrer
+       un autre pion. */}
+00711                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00712                                 \textcolor{keywordflow}{if} (new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) \{
+00713                                         \hyperlink{structcoup}{coup} cp;
+00714                                         cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00715                                         cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00716                                         cp.nombre\_prises = 0;
+00717                                         cp.new\_case = new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00718                                         cps[cnt\_coup++] = cp; \textcolor{comment}{/* on ajoute tous l
+      es coups à la liste */}
+00719                                 \}
+00720                                 x++;
+00721                                 y++;
+00722                         \}
+00723 
+00724                 \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{/* sinon, il y a un pion à prendre sur la diagonale */}
+00725                         \hyperlink{structcase__plateau}{case_plateau} cPrise = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[case\_prise];
+00726                         \textcolor{keywordtype}{int} x = cPrise.x + 1;
+00727                         \textcolor{keywordtype}{int} y = cPrise.y + 1;
+00728                         \textcolor{keywordflow}{while} (x <= 10 && y <= 10 && \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x, y
+      , p).est\_libre) \{ \textcolor{comment}{/* dans ce cas, on parcours les cases de la diagonale derrière 
+      la prise */}
+00729                                 \hyperlink{structcoup}{coup} cp;
+00730                                 cp.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = prise;
+00731                                 cp.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00732                                 cp.nombre\_prises = 1;
+00733                                 cp.\hyperlink{structcoup_ae19b3a66d3f4e66b8f69a38e4005f44a}{prises}[0] = cPrise;
+00734                                 \hyperlink{structcase__plateau}{case_plateau} new\_case = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(x
+      , y, p);
+00735                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[0] = c;
+00736                                 cp.\hyperlink{structcoup_aa66b88eb8140c2f459ac92fad0796510}{chemin}[1] = new\_case;
+00737                                 cp.new\_case = new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00738 
+00739                                 p\_futur = p;
+00740                                 plateau\_prendre\_pion(cPrise.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 
+      &p\_futur);
+00741                                 plateau\_deplacer\_pion(c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle},
+00742                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, &p\_
+      futur);
+00743                                 cps[cnt\_coup++] = cp;
+00744 
+00745                                 \textcolor{keywordflow}{if} (get\_possible\_case\_pos(new\_case.
+      \hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 2,
+00746                                                 p\_futur) || get\_possible\_case\_pos
+      (
+00747                                                 new\_case.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle}, 3, 
+      p\_futur)) \{ \textcolor{comment}{/* si il y a d'aures prises sur la diagonale */}
+00748                                         \hyperlink{structcoup}{coup} * coups\_completes =
+00749                                                         completer\_coup\_dame(cp, 4
+      , p\_futur);
+00750 
+00751                                         \textcolor{keywordtype}{int} nbCoups = nombre\_coups(coups\_complete
+      s);
+00752                                         \textcolor{keywordtype}{int} i;
+00753                                         \textcolor{keywordflow}{for} (i = 0; i < nbCoups; i++) \{
+00754                                                 cps[cnt\_coup++] = coups\_completes
+      [i];
+00755                                         \}
+00756                                         free(coups\_completes);
+00757                                 \}
+00758                                 x++;
+00759                                 y++;
+00760                         \}
+00761                 \}
+00762 
+00763                 fini = 1;
+00764         \}
+00765 
+00766         \textcolor{comment}{//free(deplacements);}
+00767 
+00768         \textcolor{comment}{/* pour marquer la fin de tableau */}
+00769         \hyperlink{structcoup}{coup} bidon;
+00770         bidon.old\_case = 0;
+00771         bidon.new\_case = 0;
+00772         cps[cnt\_coup++] = bidon;
+00773         \textcolor{keywordflow}{return} cps;
+00774 \}
+00775 
+00776 \textcolor{comment}{/* retourne les coups possibles de tout les pions */}
+\hypertarget{regles_8c_source_l00777}{}\hyperlink{regles_8h_a7c5456f7077282f58fc370d432ecdf73}{00777} \hyperlink{structcoup}{coup}* getCoups(\textcolor{keyword}{const} \hyperlink{structjoueur}{joueur} j, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p) \{
+00778 
+00779         \textcolor{comment}{//coup cp[500];}
+00780         \hyperlink{structcoup}{coup} *cp = calloc(500, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00781 
+00782         \hyperlink{structcase__plateau}{case_plateau} c;
+00783         \textcolor{keywordtype}{int} cnt\_coup = 0;
+00784         \textcolor{keywordtype}{int} i;
+00785         \textcolor{keywordtype}{int} k = 0;
+00786         \textcolor{comment}{/* j'itere sur toutes les cases du plateau */}
+00787         \textcolor{keywordflow}{for} (i = 1; i < 51; i++) \{
+00788                 c = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i];
+00789                 \textcolor{comment}{/* si dans cette case y'a un pion du joueur j}
+00790 \textcolor{comment}{                 * on recupere tout les coups possibles de ce pion}
+00791 \textcolor{comment}{                 */}
+00792                 \textcolor{keywordflow}{if} ((!c.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) && (c.pion.couleur == j.\hyperlink{structjoueur_a057f95a41503a890f27c651969ffac8d}{couleur})) \{
+00793                         \hyperlink{structcoup}{coup} * aAjouter;
+00794                         \textcolor{keywordflow}{if} (c.pion.\hyperlink{structpion_a13d497ed763d6eba18df86caf4c85861}{est_dame}) \{
+00795                                 aAjouter = coupsPossiblesDames(c, p);
+00796                         \} \textcolor{keywordflow}{else} \{
+00797                                 aAjouter = coupsPossibles(c, p);
+00798                         \}
+00799                         \textcolor{comment}{/* recopie les coups possibles de ce pion dans cp */}
+00800                         \textcolor{keywordflow}{while} ((aAjouter[k].old\_case != 0) && (aAjouter[k].new\_ca
+      se != 0)) \{
+00801                                 cp[cnt\_coup++] = aAjouter[k++];
+00802                         \}
+00803                         k = 0;
+00804                 \}
+00805         \}
+00806         \textcolor{comment}{/* pour marquer la fin de tableau */}
+00807         \hyperlink{structcoup}{coup} bidon;
+00808         bidon.old\_case = 0;
+00809         bidon.new\_case = 0;
+00810         cp[cnt\_coup++] = bidon;
+00811 
+00812         \hyperlink{structcoup}{coup} *result = calloc(cnt\_coup, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00813         memcpy(&result, &cp, \textcolor{keyword}{sizeof} result);
+00814 
+00815         \textcolor{keywordflow}{return} result;
+00816 \}
+00817 
+00818 \textcolor{comment}{/* retourne les coups max du tableau en entrée */}
+00819 \hyperlink{structcoup}{coup}* getCoupsMax(\textcolor{keyword}{const} \hyperlink{structcoup}{coup} *cp) \{
+00820 
+00821         \textcolor{keywordtype}{int} i = 0;
+00822         \textcolor{comment}{//coup coups\_max[NBCOUPS];}
+00823         \hyperlink{structcoup}{coup} *coups\_max = calloc(NBCOUPS, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00824         \textcolor{keywordtype}{int} cnt\_coups\_max = 0;
+00825         \textcolor{keywordtype}{int} nb\_prises\_max = 0;
+00826 
+00827         \textcolor{comment}{/* je parcours une premiere fois cp pour trouver le nb de prises max renc
+      ontré */}
+00828         \textcolor{keywordflow}{while} ((cp[i].old\_case != 0) && (cp[i].new\_case != 0)) \{
+00829                 \textcolor{keywordflow}{if} (cp[i].nombre\_prises > nb\_prises\_max) \{
+00830                         nb\_prises\_max = cp[i].nombre\_prises;
+00831                 \}
+00832                 i++;
+00833         \}
+00834 
+00835         \textcolor{comment}{/* je reparcours cp, cette fois je ne prend que les coups qui ont un}
+00836 \textcolor{comment}{         * nb de prises égal au nb\_prises\_max}
+00837 \textcolor{comment}{         */}
+00838         i = 0;
+00839         \textcolor{keywordflow}{while} ((cp[i].old\_case != 0) && (cp[i].new\_case != 0)) \{
+00840                 \textcolor{keywordflow}{if} (cp[i].nombre\_prises == nb\_prises\_max) \{
+00841                         coups\_max[cnt\_coups\_max++] = cp[i];
+00842                 \}
+00843                 i++;
+00844         \}
+00845 
+00846         \textcolor{comment}{/* je marque la fin de tableau */}
+00847         \hyperlink{structcoup}{coup} bidon;
+00848         bidon.old\_case = 0;
+00849         bidon.new\_case = 0;
+00850         coups\_max[cnt\_coups\_max++] = bidon;
+00851 
+00852         \hyperlink{structcoup}{coup} *result = calloc(cnt\_coups\_max, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00853         memcpy(&result, &coups\_max, \textcolor{keyword}{sizeof}(result));
+00854 
+00855         \textcolor{keywordflow}{return} result;
+00856 \}
+00857 
+00858 \textcolor{comment}{/* retourne les déplacements possible du pion sur la case c */}
+\hypertarget{regles_8c_source_l00859}{}\hyperlink{regles_8h_a8cad1d75ddb058fd96ae940dd593080e}{00859} \hyperlink{structcoup}{coup}* get\_deplacements(\textcolor{keyword}{const} \hyperlink{structcase__plateau}{case_plateau} c, \textcolor{keyword}{const} \hyperlink{structplateau}{plateau} p) \{
+00860         \hyperlink{structcoup}{coup} *moves = calloc(3, \textcolor{keyword}{sizeof}(\hyperlink{structcoup}{coup}));
+00861         \hyperlink{structcoup}{coup} *d = moves;
+00862         \hyperlink{structplateau}{plateau} futur = p;
+00863         \textcolor{keywordflow}{if} (c.pion.couleur == blanc) \{
+00864                 \hyperlink{structcase__plateau}{case_plateau} c1 = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(c.x - 1, c.y - 1, futur
+      );
+00865                 \textcolor{keywordflow}{if} ((c1.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) && c1.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00866                         \hyperlink{structcoup}{coup} nouveauCoup;
+00867                         nouveauCoup.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00868                         nouveauCoup.new\_case = c1.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00869                         nouveauCoup.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00870                         *(d++) = nouveauCoup;
+00871                 \}
+00872                 \hyperlink{structcase__plateau}{case_plateau} c2 = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(c.x + 1, c.y - 1, futur
+      );
+00873                 \textcolor{keywordflow}{if} ((c2.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) && c2.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00874                         \hyperlink{structcoup}{coup} nouveauCoup;
+00875                         nouveauCoup.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00876                         nouveauCoup.new\_case = c2.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00877                         nouveauCoup.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00878                         *(d++) = nouveauCoup;
+00879                 \}
+00880         \} \textcolor{keywordflow}{else} \{
+00881                 \hyperlink{structcase__plateau}{case_plateau} c1 = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(c.x - 1, c.y + 1, futur
+      );
+00882                 \textcolor{keywordflow}{if} ((c1.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) && c1.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00883                         \hyperlink{structcoup}{coup} nouveauCoup;
+00884                         nouveauCoup.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00885                         nouveauCoup.new\_case = c1.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00886                         nouveauCoup.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00887                         *(d++) = nouveauCoup;
+00888                 \}
+00889                 \hyperlink{structcase__plateau}{case_plateau} c2 = \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(c.x + 1, c.y + 1, futur
+      );
+00890                 \textcolor{keywordflow}{if} ((c2.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle} != 0) && c2.\hyperlink{structcase__plateau_a173f25d2fd7c653d77ca8174ba4f636d}{est_libre}) \{
+00891                         \hyperlink{structcoup}{coup} nouveauCoup;
+00892                         nouveauCoup.old\_case = c.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00893                         nouveauCoup.new\_case = c2.\hyperlink{structcase__plateau_ad510581b324604a9cf685cbb769a421a}{notation_officielle};
+00894                         nouveauCoup.\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} = \textcolor{charliteral}{'-'};
+00895                         printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+00896                         *(d++) = nouveauCoup;
+00897                 \}
+00898         \}
+00899 
+00900         \textcolor{comment}{/* je marque la fin du tableau */}
+00901         \hyperlink{structcoup}{coup} bidon;
+00902         bidon.old\_case = 0;
+00903         bidon.new\_case = 0;
+00904         *(d++) = bidon;
+00905 
+00906         \textcolor{keywordflow}{return} moves;
+00907 \}
+00908 
+00909 
+00910 
+00911 
+00912 \textcolor{comment}{/* retourne 0 si liste1 = liste2, sinon 1 */}
+\hypertarget{regles_8c_source_l00913}{}\hyperlink{regles_8h_aec569c705e9ec403a06151aba2092c52}{00913} \textcolor{keywordtype}{int} compare\_coups(\hyperlink{structcoup}{coup} *liste1, \hyperlink{structcoup}{coup} *liste2) \{
+00914         \hyperlink{structcoup}{coup} *p1 = liste1;
+00915         \hyperlink{structcoup}{coup} *p2 = liste2;
+00916 
+00917         \textcolor{keywordflow}{while}(p1->old\_case != 0) \{
+00918                 \textcolor{keywordflow}{if}((p1->old\_case != p2->old\_case)
+00919                                 || (p1->new\_case != p2->new\_case)
+00920                                 || (p1->nombre\_prises != p2->nombre\_prises)
+00921                                 || (p1->\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc} != p2->\hyperlink{structcoup_aa33da004dccb192cb33bc00c26c6e859}{tc}))
+00922                         \textcolor{keywordflow}{return} 1;
+00923                 p1++;
+00924                 p2++;
+00925         \}
+00926         \textcolor{keywordflow}{return} 0;
+00927 \}
+00928 
+\hypertarget{regles_8c_source_l00929}{}\hyperlink{regles_8h_a60a8f706865d0ae9087f8d65d4667655}{00929} \hyperlink{structcase__plateau}{case_plateau} \hyperlink{plateau_8h_a60a8f706865d0ae9087f8d65d4667655}{get_case_plateau_silent}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \hyperlink{structplateau}{plateau} p) \{
+00930         \textcolor{keywordflow}{if} (x < 1 || x > 10 || y < 1 || y > 10) \{
+00931                 \textcolor{keywordflow}{return} p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0];
+00932         \}
+00933         \textcolor{keywordflow}{if} ((x % 2) == (y % 2)) \{ \textcolor{comment}{/* si x et y sont tout les deux pairs (ou impai
+      rs), alors c'est une case blanche */}
+00934                 \textcolor{keywordflow}{return} p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0];
+00935         \} \textcolor{keywordflow}{else} \{
+00936                 \textcolor{keywordtype}{int} i;
+00937                 \textcolor{keywordflow}{for} (i = 1; i <= 50; i++) \{ \textcolor{comment}{/* temporairement on fait une recherc
+      he dans le tableau, en attendant un algorithme qui offre de meilleures performanc
+      es */}
+00938                         \hyperlink{structcase__plateau}{case_plateau} c = p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[i];
+00939                         \textcolor{keywordflow}{if} (c.x == x && c.y == y) \{
+00940                                 \textcolor{keywordflow}{return} c;
+00941                         \}
+00942                 \}
+00943                 \textcolor{keywordflow}{return} p.\hyperlink{structplateau_a6afaa60f594542e0d742b0c6d3223392}{cases}[0];
+00944         \}
+00945 \}
+\end{DoxyCode}

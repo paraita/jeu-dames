@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$moteur_8h.html" title="Le moteur de jeu. Il permet de gérer une partie, 1 ou 2 joueurs, fait jouer l&#39;IA, fournit une aide au joueur." alt="" coords="179,83,261,111"/>
+<area shape="rect" id="node13" href="$min-max_8c_source.html" title="min&#45;max.c" alt="" coords="285,83,376,111"/>
+<area shape="rect" id="node5" href="$fonction_interface_8h.html" title="Implémentation de fonctionnalités pour l&#39;interface." alt="" coords="72,161,227,189"/>
+<area shape="rect" id="node11" href="$moteur_8c_source.html" title="moteur.c" alt="" coords="251,161,333,189"/>
+<area shape="rect" id="node7" href="$fonction_interface_8c_source.html" title="fonctionInterface.c" alt="" coords="5,238,160,266"/>
+<area shape="rect" id="node9" href="$main_8c_source.html" title="main.c" alt="" coords="184,238,251,266"/>
+</map>

@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/f8-2011/!svn/ver/96/root/trunk
+END
+plateau.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/f8-2011/!svn/ver/92/root/trunk/plateau.h
+END
+fonctionInterface.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/f8-2011/!svn/ver/86/root/trunk/fonctionInterface.c
+END
+arbre.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/f8-2011/!svn/ver/36/root/trunk/arbre.h
+END
+fonctionInterface.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/f8-2011/!svn/ver/95/root/trunk/fonctionInterface.h
+END
+min-max.c
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/f8-2011/!svn/ver/96/root/trunk/min-max.c
+END
+fonction_evaluation.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/f8-2011/!svn/ver/96/root/trunk/fonction_evaluation.c
+END
+fonction_evaluation.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/f8-2011/!svn/ver/96/root/trunk/fonction_evaluation.h
+END
+min-max.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/f8-2011/!svn/ver/96/root/trunk/min-max.h
+END
+moteur.c
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/f8-2011/!svn/ver/96/root/trunk/moteur.c
+END
+moteur.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/f8-2011/!svn/ver/83/root/trunk/moteur.h
+END
+regles.c
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/f8-2011/!svn/ver/93/root/trunk/regles.c
+END
+main.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/f8-2011/!svn/ver/91/root/trunk/main.c
+END
+constantes.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/f8-2011/!svn/ver/86/root/trunk/constantes.h
+END
+regles.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/f8-2011/!svn/ver/93/root/trunk/regles.h
+END
+arbre.c
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/f8-2011/!svn/ver/27/root/trunk/arbre.c
+END
+plateau.c
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/f8-2011/!svn/ver/92/root/trunk/plateau.c
+END

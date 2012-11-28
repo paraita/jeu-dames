@@ -1,0 +1,77 @@
+\hypertarget{structarbre}{
+\section{Référence de la structure arbre}
+\label{structarbre}\index{arbre@{arbre}}
+}
+
+
+Un arbre à une valeur (la racine) et un certain nombre de fils.  
+
+
+
+
+{\ttfamily \#include $<$arbre.h$>$}
+
+
+
+Graphe de collaboration de arbre:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{structarbre__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structarbre_a4a8f7bc357d6e8bff6aa5eee7a166f81}{
+struct \hyperlink{structarbre}{arbre} $\ast$ {\bfseries parent}}
+\label{structarbre_a4a8f7bc357d6e8bff6aa5eee7a166f81}
+
+\item 
+\hypertarget{structarbre_a8e030c012e3b74a6d076739c4c7ecb69}{
+int {\bfseries valeur}}
+\label{structarbre_a8e030c012e3b74a6d076739c4c7ecb69}
+
+\item 
+\hypertarget{structarbre_aa9b3fa948258da2518cebbe8cb191431}{
+int {\bfseries profondeur}}
+\label{structarbre_aa9b3fa948258da2518cebbe8cb191431}
+
+\item 
+int \hyperlink{structarbre_a67c44f020d501282adc38e3301a5f245}{nb\_\-fils}
+\item 
+struct \hyperlink{structarbre}{arbre} $\ast$ \hyperlink{structarbre_a7bac08e3c2aedbde0dddf80b94eadf76}{fils} \mbox{[}80\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Un arbre à une valeur (la racine) et un certain nombre de fils. 
+
+Définition à la ligne \hyperlink{arbre_8h_source_l00013}{13} du fichier \hyperlink{arbre_8h_source}{arbre.h}.
+
+
+
+\subsection{Documentation des champs}
+\hypertarget{structarbre_a7bac08e3c2aedbde0dddf80b94eadf76}{
+\index{arbre@{arbre}!fils@{fils}}
+\index{fils@{fils}!arbre@{arbre}}
+\subsubsection[{fils}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf arbre}$\ast$ {\bf fils}\mbox{[}80\mbox{]}}}
+\label{structarbre_a7bac08e3c2aedbde0dddf80b94eadf76}
+Un noeud n'aura jamais plus de 80 fils car on a, pour un demi-\/coup, 20 pions $\ast$ 4 déplacements possibles = 80 coups différents. 
+
+Définition à la ligne \hyperlink{arbre_8h_source_l00018}{18} du fichier \hyperlink{arbre_8h_source}{arbre.h}.
+
+\hypertarget{structarbre_a67c44f020d501282adc38e3301a5f245}{
+\index{arbre@{arbre}!nb\_\-fils@{nb\_\-fils}}
+\index{nb\_\-fils@{nb\_\-fils}!arbre@{arbre}}
+\subsubsection[{nb\_\-fils}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf nb\_\-fils}}}
+\label{structarbre_a67c44f020d501282adc38e3301a5f245}
+Le nombre de fils de ce noeud 
+
+Définition à la ligne \hyperlink{arbre_8h_source_l00017}{17} du fichier \hyperlink{arbre_8h_source}{arbre.h}.
+
+
+
+La documentation de cette structure a été générée à partir du fichier suivant :\begin{DoxyCompactItemize}
+\item 
+\hyperlink{arbre_8h}{arbre.h}\end{DoxyCompactItemize}
